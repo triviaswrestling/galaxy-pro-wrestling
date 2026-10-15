@@ -3,86 +3,120 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <title>Galaxy Pro Wrestling</title>
+    <title>Galaxy Pro Wrestling - Inicio</title>
+    <!-- Google Fonts optimizada -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome optimizada -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- MARCOS DE LUZ LATERALES -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
     <!-- ENCABEZADO SUPERIOR -->
-    <header class="top-banner">
-        <div class="logo-container">
+    <header class="main-header">
+        <div class="logo-area">
             <h1>Galaxy Pro Wrestling</h1>
-            <div class="event-sub">GPW: GALACTIC CLASH | SÁBADO 19 OCT</div>
+            <div class="tagline">GPW: GALACTIC CLASH | 2026</div>
         </div>
     </header>
 
-    <!-- PRESENTACIÓN DE INSTAGRAM -->
-    <div class="instagram-section">
-        <div class="ig-header">
-            <div class="ig-user-info">
-                <div class="ig-avatar">
-                    <i class="fa-brands fa-instagram"></i>
-                </div>
-                <div class="ig-names">
-                    <h3>@GalaxyProWrestling</h3>
-                    <p>La Evolución de la Lucha</p>
-                </div>
-            </div>
-            <a href="https://instagram.com/tu_usuario" target="_blank" class="ig-btn">Seguir</a>
-        </div>
-        <div class="ig-preview-grid">
-            <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=300" alt="Post IG 1" class="ig-thumb">
-            <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=300" alt="Post IG 2" class="ig-thumb">
-            <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=300" alt="Post IG 3" class="ig-thumb">
-        </div>
-    </div>
+    <!-- SECCIÓN DE BIENVENIDA -->
+    <section class="welcome-section">
+        <h2>Welcome to Galaxy Pro Wrestling</h2>
+        <p>
+            Esta es la página oficial de <strong>Galaxy Pro Wrestling</strong>, la liga de lucha libre intergaláctica donde los mejores talentos compiten por la gloria. Consulta los eventos, campeonatos, rankings y todas las novedades del universo GPW.
+        </p>
+    </section>
 
-    <!-- MENÚ PRINCIPAL -->
-    <main class="menu-container">
+    <!-- CUADRÍCULA DE CATEGORÍAS (MENÚ PRINCIPAL) -->
+    <main class="category-grid">
         
-        <a href="eventos.html" class="menu-card">
-            <div class="card-img-container">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600" alt="Eventos">
+        <a href="eventos.html" class="category-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop" alt="Eventos">
             </div>
-            <div class="card-content">
+            <div class="card-info">
                 <h2>EVENTOS</h2>
-                <p>Próximos Shows • Carteleras</p>
+                <p>Próximos Shows</p>
             </div>
         </a>
 
-        <a href="luchadores.html" class="menu-card">
-            <div class="card-img-container">
-                <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=600" alt="Luchadores">
+        <a href="luchadores.html" class="category-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=600&auto=format&fit=crop" alt="Luchadores">
             </div>
-            <div class="card-content">
+            <div class="card-info">
                 <h2>LUCHADORES</h2>
-                <p>Elenco Estelar • Superstars</p>
+                <p>Elenco Estelar</p>
             </div>
         </a>
 
-        <a href="multimedia.html" class="menu-card">
-            <div class="card-img-container">
-                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600" alt="Multimedia">
+        <a href="rankings.html" class="category-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&auto=format&fit=crop" alt="Campeones">
             </div>
-            <div class="card-content">
-                <h2>MULTIMEDIA</h2>
-                <p>Clips • Reps • Fotos</p>
-            </div>
-        </a>
-
-        <a href="rankings.html" class="menu-card">
-            <div class="card-img-container">
-                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600" alt="Rankings">
-            </div>
-            <div class="card-content">
+            <div class="card-info">
                 <h2>RANKINGS</h2>
-                <p>Top 10 • Campeones Actuales</p>
+                <p>Campeones GPW</p>
+            </div>
+        </a>
+
+        <a href="multimedia.html" class="category-card">
+            <div class="card-image-wrapper">
+                <img src="https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&auto=format&fit=crop" alt="Multimedia">
+            </div>
+            <div class="card-info">
+                <h2>MULTIMEDIA</h2>
+                <p>Clips y Fotos</p>
             </div>
         </a>
 
     </main>
+
+    <!-- SECCIÓN LATEST INSTAGRAM POSTS (OPTIMIZADA SIN LAG) -->
+    <section class="instagram-section">
+        <h3 class="section-title">LATEST INSTAGRAM POSTS</h3>
+
+        <!-- BARRA DE PERFIL DE INSTAGRAM -->
+        <div class="ig-profile-header">
+            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=150&auto=format&fit=crop" alt="Avatar GPW" class="ig-avatar">
+            
+            <div class="ig-user-details">
+                <div class="ig-username-row">
+                    <span class="ig-username">galaxyprowrestling</span>
+                    <i class="fa-solid fa-circle-check ig-verified"></i>
+                </div>
+                <span class="ig-fullname">Galaxy Pro Wrestling</span>
+                <div class="ig-stats">
+                    <span><strong>1,7 mil</strong> publicaciones</span>
+                    <span><strong>1,6 mil</strong> seguidores</span>
+                    <span><strong>84</strong> siguiendo</span>
+                </div>
+            </div>
+
+            <!-- CAMBIÁ ESTE LINK POR TU USUARIO REAL DE INSTAGRAM -->
+            <a href="https://instagram.com/tu_usuario" target="_blank" class="ig-follow-btn">
+                <i class="fa-brands fa-instagram"></i> Seguir
+            </a>
+        </div>
+
+        <!-- CUADRÍCULA DE PUBLICACIONES DE INSTAGRAM (3 COLUMNAS) -->
+        <div class="ig-posts-grid">
+            <a href="https://instagram.com/tu_usuario" target="_blank" class="ig-post">
+                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&auto=format&fit=crop" alt="Post Instagram 1" loading="lazy">
+            </a>
+            <a href="https://instagram.com/tu_usuario" target="_blank" class="ig-post">
+                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&auto=format&fit=crop" alt="Post Instagram 2" loading="lazy">
+            </a>
+            <a href="https://instagram.com/tu_usuario" target="_blank" class="ig-post">
+                <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=500&auto=format&fit=crop" alt="Post Instagram 3" loading="lazy">
+            </a>
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>

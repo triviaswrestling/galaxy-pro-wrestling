@@ -1,73 +1,176 @@
+/* RESETEO BÁSICO PARA MAXIMA VELOCIDAD */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* ESTÉTICA DE GALAXIA PROFUNDA */
 body {
-    background-color: #05050a;
-    background-image: radial-gradient(circle at 50% 20%, #1a103c 0%, #05050a 70%);
+    background-color: #010110;
+    background-image: radial-gradient(circle at 50% 10%, #0c1c4e 0%, #010110 80%);
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    overflow-x: hidden;
     padding-bottom: 50px;
 }
 
-/* ENCABEZADO TIPO TNA */
-.top-banner {
-    width: 100%;
-    background: linear-gradient(180deg, #0c081d 0%, #05050a 100%);
-    border-bottom: 2px solid #5a189a;
-    padding: 15px 10px;
-    text-align: center;
-    box-shadow: 0 4px 20px rgba(90, 24, 154, 0.4);
+/* MARCOS DE LUZ CIAN LATERALES */
+.glow-border {
+    position: fixed;
+    top: 0;
+    width: 15px;
+    height: 100%;
+    z-index: -1;
+    background-image: linear-gradient(0deg, transparent 0%, #00e5ff 50%, transparent 100%);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
+    opacity: 0.6;
 }
 
-.logo-container h1 {
-    font-size: 2rem;
+.glow-border.left { left: 0; border-right: 2px solid #00e5ff; }
+.glow-border.right { right: 0; border-left: 2px solid #00e5ff; }
+
+/* ENCABEZADO SUPERIOR */
+.main-header {
+    width: 100%;
+    max-width: 90%;
+    padding: 20px 10px 10px 10px;
+    text-align: center;
+}
+
+.logo-area h1 {
+    font-size: 1.8rem;
     font-weight: 900;
     font-style: italic;
-    background: linear-gradient(180deg, #ffffff 30%, #a29bfe 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #00e5ff;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.9);
+}
+
+.tagline {
+    font-size: 0.75rem;
+    color: #ff3c3c;
+    font-weight: 700;
+    margin-top: 4px;
+    letter-spacing: 1px;
+}
+
+/* SECCIÓN BIENVENIDA (WELCOME) */
+.welcome-section {
+    width: 90%;
+    max-width: 800px;
+    text-align: center;
+    margin: 15px 0 20px 0;
+    padding: 15px;
+    background: rgba(3, 10, 33, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(0, 229, 255, 0.2);
+}
+
+.welcome-section h2 {
+    font-size: 1.2rem;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
-    text-shadow: 0 2px 10px rgba(138, 43, 226, 0.5);
+    margin-bottom: 8px;
+    color: #ffffff;
 }
 
-.event-sub {
+.welcome-section p {
+    font-size: 0.82rem;
+    color: #b0b8d0;
+    line-height: 1.5;
+}
+
+/* CUADRÍCULA DE CATEGORÍAS (2 columnas en celular, 3 en PC) */
+.category-grid {
+    width: 90%;
+    max-width: 850px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.category-card {
+    background-color: #030a21;
+    border: 1.5px solid rgba(0, 229, 255, 0.4);
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card-image-wrapper {
+    width: 100%;
+    height: 95px;
+    overflow: hidden;
+    background-color: #000;
+}
+
+.card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+}
+
+.card-info {
+    padding: 8px;
+    text-align: center;
+}
+
+.card-info h2 {
     font-size: 0.9rem;
-    font-weight: 700;
-    color: #ff4d4d;
-    margin-top: 5px;
+    font-weight: 900;
     letter-spacing: 0.5px;
+    color: #f0f0f0;
 }
 
-/* SECCIÓN INSTAGRAM */
+.card-info p {
+    font-size: 0.7rem;
+    color: #8a95b5;
+}
+
+/* SECCIÓN LATEST INSTAGRAM POSTS */
 .instagram-section {
     width: 90%;
-    max-width: 600px;
-    background: #110c24;
-    border: 1px solid #3c1361;
-    border-radius: 12px;
-    margin: 20px auto;
-    padding: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    max-width: 850px;
+    margin-top: 10px;
 }
 
-.ig-header {
+.section-title {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+/* HEADER PERFIL INSTAGRAM */
+.ig-profile-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 15px;
-}
-
-.ig-user-info {
-    display: flex;
-    align-items: center;
+    background: #030a21;
+    padding: 12px 15px;
+    border-radius: 10px 10px 0 0;
+    border: 1px solid rgba(0, 229, 255, 0.3);
+    border-bottom: none;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
@@ -75,126 +178,115 @@ body {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    border: 2px solid #e1306c;
-    background: #000;
+    object-fit: cover;
+    border: 2px solid #00e5ff;
+}
+
+.ig-user-details {
+    flex: 1;
+    margin-left: 5px;
+}
+
+.ig-username-row {
     display: flex;
     align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    color: #e1306c;
+    gap: 5px;
 }
 
-.ig-names h3 {
-    font-size: 0.95rem;
+.ig-username {
     font-weight: 700;
-}
-
-.ig-names p {
-    font-size: 0.75rem;
-    color: #aaa;
-}
-
-.ig-btn {
-    background-color: #0095f6;
-    color: white;
-    padding: 6px 16px;
-    border-radius: 6px;
     font-size: 0.85rem;
-    font-weight: 700;
+    color: #ffffff;
+}
+
+.ig-verified {
+    color: #00e5ff;
+    font-size: 0.8rem;
+}
+
+.ig-fullname {
+    display: block;
+    font-size: 0.72rem;
+    color: #8a95b5;
+}
+
+.ig-stats {
+    display: flex;
+    gap: 10px;
+    font-size: 0.68rem;
+    color: #b0b8d0;
+    margin-top: 3px;
+}
+
+.ig-stats strong {
+    color: #ffffff;
+}
+
+.ig-follow-btn {
+    background: #3897f0;
+    color: #ffffff;
     text-decoration: none;
+    font-weight: 700;
+    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     transition: background 0.2s;
 }
 
-.ig-btn:hover {
-    background-color: #1877f2;
+.ig-follow-btn:hover {
+    background: #287bd0;
 }
 
-.ig-preview-grid {
+/* CUADRÍCULA DE POSTS */
+.ig-posts-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
+    gap: 4px;
+    background: #030a21;
+    padding: 4px;
+    border-radius: 0 0 10px 10px;
+    border: 1px solid rgba(0, 229, 255, 0.3);
 }
 
-.ig-thumb {
-    width: 100%;
-    height: 90px;
-    border-radius: 6px;
-    object-fit: cover;
-    background-color: #222;
-}
-
-/* CONTENEDOR DE CATEGORÍAS */
-.menu-container {
-    width: 90%;
-    max-width: 1000px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    margin-top: 15px;
-}
-
-@media (max-width: 768px) {
-    .menu-container {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* TARJETAS CON MARCOS REDONDEADOS */
-.menu-card {
-    background: #110c24;
-    border: 2px solid #7b2cbf;
-    border-radius: 20px;
-    overflow: hidden;
-    text-decoration: none;
-    color: white;
-    box-shadow: 0 8px 25px rgba(123, 44, 191, 0.3);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    display: flex;
-    flex-direction: column;
-}
-
-.menu-card:hover {
-    transform: translateY(-5px);
-    border-color: #9d4edd;
-    box-shadow: 0 12px 30px rgba(157, 78, 221, 0.5);
-}
-
-.card-img-container {
-    width: 100%;
-    height: 180px;
+.ig-post {
+    display: block;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
     background: #000;
-    position: relative;
 }
 
-.card-img-container img {
+.ig-post img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.85;
-    transition: opacity 0.3s;
+    transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-.menu-card:hover .card-img-container img {
-    opacity: 1;
+.ig-post img:hover {
+    transform: scale(1.03);
+    opacity: 0.9;
 }
 
-.card-content {
-    padding: 15px;
-    text-align: center;
+/* ADAPTACIÓN PARA PC */
+@media (min-width: 768px) {
+    .category-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+    .card-image-wrapper { height: 130px; }
+    .logo-area h1 { font-size: 2.2rem; }
+    .welcome-section h2 { font-size: 1.4rem; }
+    .welcome-section p { font-size: 0.9rem; }
 }
 
-.card-content h2 {
-    font-size: 1.4rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin-bottom: 5px;
-    color: #f3c6f8;
-}
-
-.card-content p {
-    font-size: 0.85rem;
-    color: #b5b5c3;
-    text-transform: uppercase;
-    font-weight: 700;
-}
+/* OPTIMIZACIÓN DE RENDERIZADO BAJO DEMANDA (SAVES RAM & GPU) */
+.category-card, 
+.instagram-section {
+    /* El navegador ignora el renderizado de los elementos fuera de pantalla */
+    content-visibility: auto;
+    /* Le da un tamaño aproximado para que la barra de scroll no dé saltos */
+    contain-intrinsic-size: 1px 300px;
+    }

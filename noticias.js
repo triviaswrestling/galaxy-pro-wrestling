@@ -2,58 +2,48 @@
    GALAXY PRO WRESTLING - SISTEMA DE NOTICIAS (NOTICIAS.JS)
    ========================================================== */
 
-// 1. BASE DE DATOS DE NOTICIAS
-// Agregá todas las noticias que quieras. Mantené la fecha en formato "YYYY-MM-DD" para ordenar.
-const listaNoticias = [
-    {
-        id: 1,
-        titulo: "¡Anunciado el Evento Principal para Galactic Clash!",
-        categoria: "GPW CLASH 2026",
-        resumen: "Los máximos exponentes del universo GPW se enfrentarán en una lucha sin precedentes por la gloria intergaláctica.",
-        imagen: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop",
-        fecha: "2026-10-15",
-        link: "noticia.html?id=1"
-    },
-    {
-        id: 11,
-        titulo: "Nuevo Contendiente #1 al Campeonato Mundial",
-        categoria: "CAMPEONATO MUNDIAL",
-        resumen: "Tras una contienda brutal el pasado fin de semana, tenemos un nuevo retador oficial al cinturón de GPW.",
-        imagen: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&auto=format&fit=crop",
-        fecha: "2026-10-12",
-        link: "noticia.html?id=11"
-    },
-    {
-        id: 10,
-        titulo: "Firma Estelar: Nueva Incorporación al Elenco",
-        categoria: "ROSTER UPDATE",
-        resumen: "Un reconocido talento de la escena independiente ha firmado un contrato exclusivo con Galaxy Pro Wrestling.",
-        imagen: "https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=800&auto=format&fit=crop",
-        fecha: "2026-10-10",
-        link: "noticia.html?id=10"
-    }
-    // Podés seguir agregando más noticias con sus IDs y fechas correspondientes
-];
-
-// 2. CONFIGURACIÓN DE PAGINACIÓN (10 NOTICIAS POR PÁGINA)
 const NOTICIAS_POR_PAGINA = 10;
 let paginaActual = 1;
+let listaNoticiasGlobal = [];
+
+function cargarNoticias() {
+    const newsGrid = document.getElementById("newsGrid");
+    if (!newsGrid) return;
+
+    newsGrid.innerHTML = `<p style="color: #00e1ff; text-align: center; font-weight: 700; padding: 30px;">Cargando noticias...</p>`;
+
+    // Lee el archivo índice generado automáticamente con todas las notas
+    fetch("./notas/indice.json")
+        .then(response => {
+            if (!response.ok) throw new Error("No se pudo cargar el índice de noticias");
+            return response.json();
+        })
+        .then(data => {
+            listaNoticiasGlobal = data;
+            renderizarNoticias();
+        })
+        .catch(() => {
+            newsGrid.innerHTML = `<p style="color: #ff4444; text-align: center;">Error al cargar las noticias.</p>`;
+        });
+}
 
 function renderizarNoticias() {
     const newsGrid = document.getElementById("newsGrid");
     const pagination = document.getElementById("pagination");
 
-    if (!newsGrid) return; // Si no está el contenedor en la página, no ejecuta
-
-    // Ordenar noticias por fecha: las más recientes primero
-    const noticiasOrdenadas = [...listaNoticias].sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
+    if (!newsGrid) return;
 
     // Cortar el listado de 10 en 10 según la página actual
     const inicio = (paginaActual - 1) * NOTICIAS_POR_PAGINA;
     const fin = inicio + NOTICIAS_POR_PAGINA;
-    const noticiasPagina = noticiasOrdenadas.slice(inicio, fin);
+    const noticiasPagina = listaNoticiasGlobal.slice(inicio, fin);
 
-    // Inyectar el HTML de las tarjetas
+    if (noticiasPagina.length === 0) {
+        newsGrid.innerHTML = `<p style="color: #888; text-align: center;">No hay noticias disponibles.</p>`;
+        return;
+    }
+
+    // Inyectar el HTML de las tarjetas en la grilla
     newsGrid.innerHTML = noticiasPagina.map(noticia => `
         <article class="news-card">
             <div class="news-card-image">
@@ -68,8 +58,8 @@ function renderizarNoticias() {
         </article>
     `).join("");
 
-    // Generar botones numerados de paginación si supera las 10 noticias
-    const totalPaginas = Math.ceil(noticiasOrdenadas.length / NOTICIAS_POR_PAGINA);
+    // Generar botones numerados de paginación
+    const totalPaginas = Math.ceil(listaNoticiasGlobal.length / NOTICIAS_POR_PAGINA);
     
     if (totalPaginas > 1 && pagination) {
         let botonesHTML = "";
@@ -93,8 +83,7 @@ window.cambiarPagina = function(nuevaPagina) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
-// Inicializar renderizado al cargar el DOM
+// Inicializar al cargar el DOM
 document.addEventListener("DOMContentLoaded", () => {
-    renderizarNoticias();
+    cargarNoticias();
 });
-      

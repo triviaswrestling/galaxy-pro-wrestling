@@ -9,10 +9,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Estilos -->
+    <!-- Estilos de la Web -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="wrestlercard.css">
+    <!-- ranking.css SIEMPRE al final para prioridad absoluta -->
     <link rel="stylesheet" href="ranking.css">
 </head>
 <body>
@@ -23,7 +24,7 @@
     <header class="main-header"></header>
 
     <main>
-        <!-- Banner de Encabezado: Imagen WebP + Título Ranking (Responsive Mobile/PC) -->
+        <!-- Banner Header (Mobile / PC) -->
         <section class="ranking-header-banner">
             <div class="ranking-banner-img-container">
                 <img src="img/ranking_banner.webp" alt="GPW Ranking Banner" class="ranking-banner-img">
@@ -33,81 +34,93 @@
             </div>
         </section>
 
-        <!-- Grilla de Cards minimalistas (3 cols en Mobile / 4 en PC) -->
+        <!-- Grilla de Cards minimalistas (3 cols Mobile / 4 cols PC) -->
         <div id="ranking-grid" class="ranking-grid"></div>
     </main>
 
-    <!-- MODAL EXCLUSIVO DE RANKING -->
+    <!-- MODAL ESTILO DOSSIER / PERFIL MODERNO -->
     <div id="ranking-modal" class="modal">
         <div class="modal-content ranking-modal-content">
+            <!-- Botón de Cierre -->
             <button class="close-button" onclick="closeRankingModal()">×</button>
 
-            <!-- 1. Puesto y División -->
-            <div class="modal-rank-top">
-                <span id="modal-rank-num" class="rank-title-badge">#1</span>
-                <span id="modal-division" class="modal-division-text">MASCULINO</span>
-            </div>
-
-            <!-- 2. Perfil: Foto + Nombre + Intérprete -->
-            <div class="modal-profile-header">
+            <!-- 1. Foto de Perfil con Badge del Puesto (#1, #2, etc.) -->
+            <div class="modal-photo-container">
+                <span id="modal-rank-badge" class="modal-top-badge">#1</span>
                 <img id="modal-img" src="" alt="Luchador">
-                <div class="modal-profile-info">
-                    <h2 id="modal-name">Nombre</h2>
-                    <p class="interpreter-line">INTÉRPRETE: <span id="modal-interpreter" class="interpreter"></span></p>
-                    <div class="overall-badge">
-                        OVERALL: <span id="val-overall">0</span>
+            </div>
+
+            <!-- 2. Apodo, Nombre e Intérprete -->
+            <div class="modal-identity">
+                <span id="modal-nickname" class="modal-nickname">THE AMERICAN NIGHTMARE</span>
+                <h2 id="modal-name">CODY RHODES</h2>
+                <p class="modal-interpreter-line">INTÉRPRETE: <span id="modal-interpreter">Galo</span></p>
+            </div>
+
+            <!-- 3. Panel de Atributos de Combate -->
+            <div class="modal-attributes-box">
+                <h3>COMBAT ATTRIBUTES</h3>
+                <div class="attributes-grid">
+                    <div class="attr-item">
+                        <div class="attr-info">
+                            <span>Power</span>
+                            <span id="val-power" class="attr-num text-orange">0</span>
+                        </div>
+                        <div class="attr-bar">
+                            <div id="bar-power" class="attr-fill bar-power" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="attr-item">
+                        <div class="attr-info">
+                            <span>Charisma</span>
+                            <span id="val-charisma" class="attr-num text-gold">0</span>
+                        </div>
+                        <div class="attr-bar">
+                            <div id="bar-charisma" class="attr-fill bar-charisma" style="width: 0%;"></div>
+                        </div>
+                    </div>
+
+                    <div class="attr-item">
+                        <div class="attr-info">
+                            <span>Micro</span>
+                            <span id="val-micro" class="attr-num text-green">0</span>
+                        </div>
+                        <div class="attr-bar">
+                            <div id="bar-micro" class="attr-fill bar-micro" style="width: 0%;"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. Subtítulo de Atributos -->
-            <div class="modal-highlights-header">
-                <h3>ATRIBUTOS DE COMBATE Y MANEJO</h3>
-            </div>
-
-            <!-- 4. Barras de habilidades neón (Micro, Charisma, Power) -->
-            <div class="stats-bars-wrapper">
-                <div class="stat-row">
-                    <div class="stat-labels">
-                        <span>MICRO</span>
-                        <span id="val-micro" class="stat-val-micro">0</span>
-                    </div>
-                    <div class="stat-bar-container">
-                        <div id="bar-micro" class="stat-bar-fill bar-micro" style="width: 0%;"></div>
-                    </div>
+            <!-- 4. Bloques de Información (Finisher y Overall) -->
+            <div class="modal-info-grid">
+                <div class="info-card-box">
+                    <span class="box-label">FINISHER</span>
+                    <span id="modal-finisher" class="box-value">--</span>
                 </div>
-
-                <div class="stat-row">
-                    <div class="stat-labels">
-                        <span>CHARISMA</span>
-                        <span id="val-charisma" class="stat-val-charisma">0</span>
-                    </div>
-                    <div class="stat-bar-container">
-                        <div id="bar-charisma" class="stat-bar-fill bar-charisma" style="width: 0%;"></div>
-                    </div>
-                </div>
-
-                <div class="stat-row">
-                    <div class="stat-labels">
-                        <span>POWER</span>
-                        <span id="val-power" class="stat-val-power">0</span>
-                    </div>
-                    <div class="stat-bar-container">
-                        <div id="bar-power" class="stat-bar-fill bar-power" style="width: 0%;"></div>
-                    </div>
+                <div class="info-card-box">
+                    <span class="box-label">OVERALL RANK</span>
+                    <span id="val-overall" class="box-value text-cyan">0</span>
                 </div>
             </div>
 
-            <!-- 5. Logros -->
-            <div class="modal-highlights-header">
+            <!-- 5. Bloque Theme Song -->
+            <div class="info-card-box full-width">
+                <span class="box-label">THEME SONG</span>
+                <span id="modal-theme" class="box-value song-text">🎵 --</span>
+            </div>
+
+            <!-- 6. Accolades & Logros -->
+            <div class="modal-attributes-box" style="margin-top: 10px;">
                 <h3>ACCOLADES & LOGROS</h3>
+                <ul id="modal-achievements" class="ranking-achievements-list"></ul>
             </div>
-            <ul id="modal-achievements" class="ranking-achievements-list"></ul>
 
         </div>
     </div>
 
-    <!-- Scripts -->
+    <!-- Scripts en la raíz -->
     <script src="script.js"></script>
     <script src="js/wrestlers.js"></script>
     <script src="js/ranking.js"></script>

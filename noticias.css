@@ -1,0 +1,261 @@
+/* ==========================================================
+   GALAXY PRO WRESTLING - ESTILOS COMPLETOS DE NOTICIAS
+   ========================================================== */
+
+/* 1. CONTENEDOR GENERAL DE LA SECCIÓN DE NOTICIAS */
+.news-container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.page-title-bar h2 {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 900;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+.text-cyan {
+    color: #00e1ff;
+}
+
+/* 2. GRILLA RESPONSIVE (2 columnas en mobile, 4 en PC) */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en mobile */
+    gap: 12px;
+}
+
+/* Tarjeta individual de noticia */
+.news-card {
+    background: rgba(2, 8, 25, 0.95);
+    border: 1.5px solid rgba(0, 225, 255, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.news-card:active {
+    transform: scale(0.97);
+    border-color: #00e1ff;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
+}
+
+/* Imagen en formato 16:9 */
+.news-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+}
+
+.news-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Etiqueta / Categoria */
+.news-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: #00e1ff;
+    color: #020819;
+    font-size: 0.65rem;
+    font-weight: 900;
+    padding: 2px 6px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+/* Cuerpo de la tarjeta */
+.news-card-body {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.news-card-body h3 {
+    color: #ffffff;
+    font-size: 0.85rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+    line-height: 1.2;
+}
+
+.news-card-body p {
+    color: #a0aab8;
+    font-size: 0.72rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Corta a 2 líneas en mobile */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.read-more-btn {
+    color: #00e1ff;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+
+/* 3. BOTONERA DE PAGINACIÓN (1, 2, 3...) */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding-bottom: 20px;
+}
+
+.page-btn {
+    background: rgba(2, 8, 25, 0.95);
+    border: 1.5px solid rgba(0, 225, 255, 0.4);
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 0.85rem;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+}
+
+.page-btn:active,
+.page-btn.active {
+    background: #00e1ff;
+    color: #020819;
+    border-color: #00e1ff;
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+    transform: scale(0.95);
+}
+
+
+/* 4. VISTA DETALLE DE NOTICIA INDIVIDUAL (TEXTO LARGO) */
+.single-news-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+.single-news-article {
+    background: rgba(2, 8, 25, 0.95);
+    border: 1.5px solid rgba(0, 225, 255, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
+.news-article-header h1 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: 900;
+    margin: 10px 0;
+    line-height: 1.2;
+}
+
+.news-date {
+    color: #a0aab8;
+    font-size: 0.75rem;
+    display: inline-block;
+    margin-bottom: 8px;
+}
+
+.news-article-banner {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: 8px;
+    margin: 16px 0;
+    border: 1px solid #00e1ff;
+}
+
+.news-article-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-article-content p {
+    color: #e0e6ed;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+.news-article-content .lead-paragraph {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #00e1ff;
+}
+
+.news-article-content blockquote {
+    border-left: 3px solid #00e1ff;
+    background: rgba(0, 225, 255, 0.08);
+    padding: 10px 14px;
+    margin: 16px 0;
+    font-style: italic;
+    color: #ffffff;
+}
+
+.back-button-box {
+    margin-top: 24px;
+    border-top: 1px solid rgba(0, 225, 255, 0.2);
+    padding-top: 16px;
+}
+
+.back-btn {
+    color: #00e1ff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+
+/* 5. ADAPTACIÓN PARA PC / MONITORES (Pantallas grandes) */
+@media (min-width: 768px) {
+    .news-grid {
+        grid-template-columns: repeat(4, 1fr); /* 4 columnas para 16:9 en PC */
+        gap: 20px;
+    }
+
+    .news-card:hover {
+        transform: translateY(-4px);
+        border-color: #00e1ff;
+        box-shadow: 0 0 20px rgba(0, 229, 255, 0.5);
+    }
+
+    .news-card-body h3 {
+        font-size: 0.95rem;
+    }
+
+    .news-card-body p {
+        font-size: 0.8rem;
+        -webkit-line-clamp: 3; /* Permite hasta 3 líneas en PC */
+    }
+
+    .news-article-header h1 {
+        font-size: 1.6rem;
+    }
+}

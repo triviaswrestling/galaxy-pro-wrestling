@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galaxy Pro Wrestling - Roster</title>
+    <!-- Tus estilos -->
+  <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="wrestlercard.css">
+</head>
+<body>
+
+    <!-- ATENCIÓN AQUÍ: data-roster-status="active" le dice al script que busque solo a los activos -->
+    <main data-roster-status="active">
+        <h1>Roster Principal</h1>
+
+        <!-- Divisor y contenedor para la División Masculina -->
+        <div class="roster-divider">
+            <h1>Masculino</h1>
+        </div>
+        <div id="roster" class="roster"></div>
+
+        <!-- Divisor y contenedor para la División Femenina -->
+        <div class="roster-divider">
+            <h1>Femenino</h1>
+        </div>
+        <div id="nxt-roster" class="roster"></div>
+    </main>
+
+    <!-- MODAL ÉPICO -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <button class="close-button" onclick="closeModal()">×</button>
+            <h3>Career Highlights</h3>
+            <h2 id="modal-name">Nombre</h2>
+            <p id="modal-division">División</p>
+            <ul id="modal-achievements"></ul>
+        </div>
+    </div>
+
+    <!-- SCRIPTS EN ORDEN -->
+    <script src="js/wrestlers.js"></script>
+    <script src="js/roster.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+</html>

@@ -75,22 +75,37 @@
 #ranking-grid.ranking-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 14px;
     padding: 10px 0 40px;
 }
 
 #ranking-grid .ranking-card {
     position: relative;
     min-width: 0;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 3 / 4; /* Formato póster vertical 3:4 */
     overflow: hidden;
     cursor: pointer;
-    border: 1px solid #00bfff;
-    border-radius: 10px;
+    border: 2px solid #00bfff;
+    border-radius: 12px;
     background: #0c111a;
-    box-shadow: 0 0 9px rgba(0,191,255,.16);
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8), 0 0 12px rgba(0,191,255,.2);
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
     isolation: isolate;
+}
+
+/* Halo de resplandor / gradiente de color detrás de la imagen (Estilo Póster) */
+#ranking-grid .ranking-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    background: 
+        radial-gradient(circle at 50% 35%, rgba(0, 191, 255, 0.32) 0%, rgba(0, 119, 190, 0.12) 55%, transparent 80%),
+        radial-gradient(ellipse at center, rgba(12, 17, 26, 0) 40%, rgba(5, 8, 14, 0.85) 90%);
+    z-index: -1;
+    pointer-events: none;
 }
 
 #ranking-grid .ranking-img-wrapper {
@@ -112,31 +127,31 @@
 #ranking-grid .ranking-card::after {
     content: "";
     position: absolute;
-    inset: 25% 0 0;
+    inset: 30% 0 0;
     z-index: -1;
     pointer-events: none;
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(3,7,13,.25) 35%,
-        rgba(3,7,13,.96) 100%
+        rgba(3,7,13,.35) 35%,
+        rgba(3,7,13,.98) 100%
     );
 }
 
 #ranking-grid .rank-badge {
     position: absolute;
-    top: 6px;
-    left: 6px;
+    top: 8px;
+    left: 8px;
     z-index: 3;
-    padding: 4px 7px;
+    padding: 5px 9px;
     border: 1px solid #00bfff;
-    border-radius: 5px;
-    background: rgba(3,9,16,.92);
+    border-radius: 6px;
+    background: rgba(3,9,16,.94);
     color: #00d9ff;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 900;
     line-height: 1.2;
-    box-shadow: 0 0 8px rgba(0,191,255,.15);
+    box-shadow: 0 0 10px rgba(0,191,255,.25);
 }
 
 #ranking-grid .ranking-card-info {
@@ -145,59 +160,71 @@
     bottom: 0;
     left: 0;
     z-index: 2;
-    padding: 24px 5px 7px;
-    background: linear-gradient(transparent, rgba(4,8,14,.96));
+    padding: 24px 8px 10px;
+    background: linear-gradient(transparent, rgba(4,8,14,.98));
     text-align: center;
 }
 
 #ranking-grid .ranking-card-info h2 {
     margin: 0;
     color: #fff;
-    font-size: clamp(9px, 2.6vw, 13px);
+    font-size: clamp(10px, 2.8vw, 14px);
     font-weight: 900;
     line-height: 1.2;
     text-transform: uppercase;
     overflow-wrap: anywhere;
-    text-shadow: 0 1px 5px #000;
+    text-shadow: 0 2px 6px #000;
 }
 
 /* Colores alternados de las tarjetas */
 
+/* 1. Cian */
 #ranking-grid .ranking-card:nth-child(4n+1) {
     border-color: #00bfff;
-    box-shadow: 0 0 8px rgba(0,191,255,.2);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.8), 0 0 14px rgba(0,191,255,.28);
 }
-
+#ranking-grid .ranking-card:nth-child(4n+1)::before {
+    background: radial-gradient(circle at 50% 35%, rgba(0, 191, 255, 0.35) 0%, rgba(0, 119, 190, 0.12) 55%, transparent 80%), radial-gradient(ellipse at center, rgba(12, 17, 26, 0) 40%, rgba(5, 8, 14, 0.85) 90%);
+}
 #ranking-grid .ranking-card:nth-child(4n+1) .rank-badge {
     border-color: #00bfff;
     color: #00bfff;
 }
 
+/* 2. Verde */
 #ranking-grid .ranking-card:nth-child(4n+2) {
     border-color: #00ff66;
-    box-shadow: 0 0 8px rgba(0,255,102,.16);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.8), 0 0 14px rgba(0,255,102,.25);
 }
-
+#ranking-grid .ranking-card:nth-child(4n+2)::before {
+    background: radial-gradient(circle at 50% 35%, rgba(0, 255, 102, 0.32) 0%, rgba(0, 150, 60, 0.12) 55%, transparent 80%), radial-gradient(ellipse at center, rgba(12, 17, 26, 0) 40%, rgba(5, 8, 14, 0.85) 90%);
+}
 #ranking-grid .ranking-card:nth-child(4n+2) .rank-badge {
     border-color: #00ff66;
     color: #00ff66;
 }
 
+/* 3. Dorado */
 #ranking-grid .ranking-card:nth-child(4n+3) {
     border-color: #ffe600;
-    box-shadow: 0 0 8px rgba(255,230,0,.16);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.8), 0 0 14px rgba(255,230,0,.25);
 }
-
+#ranking-grid .ranking-card:nth-child(4n+3)::before {
+    background: radial-gradient(circle at 50% 35%, rgba(255, 230, 0, 0.32) 0%, rgba(180, 160, 0, 0.12) 55%, transparent 80%), radial-gradient(ellipse at center, rgba(12, 17, 26, 0) 40%, rgba(5, 8, 14, 0.85) 90%);
+}
 #ranking-grid .ranking-card:nth-child(4n+3) .rank-badge {
     border-color: #ffe600;
     color: #ffe600;
 }
 
+/* 4. Naranja */
 #ranking-grid .ranking-card:nth-child(4n+0) {
     border-color: #ff5500;
-    box-shadow: 0 0 8px rgba(255,85,0,.16);
+    box-shadow: 0 6px 22px rgba(0,0,0,0.8), 0 0 14px rgba(255,85,0,.25);
 }
-
+#ranking-grid .ranking-card:nth-child(4n+0)::before {
+    background: radial-gradient(circle at 50% 35%, rgba(255, 85, 0, 0.32) 0%, rgba(160, 45, 0, 0.12) 55%, transparent 80%), radial-gradient(ellipse at center, rgba(12, 17, 26, 0) 40%, rgba(5, 8, 14, 0.85) 90%);
+}
 #ranking-grid .ranking-card:nth-child(4n+0) .rank-badge {
     border-color: #ff5500;
     color: #ff5500;
@@ -205,33 +232,33 @@
 
 @media (hover: hover) {
     #ranking-grid .ranking-card:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 0 17px rgba(0,191,255,.38);
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 10px 28px rgba(0,191,255,.4), 0 0 20px rgba(0,191,255,.3);
     }
 }
 
 @media (min-width: 768px) {
     #ranking-grid.ranking-grid {
         grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 18px;
+        gap: 20px;
     }
 
     #ranking-grid .ranking-card {
-        border-radius: 12px;
+        border-radius: 14px;
+        border-width: 2px;
     }
 
     #ranking-grid .rank-badge {
-        top: 9px;
-        left: 9px;
-        padding: 5px 8px;
-        font-size: 12px;
+        top: 10px;
+        left: 10px;
+        padding: 6px 10px;
+        font-size: 13px;
     }
 
     #ranking-grid .ranking-card-info h2 {
-        font-size: 14px;
+        font-size: 15px;
     }
 }
-
 /* =========================================
    3. MODAL BASE — AISLADO DEL RESTO DEL SITIO
    ========================================= */

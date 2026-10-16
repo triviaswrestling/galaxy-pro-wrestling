@@ -36,16 +36,15 @@
     cursor: pointer;
     line-height: 1;
     border-radius: 4px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
+    transition: transform 0.15s ease, color 0.15s ease;
 }
 
 .menu-toggle:active {
     transform: scale(0.92);
     color: #ffffff;
-    box-shadow: 0 0 12px rgba(0, 225, 255, 0.6);
 }
 
-/* Menú Desplegable en Mobile (Ajustado por Porcentajes) */
+/* Menú Desplegable en Mobile */
 .main-nav {
     display: flex;
     flex-direction: column;
@@ -70,14 +69,14 @@
                 visibility 0.25s ease;
 }
 
-/* Estado Activo (Inyectado por JS) */
+/* Estado Activo (Apertura del menú) */
 .main-nav.active {
     opacity: 1;
     visibility: visible;
     max-height: 550px;
 }
 
-/* Enlaces del menú (Mobile) */
+/* Enlaces del menú (Mobile) - Estado normal */
 .main-nav a {
     width: 100%;
     padding: 14px 5%;
@@ -89,24 +88,29 @@
     text-transform: uppercase;
     letter-spacing: 1.5px;
     border-bottom: 1px solid rgba(0, 225, 255, 0.1);
-    background: transparent;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    background: transparent; /* Sin fondo de entrada */
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .main-nav a:last-child {
     border-bottom: none;
 }
 
-/* Estado Interactivo: Solo se enciende al tocar o si es la página activa */
-.main-nav a:hover,
-.main-nav a:active,
+/* 1. Página Actual (.active): Solo cambia el texto a cian sin encender el fondo */
 .main-nav a.active {
-    background: rgba(0, 225, 255, 0.12);
     color: #00e1ff;
-    text-shadow: 0 0 8px rgba(0, 225, 255, 0.6);
 }
 
-/* Adaptación para Escritorio / PC */
+/* 2. EFECTO AL TOCAR/PRESIONAR (:hover / :active): 
+   Aca SÍ se enciende el cuadro cian únicamente mientras tenés el dedo encima */
+.main-nav a:hover,
+.main-nav a:active {
+    background: rgba(0, 225, 255, 0.2);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(0, 225, 255, 0.8);
+}
+
+/* Adaptación para PC / Escritorio */
 @media (min-width: 900px) {
     .main-header {
         padding: 0 5%;
@@ -140,7 +144,7 @@
         position: relative;
     }
 
-    /* Subrayado neón inferior solo al hacer hover o si está activo en PC */
+    /* Subrayado neón inferior en PC al hacer hover */
     .main-nav a::after {
         content: "";
         position: absolute;
@@ -153,14 +157,13 @@
         transition: width 0.2s ease, left 0.2s ease;
     }
 
-    .main-nav a:hover::after,
-    .main-nav a.active::after {
+    .main-nav a:hover::after {
         width: 100%;
         left: 0;
     }
 
-    .main-nav a:hover,
-    .main-nav a.active {
+    .main-nav a:hover {
         background: transparent;
+        color: #00e1ff;
     }
 }

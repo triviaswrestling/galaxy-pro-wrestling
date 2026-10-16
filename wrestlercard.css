@@ -23,7 +23,7 @@ main {
     padding: 25px 0px;
     background: #0b0b0b;
     width: 100%;
-    max-width: 1100px; /* Contenido centrado y ordenado */
+    max-width: 1100px;
     margin: 0 auto;
 }
 
@@ -37,31 +37,30 @@ main > h1 {
     text-transform: uppercase;
 }
 
-/* Versión Mobile: 3 columnas centradas y prolijas dentro del marco */
+/* Versión Mobile: 3 columnas centradas dentro del marco */
 .roster {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas exactas */
+    grid-template-columns: repeat(3, 1fr);
     gap: 6px; 
     width: 100%;
     margin-bottom: 35px;
     padding: 0 4px;
 }
 
-/* Versión PC: 5 columnas fijas, grandes y expandidas */
+/* Versión PC: 5 columnas fijas grandes */
 @media (min-width: 768px) {
     main {
-        max-width: 1350px; /* Permite que las tarjetas crezcan generosamente en escritorio */
+        max-width: 1350px;
         padding: 30px 20px;
     }
 
     .roster {
-        grid-template-columns: repeat(5, 1fr); /* 5 columnas fijas SÍ O SÍ */
-        gap: 20px; /* Espacio elegante entre cartas grandes */
+        grid-template-columns: repeat(5, 1fr);
+        gap: 20px;
         width: 100%;
         padding: 0;
     }
 
-    /* Tipografías grandes y vistosas para PC */
     .wrestler > p:first-of-type {
         font-size: 11px;
         margin: 8px 6px 0;
@@ -85,7 +84,7 @@ main > h1 {
    ========================================= */
 .wrestler {
     position: relative;
-    background: #151515;
+    background: #151515; /* Fondo oscuro exacto original */
     border: 1px solid #333333;
     border-top: 3px solid #00bfff;
     border-radius: 4px;
@@ -94,7 +93,7 @@ main > h1 {
     text-align: center;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.65);
     
-    /* Estado inicial para la animación de Scroll Reveal (Estilo TNA) */
+    /* Animación Scroll Reveal */
     opacity: 0;
     transform: translateX(40px);
     transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
@@ -103,7 +102,6 @@ main > h1 {
                 border-color 0.2s ease;
 }
 
-/* Estado activo cuando la tarjeta entra en pantalla al hacer scroll */
 .wrestler.reveal {
     opacity: 1;
     transform: translateX(0);
@@ -115,36 +113,38 @@ main > h1 {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 191, 255, 0.3);
 }
 
-/* Contenedor de la imagen del luchador con desvanecido inferior */
+/* Imagen del luchador */
 .wrestler img {
     width: 100%;
     height: auto;
     display: block;
     position: relative;
-    z-index: 2; /* Mantiene el render transparente por encima del resplandor */
-    aspect-ratio: 3 / 4; /* Compatible con tus imágenes 3:4 */
+    z-index: 2; 
+    aspect-ratio: 3 / 4; 
     object-fit: cover;
-    border-bottom: none; /* Quitamos la línea dura inferior */
-    
-    /* Funde suavemente la parte baja de la foto */
-    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    border-bottom: 2px solid #292929;
 }
 
-/* Halo de resplandor superior + brillo celeste difuminado abajo */
+/* Halo de resplandor / brillo celeste idéntico al original */
 .wrestler::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 75%;
     background: 
-        radial-gradient(circle at 50% 30%, rgba(0, 191, 255, 0.35) 0%, rgba(0, 119, 190, 0.15) 50%, transparent 75%),
-        radial-gradient(circle at 50% 80%, rgba(0, 191, 255, 0.28) 0%, transparent 65%), /* Brillo celeste en la base de la imagen */
-        linear-gradient(to bottom, transparent 60%, rgba(11, 11, 11, 0.95) 90%); /* Sombra oscura para conectar con el texto */
+        radial-gradient(circle at 50% 35%, rgba(0, 191, 255, 0.3) 0%, rgba(0, 119, 190, 0.12) 55%, transparent 80%),
+        radial-gradient(ellipse at center, rgba(15, 15, 15, 0) 40%, rgba(5, 5, 5, 0.85) 90%);
     z-index: 1;
     pointer-events: none;
+}
+
+/* Textos con z-index superior para mantener nitidez total */
+.wrestler > p,
+.wrestler > h2 {
+    position: relative;
+    z-index: 3;
 }
 
 /* Apodo del luchador (Cian / Celeste) - Mobile base */
@@ -216,7 +216,7 @@ main > h1 {
 }
 
 /* =========================================
-   MODAL ÉPICO (INTACTO)
+   MODAL ÉPICO
    ========================================= */
 .modal {
     position: fixed;

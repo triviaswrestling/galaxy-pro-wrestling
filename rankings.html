@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Estilos generales, navegación, tarjetas y ranking -->
+    <!-- Estilos -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="wrestlercard.css">
@@ -17,34 +17,38 @@
 </head>
 <body>
 
-    <!-- Bordes Neón Laterales -->
     <div class="glow-border left"></div>
     <div class="glow-border right"></div>
 
-    <!-- El script.js inyectará el menú neón y el logo aquí -->
     <header class="main-header"></header>
 
     <main>
-        <div class="page-title-bar">
-            <h2><i class="fa-solid fa-trophy text-cyan"></i> OFFICIAL <span class="text-cyan">RANKING</span></h2>
-        </div>
+        <!-- Banner de Encabezado: Imagen WebP + Título Ranking (Responsive Mobile/PC) -->
+        <section class="ranking-header-banner">
+            <div class="ranking-banner-img-container">
+                <img src="img/ranking_banner.webp" alt="GPW Ranking Banner" class="ranking-banner-img">
+            </div>
+            <div class="ranking-banner-title">
+                <h2><i class="fa-solid fa-trophy text-cyan"></i> OFFICIAL <span class="text-cyan">RANKING</span></h2>
+            </div>
+        </section>
 
-        <!-- Grilla donde ranking.js inyectará los luchadores (3 cols en Mobile / 4 en PC) -->
+        <!-- Grilla de Cards minimalistas (3 cols en Mobile / 4 en PC) -->
         <div id="ranking-grid" class="ranking-grid"></div>
     </main>
 
-    <!-- MODAL DE ATRIBUTOS (ESTILO FICHA TÉCNICA DE VIDEOJUEGO) -->
+    <!-- MODAL EXCLUSIVO DE RANKING -->
     <div id="ranking-modal" class="modal">
         <div class="modal-content ranking-modal-content">
             <button class="close-button" onclick="closeRankingModal()">×</button>
 
-            <!-- 1. Encabezado superior: Posición en la izquierda y División a la derecha -->
+            <!-- 1. Puesto y División -->
             <div class="modal-rank-top">
                 <span id="modal-rank-num" class="rank-title-badge">#1</span>
                 <span id="modal-division" class="modal-division-text">MASCULINO</span>
             </div>
 
-            <!-- 2. Perfil: Foto + Nombre + Intérprete en dorado -->
+            <!-- 2. Perfil: Foto + Nombre + Intérprete -->
             <div class="modal-profile-header">
                 <img id="modal-img" src="" alt="Luchador">
                 <div class="modal-profile-info">
@@ -56,15 +60,13 @@
                 </div>
             </div>
 
-            <!-- 3. Subtítulo intermedio -->
+            <!-- 3. Subtítulo de Atributos -->
             <div class="modal-highlights-header">
                 <h3>ATRIBUTOS DE COMBATE Y MANEJO</h3>
             </div>
 
-            <!-- 4. Barras de habilidades (Micro, Charisma y Power) -->
+            <!-- 4. Barras de habilidades neón (Micro, Charisma, Power) -->
             <div class="stats-bars-wrapper">
-                
-                <!-- MICRO (Verde Menta a Neón Tóxico) -->
                 <div class="stat-row">
                     <div class="stat-labels">
                         <span>MICRO</span>
@@ -75,7 +77,6 @@
                     </div>
                 </div>
 
-                <!-- CHARISMA (Champagne a Dorado Eléctrico) -->
                 <div class="stat-row">
                     <div class="stat-labels">
                         <span>CHARISMA</span>
@@ -86,7 +87,6 @@
                     </div>
                 </div>
 
-                <!-- POWER (Rojo a Naranja Láser) -->
                 <div class="stat-row">
                     <div class="stat-labels">
                         <span>POWER</span>
@@ -96,10 +96,9 @@
                         <div id="bar-power" class="stat-bar-fill bar-power" style="width: 0%;"></div>
                     </div>
                 </div>
-
             </div>
 
-            <!-- 5. Logros o Campeonatos del Luchador -->
+            <!-- 5. Logros -->
             <div class="modal-highlights-header">
                 <h3>ACCOLADES & LOGROS</h3>
             </div>

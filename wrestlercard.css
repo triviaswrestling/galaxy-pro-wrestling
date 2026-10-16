@@ -58,7 +58,7 @@ main > h1 {
     position: relative;
     background: #151515;
     border: 1px solid #333333;
-    border-top: 3px solid #00bfff; /* Azul clarito / Celeste eléctrico */
+    border-top: 3px solid #00bfff;
     border-radius: 4px;
     overflow: hidden;
     cursor: pointer;
@@ -82,10 +82,10 @@ main > h1 {
     object-fit: cover;
 }
 
-/* Apodo del luchador */
+/* Apodo del luchador (Cian / Celeste) */
 .wrestler > p:first-of-type {
     margin: 8px 5px 0;
-    color: #aaaaaa;
+    color: #00bfff;
     font-size: 9px;
     font-weight: 800;
     text-transform: uppercase;
@@ -108,10 +108,10 @@ main > h1 {
     text-overflow: ellipsis;
 }
 
-/* Stable o equipo */
+/* Stable o equipo (Gris secundario) */
 .wrestler > h2 + p {
     margin: 0 5px 10px;
-    color: #00bfff;
+    color: #aaaaaa;
     font-size: 9px;
     font-weight: 800;
     text-transform: uppercase;
@@ -122,7 +122,7 @@ main > h1 {
 }
 
 /* =========================================
-   DIVISOR DE SECCIÓN (Ej: MASCULINO / FEMENINO)
+   DIVISOR DE SECCIÓN
    ========================================= */
 .roster-divider {
     display: flex;
@@ -150,7 +150,7 @@ main > h1 {
 }
 
 /* =========================================
-   MODAL ÉPICO (TONO AZUL / CELESTE)
+   MODAL ÉPICO (CORREGIDO Y AJUSTADO)
    ========================================= */
 .modal {
     position: fixed;
@@ -204,6 +204,7 @@ main > h1 {
     z-index: 5;
 }
 
+/* 1. Categoría superior (ej: Career Highlights) */
 .modal-content h3 {
     margin: 0;
     padding: 18px 20px 4px;
@@ -214,6 +215,7 @@ main > h1 {
     text-transform: uppercase;
 }
 
+/* 2. Nombre principal del luchador */
 .modal-content h2 {
     margin: 0;
     padding: 4px 20px 12px;
@@ -226,7 +228,11 @@ main > h1 {
     border-bottom: 1px solid #3a3a3a;
 }
 
+/* 3. Franja inferior: División a la izquierda e Intérprete en DORADO a la derecha */
 .modal-content > p {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 0;
     padding: 8px 20px 10px;
     background: #181818;
@@ -236,6 +242,13 @@ main > h1 {
     letter-spacing: 2px;
     text-transform: uppercase;
     border-bottom: 1px solid #2a2a2a;
+}
+
+/* Estilo dorado y alineado para el intérprete */
+.modal-content > p span.interpreter {
+    color: #ffd700;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
 .modal-content ul {
@@ -258,7 +271,7 @@ main > h1 {
     color: #00bfff;
 }
 
-/* Botón de cierre del modal en tono azul */
+/* Botón de cierre */
 .close-button {
     position: absolute;
     top: 10px;

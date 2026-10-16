@@ -1,4 +1,6 @@
-/* RESETEO BÁSICO Y CONTROL STRICTO DE BORDES */
+/* ==========================================================
+   1. RESETEO BÁSICO Y CONTROL STRICTO DE BORDES
+   ========================================================== */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -15,7 +17,9 @@ html, body {
     background-color: #010614;
 }
 
-/* FONDO CÓSMICO DE ALTO RENDIMIENTO */
+/* ==========================================================
+   2. FONDO CÓSMICO DE ALTO RENDIMIENTO (ANCHO COMPLETO)
+   ========================================================== */
 body {
     background-image: 
         radial-gradient(circle at 50% 35%, rgba(0, 130, 255, 0.2) 0%, transparent 60%),
@@ -32,7 +36,9 @@ body {
     padding-right: 16px;
 }
 
-/* BARRAS DE NEÓN LATERALES FIJAS */
+/* ==========================================================
+   3. BARRAS DE NEÓN LATERALES FIJAS
+   ========================================================== */
 .glow-border {
     position: fixed;
     top: 0;
@@ -48,7 +54,9 @@ body {
 .glow-border.left { left: 0; border-right: 1.5px solid #00e1ff; }
 .glow-border.right { right: 0; border-left: 1.5px solid #00e1ff; }
 
-/* CONTENEDORES PRINCIPALES */
+/* ==========================================================
+   4. CONTENEDORES PRINCIPALES
+   ========================================================== */
 header, .welcome-section, .featured-news-section, .category-grid, .social-section {
     position: relative;
     z-index: 2;
@@ -97,7 +105,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     line-height: 1.4;
 }
 
-/* MARCO DESTACADO DE NOTICIAS */
+/* ==========================================================
+   5. MARCO DESTACADO Y TRANSICIÓN DE NOTICIAS (FADE / PARPADEO)
+   ========================================================== */
 .featured-news-section {
     margin: 0 auto 25px auto;
 }
@@ -135,13 +145,32 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     min-height: 220px;
 }
 
+/* Transición optimizada de desvanecimiento con parpadeo suave */
 .news-item {
     display: none;
+    opacity: 0;
+    will-change: opacity, filter;
     flex-direction: column;
 }
 
 .news-item.active {
     display: flex;
+    animation: newsFadeBlink 0.6s ease-in-out forwards;
+}
+
+@keyframes newsFadeBlink {
+    0% {
+        opacity: 0;
+        filter: brightness(0.4);
+    }
+    50% {
+        opacity: 0.6;
+        filter: brightness(1.15);
+    }
+    100% {
+        opacity: 1;
+        filter: brightness(1);
+    }
 }
 
 .news-image-wrapper {
@@ -199,7 +228,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 /* ==========================================================
-   ANIMACIÓN TÁCTIL ORIGINAL Y PERFECTA
+   6. ANIMACIÓN TÁCTIL RÁPIDA Y FLUIDA (BOTONES Y TARJETAS)
    ========================================================== */
 .news-btn, .category-card, .social-card {
     will-change: transform;
@@ -227,7 +256,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
 }
 
-/* CUADRÍCULA DE CATEGORÍAS */
+/* ==========================================================
+   7. CUADRÍCULA DE CATEGORÍAS (2 COLUMNAS MOBILE / 4 PC)
+   ========================================================== */
 .category-grid {
     margin: 0 auto 25px auto;
     display: grid;
@@ -284,7 +315,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     color: #a5bce0;
 }
 
-/* SECCIÓN FOLLOW US */
+/* ==========================================================
+   8. SECCIÓN SOCIAL / REDES
+   ========================================================== */
 .social-section {
     margin: 0 auto;
 }
@@ -349,7 +382,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     text-overflow: ellipsis;
 }
 
-/* Colores dinámicos al tocar/pasar el cursor por redes sociales */
+/* Colores dinámicos para redes sociales */
 .social-card.instagram:hover, .social-card.instagram:active { border-color: #e1306c; }
 .social-card.instagram:hover .social-icon-box i, .social-card.instagram:active .social-icon-box i { color: #e1306c; }
 
@@ -362,7 +395,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .social-card.facebook:hover, .social-card.facebook:active { border-color: #1877f2; }
 .social-card.facebook:hover .social-icon-box i, .social-card.facebook:active .social-icon-box i { color: #1877f2; }
 
-/* ADAPTACIÓN PARA COMPUTADORAS (PC) */
+/* ==========================================================
+   9. ADAPTACIÓN PARA COMPUTADORAS (PC)
+   ========================================================== */
 @media (min-width: 768px) {
     body {
         padding-left: 45px;

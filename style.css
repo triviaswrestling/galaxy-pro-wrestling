@@ -7,13 +7,27 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-/* ESTÉTICA ESPACIAL PROFUNDA (INSPIRADA EN EL LOGO GPW) */
+/* EFECTO DE ESPACIO PROFUNDO Y ESTRELLAS 100% CSS (SIN IMÁGENES PESADAS) */
 body {
-    background-color: #020514;
+    background-color: #01030d;
     background-image: 
-        radial-gradient(circle at 50% 15%, #082567 0%, #020822 60%, #010410 95%),
-        radial-gradient(circle at 20% 80%, rgba(0, 183, 255, 0.15) 0%, transparent 40%),
-        radial-gradient(circle at 80% 80%, rgba(0, 102, 255, 0.15) 0%, transparent 40%);
+        /* Nebulosa galáctica superior izquierda (simulando la galaxia espiral) */
+        radial-gradient(ellipse at 15% 12%, rgba(56, 120, 255, 0.22) 0%, transparent 45%),
+        /* Nebulosa y brillo cósmico central y derecho */
+        radial-gradient(circle at 85% 75%, rgba(0, 229, 255, 0.15) 0%, transparent 50%),
+        /* Estrellas dispersas finas (puntos blancos y celestes mediante gradientes radiales compactos) */
+        radial-gradient(white 1px, transparent 1.5px),
+        radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1.5px),
+        radial-gradient(rgba(0,229,255,0.9) 1.2px, transparent 1.8px),
+        radial-gradient(white 0.8px, transparent 1.2px),
+        /* Fondo base de espacio profundo degradado */
+        linear-gradient(135deg, #020617 0%, #01030d 50%, #000105 100%);
+    
+    /* Tamaños y posiciones de las capas de estrellas para cubran toda la pantalla infinitamente */
+    background-size: 100% 100%, 100% 100%, 350px 350px, 500px 500px, 400px 400px, 250px 250px, 100% 100%;
+    background-position: 0 0, 0 0, 20px 40px, 150px 220px, 280px 90px, 80px 310px, 0 0;
+    background-attachment: fixed;
+    
     color: #ffffff;
     min-height: 100vh;
     display: flex;
@@ -34,8 +48,8 @@ body {
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(0,229,255,0) 0%, rgba(0,183,255,0.9) 50%, rgba(0,229,255,0) 100%);
-    box-shadow: 0 0 22px rgba(0, 229, 255, 0.9), 0 0 45px rgba(0, 102, 255, 0.6);
+    background: linear-gradient(180deg, rgba(0,229,255,0) 0%, rgba(0,183,255,0.85) 50%, rgba(0,229,255,0) 100%);
+    box-shadow: 0 0 22px rgba(0, 229, 255, 0.85), 0 0 45px rgba(0, 102, 255, 0.5);
     opacity: 0.85;
     animation: borderPulse 3s ease-in-out infinite alternate;
 }
@@ -68,19 +82,20 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     max-width: 250px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.8)) drop-shadow(0 0 40px rgba(0, 102, 255, 0.5));
+    filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.85)) drop-shadow(0 0 40px rgba(0, 102, 255, 0.6));
 }
 
-/* SECCIÓN BIENVENIDA */
+/* SECCIÓN BIENVENIDA CON CRISTAL TRANSLÚCIDO */
 .welcome-section {
     text-align: center;
     margin: 10px auto 18px auto;
     padding: 12px 16px;
-    background: rgba(3, 12, 38, 0.85);
+    background: rgba(3, 10, 30, 0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border-radius: 12px;
     border: 1.5px solid rgba(0, 229, 255, 0.5);
-    box-shadow: 0 0 18px rgba(0, 183, 255, 0.25);
-    backdrop-filter: blur(4px);
+    box-shadow: 0 0 20px rgba(0, 183, 255, 0.25);
 }
 
 .welcome-section h2 {
@@ -94,7 +109,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .welcome-section p {
     font-size: 0.8rem;
-    color: #c8d8f8;
+    color: #d0e0ff;
     line-height: 1.4;
 }
 
@@ -107,7 +122,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(90deg, #020924 0%, #082156 100%);
+    background: linear-gradient(90deg, rgba(2, 9, 36, 0.9) 0%, rgba(8, 33, 86, 0.9) 100%);
+    backdrop-filter: blur(6px);
     padding: 10px 14px;
     border-radius: 10px 10px 0 0;
     border: 1.5px solid #00e1ff;
@@ -128,12 +144,13 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .news-showcase-card {
-    background: #030a24;
+    background: rgba(3, 10, 36, 0.85);
+    backdrop-filter: blur(8px);
     border: 1.5px solid #00e1ff;
     border-radius: 0 0 12px 12px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0, 183, 255, 0.3);
+    box-shadow: 0 4px 22px rgba(0, 183, 255, 0.3);
     min-height: 220px;
 }
 
@@ -172,7 +189,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(3, 10, 36, 0.1) 0%, #030a24 100%);
+    background: linear-gradient(180deg, rgba(3, 10, 36, 0.1) 0%, rgba(3, 10, 36, 0.95) 100%);
 }
 
 .news-content-box {
@@ -202,7 +219,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .news-excerpt {
     font-size: 0.78rem;
-    color: #9ab0d5;
+    color: #a5bce0;
     line-height: 1.35;
 }
 
@@ -219,7 +236,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.6);
+    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
     transition: transform 0.15s ease;
 }
 
@@ -236,7 +253,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .category-card {
-    background-color: #030a24;
+    background: rgba(3, 10, 36, 0.82);
+    backdrop-filter: blur(6px);
     border: 1.5px solid rgba(0, 229, 255, 0.6);
     border-radius: 12px;
     overflow: hidden;
@@ -244,7 +262,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -252,7 +270,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .category-card:active {
     transform: scale(0.95);
     border-color: #00e1ff;
-    box-shadow: 0 0 18px rgba(0, 229, 255, 0.9);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.9);
 }
 
 .card-image-wrapper {
@@ -266,7 +284,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.88;
+    opacity: 0.9;
 }
 
 .card-info {
@@ -283,7 +301,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .card-info p {
     font-size: 0.68rem;
-    color: #9ab0d5;
+    color: #a5bce0;
 }
 
 /* SECCIÓN FOLLOW US */
@@ -316,9 +334,10 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     border-radius: 12px;
     text-decoration: none;
     color: #ffffff;
-    background: #030a24;
+    background: rgba(3, 10, 36, 0.82);
+    backdrop-filter: blur(6px);
     border: 1.5px solid rgba(0, 229, 255, 0.45);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
     transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
@@ -341,26 +360,26 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .social-details small {
     font-size: 0.6rem;
-    color: #9ab0d5;
+    color: #a5bce0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 /* Colores y animaciones de redes sociales al tocar */
-.social-card.instagram:hover, .social-card.instagram:active { border-color: #e1306c; box-shadow: 0 0 15px rgba(225, 48, 108, 0.8); transform: scale(0.95); }
+.social-card.instagram:hover, .social-card.instagram:active { border-color: #e1306c; box-shadow: 0 0 18px rgba(225, 48, 108, 0.8); transform: scale(0.95); }
 .social-card.instagram:hover .social-icon-box i, .social-card.instagram:active .social-icon-box i { color: #e1306c; }
 
-.social-card.whatsapp:hover, .social-card.whatsapp:active { border-color: #25d366; box-shadow: 0 0 15px rgba(37, 211, 102, 0.8); transform: scale(0.95); }
+.social-card.whatsapp:hover, .social-card.whatsapp:active { border-color: #25d366; box-shadow: 0 0 18px rgba(37, 211, 102, 0.8); transform: scale(0.95); }
 .social-card.whatsapp:hover .social-icon-box i, .social-card.whatsapp:active .social-icon-box i { color: #25d366; }
 
-.social-card.youtube:hover, .social-card.youtube:active { border-color: #ff0000; box-shadow: 0 0 15px rgba(255, 0, 0, 0.8); transform: scale(0.95); }
+.social-card.youtube:hover, .social-card.youtube:active { border-color: #ff0000; box-shadow: 0 0 18px rgba(255, 0, 0, 0.8); transform: scale(0.95); }
 .social-card.youtube:hover .social-icon-box i, .social-card.youtube:active .social-icon-box i { color: #ff0000; }
 
-.social-card.facebook:hover, .social-card.facebook:active { border-color: #1877f2; box-shadow: 0 0 15px rgba(24, 119, 242, 0.8); transform: scale(0.95); }
+.social-card.facebook:hover, .social-card.facebook:active { border-color: #1877f2; box-shadow: 0 0 18px rgba(24, 119, 242, 0.8); transform: scale(0.95); }
 .social-card.facebook:hover .social-icon-box i, .social-card.facebook:active .social-icon-box i { color: #1877f2; }
 
-/* ADAPTACIÓN PARA COMPUTADORAS (PC: 4 COLUMNAS CON BOTONES MÁS GRANDES Y CÓMODOS) */
+/* ADAPTACIÓN PARA COMPUTADORAS (PC: 4 COLUMNAS CON BOTONES GRANDES) */
 @media (min-width: 768px) {
     body {
         padding-left: 40px;
@@ -375,7 +394,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
         gap: 16px;
     }
     .card-image-wrapper { 
-        height: 125px; /* Altura generosa para PC */
+        height: 125px; 
     }
     .news-image-wrapper { 
         height: 250px; 
@@ -387,13 +406,13 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
         padding: 12px 8px;
     }
     .card-info h2 {
-        font-size: 0.95rem; /* Botones de menú más grandes en PC */
+        font-size: 0.95rem; 
     }
     .card-info p {
         font-size: 0.75rem;
     }
     .social-card {
-        padding: 14px 16px; /* Tarjetas de redes sociales más grandes y cómodas en PC */
+        padding: 14px 16px; 
     }
     .social-icon-box i {
         font-size: 1.8rem;

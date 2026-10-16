@@ -1,3 +1,4 @@
+
 /* =========================================
    SISTEMA DE RANKING - GALAXY PRO WRESTLING
    ========================================= */
@@ -8,30 +9,56 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadRanking() {
     const rankingContainer = document.getElementById("ranking-grid");
+
     if (!rankingContainer || typeof wrestlers === "undefined") return;
 
-    // 1. Filtrar luchadores con rank numérico (> 0)
-    const rankedWrestlers = wrestlers.filter(w => typeof w.rank === "number" && w.rank > 0);
-
-    // 2. Ordenar de menor a mayor (#1 primero)
-    rankedWrestlers.sort((a, b) => a.rank - b.rank);
+    const rankedWrestlers = wrestlers
+        .filter(w => typeof w.rank === "number" && w.rank > 0)
+        .sort((a, b) => a.rank - b.rank);
 
     rankingContainer.innerHTML = "";
 
-    // 3. Generar únicamente las tarjetas cuadradas con foto + puesto
-    rankedWrestlers.forEach((wrestler) => {
-        const globalIndex = wrestlers.findIndex(w => w.name === wrestler.name);
+    rankedWrestlers.forEach(wrestler => {
+        const globalIndex = wrestlers.findIndex(
+            w => w.name === wrestler.name
+        );
 
         const card = document.createElement("div");
         card.className = "ranking-card reveal";
-        card.onclick = () => openRankingModal(globalIndex);
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("aria-label", `Puesto ${wrestler.rank}: ${wrestler.name}`);
 
         card.innerHTML = `
-            <div class="rank-badge">#${wrestler.rank}</div>
+            <span class="rank-badge">#${wrestler.rank}</span>
+
             <div class="ranking-img-wrapper">
-                <img src="${wrestler.image}" alt="${wrestler.name}" loading="lazy">
+                <img
+                    src="${wrestler.image}"
+                    alt="${wrestler.name}"
+                    loading="lazy"
+                >
+            </div>
+
+            <div class="ranking-card-info">
+                <h2></h2>
             </div>
         `;
+
+        // Texto seguro: evita interpretar el nombre como HTML.
+        card.querySelector(".ranking-card-info h2").textContent =
+            wrestler.name || "Luchador";
+
+        card.addEventListener("click", () => {
+            openRankingModal(globalIndex);
+        });
+
+        card.addEventListener("keydown", event => {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openRankingModal(globalIndex);
+            }
+        });
 
         rankingContainer.appendChild(card);
     });
@@ -39,96 +66,153 @@ function loadRanking() {
     initRankingScrollObserver();
 }
 
+/* =========================================
+   ABRIR PERFIL COMPLETO
+   ========================================= */
+
 function openRankingModal(globalIndex) {
     const wrestler = wrestlers[globalIndex];
     if (!wrestler) return;
 
-    const modalContent = document.querySelector(".ranking-modal-content");
+    const modal = document.getElementById("ranking-modal");
+    const modalContent = modal?.querySelector(".ranking-modal-content");
 
-    // Limpiar clases multicolor previas
-    modalContent.classList.remove("modal-theme-cyan", "modal-theme-green", "modal-theme-gold", "modal-theme-orange");
+    if (!modal || !modalContent) return;
 
-    // Asignar color dinámico por puesto
-    const rankMod = (wrestler.rank - 1) % 4;
-    if (rankMod === 0) modalContent.classList.add("modal-theme-cyan");
-    else if (rankMod === 1) modalContent.classList.add("modal-theme-green");
-    else if (rankMod === 2) modalContent.classList.add("modal-theme-gold");
-    else if (rankMod === 3) modalContent.classList.add("modal-theme-orange");
+    modalContent.classList.remove(
+        "modal-theme-cyan",
+        "modal-theme-green",
+        "modal-theme-gold",
+        "modal-theme-orange"
+    );
 
-    // 1. Badge y Foto
-    const badgeElem = document.getElementById("modal-rank-badge");
-    if (badgeElem) badgeElem.textContent = `#${wrestler.rank || '-'}`;
-    document.getElementById("modal-img").src = wrestler.image;
+    const rankMod = ((wrestler.rank || 1) - 1) % 4;
 
-    // 2. Identidad (Apodo, Nombre, Intérprete)
-    const nicknameElem = document.getElementById("modal-nickname");
-    if (nicknameElem) nicknameElem.textContent = wrestler.nickname || "GPW SUPERSTAR";
-    
-    document.getElementById("modal-name").textContent = wrestler.name;
-    document.getElementById("modal-interpreter").textContent = wrestler.interpreter || "Desconocido";
+    const themes = [
+        "modal-theme-cyan",
+        "modal-theme-green",
+        "modal-theme-gold",
+        "modal-theme-orange"
+    ];
 
-    // 3. Atributos de combate y barras neón
-    const stats = wrestler.stats || { micro: 70, charisma: 70, power: 70 };
-    const microVal = stats.micro || 70;
-    const charismaVal = stats.charisma || 70;
-    const powerVal = stats.power || 70;
+    modalContent.classList.add(themes[rankMod]);
 
-    document.getElementById("val-micro").textContent = microVal;
-    document.getElementById("val-charisma").textContent = charismaVal;
-    document.getElementById("val-power").textContent = powerVal;
+    /* Foto y puesto */
+    document.getElementById("modal-rank-badge").textContent =
+        `#${wrestler.rank ?? "-"}`;
 
-    document.getElementById("bar-micro").style.width = `${microVal}%`;
-    document.getElementById("bar-charisma").style.width = `${charismaVal}%`;
-    document.getElementById("bar-power").style.width = `${powerVal}%`;
+    document.getElementById("modal-img").src = wrestler.image || "";
+    document.getElementById("modal-img").alt = wrestler.name || "Luchador";
 
-    // 4. Overall
-    const overall = Math.round((microVal + charismaVal + powerVal) / 3);
-    document.getElementById("val-overall").textContent = overall;
+    /* Identidad */
+    document.getElementById("modal-nickname").textContent =
+        wrestler.nickname || "GPW SUPERSTAR";
 
-    // 5. Bloques de Combate (Finisher y Theme Song)
-    const finisherElem = document.getElementById("modal-finisher");
-    if (finisherElem) finisherElem.textContent = wrestler.finisher || "N/A";
+    document.getElementById("modal-name").textContent =
+        wrestler.name || "Luchador";
 
-    const themeElem = document.getElementById("modal-theme");
-    if (themeElem) themeElem.textContent = wrestler.themeSong ? `🎵 ${wrestler.themeSong}` : "🎵 N/A";
+    document.getElementById("modal-interpreter").textContent =
+        wrestler.interpreter || "Desconocido";
 
-    // 6. Logros
-    const achievementsList = document.getElementById("modal-achievements");
-    if (achievementsList) {
-        achievementsList.innerHTML = "";
-        if (wrestler.achievements && wrestler.achievements.length > 0) {
-            wrestler.achievements.forEach(ach => {
-                const li = document.createElement("li");
-                li.textContent = ach;
-                achievementsList.appendChild(li);
-            });
-        } else {
-            const li = document.createElement("li");
-            li.textContent = "Sin logros registrados aún.";
-            achievementsList.appendChild(li);
-        }
+    /* Estadísticas: admite correctamente valores de 0 a 100 */
+    const stats = wrestler.stats || {};
+
+    function getStat(value) {
+        const number = Number(value);
+        return Number.isFinite(number)
+            ? Math.max(0, Math.min(100, number))
+            : 70;
     }
 
-    // Mostrar modal
-    document.getElementById("ranking-modal").classList.add("show");
+    const micro = getStat(stats.micro);
+    const charisma = getStat(stats.charisma);
+    const power = getStat(stats.power);
+
+    document.getElementById("val-micro").textContent = micro;
+    document.getElementById("val-charisma").textContent = charisma;
+    document.getElementById("val-power").textContent = power;
+
+    document.getElementById("bar-micro").style.width = `${micro}%`;
+    document.getElementById("bar-charisma").style.width = `${charisma}%`;
+    document.getElementById("bar-power").style.width = `${power}%`;
+
+    /* Overall */
+    const overall = Math.round((micro + charisma + power) / 3);
+    document.getElementById("val-overall").textContent = overall;
+
+    /* Finisher */
+    document.getElementById("modal-finisher").textContent =
+        wrestler.finisher || "N/A";
+
+    /* Theme Song */
+    document.getElementById("modal-theme").textContent =
+        wrestler.themeSong
+            ? `🎵 ${wrestler.themeSong}`
+            : "🎵 N/A";
+
+    /* Logros */
+    const achievementsList = document.getElementById("modal-achievements");
+    achievementsList.innerHTML = "";
+
+    const achievements = Array.isArray(wrestler.achievements)
+        ? wrestler.achievements
+        : [];
+
+    if (achievements.length) {
+        achievements.forEach(achievement => {
+            const li = document.createElement("li");
+            li.textContent = achievement;
+            achievementsList.appendChild(li);
+        });
+    } else {
+        const li = document.createElement("li");
+        li.textContent = "Sin logros registrados aún.";
+        achievementsList.appendChild(li);
+    }
+
+    modal.classList.add("show");
     document.body.classList.add("modal-open");
 }
 
+/* =========================================
+   CERRAR PERFIL
+   ========================================= */
+
 function closeRankingModal() {
-    document.getElementById("ranking-modal").classList.remove("show");
+    const modal = document.getElementById("ranking-modal");
+
+    if (modal) modal.classList.remove("show");
+
     document.body.classList.remove("modal-open");
 }
 
-window.onclick = function(event) {
+window.addEventListener("click", event => {
     const modal = document.getElementById("ranking-modal");
+
     if (event.target === modal) {
         closeRankingModal();
     }
-};
+});
+
+window.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+        closeRankingModal();
+    }
+});
+
+/* =========================================
+   ANIMACIÓN DE ENTRADA DE TARJETAS
+   ========================================= */
 
 function initRankingScrollObserver() {
-    const cards = document.querySelectorAll(".ranking-card");
-    const observer = new IntersectionObserver((entries) => {
+    const cards = document.querySelectorAll("#ranking-grid .ranking-card");
+
+    if (!("IntersectionObserver" in window)) {
+        cards.forEach(card => card.classList.add("reveal"));
+        return;
+    }
+
+    const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add("reveal");

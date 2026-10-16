@@ -1,4 +1,4 @@
-Console.log("ROSTER.JS CARGADO");
+console.log("ROSTER.JS CARGADO");
 
 const masculinoContainer = document.getElementById("roster");          // Contenedor División Masculina
 const femeninoContainer = document.getElementById("femenino-roster"); // Contenedor División Femenina limpio

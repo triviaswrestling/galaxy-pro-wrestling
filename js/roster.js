@@ -4,6 +4,27 @@ const masculinoContainer = document.getElementById("roster");          // Conten
 const femeninoContainer = document.getElementById("femenino-roster"); // Contenedor División Femenina limpio
 
 /* =========================================
+   CONFIGURACIÓN DE ANIMACIÓN AL HACER SCROLL (TNA STYLE)
+   ========================================= */
+const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.15 // Se activa cuando se ve el 15% de la tarjeta
+};
+
+const cardObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Cuando la tarjeta entra en pantalla (al bajar scroll)
+            entry.target.classList.add("reveal");
+        } else {
+            // Cuando la tarjeta sale de pantalla (al subir scroll)
+            entry.target.classList.remove("reveal");
+        }
+    });
+}, observerOptions);
+
+/* =========================================
    CREAR TARJETA DE LUCHADOR
    ========================================= */
 function createWrestlerCard(wrestler, globalIndex) {
@@ -34,6 +55,9 @@ function createWrestlerCard(wrestler, globalIndex) {
     card.appendChild(nickname);
     card.appendChild(name);
     card.appendChild(stable);
+
+    // Conectamos la tarjeta al observador de animación
+    cardObserver.observe(card);
 
     return card;
 }

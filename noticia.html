@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Noticia - Galaxy Pro Wrestling</title>
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos de Navegación y Noticias -->
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="noticias.css">
+</head>
+<body>
+
+    <!-- Bordes Neón Laterales -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
+    <!-- El script.js inyectará la barra de navegación aquí -->
+    <header class="main-header"></header>
+
+    <!-- Contenedor de la Noticia Individual -->
+    <main class="single-news-container">
+        <article class="single-news-article" id="singleNewsContent">
+            <p style="color: #00e1ff; text-align: center; font-weight: 700; margin-top: 40px;">Cargando noticia...</p>
+        </article>
+    </main>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const params = new URLSearchParams(window.location.search);
+            const noticiaId = params.get("id");
+            const container = document.getElementById("singleNewsContent");
+
+            if (!noticiaId || !container) {
+                mostrarError(container);
+                return;
+            }
+
+            // Descarga únicamente el JSON de la nota seleccionada
+            fetch(`notas/nota-${noticiaId}.json`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Noticia no encontrada");
+                    return response.json();
+                })
+                .then(data => {
+                    document.title = `${data.titulo} - GPW`;
+
+                    let htmlContenido = "";
+                    data.contenido.forEach(bloque => {
+                        if (bloque.tipo === "lead") {
+                            htmlContenido += `<p class="lead-paragraph">${bloque.texto}</p>`;
+                        } else if (bloque.tipo === "p") {
+                            htmlContenido += `<p>${bloque.texto}</p>`;
+                        } else if (bloque.tipo === "subtitulo") {
+                            htmlContenido += `<h3>${bloque.texto}</h3>`;
+                        } else if (bloque.tipo === "cita") {
+                            htmlContenido += `<blockquote>"${bloque.texto}"</blockquote>`;
+                        }
+                    });
+
+                    container.innerHTML = `
+                        <header class="news-article-header">
+                            <span class="news-badge">${data.categoria}</span>
+                            <span class="news-date"><i class="fa-solid fa-calendar-days"></i> ${data.fecha}</span>
+                            <h1>${data.titulo}</h1>
+                        </header>
+
+                        <div class="news-article-banner">
+                            <img src="${data.imagen}" alt="${data.titulo}">
+                        </div>
+
+                        <div class="news-article-content">
+                            ${htmlContenido}
+                        </div>
+
+                        <div class="back-button-box">
+                            <a href="noticias.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver a Noticias</a>
+                        </div>
+                    `;
+                })
+                .catch(() => {
+                    mostrarError(container);
+                });
+        });
+
+        function mostrarError(container) {
+            container.innerHTML = `
+                <h2>Noticia no encontrada</h2>
+                <p>La noticia seleccionada no existe o ha sido archivada.</p>
+                <div class="back-button-box">
+                    <a href="noticias.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Volver a Noticias</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* =========================================
+   BORDES MULTICOLOR ROTATIVOS PARA TARJETAS
+   ========================================= */
+
+/* Tarjeta 1, 5, 9... -> CIAN NEÓN */
+.ranking-grid .ranking-card:nth-child(4n+1) {
+    border-color: #00bfff;
+    box-shadow: 0 0 10px rgba(0, 191, 255, 0.25);
+}
+.ranking-grid .ranking-card:nth-child(4n+1) .rank-badge {
+    border-color: #00bfff;
+    color: #00bfff;
+}
+
+/* Tarjeta 2, 6, 10... -> VERDE TÓXICO */
+.ranking-grid .ranking-card:nth-child(4n+2) {
+    border-color: #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.25);
+}
+.ranking-grid .ranking-card:nth-child(4n+2) .rank-badge {
+    border-color: #00ff66;
+    color: #00ff66;
+}
+
+/* Tarjeta 3, 7, 11... -> DORADO / AMARILLO FLUO */
+.ranking-grid .ranking-card:nth-child(4n+3) {
+    border-color: #ffe600;
+    box-shadow: 0 0 10px rgba(255, 230, 0, 0.25);
+}
+.ranking-grid .ranking-card:nth-child(4n+3) .rank-badge {
+    border-color: #ffe600;
+    color: #ffe600;
+}
+
+/* Tarjeta 4, 8, 12... -> ROJO / NARANJA LÁSER */
+.ranking-grid .ranking-card:nth-child(4n+0) {
+    border-color: #ff5500;
+    box-shadow: 0 0 10px rgba(255, 85, 0, 0.25);
+}
+.ranking-grid .ranking-card:nth-child(4n+0) .rank-badge {
+    border-color: #ff5500;
+    color: #ff5500;
+}
+
+/* Efeito Hover: intensifica el resplandor de cada color al pasar el dedo o mouse */
+.ranking-grid .ranking-card:nth-child(4n+1):hover { box-shadow: 0 0 18px rgba(0, 191, 255, 0.6); }
+.ranking-grid .ranking-card:nth-child(4n+2):hover { box-shadow: 0 0 18px rgba(0, 255, 102, 0.6); }
+.ranking-grid .ranking-card:nth-child(4n+3):hover { box-shadow: 0 0 18px rgba(255, 230, 0, 0.6); }
+.ranking-grid .ranking-card:nth-child(4n+0):hover { box-shadow: 0 0 18px rgba(255, 85, 0, 0.6); }
+
+
+/* =========================================
+   ESTILOS MULTICOLOR DINÁMICOS PARA EL MODAL
+   ========================================= */
+
+/* Transición suave para cambiar de color */
+.ranking-modal-content {
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 1. VARIANTE CIAN (#1, #5, #9...) */
+.modal-theme-cyan {
+    border-color: #00bfff !important;
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+}
+.modal-theme-cyan .rank-title-badge { background: #00bfff; color: #000; }
+.modal-theme-cyan .modal-profile-header img { border-color: #00bfff; }
+.modal-theme-cyan .overall-badge { color: #00bfff; }
+
+/* 2. VARIANTE VERDE TÓXICO (#2, #6, #10...) */
+.modal-theme-green {
+    border-color: #00ff66 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.3);
+}
+.modal-theme-green .rank-title-badge { background: #00ff66; color: #000; }
+.modal-theme-green .modal-profile-header img { border-color: #00ff66; }
+.modal-theme-green .overall-badge { color: #00ff66; }
+
+/* 3. VARIANTE DORADO / AMARILLO FLUO (#3, #7, #11...) */
+.modal-theme-gold {
+    border-color: #ffe600 !important;
+    box-shadow: 0 0 20px rgba(255, 230, 0, 0.3);
+}
+.modal-theme-gold .rank-title-badge { background: #ffe600; color: #000; }
+.modal-theme-gold .modal-profile-header img { border-color: #ffe600; }
+.modal-theme-gold .overall-badge { color: #ffe600; }
+
+/* 4. VARIANTE ROJO / NARANJA LÁSER (#4, #8, #12...) */
+.modal-theme-orange {
+    border-color: #ff5500 !important;
+    box-shadow: 0 0 20px rgba(255, 85, 0, 0.3);
+}
+.modal-theme-orange .rank-title-badge { background: #ff5500; color: #000; }
+.modal-theme-orange .modal-profile-header img { border-color: #ff5500; }
+.modal-theme-orange .overall-badge { color: #ff5500; }

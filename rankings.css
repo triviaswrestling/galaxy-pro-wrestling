@@ -93,19 +93,27 @@
     isolation: isolate;
 }
 
-/* Halo de resplandor / gradiente de color detrás de la imagen (Estilo Póster) */
+/* HALO AZUL SOBRE LA IMAGEN */
 #ranking-grid .ranking-card::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 75%;
-    background: 
-        radial-gradient(circle at 50% 35%, rgba(0, 191, 255, 0.32) 0%, rgba(0, 119, 190, 0.12) 55%, transparent 80%),
-        radial-gradient(ellipse at center, rgba(12, 17, 26, 0) 40%, rgba(5, 8, 14, 0.85) 90%);
-    z-index: -1;
+    z-index: 1;
     pointer-events: none;
+    background:
+        radial-gradient(
+            circle at 50% 35%,
+            rgba(0, 191, 255, 0.32) 0%,
+            rgba(0, 119, 190, 0.12) 55%,
+            transparent 80%
+        ),
+        radial-gradient(
+            ellipse at center,
+            transparent 40%,
+            rgba(5, 8, 14, 0.45) 100%
+        );
 }
 
 

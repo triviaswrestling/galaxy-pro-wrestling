@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Muestra la nueva noticia
         newsItems[currentIndex].classList.add('active');
-    }, 8000); // 7000 milisegundos = 7 segundos exactos para leer con calma
+    }, 7000); // 7000 milisegundos = 7 segundos exactos para leer con calma
 });

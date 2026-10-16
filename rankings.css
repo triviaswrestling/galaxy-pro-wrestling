@@ -112,163 +112,199 @@
 }
 
 /* =========================================
-   MODAL FICHA TÉCNICA
+   MODAL FICHA TÉCNICA (ESTILO DOSSIER MODERNO)
    ========================================= */
 
 .ranking-modal-content {
-    max-width: 440px;
-    padding: 0 0 15px;
-    border: 1px solid #282828;
-    background: #111111;
-    border-radius: 8px;
+    background: #0b0d12 !important;
+    border: 1.5px solid #222633 !important;
+    border-radius: 16px !important;
+    padding: 20px !important;
+    max-width: 400px !important;
+    width: 92% !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
+    color: #fff !important;
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.modal-rank-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 14px 18px 8px;
+/* Foto de Perfil Grande con Badge de Ranking */
+.modal-photo-container {
+    position: relative;
+    width: 100%;
+    height: 240px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    margin-bottom: 14px;
+    border: 1px solid #2a2f40;
 }
 
-.rank-title-badge {
-    background: #00bfff;
-    color: #000000;
-    font-size: 13px;
-    font-weight: 900;
-    padding: 2px 8px;
-    border-radius: 3px;
-}
-
-.modal-division-text {
-    color: #888888;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-}
-
-.modal-profile-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 6px 18px 14px;
-    border-bottom: 1px solid #222222;
-}
-
-.modal-profile-header img {
-    width: 80px;
-    height: 105px;
+.modal-photo-container img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 6px;
-    border: 1px solid #333333;
 }
 
-.modal-profile-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+.modal-top-badge {
+    position: absolute !important;
+    top: 12px !important;
+    left: 12px !important;
+    background: rgba(0, 0, 0, 0.85) !important;
+    border: 1.5px solid #00bfff !important;
+    color: #00bfff !important;
+    font-size: 12px !important;
+    font-weight: 900 !important;
+    padding: 5px 10px !important;
+    border-radius: 6px !important;
+    letter-spacing: 1px !important;
+    z-index: 10 !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7) !important;
 }
 
-.modal-profile-info h2 {
-    margin: 0;
-    font-size: 18px;
-    font-weight: 900;
-    color: #ffffff;
-    text-transform: uppercase;
+/* Identidad (Apodo y Nombre) */
+.modal-identity {
+    text-align: center;
+    margin-bottom: 16px;
 }
 
-.interpreter-line {
-    margin: 0;
-    font-size: 9px;
+.modal-nickname {
+    font-size: 11px;
     font-weight: 800;
-    color: #777777;
-    letter-spacing: 1px;
+    color: #f39c12;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
 }
 
-.interpreter-line .interpreter {
+.modal-identity h2 {
+    font-size: 22px;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    margin: 0 0 4px 0;
+    color: #ffffff;
+}
+
+.modal-interpreter-line {
+    font-size: 10px;
+    color: #8892b0;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.modal-interpreter-line span {
     color: #ffd700;
     font-weight: 900;
 }
 
-.overall-badge {
-    margin-top: 4px;
+/* Panel de Atributos */
+.modal-attributes-box {
+    background: #131722;
+    border: 1px solid #222838;
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+}
+
+.modal-attributes-box h3 {
     font-size: 10px;
     font-weight: 900;
-    color: #00bfff;
-    letter-spacing: 1px;
-}
-
-.overall-badge span {
-    font-size: 14px;
-    color: #ffffff;
-}
-
-.modal-highlights-header {
-    padding: 8px 18px;
-    background: #161616;
-    border-bottom: 1px solid #222222;
-    border-top: 1px solid #222222;
-}
-
-.modal-highlights-header h3 {
-    margin: 0;
-    color: #aaaaaa;
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 1.5px;
+    color: #8892b0;
+    letter-spacing: 1.2px;
+    margin: 0 0 10px 0;
     text-transform: uppercase;
 }
 
-/* BARRAS DE ATRIBUTOS */
-.stats-bars-wrapper {
-    padding: 12px 18px;
+.attributes-grid {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }
 
-.stat-row {
+.attr-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 800;
+    margin-bottom: 3px;
+    color: #ccd6f6;
+}
+
+.attr-bar {
+    width: 100%;
+    height: 6px;
+    background: #1e2433;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.attr-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease-in-out;
+}
+
+/* Colores de Barras */
+.bar-micro { background: linear-gradient(90deg, #00a887 0%, #00ff66 100%); }
+.bar-charisma { background: linear-gradient(90deg, #f7e7ce 0%, #ffe600 100%); }
+.bar-power { background: linear-gradient(90deg, #d32f2f 0%, #ff5500 100%); }
+
+.text-green { color: #00ff66; }
+.text-gold { color: #ffe600; }
+.text-orange { color: #ff5500; }
+.text-cyan { color: #00e1ff; }
+
+/* Cajas Inferiores (Finisher / Theme / Overall) */
+.modal-info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.info-card-box {
+    background: #131722;
+    border: 1px solid #222838;
+    border-radius: 10px;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
-.stat-labels {
-    display: flex;
-    justify-content: space-between;
+.full-width {
+    width: 100%;
+    margin-bottom: 12px;
+}
+
+.box-label {
     font-size: 9px;
-    font-weight: 900;
-    color: #888888;
+    font-weight: 800;
+    color: #8892b0;
     letter-spacing: 1px;
 }
 
-.stat-bar-container {
-    width: 100%;
-    background: #1a1a1a;
-    border-radius: 4px;
-    height: 8px;
+.box-value {
+    font-size: 12px;
+    font-weight: 900;
+    color: #fff;
+    white-space: nowrap;
     overflow: hidden;
-    border: 1px solid #2a2a2a;
+    text-overflow: ellipsis;
 }
 
-.stat-bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 0.6s ease-in-out;
+.song-text {
+    color: #f39c12;
 }
 
-.bar-micro { background: linear-gradient(90deg, #00a887 0%, #00ff66 100%); }
-.bar-charisma { background: linear-gradient(90deg, #f7e7ce 0%, #ffe600 100%); }
-.bar-power { background: linear-gradient(90deg, #d32f2f 0%, #ff5500 100%); }
-
-.stat-val-micro { color: #00ff66; }
-.stat-val-charisma { color: #ffe600; }
-.stat-val-power { color: #ff5500; }
-
+/* Logros del Modal */
 .ranking-achievements-list {
     margin: 0;
-    padding: 10px 18px 10px 32px;
-    max-height: 150px;
+    padding: 0 0 0 18px;
+    max-height: 130px;
     overflow-y: auto;
 }
 
@@ -287,7 +323,7 @@
    BORDES MULTICOLOR ROTATIVOS
    ========================================= */
 
-/* Tarjetas */
+/* Tarjetas de Grilla */
 .ranking-grid .ranking-card:nth-child(4n+1) { border-color: #00bfff; box-shadow: 0 0 10px rgba(0, 191, 255, 0.25); }
 .ranking-grid .ranking-card:nth-child(4n+1) .rank-badge { border-color: #00bfff; color: #00bfff; }
 
@@ -306,22 +342,14 @@
 .ranking-grid .ranking-card:nth-child(4n+0):hover { box-shadow: 0 0 18px rgba(255, 85, 0, 0.6); }
 
 /* Temas del Modal */
-.modal-theme-cyan { border-color: #00bfff !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.3); }
-.modal-theme-cyan .rank-title-badge { background: #00bfff; color: #000; }
-.modal-theme-cyan .modal-profile-header img { border-color: #00bfff; }
-.modal-theme-cyan .overall-badge { color: #00bfff; }
+.modal-theme-cyan { border-color: #00bfff !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.3) !important; }
+.modal-theme-cyan .modal-top-badge { border-color: #00bfff; color: #00bfff; }
 
-.modal-theme-green { border-color: #00ff66 !important; box-shadow: 0 0 20px rgba(0, 255, 102, 0.3); }
-.modal-theme-green .rank-title-badge { background: #00ff66; color: #000; }
-.modal-theme-green .modal-profile-header img { border-color: #00ff66; }
-.modal-theme-green .overall-badge { color: #00ff66; }
+.modal-theme-green { border-color: #00ff66 !important; box-shadow: 0 0 20px rgba(0, 255, 102, 0.3) !important; }
+.modal-theme-green .modal-top-badge { border-color: #00ff66; color: #00ff66; }
 
-.modal-theme-gold { border-color: #ffe600 !important; box-shadow: 0 0 20px rgba(255, 230, 0, 0.3); }
-.modal-theme-gold .rank-title-badge { background: #ffe600; color: #000; }
-.modal-theme-gold .modal-profile-header img { border-color: #ffe600; }
-.modal-theme-gold .overall-badge { color: #ffe600; }
+.modal-theme-gold { border-color: #ffe600 !important; box-shadow: 0 0 20px rgba(255, 230, 0, 0.3) !important; }
+.modal-theme-gold .modal-top-badge { border-color: #ffe600; color: #ffe600; }
 
-.modal-theme-orange { border-color: #ff5500 !important; box-shadow: 0 0 20px rgba(255, 85, 0, 0.3); }
-.modal-theme-orange .rank-title-badge { background: #ff5500; color: #000; }
-.modal-theme-orange .modal-profile-header img { border-color: #ff5500; }
-.modal-theme-orange .overall-badge { color: #ff5500; }
+.modal-theme-orange { border-color: #ff5500 !important; box-shadow: 0 0 20px rgba(255, 85, 0, 0.3) !important; }
+.modal-theme-orange .modal-top-badge { border-color: #ff5500; color: #ff5500; }

@@ -610,9 +610,9 @@
     color: #ff7548 !important;
 }
 
+
 /* =========================================
-   9. PC — FICHA RECTANGULAR HORIZONTAL
-   FOTO IZQUIERDA / IDENTIDAD CENTRO / RANK DERECHA
+   9. PC — FOTO IZQUIERDA / IDENTIDAD DERECHA
    ========================================= */
 
 @media (min-width: 768px) {
@@ -622,155 +622,26 @@
 
     #ranking-modal .ranking-modal-content {
         display: grid;
-        grid-template-columns: minmax(0, 31%) minmax(0, 1fr) 58px;
-        column-gap: 18px;
+        grid-template-columns: minmax(0, 31%) minmax(0, 1fr);
+        column-gap: 22px;
+        row-gap: 14px;
         align-items: center;
-
-        width: min(92vw, 760px) !important;
-        max-width: 760px !important;
+        width: min(92vw, 900px) !important;
+        max-width: 900px !important;
         max-height: 90vh;
-        padding: 22px !important;
-        border-radius: 15px !important;
+        padding: 24px !important;
+        border-radius: 16px !important;
     }
 
-    /* Permite ubicar la imagen y el puesto en columnas separadas */
     #ranking-modal .modal-photo-container {
-        display: contents;
-        float: none;
-        width: auto;
-        height: auto;
-        margin: 0;
-        overflow: visible;
-        border: 0;
-        background: transparent;
-    }
-
-    /* Foto: primera columna */
-    #ranking-modal .modal-photo-container img {
+        display: block;
+        position: relative;
         grid-column: 1;
         grid-row: 1;
-        align-self: center;
-
-        display: block;
         width: 100%;
-        height: 245px;
+        height: auto;
+        aspect-ratio: 3 / 4;
         margin: 0;
-        object-fit: cover;
-        object-position: center 20%;
-
-        border: 1px solid #29374c;
-        border-radius: 10px;
-        background: #06090e;
-    }
-
-    /* Identidad: columna central */
-    #ranking-modal .modal-identity {
-        grid-column: 2;
-        grid-row: 1;
-
-        display: flex;
-        min-width: 0;
-        min-height: 245px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-
-        margin: 0;
-        padding: 12px 4px;
-        border-bottom: 1px solid #243145;
-        text-align: center;
-    }
-
-    #ranking-modal .modal-identity h2 {
-        margin: 0 0 8px;
-        padding: 0;
-        border: 0;
-        background: none;
-        font-size: clamp(22px, 2.8vw, 32px);
-        overflow-wrap: anywhere;
-    }
-
-    #ranking-modal .modal-nickname {
-        font-size: 11px;
-        overflow-wrap: anywhere;
-    }
-
-    #ranking-modal .modal-interpreter-line {
-        font-size: 11px;
-        overflow-wrap: anywhere;
-    }
-
-    /* Puesto: tercera columna, alineado con la foto */
-    #ranking-modal .modal-top-badge {
-        position: static !important;
-        grid-column: 3;
-        grid-row: 1;
-        align-self: start;
-        justify-self: end;
-
-        min-width: 48px;
-        min-height: 40px;
-        margin-top: 4px;
-        padding: 6px !important;
-
-        font-size: 17px !important;
-    }
-
-    /* Las secciones inferiores ocupan el ancho completo */
-    #ranking-modal .modal-attributes-box,
-    #ranking-modal .modal-info-grid,
-    #ranking-modal .full-width {
-        grid-column: 1 / -1;
-        min-width: 0;
-    }
-
-    #ranking-modal .modal-attributes-box {
-        margin-top: 0;
-        clear: none;
-    }
-
-    #ranking-modal .modal-info-grid {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-
-    #ranking-modal .modal-attributes-box h3 {
-        font-size: 11px;
-    }
-
-    #ranking-modal .attr-info {
-        font-size: 11px;
-    }
-
-    #ranking-modal .box-value {
-        font-size: 13px;
-    }
-
-    #ranking-modal .ranking-achievements-list li {
-        font-size: 12px;
-    }
-}
-
-/* =========================================
-   10. CELULAR — FICHA VERTICAL
-   ========================================= */
-
-@media (max-width: 420px) {
-    #ranking-modal.modal {
-        padding: 9px;
-    }
-
-    #ranking-modal .ranking-modal-content {
-        display: block;
-        max-width: 390px !important;
-        padding: 12px !important;
-        max-height: 94vh;
-        border-radius: 12px !important;
-    }
-
-    #ranking-modal .modal-photo-container {
-        display: block;
-        height: 205px;
-        margin: 0 0 15px;
         overflow: hidden;
         border: 1px solid #29374c;
         border-radius: 10px;
@@ -778,11 +649,11 @@
     }
 
     #ranking-modal .modal-photo-container img {
+        display: block;
         width: 100%;
         height: 100%;
-        margin: 0;
-        object-fit: cover;
-        object-position: center 20%;
+        object-fit: contain;
+        object-position: center;
         border: 0;
         border-radius: 0;
     }
@@ -792,40 +663,297 @@
         top: 10px !important;
         right: 10px !important;
         left: auto !important;
-        min-width: 42px;
-        min-height: 34px;
-        margin: 0;
+        z-index: 10;
+        min-width: 44px;
+        min-height: 36px;
+        padding: 6px !important;
         font-size: 15px !important;
     }
 
     #ranking-modal .modal-identity {
-        display: block;
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        min-width: 0;
         min-height: 0;
-        margin: 0 0 14px;
-        padding: 2px 0 12px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0;
+        padding: 14px 4px;
         border-bottom: 1px solid #243145;
+        text-align: left;
+    }
+
+    #ranking-modal .modal-nickname {
+        margin-bottom: 10px;
+        font-size: clamp(13px, 1.5vw, 17px);
+        letter-spacing: 2px;
+        line-height: 1.4;
     }
 
     #ranking-modal .modal-identity h2 {
-        font-size: 21px;
+        margin: 0 0 12px;
+        font-size: clamp(28px, 3.2vw, 40px);
+        line-height: 1.1;
+        letter-spacing: 1px;
+        overflow-wrap: anywhere;
     }
 
-    #ranking-modal .modal-info-grid {
-        gap: 7px;
+    #ranking-modal .modal-interpreter-line {
+        font-size: clamp(12px, 1.4vw, 16px);
+        line-height: 1.6;
+        letter-spacing: 1px;
+        overflow-wrap: anywhere;
     }
 
-    #ranking-modal .info-card-box {
-        padding: 9px;
-    }
-
-    #ranking-modal .box-value {
-        font-size: 11px;
+    #ranking-modal .modal-attributes-box,
+    #ranking-modal .modal-info-grid,
+    #ranking-modal .full-width {
+        grid-column: 1 / -1;
+        min-width: 0;
     }
 
     #ranking-modal .modal-attributes-box {
-        padding: 10px;
+        margin: 0 0 10px;
+    }
+
+    #ranking-modal .attributes-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    #ranking-modal .attr-info {
+        font-size: 13px;
+    }
+
+    #ranking-modal .attr-bar {
+        height: 7px;
+    }
+
+    #ranking-modal .modal-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #ranking-modal .box-label {
+        font-size: 11px;
+    }
+
+    #ranking-modal .box-value {
+        font-size: 14px;
+    }
+
+    #ranking-modal #val-overall {
+        font-size: 30px;
+    }
+
+    #ranking-modal .ranking-achievements-list li {
+        font-size: 13px;
     }
 }
+
+/* =========================================
+   10. CELULAR — FOTO 3:4 A LA IZQUIERDA
+   IDENTIDAD A LA DERECHA
+   ========================================= */
+
+@media (max-width: 767px) {
+    #ranking-modal.modal {
+        padding: 10px;
+    }
+
+    #ranking-modal .ranking-modal-content {
+        display: grid;
+        grid-template-columns: minmax(0, 42%) minmax(0, 1fr);
+        column-gap: 12px;
+        row-gap: 12px;
+        align-items: center;
+        width: 100% !important;
+        max-width: 560px !important;
+        max-height: 94vh;
+        padding: 13px !important;
+        border-radius: 13px !important;
+    }
+
+    #ranking-modal .modal-photo-container {
+        display: block;
+        position: relative;
+        grid-column: 1;
+        grid-row: 1;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 3 / 4;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid #29374c;
+        border-radius: 9px;
+        background: #06090e;
+    }
+
+    #ranking-modal .modal-photo-container img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        border: 0;
+        border-radius: 0;
+    }
+
+    #ranking-modal .modal-top-badge {
+        position: absolute !important;
+        top: 6px !important;
+        right: 6px !important;
+        left: auto !important;
+        z-index: 10;
+        min-width: 34px;
+        min-height: 29px;
+        padding: 4px !important;
+        font-size: 12px !important;
+    }
+
+    #ranking-modal .modal-identity {
+        grid-column: 2;
+        grid-row: 1;
+        display: flex;
+        min-width: 0;
+        min-height: 0;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        margin: 0;
+        padding: 4px 0;
+        border-bottom: 0;
+        text-align: left;
+    }
+
+    #ranking-modal .modal-nickname {
+        margin-bottom: 7px;
+        font-size: clamp(10px, 3vw, 14px);
+        letter-spacing: .8px;
+        line-height: 1.4;
+    }
+
+    #ranking-modal .modal-identity h2 {
+        margin: 0 0 8px;
+        font-size: clamp(17px, 5vw, 25px);
+        line-height: 1.12;
+        letter-spacing: .2px;
+        overflow-wrap: anywhere;
+    }
+
+    #ranking-modal .modal-interpreter-line {
+        font-size: clamp(9px, 2.8vw, 12px);
+        line-height: 1.5;
+        letter-spacing: .4px;
+        overflow-wrap: anywhere;
+    }
+
+    #ranking-modal .modal-attributes-box,
+    #ranking-modal .modal-info-grid,
+    #ranking-modal .full-width {
+        grid-column: 1 / -1;
+        min-width: 0;
+    }
+
+    #ranking-modal .modal-attributes-box {
+        margin: 0 0 3px;
+        padding: 12px;
+    }
+
+    #ranking-modal .modal-attributes-box h3 {
+        font-size: 11px;
+        letter-spacing: 1.2px;
+    }
+
+    #ranking-modal .attributes-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    #ranking-modal .attr-info {
+        font-size: 12px;
+    }
+
+    #ranking-modal .attr-bar {
+        height: 6px;
+    }
+
+    #ranking-modal .modal-info-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 0;
+    }
+
+    #ranking-modal .info-card-box {
+        min-width: 0;
+        padding: 10px;
+    }
+
+    #ranking-modal .box-label {
+        font-size: 9px;
+    }
+
+    #ranking-modal .box-value {
+        font-size: 12px;
+    }
+
+    #ranking-modal #val-overall {
+        font-size: 25px;
+    }
+
+    #ranking-modal .full-width {
+        margin: 0;
+    }
+
+    #ranking-modal .ranking-achievements-list {
+        max-height: 180px;
+    }
+
+    #ranking-modal .ranking-achievements-list li {
+        font-size: 12px;
+    }
+
+    #ranking-modal .close-button {
+        top: 7px;
+        right: 7px;
+        width: 29px;
+        height: 29px;
+        font-size: 21px;
+    }
+}
+
+/* =========================================
+   10B. CELULARES MUY ANGOSTOS
+   ========================================= */
+
+@media (max-width: 360px) {
+    #ranking-modal .ranking-modal-content {
+        grid-template-columns: minmax(0, 40%) minmax(0, 1fr);
+        column-gap: 9px;
+        padding: 10px !important;
+    }
+
+    #ranking-modal .modal-nickname {
+        font-size: 9px;
+    }
+
+    #ranking-modal .modal-identity h2 {
+        font-size: 16px;
+    }
+
+    #ranking-modal .modal-interpreter-line {
+        font-size: 9px;
+    }
+
+    #ranking-modal .modal-attributes-box {
+        padding: 9px;
+    }
+}
+
+        
 
 /* =========================================
    11. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO

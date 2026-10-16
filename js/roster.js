@@ -1,17 +1,15 @@
 console.log("ROSTER.JS CARGADO");
 
-const masculinoContainer = document.getElementById("roster");       // Contenedor División Masculina
-const femeninoContainer = document.getElementById("nxt-roster");   // Contenedor División Femenina (puedes cambiar el id en el HTML si prefieres)
+const masculinoContainer = document.getElementById("roster");          // Contenedor División Masculina
+const femeninoContainer = document.getElementById("femenino-roster"); // Contenedor División Femenina limpio
 
 /* =========================================
-   CREAR TARJETA DE LUTCHADOR
+   CREAR TARJETA DE LUCHADOR
    ========================================= */
-
 function createWrestlerCard(wrestler, index) {
     const card = document.createElement("div");
     card.className = "wrestler";
 
-    // Al hacer clic abre el modal con sus logros e intérprete
     card.onclick = function() {
         if (typeof openModal === "function") {
             openModal(index);
@@ -43,21 +41,13 @@ function createWrestlerCard(wrestler, index) {
 /* =========================================
    CARGAR DIVISIÓN MASCULINA
    ========================================= */
-
 function loadMasculinoRoster(status) {
     if (!masculinoContainer) return;
-
     masculinoContainer.innerHTML = "";
 
     wrestlers.forEach(function(wrestler, index) {
-        // Filtra por estado (active/inactive) y división Masculino
-        if (
-            wrestler.status === status &&
-            wrestler.division === "Masculino"
-        ) {
-            masculinoContainer.appendChild(
-                createWrestlerCard(wrestler, index)
-            );
+        if (wrestler.status === status && wrestler.division === "Masculino") {
+            masculinoContainer.appendChild(createWrestlerCard(wrestler, index));
         }
     });
 }
@@ -65,35 +55,24 @@ function loadMasculinoRoster(status) {
 /* =========================================
    CARGAR DIVISIÓN FEMENINA
    ========================================= */
-
 function loadFemeninoRoster(status) {
     if (!femeninoContainer) return;
-
     femeninoContainer.innerHTML = "";
 
     wrestlers.forEach(function(wrestler, index) {
-        // Filtra por estado (active/inactive) y división Femenino
-        if (
-            wrestler.status === status &&
-            wrestler.division === "Femenino"
-        ) {
-            femeninoContainer.appendChild(
-                createWrestlerCard(wrestler, index)
-            );
+        if (wrestler.status === status && wrestler.division === "Femenino") {
+            femeninoContainer.appendChild(createWrestlerCard(wrestler, index));
         }
     });
 }
 
 /* =========================================
-   INICIALIZAR SEGÚN LA PÁGINA (ROSTER / ALUMNI)
+   INICIALIZAR SEGÚN LA PÁGINA
    ========================================= */
-
 const main = document.querySelector("main");
 
 if (main) {
-    // Lee si la página pide "active" (Roster) o "inactive" (Alumni)
     const status = main.dataset.rosterStatus || "active";
-
     loadMasculinoRoster(status);
     loadFemeninoRoster(status);
 }

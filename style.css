@@ -1,13 +1,13 @@
-/* RESETEO BÁSICO PARA MÁXIMA VELOCIDAD */
+/* RESETEO BÁSICO Y OPTIMIZACIÓN */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    -webkit-tap-highlight-color: transparent; /* Elimina destello gris táctil */
+    -webkit-tap-highlight-color: transparent;
 }
 
-/* ESTÉTICA DE GALAXIA ESPACIAL PROFUNDA (Optimizado sin imágenes pesadas) */
+/* ESTÉTICA GALÁCTICA DE FONDO */
 body {
     background-color: #010413;
     background-image: 
@@ -20,11 +20,11 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow-x: hidden; /* Evita scroll horizontal */
+    overflow-x: hidden;
     padding-bottom: 50px;
 }
 
-/* MARCOS DE LUZ CIAN LATERALES (Puro CSS, ultra liviano) */
+/* NEONES LATERALES FUERTES */
 .glow-border {
     position: fixed;
     top: 0;
@@ -37,17 +37,10 @@ body {
     opacity: 0.85;
 }
 
-.glow-border.left { 
-    left: 0; 
-    border-right: 2px solid #00ffff;
-}
+.glow-border.left { left: 0; border-right: 2px solid #00ffff; }
+.glow-border.right { right: 0; border-left: 2px solid #00ffff; }
 
-.glow-border.right { 
-    right: 0; 
-    border-left: 2px solid #00ffff;
-}
-
-/* ENCABEZADO SUPERIOR CON LOGO */
+/* HEADER LOGO */
 .main-header {
     width: 100%;
     max-width: 90%;
@@ -55,7 +48,6 @@ body {
     text-align: center;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .site-logo {
@@ -63,73 +55,224 @@ body {
     height: auto;
     object-fit: contain;
     filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.9)) drop-shadow(0 0 30px rgba(0, 153, 255, 0.4));
-    transition: transform 0.3s ease;
 }
 
-/* SECCIÓN BIENVENIDA (WELCOME) */
+/* SECCIÓN BIENVENIDA */
 .welcome-section {
     width: 90%;
-    max-width: 800px;
+    max-width: 1000px;
     text-align: center;
-    margin: 15px 0 20px 0;
-    padding: 15px;
+    margin: 10px 0 15px 0;
+    padding: 12px 15px;
     background: rgba(3, 14, 42, 0.75);
     border-radius: 12px;
     border: 1.5px solid rgba(0, 229, 255, 0.4);
     box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
-    content-visibility: auto;
 }
 
 .welcome-section h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     color: #00ffff;
     text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
 }
 
 .welcome-section p {
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     color: #c0d0f0;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
-/* CUADRÍCULA DE CATEGORÍAS (2 columnas en móvil) */
+/* CONTENEDOR MÓDULO SUPERIOR (NOTICIAS + SOCIAL) */
+.top-widgets-container {
+    width: 90%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+/* MARCO CARRUSEL DE ÚLTIMAS NOTICIAS */
+.news-ticker-container {
+    width: 100%;
+    background: #020b29;
+    border: 1.5px solid #00ffff;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.3);
+    height: 44px;
+}
+
+.news-ticker-header {
+    background: #00ffff;
+    color: #010413;
+    font-weight: 900;
+    font-size: 0.75rem;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    letter-spacing: 0.5px;
+}
+
+.news-slider {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.news-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.news-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 12px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+
+.news-slide.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.news-tag {
+    background: rgba(0, 229, 255, 0.15);
+    color: #00ffff;
+    border: 1px solid #00ffff;
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.news-title {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* SECCIÓN SÍGUENOS / FOLLOW US */
+.social-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.social-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.social-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #ffffff;
+    background: #030a24;
+    border: 1.5px solid rgba(0, 229, 255, 0.4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.social-card i {
+    font-size: 1.3rem;
+}
+
+.social-card span {
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.5px;
+}
+
+.social-card small {
+    display: none; /* Se oculta en el modo compacto para limpieza visual */
+}
+
+/* Colores e interacción táctil */
+.social-card.instagram:active, .social-card.instagram:hover {
+    border-color: #e1306c;
+    box-shadow: 0 0 15px rgba(225, 48, 108, 0.6);
+    transform: scale(0.97);
+}
+.social-card.instagram i { color: #e1306c; }
+
+.social-card.whatsapp:active, .social-card.whatsapp:hover {
+    border-color: #25d366;
+    box-shadow: 0 0 15px rgba(37, 211, 102, 0.6);
+    transform: scale(0.97);
+}
+.social-card.whatsapp i { color: #25d366; }
+
+.social-card.youtube:active, .social-card.youtube:hover {
+    border-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    transform: scale(0.97);
+}
+.social-card.youtube i { color: #ff0000; }
+
+.social-card.facebook:active, .social-card.facebook:hover {
+    border-color: #1877f2;
+    box-shadow: 0 0 15px rgba(24, 119, 242, 0.6);
+    transform: scale(0.97);
+}
+.social-card.facebook i { color: #1877f2; }
+
+/* CUADRÍCULA DE CATEGORÍAS (2 columnas en celular, 4 en PC) */
 .category-grid {
     width: 90%;
-    max-width: 850px;
+    max-width: 1000px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     margin-bottom: 30px;
 }
 
-/* TARJETAS CON BORDE CIAN Y ANIMACIÓN POR HARDWARE */
 .category-card {
     background-color: #030a24;
     border: 1.8px solid rgba(0, 229, 255, 0.6);
-    border-radius: 12px; /* Esquinas redondeadas, no hexágonos */
+    border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 229, 255, 0.15);
-    will-change: transform, border-color, box-shadow;
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
-                border-color 0.2s ease, 
-                box-shadow 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.2s ease, box-shadow 0.2s ease;
     content-visibility: auto;
 }
 
-/* Respuesta táctil al tocar/hover */
 .category-card:active,
 .category-card:hover {
     transform: scale(0.97) translateY(-2px);
     border-color: #00ffff;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8), inset 0 0 15px rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
 }
 
 .card-image-wrapper {
@@ -144,11 +287,6 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0.85;
-    transition: transform 0.3s ease;
-}
-
-.category-card:hover .card-image-wrapper img {
-    transform: scale(1.05);
 }
 
 .card-info {
@@ -157,162 +295,49 @@ body {
 }
 
 .card-info h2 {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 900;
-    letter-spacing: 0.5px;
     color: #ffffff;
     text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
 }
 
 .card-info p {
-    font-size: 0.7rem;
-    color: #9ab0d5;
-}
-
-/* SECCIÓN INSTAGRAM POSTS */
-.instagram-section {
-    width: 90%;
-    max-width: 850px;
-    margin-top: 10px;
-    content-visibility: auto;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 1.1rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
-    color: #ffffff;
-    text-transform: uppercase;
-    text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
-}
-
-/* PERFIL DE INSTAGRAM */
-.ig-profile-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: #030a24;
-    padding: 12px 15px;
-    border-radius: 10px 10px 0 0;
-    border: 1.5px solid rgba(0, 229, 255, 0.5);
-    border-bottom: none;
-    flex-wrap: wrap;
-    gap: 10px;
-    box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.1);
-}
-
-.ig-avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #00ffff;
-    box-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
-}
-
-.ig-user-details {
-    flex: 1;
-    margin-left: 5px;
-}
-
-.ig-username-row {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.ig-username {
-    font-weight: 700;
-    font-size: 0.85rem;
-    color: #ffffff;
-}
-
-.ig-verified {
-    color: #00ffff;
-    font-size: 0.8rem;
-    text-shadow: 0 0 5px rgba(0, 229, 255, 0.8);
-}
-
-.ig-fullname {
-    display: block;
-    font-size: 0.72rem;
-    color: #9ab0d5;
-}
-
-.ig-stats {
-    display: flex;
-    gap: 10px;
     font-size: 0.68rem;
-    color: #c0d0f0;
-    margin-top: 3px;
+    color: #9ab0d5;
 }
 
-.ig-stats strong {
-    color: #ffffff;
-}
-
-.ig-follow-btn {
-    background: #3897f0;
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 0.8rem;
-    padding: 6px 14px;
-    border-radius: 6px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    box-shadow: 0 0 10px rgba(56, 151, 240, 0.4);
-    transition: background 0.2s, transform 0.15s ease;
-}
-
-.ig-follow-btn:active,
-.ig-follow-btn:hover {
-    background: #287bd0;
-    transform: scale(0.96);
-}
-
-/* CUADRÍCULA DE POSTS */
-.ig-posts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    background: #030a24;
-    padding: 4px;
-    border-radius: 0 0 10px 10px;
-    border: 1.5px solid rgba(0, 229, 255, 0.5);
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
-}
-
-.ig-post {
-    display: block;
-    aspect-ratio: 1 / 1;
-    overflow: hidden;
-    background: #000;
-}
-
-.ig-post img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.2s ease, opacity 0.2s ease;
-}
-
-.ig-post img:hover {
-    transform: scale(1.03);
-    opacity: 0.9;
-}
-
-/* ADAPTACIÓN PARA PC (3 Columnas en Pantallas Grandes) */
+/* ADAPTACIONES OPTIMIZADAS PARA PC (PANTALLAS GRANDES) */
 @media (min-width: 768px) {
+    /* 1. Módulos superiores uno al lado del otro (50% cada uno) */
+    .top-widgets-container {
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .news-ticker-container {
+        width: 50%;
+    }
+
+    .social-section {
+        width: 50%;
+    }
+
+    .social-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 8px;
+    }
+
+    /* 2. Cuadrícula de categorías a 4 columnas en PC */
     .category-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         gap: 15px;
     }
-    .card-image-wrapper { height: 130px; }
-    .site-logo { max-width: 320px; }
-    .welcome-section h2 { font-size: 1.4rem; }
-    .welcome-section p { font-size: 0.9rem; }
+
+    .card-image-wrapper { 
+        height: 110px; 
+    }
+
+    .site-logo { 
+        max-width: 320px; 
+    }
 }

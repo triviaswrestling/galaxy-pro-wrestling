@@ -2,32 +2,47 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galaxy Pro Wrestling - Roster</title>
-    <!-- Tus estilos -->
-  <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Roster - Galaxy Pro Wrestling</title>
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos de Navegación y Tarjetas -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="wrestlercard.css">
 </head>
 <body>
 
-    <!-- ATENCIÓN AQUÍ: data-roster-status="active" le dice al script que busque solo a los activos -->
-    <main data-roster-status="active">
-        <h1>Roster Principal</h1>
+    <!-- Bordes Neón Laterales -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
 
-        <!-- Divisor y contenedor para la División Masculina -->
+    <!-- El script.js inyectará el menú neón y el logo aquí -->
+    <header class="main-header"></header>
+
+    <!-- data-roster-status="active" carga únicamente a los activos -->
+    <main data-roster-status="active">
+        <div class="page-title-bar">
+            <h2><i class="fa-solid fa-users text-cyan"></i> GALAXY PRO <span class="text-cyan">ROSTER</span></h2>
+        </div>
+
+        <!-- División Masculina Activa -->
         <div class="roster-divider">
             <h1>Masculino</h1>
         </div>
         <div id="roster" class="roster"></div>
 
-        <!-- Divisor y contenedor para la División Femenina -->
+        <!-- División Femenina Activa (ID limpio) -->
         <div class="roster-divider">
             <h1>Femenino</h1>
         </div>
-        <div id="nxt-roster" class="roster"></div>
+        <div id="femenino-roster" class="roster"></div>
     </main>
 
-    <!-- MODAL ÉPICO -->
+    <!-- MODAL ÉPICO DE LOGROS E INTÉRPRETE -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <button class="close-button" onclick="closeModal()">×</button>
@@ -38,7 +53,8 @@
         </div>
     </div>
 
-    <!-- SCRIPTS EN ORDEN -->
+    <!-- Scripts -->
+    <script src="script.js"></script>
     <script src="js/wrestlers.js"></script>
     <script src="js/roster.js"></script>
     <script src="js/modal.js"></script>

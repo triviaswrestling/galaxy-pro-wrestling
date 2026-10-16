@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
         headerElement.innerHTML = `
             <div class="logo-area">
                 <a href="index.html">
-                    <img src="logo.webp" alt="Galaxy Pro Wrestling Logo" class="site-logo">
+                    <img src="imagen/gpw_logo_original.webp" alt="Galaxy Pro Wrestling Logo" class="site-logo">
                 </a>
             </div>
 

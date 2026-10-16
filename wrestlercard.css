@@ -20,7 +20,7 @@ body.modal-open {
    CONTENEDOR PRINCIPAL Y DIVISIONES DE ROSTER
    ========================================= */
 main {
-    padding: 30px 15px;
+    padding: 30px 0px; /* Sin padding lateral para que llegue a los bordes neón */
     background: #0b0b0b;
     max-width: 1200px;
     margin: 0 auto;
@@ -38,15 +38,17 @@ main > h1 {
 
 .roster {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Cambiado a 3 columnas por defecto para mobile */
-    gap: 8px; /* Reducido ligeramente para que entren bien 3 en pantallas chicas */
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas en mobile */
+    gap: 2px; /* Espacio mínimo para hacer las cards gigantes al límite */
     margin-bottom: 40px;
+    padding: 0 2px;
 }
 
 @media (min-width: 768px) {
     .roster {
         grid-template-columns: repeat(5, 1fr);
         gap: 18px;
+        padding: 0;
     }
 }
 
@@ -115,38 +117,38 @@ main > h1 {
 
 /* Apodo del luchador (Cian / Celeste) */
 .wrestler > p:first-of-type {
-    margin: 6px 4px 0;
+    margin: 4px 2px 0;
     color: #00bfff;
-    font-size: 8px; /* Tamaño optimizado para que quepa bien en PC */
+    font-size: 6.5px; /* Tamaño optimizado para 3 columnas máximas */
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    line-height: 1.2;
-    white-space: normal;        /* Permite que el apodo largo baje de línea si es necesario */
-    overflow-wrap: anywhere;    /* Evita que rompa el contenedor si la palabra es muy larga */
+    letter-spacing: 0.3px;
+    line-height: 1.1;
+    white-space: normal;        /* Permite que baje de línea si es largo */
+    overflow-wrap: anywhere;    
 }
 
 /* Nombre principal del luchador */
 .wrestler > h2 {
-    margin: 3px 4px;
+    margin: 2px 2px;
     color: #ffffff;
-    font-size: 13px; /* Ligeramente más versátil para la visualización de 3 columnas en mobile */
+    font-size: 9.5px; /* Tamaño adaptado para aprovechar el espacio */
     font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    letter-spacing: 0.3px;
+    white-space: normal; /* Evita que se corte con '...' y baje de línea */
+    overflow: visible;
+    text-overflow: clip;
 }
 
 /* Stable o equipo (Gris secundario) */
 .wrestler > h2 + p {
-    margin: 0 4px 8px;
+    margin: 0 2px 6px;
     color: #aaaaaa;
-    font-size: 8px;
+    font-size: 6.5px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -160,6 +162,7 @@ main > h1 {
     align-items: center;
     gap: 15px;
     margin: 40px 0 20px;
+    padding: 0 10px;
 }
 
 .roster-divider::before,

@@ -6,33 +6,102 @@
     <title>Galaxy Pro Wrestling - Inicio</title>
     <!-- Google Fonts optimizada -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome para íconos -->
+    <!-- FontAwesome para íconos oficiales -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- MARCOS DE LUZ CIAN LATERALES (Sin imagen pesada) -->
+    <!-- MARCOS DE LUZ CIAN LATERALES -->
     <div class="glow-border left"></div>
     <div class="glow-border right"></div>
 
     <!-- ENCABEZADO SUPERIOR CON TU LOGO WEBP -->
     <header class="main-header">
         <div class="logo-area">
-            <!-- Asegurate de tener tu archivo 'logo.webp' en la raíz del repositorio -->
             <img src="logo.webp" alt="Galaxy Pro Wrestling Logo" class="site-logo">
         </div>
     </header>
 
-    <!-- SECCIÓN DE BIENVENIDA (WELCOME) -->
+    <!-- SECCIÓN DE BIENVENIDA -->
     <section class="welcome-section">
         <h2>Welcome to Galaxy Pro Wrestling</h2>
         <p>
-            Esta es la página oficial de <strong>Galaxy Pro Wrestling</strong>, la liga de lucha libre intergaláctica donde los mejores talentos compiten por la gloria. Consulta las noticias, eventos, campeonatos, rankings y todas las novedades del universo GPW.
+            Esta es la página oficial de <strong>Galaxy Pro Wrestling</strong>, la liga de lucha libre intergaláctica. Consulta las noticias, eventos, campeonatos, rankings y todas las novedades del universo GPW.
         </p>
     </section>
 
-    <!-- CUADRÍCULA DE NAVEGACIÓN PRINCIPAL (9 Accesos Directos) -->
+    <!-- CONTENEDOR SUPERIOR (NOTICIAS 50% + FOLLOW US 50% EN PC) -->
+    <div class="top-widgets-container">
+        
+        <!-- CARRUSEL DE NOTICIAS -->
+        <section class="news-ticker-container">
+            <div class="news-ticker-header">
+                <i class="fa-solid fa-bolt ticker-icon"></i>
+                <span>NOTICIAS</span>
+            </div>
+            <div class="news-slider">
+                <div class="news-track" id="newsTrack">
+                    
+                    <div class="news-slide active">
+                        <span class="news-tag">GPW CLASH</span>
+                        <a href="noticias.html" class="news-title">¡Anunciado el evento principal para Galactic Clash 2026!</a>
+                    </div>
+
+                    <div class="news-slide">
+                        <span class="news-tag">CAMPEONATO</span>
+                        <a href="noticias.html" class="news-title">Nuevo contendiente número 1 al Título Mundial de GPW.</a>
+                    </div>
+
+                    <div class="news-slide">
+                        <span class="news-tag">ROSTER</span>
+                        <a href="noticias.html" class="news-title">Firma estelar: Un nuevo luchador intergaláctico se une al elenco.</a>
+                    </div>
+
+                    <div class="news-slide">
+                        <span class="news-tag">RESULTADOS</span>
+                        <a href="noticias.html" class="news-title">Repaso de los momentos más impactantes del último episodio.</a>
+                    </div>
+
+                    <div class="news-slide">
+                        <span class="news-tag">COMUNIDAD</span>
+                        <a href="noticias.html" class="news-title">Únete al grupo oficial de WhatsApp para ver los shows en vivo.</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN FOLLOW US (REDES SOCIALES) -->
+        <section class="social-section">
+            <div class="social-grid">
+                
+                <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="social-card instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>INSTAGRAM</span>
+                </a>
+
+                <a href="https://whatsapp.com/tu_grupo" target="_blank" rel="noopener noreferrer" class="social-card whatsapp">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>WHATSAPP</span>
+                </a>
+
+                <a href="https://youtube.com/@tu_canal" target="_blank" rel="noopener noreferrer" class="social-card youtube">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>YOUTUBE</span>
+                </a>
+
+                <a href="https://facebook.com/tu_pagina" target="_blank" rel="noopener noreferrer" class="social-card facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <span>FACEBOOK</span>
+                </a>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- CUADRÍCULA DE NAVEGACIÓN PRINCIPAL (4 COLUMNAS EN PC, 2 EN MÓVIL) -->
     <main class="category-grid">
         
         <!-- 1. NOTICIAS -->
@@ -42,7 +111,7 @@
             </div>
             <div class="card-info">
                 <h2>NOTICIAS</h2>
-                <p>Último Momento</p>
+                <p>Novedades GPW</p>
             </div>
         </a>
 
@@ -123,60 +192,7 @@
             </div>
         </a>
 
-        <!-- 9. WATCH (GRUPO DE WHATSAPP) -->
-        <a href="https://whatsapp.com/tu_grupo" target="_blank" rel="noopener noreferrer" class="category-card whatsapp-card">
-            <div class="card-image-wrapper">
-                <img src="https://images.unsplash.com/photo-1611746872915-04aea8ef4776?w=600&auto=format&fit=crop" alt="Watch WhatsApp" loading="lazy">
-            </div>
-            <div class="card-info">
-                <h2>WATCH</h2>
-                <p><i class="fa-brands fa-whatsapp"></i> Unirse al Grupo</p>
-            </div>
-        </a>
-
     </main>
-
-    <!-- SECCIÓN INSTAGRAM OFICIAL (@galaxy.pro.wrestling) -->
-    <section class="instagram-section">
-        <h3 class="section-title">LATEST INSTAGRAM POSTS</h3>
-
-        <!-- CABECERA DEL PERFIL DE INSTAGRAM OFICIAL -->
-        <div class="ig-profile-header">
-            <!-- Usa tu logo.webp como avatar del perfil -->
-            <img src="logo.webp" alt="Galaxy Pro Wrestling" class="ig-avatar" onerror="this.src='https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=150&auto=format&fit=crop'">
-            
-            <div class="ig-user-details">
-                <div class="ig-username-row">
-                    <span class="ig-username">galaxy.pro.wrestling</span>
-                    <i class="fa-solid fa-circle-check ig-verified"></i>
-                </div>
-                <span class="ig-fullname">Galaxy Pro Wrestling</span>
-                <div class="ig-stats">
-                    <span><strong>1,7 mil</strong> publicaciones</span>
-                    <span><strong>1,6 mil</strong> seguidores</span>
-                    <span><strong>84</strong> siguiendo</span>
-                </div>
-            </div>
-
-            <!-- LINK EXACTO DE TU INSTAGRAM -->
-            <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="ig-follow-btn">
-                <i class="fa-brands fa-instagram"></i> Seguir
-            </a>
-        </div>
-
-        <!-- FEED DE PUBLICACIONES (Vinculado al perfil oficial) -->
-        <div class="ig-posts-grid">
-            <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="ig-post">
-                <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=500&auto=format&fit=crop" alt="Post Instagram 1" loading="lazy">
-            </a>
-            <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="ig-post">
-                <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=500&auto=format&fit=crop" alt="Post Instagram 2" loading="lazy">
-            </a>
-            <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="ig-post">
-                <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=500&auto=format&fit=crop" alt="Post Instagram 3" loading="lazy">
-            </a>
-        </div>
-    </section>
 
     <script src="script.js"></script>
 </body>

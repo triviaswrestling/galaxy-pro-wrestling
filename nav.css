@@ -10,99 +10,108 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
-    background: #090909;
-    border-bottom: 2px solid #d90024; /* O #00e1ff según tu color neón prefieras */
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+    padding: 0 4%;
+    background: #060911;
+    border-bottom: 2px solid #00e1ff;
+    box-shadow: 0 4px 20px rgba(0, 225, 255, 0.25);
     z-index: 1000;
 }
 
 /* Área del Logo */
 .main-header .logo-area .site-logo {
-    height: 42px;
+    height: 40px;
     width: auto;
     display: block;
     object-fit: contain;
-    filter: drop-shadow(0 0 6px rgba(217, 0, 36, 0.4));
+    filter: drop-shadow(0 0 8px rgba(0, 225, 255, 0.5));
 }
 
 /* Botón Hamburguesa Mobile */
 .menu-toggle {
     background: transparent;
     border: none;
-    color: #ffffff;
+    color: #00e1ff;
     font-size: 26px;
-    padding: 0;
+    padding: 6px 10px;
     cursor: pointer;
     line-height: 1;
-    transition: transform 0.2s ease, color 0.2s ease;
+    border-radius: 4px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, color 0.15s ease;
 }
 
 .menu-toggle:active {
-    transform: scale(0.9);
-    color: #d90024;
+    transform: scale(0.92);
+    color: #ffffff;
+    box-shadow: 0 0 12px rgba(0, 225, 255, 0.6);
 }
 
-/* Menú Desplegable Estilo TNA/WWE (Borde a borde) */
+/* Menú Desplegable en Mobile (Ajustado por Porcentajes) */
 .main-nav {
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
-    right: 0;
     width: 100%;
-    background: #090909;
-    border-bottom: 2px solid #d90024;
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95);
+    background: rgba(6, 9, 17, 0.98);
+    border-bottom: 2px solid #00e1ff;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.95);
     z-index: 999;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     
-    /* Estado inicial colapsado para la animación suave */
+    /* Animación de apertura/cierre fluida */
     opacity: 0;
     visibility: hidden;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
+    transition: max-height 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
                 opacity 0.25s ease, 
                 visibility 0.25s ease;
 }
 
-/* Clase active inyectada por JS */
+/* Estado Activo (Inyectado por JS) */
 .main-nav.active {
     opacity: 1;
     visibility: visible;
-    max-height: 500px; /* Permite desplegar la lista completa */
+    max-height: 550px;
 }
 
-/* Enlaces del menú (Filas estilo WWE/TNA) */
+/* Enlaces del menú (Mobile) */
 .main-nav a {
     width: 100%;
-    padding: 16px 20px;
-    color: #d0d0d0;
+    padding: 14px 5%;
+    color: #d0e4ff;
     text-decoration: none;
     font-weight: 900;
-    font-size: 13px;
+    font-size: clamp(11px, 3.5vw, 13px);
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 1.2px;
-    border-bottom: 1px solid #1a1a1a;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+    letter-spacing: 1.5px;
+    border-bottom: 1px solid rgba(0, 225, 255, 0.1);
+    background: transparent;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .main-nav a:last-child {
     border-bottom: none;
 }
 
-/* Efecto hover y clic */
+/* Estado Interactivo: Solo se enciende al tocar o si es la página activa */
 .main-nav a:hover,
 .main-nav a:active,
 .main-nav a.active {
-    background: #141414;
-    color: #d90024;
+    background: rgba(0, 225, 255, 0.12);
+    color: #00e1ff;
+    text-shadow: 0 0 8px rgba(0, 225, 255, 0.6);
 }
 
-/* Adaptación para PC / Escritorio */
+/* Adaptación para Escritorio / PC */
 @media (min-width: 900px) {
+    .main-header {
+        padding: 0 5%;
+    }
+
     .menu-toggle {
         display: none;
     }
@@ -118,17 +127,40 @@
         opacity: 1;
         visibility: visible;
         max-height: none;
-        gap: 15px;
+        gap: clamp(8px, 1.5vw, 20px);
+        backdrop-filter: none;
     }
 
     .main-nav a {
         width: auto;
-        padding: 8px 12px;
-        border: none;
-        font-size: 11px;
+        padding: 6px 10px;
+        border-bottom: none;
+        font-size: clamp(10px, 1vw, 12px);
+        border-radius: 4px;
+        position: relative;
     }
 
-    .main-nav a:hover {
+    /* Subrayado neón inferior solo al hacer hover o si está activo en PC */
+    .main-nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: #00e1ff;
+        box-shadow: 0 0 8px #00e1ff;
+        transition: width 0.2s ease, left 0.2s ease;
+    }
+
+    .main-nav a:hover::after,
+    .main-nav a.active::after {
+        width: 100%;
+        left: 0;
+    }
+
+    .main-nav a:hover,
+    .main-nav a.active {
         background: transparent;
     }
 }

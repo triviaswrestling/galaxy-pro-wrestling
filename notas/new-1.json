@@ -1,0 +1,14 @@
+{
+    "id": 1,
+    "titulo": "Seth Rollins confirma su aparición en el próximo show de GPW",
+    "categoria": "ROSTER UPDATE",
+    "fecha": "2026-10-16",
+    "imagen": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800",
+    "contenido": [
+        { "tipo": "lead", "texto": "El luchador estrella confirmó a través de sus redes que estará en vivo este fin de semana." },
+        { "tipo": "p", "texto": "La gerencia general de Galaxy Pro Wrestling sacudió el panorama tras confirmar la presencia estelar de Seth Rollins para el evento principal." },
+        { "tipo": "subtitulo", "texto": "Declaraciones Oficiales" },
+        { "tipo": "cita", "texto": "No vengo solo a hacer una aparición, vengo a demostrar por qué esta industria gira alrededor de mi talento." },
+        { "tipo": "p", "texto": "El ambiente dentro del vestuario se encuentra en tensión tras los dichos del luchador. Las entradas continúan a la venta en el portal oficial." }
+    ]
+}

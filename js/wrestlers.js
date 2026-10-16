@@ -2,7 +2,7 @@ const wrestlers = [
     {
         name: "Cody Rhodes",
         nickname: "The American Nightmare",
-        division: "MASCULINO",
+        division: "masculino",
         status: "active",
         rank: 1,
         interpreter: "Galo",
@@ -24,7 +24,7 @@ const wrestlers = [
     {
         name: "Bret Hart",
         nickname: "The Darkman",
-        division: "MASCULINO",
+        division: "masculino",
         status: "active",
         rank: 2,
         interpreter: "Bret Hart",

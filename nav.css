@@ -4,119 +4,131 @@
 
 /* Cabecera principal en páginas secundarias */
 .main-header {
+    position: relative;
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    position: relative;
-    z-index: 100;
+    padding: 0 20px;
+    background: #090909;
+    border-bottom: 2px solid #d90024; /* O #00e1ff según tu color neón prefieras */
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.9);
+    z-index: 1000;
 }
 
 /* Área del Logo */
 .main-header .logo-area .site-logo {
-    max-width: 170px;
-    height: auto;
+    height: 42px;
+    width: auto;
     display: block;
     object-fit: contain;
-    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.5));
+    filter: drop-shadow(0 0 6px rgba(217, 0, 36, 0.4));
 }
 
 /* Botón Hamburguesa Mobile */
 .menu-toggle {
-    background: rgba(2, 8, 25, 0.95);
-    border: 1.5px solid #00e1ff;
-    color: #00e1ff;
-    font-size: 1.2rem;
-    padding: 8px 14px;
-    border-radius: 8px;
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    font-size: 26px;
+    padding: 0;
     cursor: pointer;
-    will-change: transform;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+    line-height: 1;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .menu-toggle:active {
-    transform: scale(0.92);
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+    transform: scale(0.9);
+    color: #d90024;
 }
 
-/* Menú Desplegable en Celulares (Oculto por defecto) */
+/* Menú Desplegable Estilo TNA/WWE (Borde a borde) */
 .main-nav {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 16px;
-    width: 210px;
-    background: rgba(2, 8, 25, 0.98);
-    border: 1.5px solid #00e1ff;
-    border-radius: 12px;
-    padding: 10px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
-    z-index: 101;
+    display: flex;
     flex-direction: column;
-    gap: 6px;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: #090909;
+    border-bottom: 2px solid #d90024;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.95);
+    z-index: 999;
+    
+    /* Estado inicial colapsado para la animación suave */
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.25, 1, 0.5, 1), 
+                opacity 0.25s ease, 
+                visibility 0.25s ease;
 }
 
-/* Clase active inyectada por JS al tocar el botón */
+/* Clase active inyectada por JS */
 .main-nav.active {
-    display: flex;
-    animation: menuFade 0.2s ease-in-out forwards;
+    opacity: 1;
+    visibility: visible;
+    max-height: 500px; /* Permite desplegar la lista completa */
 }
 
-@keyframes menuFade {
-    from { opacity: 0; transform: translateY(-8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Enlaces del menú */
+/* Enlaces del menú (Filas estilo WWE/TNA) */
 .main-nav a {
-    color: #ffffff;
+    width: 100%;
+    padding: 16px 20px;
+    color: #d0d0d0;
     text-decoration: none;
-    font-weight: 800;
-    font-size: 0.82rem;
-    padding: 8px 12px;
-    border-radius: 6px;
-    border: 1px solid transparent;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    font-weight: 900;
+    font-size: 13px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    border-bottom: 1px solid #1a1a1a;
+    transition: background-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
-/* Efecto al presionar o enlace activo de la página actual */
+.main-nav a:last-child {
+    border-bottom: none;
+}
+
+/* Efecto hover y clic */
+.main-nav a:hover,
 .main-nav a:active,
 .main-nav a.active {
-    background: rgba(0, 225, 255, 0.15);
-    border-color: #00e1ff;
-    color: #00e1ff;
-    transform: scale(0.96);
+    background: #141414;
+    color: #d90024;
 }
 
-/* Adaptación para pantallas más grandes (PC / Tablet) */
-@media (min-width: 768px) {
+/* Adaptación para PC / Escritorio */
+@media (min-width: 900px) {
     .menu-toggle {
-        display: none; /* Oculta el botón hamburguesa */
+        display: none;
     }
 
     .main-nav {
-        display: flex !important;
         position: static;
+        display: flex !important;
+        flex-direction: row;
+        width: auto;
         background: transparent;
         border: none;
-        padding: 0;
         box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        max-height: none;
+        gap: 15px;
+    }
+
+    .main-nav a {
         width: auto;
-        flex-direction: row;
-        gap: 10px;
+        padding: 8px 12px;
+        border: none;
+        font-size: 11px;
     }
 
     .main-nav a:hover {
-        background: rgba(0, 225, 255, 0.12);
-        border-color: #00e1ff;
-        color: #00e1ff;
-        transform: scale(0.96);
+        background: transparent;
     }
 }

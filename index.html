@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <title>Galaxy Pro Wrestling - Inicio</title>
-    <!-- Google Fonts optimizada -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
-    <!-- FontAwesome para íconos oficiales -->
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -16,7 +16,7 @@
     <div class="glow-border left"></div>
     <div class="glow-border right"></div>
 
-    <!-- ENCABEZADO SUPERIOR CON TU LOGO WEBP -->
+    <!-- ENCABEZADO SUPERIOR CON LOGO WEBP -->
     <header class="main-header">
         <div class="logo-area">
             <img src="logo.webp" alt="Galaxy Pro Wrestling Logo" class="site-logo">
@@ -31,80 +31,61 @@
         </p>
     </section>
 
-    <!-- CONTENEDOR SUPERIOR (NOTICIAS 50% + FOLLOW US 50% EN PC) -->
-    <div class="top-widgets-container">
-        
-        <!-- CARRUSEL DE NOTICIAS -->
-        <section class="news-ticker-container">
-            <div class="news-ticker-header">
-                <i class="fa-solid fa-bolt ticker-icon"></i>
-                <span>NOTICIAS</span>
-            </div>
-            <div class="news-slider">
-                <div class="news-track" id="newsTrack">
-                    
-                    <div class="news-slide active">
-                        <span class="news-tag">GPW CLASH</span>
-                        <a href="noticias.html" class="news-title">¡Anunciado el evento principal para Galactic Clash 2026!</a>
-                    </div>
+    <!-- MARCO DESTACADO DE ÚLTIMAS NOTICIAS (ESTILO WWE / TNA SHOWCASE) -->
+    <section class="featured-news-section">
+        <div class="section-header-bar">
+            <i class="fa-solid fa-bolt text-cyan"></i>
+            <h3>ÚLTIMAS NOTICIAS</h3>
+        </div>
 
-                    <div class="news-slide">
-                        <span class="news-tag">CAMPEONATO</span>
-                        <a href="noticias.html" class="news-title">Nuevo contendiente número 1 al Título Mundial de GPW.</a>
-                    </div>
-
-                    <div class="news-slide">
-                        <span class="news-tag">ROSTER</span>
-                        <a href="noticias.html" class="news-title">Firma estelar: Un nuevo luchador intergaláctico se une al elenco.</a>
-                    </div>
-
-                    <div class="news-slide">
-                        <span class="news-tag">RESULTADOS</span>
-                        <a href="noticias.html" class="news-title">Repaso de los momentos más impactantes del último episodio.</a>
-                    </div>
-
-                    <div class="news-slide">
-                        <span class="news-tag">COMUNIDAD</span>
-                        <a href="noticias.html" class="news-title">Únete al grupo oficial de WhatsApp para ver los shows en vivo.</a>
-                    </div>
-
+        <div class="news-showcase-card">
+            <!-- NOTICIA 1 (ACTIVA) -->
+            <article class="news-item active">
+                <div class="news-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop" alt="Galactic Clash Evento Principal">
+                    <div class="image-overlay"></div>
                 </div>
-            </div>
-        </section>
+                <div class="news-content-box">
+                    <span class="news-badge">GPW CLASH 2026</span>
+                    <h4 class="news-heading">¡Anunciado el Evento Principal para Galactic Clash!</h4>
+                    <p class="news-excerpt">Los máximos exponentes del universo GPW se enfrentarán en una lucha sin precedentes por la gloria intergaláctica.</p>
+                    <a href="noticias.html" class="news-btn">LEER MÁS <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </article>
 
-        <!-- SECCIÓN FOLLOW US (REDES SOCIALES) -->
-        <section class="social-section">
-            <div class="social-grid">
-                
-                <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="social-card instagram">
-                    <i class="fa-brands fa-instagram"></i>
-                    <span>INSTAGRAM</span>
-                </a>
+            <!-- NOTICIA 2 -->
+            <article class="news-item">
+                <div class="news-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&auto=format&fit=crop" alt="Título Mundial GPW">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="news-content-box">
+                    <span class="news-badge">CAMPEONATO MUNDIAL</span>
+                    <h4 class="news-heading">Nuevo Contendiente #1 al Campeonato Mundial</h4>
+                    <p class="news-excerpt">Tras una contienda brutal el pasado fin de semana, tenemos un nuevo retador oficial al cinturón de GPW.</p>
+                    <a href="noticias.html" class="news-btn">LEER MÁS <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </article>
 
-                <a href="https://whatsapp.com/tu_grupo" target="_blank" rel="noopener noreferrer" class="social-card whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>WHATSAPP</span>
-                </a>
+            <!-- NOTICIA 3 -->
+            <article class="news-item">
+                <div class="news-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=800&auto=format&fit=crop" alt="Nuevo Luchador GPW">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="news-content-box">
+                    <span class="news-badge">ROSTER UPDATE</span>
+                    <h4 class="news-heading">Firma Estelar: Nueva Incorporación al Elenco</h4>
+                    <p class="news-excerpt">Un reconocido talento de la escena independiente ha firmado un contrato exclusivo con Galaxy Pro Wrestling.</p>
+                    <a href="noticias.html" class="news-btn">LEER MÁS <i class="fa-solid fa-chevron-right"></i></a>
+                </div>
+            </article>
+        </div>
+    </section>
 
-                <a href="https://youtube.com/@tu_canal" target="_blank" rel="noopener noreferrer" class="social-card youtube">
-                    <i class="fa-brands fa-youtube"></i>
-                    <span>YOUTUBE</span>
-                </a>
-
-                <a href="https://facebook.com/tu_pagina" target="_blank" rel="noopener noreferrer" class="social-card facebook">
-                    <i class="fa-brands fa-facebook-f"></i>
-                    <span>FACEBOOK</span>
-                </a>
-
-            </div>
-        </section>
-
-    </div>
-
-    <!-- CUADRÍCULA DE NAVEGACIÓN PRINCIPAL (4 COLUMNAS EN PC, 2 EN MÓVIL) -->
+    <!-- CUADRÍCULA DE NAVEGACIÓN PRINCIPAL (MENÚ) -->
     <main class="category-grid">
         
-        <!-- 1. NOTICIAS -->
         <a href="noticias.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=600&auto=format&fit=crop" alt="Noticias" loading="lazy">
@@ -115,7 +96,6 @@
             </div>
         </a>
 
-        <!-- 2. ROSTER -->
         <a href="luchadores.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1566393028674-d1912e42337d?w=600&auto=format&fit=crop" alt="Roster" loading="lazy">
@@ -126,7 +106,6 @@
             </div>
         </a>
 
-        <!-- 3. EVENTOS -->
         <a href="eventos.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420?w=600&auto=format&fit=crop" alt="Eventos" loading="lazy">
@@ -137,7 +116,6 @@
             </div>
         </a>
 
-        <!-- 4. CAMPEONATOS -->
         <a href="campeonatos.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=600&auto=format&fit=crop" alt="Campeonatos" loading="lazy">
@@ -148,7 +126,6 @@
             </div>
         </a>
 
-        <!-- 5. RANKINGS -->
         <a href="rankings.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?w=600&auto=format&fit=crop" alt="Rankings" loading="lazy">
@@ -159,7 +136,6 @@
             </div>
         </a>
 
-        <!-- 6. ALUMNI -->
         <a href="alumni.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&auto=format&fit=crop" alt="Alumni" loading="lazy">
@@ -170,7 +146,6 @@
             </div>
         </a>
 
-        <!-- 7. REGLAS -->
         <a href="reglas.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&auto=format&fit=crop" alt="Reglas" loading="lazy">
@@ -181,7 +156,6 @@
             </div>
         </a>
 
-        <!-- 8. ESTIPULACIONES -->
         <a href="estipulaciones.html" class="category-card">
             <div class="card-image-wrapper">
                 <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=600&auto=format&fit=crop" alt="Estipulaciones" loading="lazy">
@@ -193,6 +167,46 @@
         </a>
 
     </main>
+
+    <!-- SECCIÓN FOLLOW US (REDES SOCIALES OFICIALES EN MARCOS CIAN) -->
+    <section class="social-section">
+        <h3 class="section-title">FOLLOW US</h3>
+        <div class="social-grid">
+            
+            <a href="https://www.instagram.com/galaxy.pro.wrestling?vrfl=emMxd29mYTNweHM3" target="_blank" rel="noopener noreferrer" class="social-card instagram">
+                <div class="social-icon-box"><i class="fa-brands fa-instagram"></i></div>
+                <div class="social-details">
+                    <span class="social-name">INSTAGRAM</span>
+                    <small>@galaxy.pro.wrestling</small>
+                </div>
+            </a>
+
+            <a href="https://whatsapp.com/tu_grupo" target="_blank" rel="noopener noreferrer" class="social-card whatsapp">
+                <div class="social-icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="social-details">
+                    <span class="social-name">WHATSAPP</span>
+                    <small>Grupo Oficial GPW</small>
+                </div>
+            </a>
+
+            <a href="https://youtube.com/@tu_canal" target="_blank" rel="noopener noreferrer" class="social-card youtube">
+                <div class="social-icon-box"><i class="fa-brands fa-youtube"></i></div>
+                <div class="social-details">
+                    <span class="social-name">YOUTUBE</span>
+                    <small>Canal Oficial</small>
+                </div>
+            </a>
+
+            <a href="https://facebook.com/tu_pagina" target="_blank" rel="noopener noreferrer" class="social-card facebook">
+                <div class="social-icon-box"><i class="fa-brands fa-facebook-f"></i></div>
+                <div class="social-details">
+                    <span class="social-name">FACEBOOK</span>
+                    <small>Comunidad GPW</small>
+                </div>
+            </a>
+
+        </div>
+    </section>
 
     <script src="script.js"></script>
 </body>

@@ -12,7 +12,7 @@ const listaNoticias = [
         resumen: "Los máximos exponentes del universo GPW se enfrentarán en una lucha sin precedentes por la gloria intergaláctica.",
         imagen: "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop",
         fecha: "2026-10-15",
-        link: "noticia.html?id=12"
+        link: "noticia.html?id=1"
     },
     {
         id: 11,

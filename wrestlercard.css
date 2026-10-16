@@ -20,7 +20,7 @@ body.modal-open {
    CONTENEDOR PRINCIPAL Y DIVISIONES DE ROSTER
    ========================================= */
 main {
-    padding: 30px 0px; /* Sin padding lateral para que llegue a los bordes neón */
+    padding: 30px 0px;
     background: #0b0b0b;
     max-width: 1200px;
     margin: 0 auto;
@@ -36,19 +36,43 @@ main > h1 {
     text-transform: uppercase;
 }
 
+/* Versión Mobile: 3 columnas al límite de los neones */
 .roster {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columnas fijas en mobile */
-    gap: 2px; /* Espacio mínimo para hacer las cards gigantes al límite */
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px; 
+    width: calc(100% + 32px); /* Compensa los 16px de padding lateral del body en mobile[span_0](start_span)[span_0](end_span) */
+    margin-left: -16px;
+    margin-right: -16px;
     margin-bottom: 40px;
-    padding: 0 2px;
 }
 
+/* Versión PC: Tarjetas grandes automáticas que llegan a los neones (45px de padding en PC[span_1](start_span)[span_1](end_span)) */
 @media (min-width: 768px) {
     .roster {
-        grid-template-columns: repeat(5, 1fr);
-        gap: 18px;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+        gap: 20px;
+        width: calc(100% + 90px); /* Compensa los 45px de padding del body en PC[span_2](start_span)[span_2](end_span) */
+        margin-left: -45px;
+        margin-right: -45px;
         padding: 0;
+    }
+
+    /* Textos más grandes y legibles en PC */
+    .wrestler > p:first-of-type {
+        font-size: 10px;
+        margin: 8px 6px 0;
+    }
+
+    .wrestler > h2 {
+        font-size: 16px;
+        margin: 4px 6px;
+        white-space: normal;
+    }
+
+    .wrestler > h2 + p {
+        font-size: 10px;
+        margin: 0 6px 10px;
     }
 }
 
@@ -115,11 +139,11 @@ main > h1 {
     pointer-events: none;
 }
 
-/* Apodo del luchador (Cian / Celeste) */
+/* Apodo del luchador (Cian / Celeste) - Mobile base */
 .wrestler > p:first-of-type {
     margin: 4px 2px 0;
     color: #00bfff;
-    font-size: 6.5px; /* Tamaño optimizado para 3 columnas máximas */
+    font-size: 6.5px; /* Tamaño optimizado para 3 columnas máximas en mobile */
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.3px;
@@ -128,7 +152,7 @@ main > h1 {
     overflow-wrap: anywhere;    
 }
 
-/* Nombre principal del luchador */
+/* Nombre principal del luchador - Mobile base */
 .wrestler > h2 {
     margin: 2px 2px;
     color: #ffffff;
@@ -141,7 +165,7 @@ main > h1 {
     text-overflow: clip;
 }
 
-/* Stable o equipo (Gris secundario) */
+/* Stable o equipo (Gris secundario) - Mobile base */
 .wrestler > h2 + p {
     margin: 0 2px 6px;
     color: #aaaaaa;

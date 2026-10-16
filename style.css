@@ -1,65 +1,69 @@
-/* RESETEO BÁSICO PARA MAXIMA VELOCIDAD */
+/* RESETEO BÁSICO PARA MÁXIMA VELOCIDAD */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent; /* Elimina destello gris táctil */
 }
 
-/* ESTÉTICA DE GALAXIA PROFUNDA */
+/* ESTÉTICA DE GALAXIA ESPACIAL PROFUNDA (Optimizado sin imágenes pesadas) */
 body {
-    background-color: #010110;
-    background-image: radial-gradient(circle at 50% 10%, #0c1c4e 0%, #010110 80%);
+    background-color: #010413;
+    background-image: 
+        radial-gradient(circle at 50% 15%, #0d2b6b 0%, #030922 55%, #010413 90%),
+        radial-gradient(circle at 10% 80%, rgba(0, 229, 255, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(0, 119, 255, 0.08) 0%, transparent 40%);
     color: #ffffff;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal */
     padding-bottom: 50px;
 }
 
-/* MARCOS DE LUZ CIAN LATERALES */
+/* MARCOS DE LUZ CIAN LATERALES (Puro CSS, ultra liviano) */
 .glow-border {
     position: fixed;
     top: 0;
-    width: 15px;
+    width: 20px;
     height: 100%;
     z-index: -1;
-    background-image: linear-gradient(0deg, transparent 0%, #00e5ff 50%, transparent 100%);
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
-    opacity: 0.6;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0,229,255,0) 0%, rgba(0,229,255,0.85) 50%, rgba(0,229,255,0) 100%);
+    box-shadow: 0 0 25px rgba(0, 229, 255, 0.9), 0 0 45px rgba(0, 153, 255, 0.5);
+    opacity: 0.85;
 }
 
-.glow-border.left { left: 0; border-right: 2px solid #00e5ff; }
-.glow-border.right { right: 0; border-left: 2px solid #00e5ff; }
+.glow-border.left { 
+    left: 0; 
+    border-right: 2px solid #00ffff;
+}
 
-/* ENCABEZADO SUPERIOR */
+.glow-border.right { 
+    right: 0; 
+    border-left: 2px solid #00ffff;
+}
+
+/* ENCABEZADO SUPERIOR CON LOGO */
 .main-header {
     width: 100%;
     max-width: 90%;
-    padding: 20px 10px 10px 10px;
+    padding: 20px 10px 5px 10px;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.logo-area h1 {
-    font-size: 1.8rem;
-    font-weight: 900;
-    font-style: italic;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #00e5ff;
-    text-shadow: 0 0 10px rgba(0, 229, 255, 0.9);
-}
-
-.tagline {
-    font-size: 0.75rem;
-    color: #ff3c3c;
-    font-weight: 700;
-    margin-top: 4px;
-    letter-spacing: 1px;
+.site-logo {
+    max-width: 270px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.9)) drop-shadow(0 0 30px rgba(0, 153, 255, 0.4));
+    transition: transform 0.3s ease;
 }
 
 /* SECCIÓN BIENVENIDA (WELCOME) */
@@ -69,9 +73,11 @@ body {
     text-align: center;
     margin: 15px 0 20px 0;
     padding: 15px;
-    background: rgba(3, 10, 33, 0.6);
-    border-radius: 10px;
-    border: 1px solid rgba(0, 229, 255, 0.2);
+    background: rgba(3, 14, 42, 0.75);
+    border-radius: 12px;
+    border: 1.5px solid rgba(0, 229, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.15);
+    content-visibility: auto;
 }
 
 .welcome-section h2 {
@@ -80,16 +86,17 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 8px;
-    color: #ffffff;
+    color: #00ffff;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
 }
 
 .welcome-section p {
     font-size: 0.82rem;
-    color: #b0b8d0;
+    color: #c0d0f0;
     line-height: 1.5;
 }
 
-/* CUADRÍCULA DE CATEGORÍAS (2 columnas en celular, 3 en PC) */
+/* CUADRÍCULA DE CATEGORÍAS (2 columnas en móvil) */
 .category-grid {
     width: 90%;
     max-width: 850px;
@@ -99,17 +106,30 @@ body {
     margin-bottom: 30px;
 }
 
+/* TARJETAS CON BORDE CIAN Y ANIMACIÓN POR HARDWARE */
 .category-card {
-    background-color: #030a21;
-    border: 1.5px solid rgba(0, 229, 255, 0.4);
-    border-radius: 12px;
+    background-color: #030a24;
+    border: 1.8px solid rgba(0, 229, 255, 0.6);
+    border-radius: 12px; /* Esquinas redondeadas, no hexágonos */
     overflow: hidden;
     text-decoration: none;
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), inset 0 0 10px rgba(0, 229, 255, 0.15);
+    will-change: transform, border-color, box-shadow;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.2s ease, 
+                box-shadow 0.2s ease;
+    content-visibility: auto;
+}
+
+/* Respuesta táctil al tocar/hover */
+.category-card:active,
+.category-card:hover {
+    transform: scale(0.97) translateY(-2px);
+    border-color: #00ffff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8), inset 0 0 15px rgba(0, 229, 255, 0.4);
 }
 
 .card-image-wrapper {
@@ -124,6 +144,11 @@ body {
     height: 100%;
     object-fit: cover;
     opacity: 0.85;
+    transition: transform 0.3s ease;
+}
+
+.category-card:hover .card-image-wrapper img {
+    transform: scale(1.05);
 }
 
 .card-info {
@@ -135,19 +160,21 @@ body {
     font-size: 0.9rem;
     font-weight: 900;
     letter-spacing: 0.5px;
-    color: #f0f0f0;
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(0, 229, 255, 0.5);
 }
 
 .card-info p {
     font-size: 0.7rem;
-    color: #8a95b5;
+    color: #9ab0d5;
 }
 
-/* SECCIÓN LATEST INSTAGRAM POSTS */
+/* SECCIÓN INSTAGRAM POSTS */
 .instagram-section {
     width: 90%;
     max-width: 850px;
     margin-top: 10px;
+    content-visibility: auto;
 }
 
 .section-title {
@@ -158,20 +185,22 @@ body {
     margin-bottom: 15px;
     color: #ffffff;
     text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
 }
 
-/* HEADER PERFIL INSTAGRAM */
+/* PERFIL DE INSTAGRAM */
 .ig-profile-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #030a21;
+    background: #030a24;
     padding: 12px 15px;
     border-radius: 10px 10px 0 0;
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    border: 1.5px solid rgba(0, 229, 255, 0.5);
     border-bottom: none;
     flex-wrap: wrap;
     gap: 10px;
+    box-shadow: inset 0 0 10px rgba(0, 229, 255, 0.1);
 }
 
 .ig-avatar {
@@ -179,7 +208,8 @@ body {
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #00e5ff;
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 8px rgba(0, 229, 255, 0.8);
 }
 
 .ig-user-details {
@@ -200,21 +230,22 @@ body {
 }
 
 .ig-verified {
-    color: #00e5ff;
+    color: #00ffff;
     font-size: 0.8rem;
+    text-shadow: 0 0 5px rgba(0, 229, 255, 0.8);
 }
 
 .ig-fullname {
     display: block;
     font-size: 0.72rem;
-    color: #8a95b5;
+    color: #9ab0d5;
 }
 
 .ig-stats {
     display: flex;
     gap: 10px;
     font-size: 0.68rem;
-    color: #b0b8d0;
+    color: #c0d0f0;
     margin-top: 3px;
 }
 
@@ -233,11 +264,14 @@ body {
     display: flex;
     align-items: center;
     gap: 6px;
-    transition: background 0.2s;
+    box-shadow: 0 0 10px rgba(56, 151, 240, 0.4);
+    transition: background 0.2s, transform 0.15s ease;
 }
 
+.ig-follow-btn:active,
 .ig-follow-btn:hover {
     background: #287bd0;
+    transform: scale(0.96);
 }
 
 /* CUADRÍCULA DE POSTS */
@@ -245,10 +279,11 @@ body {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 4px;
-    background: #030a21;
+    background: #030a24;
     padding: 4px;
     border-radius: 0 0 10px 10px;
-    border: 1px solid rgba(0, 229, 255, 0.3);
+    border: 1.5px solid rgba(0, 229, 255, 0.5);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
 }
 
 .ig-post {
@@ -270,23 +305,14 @@ body {
     opacity: 0.9;
 }
 
-/* ADAPTACIÓN PARA PC */
+/* ADAPTACIÓN PARA PC (3 Columnas en Pantallas Grandes) */
 @media (min-width: 768px) {
     .category-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 15px;
     }
     .card-image-wrapper { height: 130px; }
-    .logo-area h1 { font-size: 2.2rem; }
+    .site-logo { max-width: 320px; }
     .welcome-section h2 { font-size: 1.4rem; }
     .welcome-section p { font-size: 0.9rem; }
 }
-
-/* OPTIMIZACIÓN DE RENDERIZADO BAJO DEMANDA (SAVES RAM & GPU) */
-.category-card, 
-.instagram-section {
-    /* El navegador ignora el renderizado de los elementos fuera de pantalla */
-    content-visibility: auto;
-    /* Le da un tamaño aproximado para que la barra de scroll no dé saltos */
-    contain-intrinsic-size: 1px 300px;
-    }

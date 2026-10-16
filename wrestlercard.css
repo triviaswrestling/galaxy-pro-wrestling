@@ -36,43 +36,43 @@ main > h1 {
     text-transform: uppercase;
 }
 
-/* Versión Mobile: 3 columnas al límite de los neones */
+/* Versión Mobile: 3 columnas al límite sin pasarse */
 .roster {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2px; 
-    width: calc(100% + 32px); /* Compensa los 16px de padding lateral del body en mobile[span_0](start_span)[span_0](end_span) */
-    margin-left: -16px;
-    margin-right: -16px;
+    gap: 4px; 
+    width: calc(100% + 24px); /* Ajustado para que no se sobrepase */
+    margin-left: -12px;
+    margin-right: -12px;
     margin-bottom: 40px;
 }
 
-/* Versión PC: Tarjetas grandes automáticas que llegan a los neones (45px de padding en PC[span_1](start_span)[span_1](end_span)) */
+/* Versión PC: 5 columnas SÍ O SÍ, llegando de punta a punta hasta los neones (45px de padding en PC)[span_2](start_span)[span_2](end_span)[span_3](start_span)[span_3](end_span) */
 @media (min-width: 768px) {
     .roster {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-        gap: 20px;
-        width: calc(100% + 90px); /* Compensa los 45px de padding del body en PC[span_2](start_span)[span_2](end_span) */
+        grid-template-columns: repeat(5, 1fr); /* 5 columnas fijas en PC[span_4](start_span)[span_4](end_span) */
+        gap: 16px;
+        width: calc(100% + 90px); /* Compensa los 45px de padding del body en PC[span_5](start_span)[span_5](end_span) */
         margin-left: -45px;
         margin-right: -45px;
         padding: 0;
     }
 
-    /* Textos más grandes y legibles en PC */
+    /* Textos proporcionales y legibles en PC */
     .wrestler > p:first-of-type {
-        font-size: 10px;
-        margin: 8px 6px 0;
+        font-size: 9px;
+        margin: 6px 4px 0;
     }
 
     .wrestler > h2 {
-        font-size: 16px;
-        margin: 4px 6px;
+        font-size: 14px;
+        margin: 3px 4px;
         white-space: normal;
     }
 
     .wrestler > h2 + p {
-        font-size: 10px;
-        margin: 0 6px 10px;
+        font-size: 9px;
+        margin: 0 4px 8px;
     }
 }
 
@@ -143,12 +143,12 @@ main > h1 {
 .wrestler > p:first-of-type {
     margin: 4px 2px 0;
     color: #00bfff;
-    font-size: 6.5px; /* Tamaño optimizado para 3 columnas máximas en mobile */
+    font-size: 6.5px; 
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.3px;
     line-height: 1.1;
-    white-space: normal;        /* Permite que baje de línea si es largo */
+    white-space: normal;        
     overflow-wrap: anywhere;    
 }
 
@@ -156,11 +156,11 @@ main > h1 {
 .wrestler > h2 {
     margin: 2px 2px;
     color: #ffffff;
-    font-size: 9.5px; /* Tamaño adaptado para aprovechar el espacio */
+    font-size: 9.5px; 
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.3px;
-    white-space: normal; /* Evita que se corte con '...' y baje de línea */
+    white-space: normal; 
     overflow: visible;
     text-overflow: clip;
 }
@@ -208,7 +208,7 @@ main > h1 {
 }
 
 /* =========================================
-   MODAL ÉPICO (CORREGIDO Y AJUSTADO)
+   MODAL ÉPICO (INTACTO)
    ========================================= */
 .modal {
     position: fixed;
@@ -250,7 +250,6 @@ main > h1 {
     transform: translateY(0) scale(1);
 }
 
-/* Franja superior azulada */
 .modal-content::before {
     content: "";
     position: absolute;
@@ -262,7 +261,6 @@ main > h1 {
     z-index: 5;
 }
 
-/* 1. Categoría superior (ej: Career Highlights) */
 .modal-content h3 {
     margin: 0;
     padding: 18px 20px 4px;
@@ -273,7 +271,6 @@ main > h1 {
     text-transform: uppercase;
 }
 
-/* 2. Nombre principal del luchador */
 .modal-content h2 {
     margin: 0;
     padding: 4px 20px 12px;
@@ -286,7 +283,6 @@ main > h1 {
     border-bottom: 1px solid #3a3a3a;
 }
 
-/* 3. Franja inferior: División a la izquierda e Intérprete en DORADO a la derecha */
 .modal-content > p {
     display: flex;
     justify-content: space-between;
@@ -302,7 +298,6 @@ main > h1 {
     border-bottom: 1px solid #2a2a2a;
 }
 
-/* Estilo dorado y alineado para el intérprete */
 .modal-content > p span.interpreter {
     color: #ffd700;
     font-weight: 900;
@@ -329,7 +324,6 @@ main > h1 {
     color: #00bfff;
 }
 
-/* Botón de cierre */
 .close-button {
     position: absolute;
     top: 10px;

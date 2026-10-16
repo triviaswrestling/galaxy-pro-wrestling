@@ -1,4 +1,4 @@
-console.log("ROSTER.JS CARGADO");
+Console.log("ROSTER.JS CARGADO");
 
 const masculinoContainer = document.getElementById("roster");          // Contenedor División Masculina
 const femeninoContainer = document.getElementById("femenino-roster"); // Contenedor División Femenina limpio
@@ -6,13 +6,13 @@ const femeninoContainer = document.getElementById("femenino-roster"); // Contene
 /* =========================================
    CREAR TARJETA DE LUCHADOR
    ========================================= */
-function createWrestlerCard(wrestler, index) {
+function createWrestlerCard(wrestler, globalIndex) {
     const card = document.createElement("div");
     card.className = "wrestler";
 
     card.onclick = function() {
         if (typeof openModal === "function") {
-            openModal(index);
+            openModal(globalIndex);
         }
     };
 
@@ -45,9 +45,10 @@ function loadMasculinoRoster(status) {
     if (!masculinoContainer) return;
     masculinoContainer.innerHTML = "";
 
-    wrestlers.forEach(function(wrestler, index) {
+    wrestlers.forEach(function(wrestler) {
         if (wrestler.status === status && wrestler.division === "Masculino") {
-            masculinoContainer.appendChild(createWrestlerCard(wrestler, index));
+            const globalIndex = wrestlers.indexOf(wrestler);
+            masculinoContainer.appendChild(createWrestlerCard(wrestler, globalIndex));
         }
     });
 }
@@ -59,9 +60,10 @@ function loadFemeninoRoster(status) {
     if (!femeninoContainer) return;
     femeninoContainer.innerHTML = "";
 
-    wrestlers.forEach(function(wrestler, index) {
+    wrestlers.forEach(function(wrestler) {
         if (wrestler.status === status && wrestler.division === "Femenino") {
-            femeninoContainer.appendChild(createWrestlerCard(wrestler, index));
+            const globalIndex = wrestlers.indexOf(wrestler);
+            femeninoContainer.appendChild(createWrestlerCard(wrestler, globalIndex));
         }
     });
 }

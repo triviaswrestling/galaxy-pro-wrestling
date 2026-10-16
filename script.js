@@ -1,4 +1,4 @@
-// ROTACIÓN AUTOMÁTICA DE NOTICIAS DESTACADAS (SHOWCASE ESTILO WWE/TNA)
+// ROTACIÓN AUTOMÁTICA DE NOTICIAS DESTACADAS (TIEMPO ADECUADO DE LECTURA: 7 SEGUNDOS)
 document.addEventListener('DOMContentLoaded', () => {
     const newsItems = document.querySelectorAll('.news-item');
     if (!newsItems.length) return;
@@ -14,5 +14,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Muestra la nueva noticia
         newsItems[currentIndex].classList.add('active');
-    }, 5000); // Cambia de noticia cada 5 segundos
+    }, 8000); // 7000 milisegundos = 7 segundos exactos para leer con calma
 });

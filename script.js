@@ -1,11 +1,12 @@
 /* ==========================================================
-   GALAXY PRO WRESTLING (GPW) - NAVEGACIÓN (PÁGINAS INTERNAS)
+   GALAXY PRO WRESTLING (GPW) - NAVEGACIÓN EN PÁGINAS INTERNAS
    ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
     const headerElement = document.querySelector(".main-header");
 
     if (headerElement) {
+        // Inyecta el logo, el botón hamburguesa y el menú desplegable
         headerElement.innerHTML = `
             <div class="logo-area">
                 <a href="index.html">
@@ -13,28 +14,24 @@ document.addEventListener("DOMContentLoaded", () => {
                 </a>
             </div>
 
-            <!-- Botón Hamburguesa Mobile -->
             <button class="menu-toggle" id="menuButton" aria-label="Abrir menú">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
-            <!-- Menú Desplegable -->
             <nav class="main-nav" id="mainNav">
-                <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
-                <a href="noticias.html"><i class="fa-solid fa-newspaper"></i> Noticias</a>
-                <a href="luchadores.html"><i class="fa-solid fa-user-ninja"></i> Roster</a>
-                <a href="alumni.html"><i class="fa-solid fa-user-clock"></i> Alumni</a>
-                
-                <a href="eventos.html"><i class="fa-solid fa-calendar-days"></i> Eventos</a>
-                <a href="campeonatos.html"><i class="fa-solid fa-trophy"></i> Campeonatos</a>
-                <a href="rankings.html"><i class="fa-solid fa-ranking-star"></i> Rankings</a>
-            
-                <a href="reglas.html"><i class="fa-solid fa-book"></i> Reglas</a>
-                <a href="estipulaciones.html"><i class="fa-solid fa-bolt"></i> Estipulaciones</a>
+                <a href="index.html">INICIO</a>
+                <a href="noticias.html">NOTICIAS</a>
+                <a href="luchadores.html">ROSTER</a>
+                <a href="alumni.html">ALUMNI</a>
+                <a href="eventos.html">EVENTOS</a>
+                <a href="campeonatos.html">CAMPEONATOS</a>
+                <a href="rankings.html">RANKINGS</a>
+                <a href="reglas.html">REGLAS</a>
+                <a href="estipulaciones.html">ESTIPULACIONES</a>
             </nav>
         `;
 
-        // Marca el enlace activo según la página actual
+        // Marcar enlace activo según la página actual
         const currentPage = window.location.pathname.split("/").pop() || "index.html";
         const navLinks = headerElement.querySelectorAll(".main-nav a");
 
@@ -44,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Lógica para abrir/cerrar el menú hamburguesa en celulares
+        // Abrir y cerrar el menú hamburguesa
         const menuButton = document.getElementById("menuButton");
         const nav = document.getElementById("mainNav");
 

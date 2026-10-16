@@ -36,11 +36,10 @@ main > h1 {
     text-transform: uppercase;
 }
 
-/* Estructura de la grilla: 2 columnas en celular, 5 en PC */
 .roster {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr); /* Cambiado a 3 columnas por defecto para mobile */
+    gap: 8px; /* Reducido ligeramente para que entren bien 3 en pantallas chicas */
     margin-bottom: 40px;
 }
 
@@ -50,6 +49,7 @@ main > h1 {
         gap: 18px;
     }
 }
+
 
 /* =========================================
    TARJETA DE LUCHADOR (WRESTLER CARD)
@@ -115,22 +115,22 @@ main > h1 {
 
 /* Apodo del luchador (Cian / Celeste) */
 .wrestler > p:first-of-type {
-    margin: 8px 5px 0;
+    margin: 6px 4px 0;
     color: #00bfff;
-    font-size: 9px;
+    font-size: 8px; /* Tamaño optimizado para que quepa bien en PC */
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+    white-space: normal;        /* Permite que el apodo largo baje de línea si es necesario */
+    overflow-wrap: anywhere;    /* Evita que rompa el contenedor si la palabra es muy larga */
 }
 
 /* Nombre principal del luchador */
 .wrestler > h2 {
-    margin: 3px 5px;
+    margin: 3px 4px;
     color: #ffffff;
-    font-size: 15px;
+    font-size: 13px; /* Ligeramente más versátil para la visualización de 3 columnas en mobile */
     font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -141,12 +141,12 @@ main > h1 {
 
 /* Stable o equipo (Gris secundario) */
 .wrestler > h2 + p {
-    margin: 0 5px 10px;
+    margin: 0 4px 8px;
     color: #aaaaaa;
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

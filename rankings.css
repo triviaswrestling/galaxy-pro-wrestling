@@ -108,12 +108,13 @@
     pointer-events: none;
 }
 
+
 #ranking-grid .ranking-img-wrapper {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
-    z-index: -2;
+    z-index: 0;
 }
 
 #ranking-grid .ranking-img-wrapper img {
@@ -123,6 +124,7 @@
     object-fit: cover;
     object-position: center top;
 }
+
 
 
 #ranking-grid .ranking-card::after {
@@ -137,11 +139,12 @@
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(3,7,13,.35) 30%,
-        rgba(3,7,13,.75) 65%,
+        rgba(3,7,13,.25) 25%,
+        rgba(3,7,13,.65) 60%,
         rgba(3,7,13,.98) 100%
     );
 }
+
 
 
 #ranking-grid .rank-badge {

@@ -6,7 +6,7 @@
 // Agregá todas las noticias que quieras. Mantené la fecha en formato "YYYY-MM-DD" para ordenar.
 const listaNoticias = [
     {
-        id: 12,
+        id: 1,
         titulo: "¡Anunciado el Evento Principal para Galactic Clash!",
         categoria: "GPW CLASH 2026",
         resumen: "Los máximos exponentes del universo GPW se enfrentarán en una lucha sin precedentes por la gloria intergaláctica.",

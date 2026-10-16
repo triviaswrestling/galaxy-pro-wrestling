@@ -1,8 +1,25 @@
+
 /* =========================================
-   RANKING SYSTEM - GALAXY PRO WRESTLING
+   GALAXY PRO WRESTLING — RANKING SYSTEM
    ========================================= */
 
-/* 1. ENCABEZADO Y BANNER (Mobile: apilado / PC: a la par) */
+#ranking-grid,
+#ranking-modal {
+    --rank-cyan: #00bfff;
+    --rank-green: #00ff66;
+    --rank-gold: #ffe600;
+    --rank-orange: #ff5500;
+    --rank-bg: #090c12;
+    --rank-panel: #121824;
+    --rank-line: #263246;
+    --rank-muted: #8492ad;
+    color: #fff;
+}
+
+/* =========================================
+   1. BANNER
+   ========================================= */
+
 .ranking-header-banner {
     display: flex;
     flex-direction: column;
@@ -19,28 +36,27 @@
 }
 
 .ranking-banner-img {
+    display: block;
     width: 100%;
     height: auto;
     object-fit: contain;
     border-radius: 8px;
-    filter: drop-shadow(0 0 10px rgba(0, 191, 255, 0.3));
+    filter: drop-shadow(0 0 10px rgba(0,191,255,.25));
 }
 
 .ranking-banner-title h2 {
+    margin: 0;
     font-size: 22px;
     font-weight: 900;
-    margin: 0;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
-/* Formato para PC: Imagen y título a la par en la misma línea */
 @media (min-width: 768px) {
     .ranking-header-banner {
         flex-direction: row;
-        justify-content: center;
-        text-align: left;
         gap: 30px;
+        text-align: left;
     }
 
     .ranking-banner-img-container {
@@ -52,304 +68,677 @@
     }
 }
 
-/* 2. GRILLA ADAPTATIVA (3 cols Móvil / 4 cols PC) */
-.ranking-grid {
+/* =========================================
+   2. GRILLA Y TARJETAS
+   ========================================= */
+
+#ranking-grid.ranking-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 10px;
     padding: 10px 0 40px;
 }
 
-@media (min-width: 768px) {
-    .ranking-grid {
-        grid-template-columns: repeat(4, 1fr);
-        gap: 18px;
+#ranking-grid .ranking-card {
+    position: relative;
+    min-width: 0;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid #00bfff;
+    border-radius: 10px;
+    background: #0c111a;
+    box-shadow: 0 0 9px rgba(0,191,255,.16);
+    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    isolation: isolate;
+}
+
+#ranking-grid .ranking-img-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+#ranking-grid .ranking-img-wrapper img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+#ranking-grid .ranking-card::after {
+    content: "";
+    position: absolute;
+    inset: 25% 0 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        rgba(3,7,13,.25) 35%,
+        rgba(3,7,13,.96) 100%
+    );
+}
+
+#ranking-grid .rank-badge {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    z-index: 3;
+    padding: 4px 7px;
+    border: 1px solid #00bfff;
+    border-radius: 5px;
+    background: rgba(3,9,16,.92);
+    color: #00d9ff;
+    font-size: 10px;
+    font-weight: 900;
+    line-height: 1.2;
+    box-shadow: 0 0 8px rgba(0,191,255,.15);
+}
+
+#ranking-grid .ranking-card-info {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    padding: 24px 5px 7px;
+    background: linear-gradient(transparent, rgba(4,8,14,.96));
+    text-align: center;
+}
+
+#ranking-grid .ranking-card-info h2 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(9px, 2.6vw, 13px);
+    font-weight: 900;
+    line-height: 1.2;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    text-shadow: 0 1px 5px #000;
+}
+
+#ranking-grid .ranking-card:nth-child(4n+1) {
+    border-color: #00bfff;
+    box-shadow: 0 0 8px rgba(0,191,255,.2);
+}
+
+#ranking-grid .ranking-card:nth-child(4n+1) .rank-badge {
+    border-color: #00bfff;
+    color: #00bfff;
+}
+
+#ranking-grid .ranking-card:nth-child(4n+2) {
+    border-color: #00ff66;
+    box-shadow: 0 0 8px rgba(0,255,102,.16);
+}
+
+#ranking-grid .ranking-card:nth-child(4n+2) .rank-badge {
+    border-color: #00ff66;
+    color: #00ff66;
+}
+
+#ranking-grid .ranking-card:nth-child(4n+3) {
+    border-color: #ffe600;
+    box-shadow: 0 0 8px rgba(255,230,0,.16);
+}
+
+#ranking-grid .ranking-card:nth-child(4n+3) .rank-badge {
+    border-color: #ffe600;
+    color: #ffe600;
+}
+
+#ranking-grid .ranking-card:nth-child(4n+0) {
+    border-color: #ff5500;
+    box-shadow: 0 0 8px rgba(255,85,0,.16);
+}
+
+#ranking-grid .ranking-card:nth-child(4n+0) .rank-badge {
+    border-color: #ff5500;
+    color: #ff5500;
+}
+
+@media (hover: hover) {
+    #ranking-grid .ranking-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 0 17px rgba(0,191,255,.38);
     }
 }
 
-/* Tarjeta limpia cuadrada con bordes redondeados */
-.ranking-card {
-    position: relative;
-    cursor: pointer;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #121212;
-    border: 2px solid #282828;
-    aspect-ratio: 3 / 4;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-}
+@media (min-width: 768px) {
+    #ranking-grid.ranking-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+    }
 
-.ranking-card:hover {
-    transform: translateY(-4px);
-}
+    #ranking-grid .ranking-card {
+        border-radius: 12px;
+    }
 
-.ranking-img-wrapper {
-    width: 100%;
-    height: 100%;
-}
+    #ranking-grid .rank-badge {
+        top: 9px;
+        left: 9px;
+        padding: 5px 8px;
+        font-size: 12px;
+    }
 
-.ranking-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-/* Insignia de número de puesto */
-.rank-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    background: rgba(0, 0, 0, 0.85);
-    border: 1px solid #00bfff;
-    color: #00bfff;
-    font-size: 11px;
-    font-weight: 900;
-    padding: 3px 7px;
-    border-radius: 5px;
-    z-index: 5;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+    #ranking-grid .ranking-card-info h2 {
+        font-size: 14px;
+    }
 }
 
 /* =========================================
-   MODAL FICHA TÉCNICA (ESTILO DOSSIER MODERNO)
+   3. MODAL BASE — AISLADO DEL RESTO DEL SITIO
    ========================================= */
 
-.ranking-modal-content {
-    background: #0b0d12 !important;
-    border: 1.5px solid #222633 !important;
-    border-radius: 16px !important;
-    padding: 20px !important;
-    max-width: 400px !important;
-    width: 92% !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8) !important;
-    color: #fff !important;
-    position: relative;
-    max-height: 90vh;
+#ranking-modal.modal {
+    padding: 14px;
+    box-sizing: border-box;
     overflow-y: auto;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    background: radial-gradient(ellipse at center, rgba(0,24,43,.94), rgba(0,0,0,.97));
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
 }
 
-/* Foto de Perfil Grande con Badge de Ranking */
-.modal-photo-container {
+#ranking-modal .ranking-modal-content {
+    position: relative;
+    width: 100% !important;
+    max-width: 460px !important;
+    max-height: 92vh;
+    margin: auto;
+    padding: 16px !important;
+    overflow-x: hidden;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    color: #f5f8ff !important;
+    background: linear-gradient(145deg, #0e1521, #080b11 70%) !important;
+    border: 1px solid #00bfff !important;
+    border-top: 3px solid #00bfff !important;
+    border-radius: 14px !important;
+    box-shadow: 0 0 24px rgba(0,191,255,.16), 0 20px 60px rgba(0,0,0,.7) !important;
+    scrollbar-width: thin;
+    scrollbar-color: #24516b #090d14;
+    transition: border-color .25s ease, box-shadow .25s ease;
+}
+
+#ranking-modal .ranking-modal-content::before {
+    display: none !important;
+}
+
+#ranking-modal .close-button {
+    position: absolute;
+    top: 9px;
+    right: 10px;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 1px solid #314054;
+    border-radius: 8px;
+    background: rgba(5,10,17,.9);
+    color: #d9e8fa;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+#ranking-modal .close-button:hover {
+    border-color: #00bfff;
+    color: #00d9ff;
+}
+
+/* =========================================
+   4. CABECERA DE LA FICHA
+   PC: FOTO IZQUIERDA, IDENTIDAD CENTRO,
+   PUESTO ARRIBA A LA DERECHA
+   ========================================= */
+
+#ranking-modal .modal-photo-container {
     position: relative;
     width: 100%;
-    height: 240px;
-    border-radius: 12px;
+    height: 225px;
+    margin: 0 0 15px;
     overflow: hidden;
-    background: #000;
-    margin-bottom: 14px;
-    border: 1px solid #2a2f40;
+    border: 1px solid #29374c;
+    border-radius: 10px;
+    background: #06090e;
 }
 
-.modal-photo-container img {
+#ranking-modal .modal-photo-container img {
+    display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 20%;
 }
 
-.modal-top-badge {
+#ranking-modal .modal-top-badge {
     position: absolute !important;
-    top: 12px !important;
-    left: 12px !important;
-    background: rgba(0, 0, 0, 0.85) !important;
-    border: 1.5px solid #00bfff !important;
-    color: #00bfff !important;
-    font-size: 12px !important;
-    font-weight: 900 !important;
-    padding: 5px 10px !important;
-    border-radius: 6px !important;
-    letter-spacing: 1px !important;
+    top: 10px !important;
+    right: 10px !important;
+    left: auto !important;
     z-index: 10 !important;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7) !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    min-height: 34px;
+    padding: 6px 9px !important;
+    border: 1px solid #00bfff !important;
+    border-radius: 7px !important;
+    background: rgba(3,9,17,.94) !important;
+    color: #00d9ff !important;
+    font-size: 15px !important;
+    font-weight: 900 !important;
+    letter-spacing: .5px !important;
+    box-shadow: 0 0 13px rgba(0,191,255,.2);
 }
 
-/* Identidad (Apodo y Nombre) */
-.modal-identity {
+/* Identidad */
+
+#ranking-modal .modal-identity {
+    margin: 0 0 14px;
+    padding: 2px 0 12px;
     text-align: center;
-    margin-bottom: 16px;
+    border-bottom: 1px solid #243145;
 }
 
-.modal-nickname {
-    font-size: 11px;
-    font-weight: 800;
-    color: #f39c12;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+#ranking-modal .modal-nickname {
     display: block;
-    margin-bottom: 4px;
-}
-
-.modal-identity h2 {
-    font-size: 22px;
-    font-weight: 900;
-    letter-spacing: 0.5px;
-    margin: 0 0 4px 0;
-    color: #ffffff;
-}
-
-.modal-interpreter-line {
+    margin-bottom: 5px;
+    color: #f2bd57;
     font-size: 10px;
-    color: #8892b0;
-    letter-spacing: 1px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+#ranking-modal .modal-identity h2 {
+    margin: 0 0 6px;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: #fff;
+    font-size: clamp(20px, 6vw, 27px);
+    font-weight: 900;
+    letter-spacing: .5px;
+    line-height: 1.1;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+#ranking-modal .modal-interpreter-line {
+    display: block;
     margin: 0;
-}
-
-.modal-interpreter-line span {
-    color: #ffd700;
-    font-weight: 900;
-}
-
-/* Panel de Atributos */
-.modal-attributes-box {
-    background: #131722;
-    border: 1px solid #222838;
-    border-radius: 12px;
-    padding: 12px;
-    margin-bottom: 12px;
-}
-
-.modal-attributes-box h3 {
+    padding: 0;
+    background: none;
+    color: #8492ad;
     font-size: 10px;
-    font-weight: 900;
-    color: #8892b0;
-    letter-spacing: 1.2px;
-    margin: 0 0 10px 0;
+    letter-spacing: 1px;
     text-transform: uppercase;
 }
 
-.attributes-grid {
+#ranking-modal .modal-interpreter-line span {
+    color: #00d9ff;
+    font-weight: 900;
+}
+
+/* =========================================
+   5. ATRIBUTOS
+   ========================================= */
+
+#ranking-modal .modal-attributes-box {
+    margin: 0 0 11px;
+    padding: 12px;
+    border: 1px solid #253247;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #131c2a, #0e1420);
+}
+
+#ranking-modal .modal-attributes-box h3 {
+    margin: 0 0 11px;
+    padding: 0;
+    background: none;
+    color: #00cfff;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.4px;
+    text-transform: uppercase;
+}
+
+#ranking-modal .attributes-grid {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 10px;
 }
 
-.attr-info {
+#ranking-modal .attr-info {
     display: flex;
     justify-content: space-between;
-    font-size: 11px;
+    gap: 10px;
+    margin-bottom: 4px;
+    color: #d6deed;
+    font-size: 10px;
     font-weight: 800;
-    margin-bottom: 3px;
-    color: #ccd6f6;
 }
 
-.attr-bar {
+#ranking-modal .attr-bar {
     width: 100%;
     height: 6px;
-    background: #1e2433;
-    border-radius: 3px;
     overflow: hidden;
+    border-radius: 5px;
+    background: #263246;
 }
 
-.attr-fill {
+#ranking-modal .attr-fill {
     height: 100%;
-    border-radius: 3px;
-    transition: width 0.6s ease-in-out;
+    border-radius: 5px;
+    transition: width .65s ease;
 }
 
-/* Colores de Barras */
-.bar-micro { background: linear-gradient(90deg, #00a887 0%, #00ff66 100%); }
-.bar-charisma { background: linear-gradient(90deg, #f7e7ce 0%, #ffe600 100%); }
-.bar-power { background: linear-gradient(90deg, #d32f2f 0%, #ff5500 100%); }
+#ranking-modal .bar-micro {
+    background: linear-gradient(90deg, #008b70, #00ff9d);
+}
 
-.text-green { color: #00ff66; }
-.text-gold { color: #ffe600; }
-.text-orange { color: #ff5500; }
-.text-cyan { color: #00e1ff; }
+#ranking-modal .bar-charisma {
+    background: linear-gradient(90deg, #c5a83c, #fff078);
+}
 
-/* Cajas Inferiores (Finisher / Theme / Overall) */
-.modal-info-grid {
+#ranking-modal .bar-power {
+    background: linear-gradient(90deg, #c62838, #ff633d);
+}
+
+#ranking-modal .text-green { color: #00ff9d; }
+#ranking-modal .text-gold { color: #ffe36b; }
+#ranking-modal .text-orange { color: #ff6947; }
+#ranking-modal .text-cyan { color: #00d9ff; }
+
+/* =========================================
+   6. FINISHER / OVERALL / TEMA MUSICAL
+   ========================================= */
+
+#ranking-modal .modal-info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 8px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: 9px;
+    margin: 0 0 9px;
 }
 
-.info-card-box {
-    background: #131722;
-    border: 1px solid #222838;
-    border-radius: 10px;
-    padding: 10px;
+#ranking-modal .info-card-box {
     display: flex;
+    min-width: 0;
     flex-direction: column;
-    gap: 3px;
+    gap: 5px;
+    padding: 11px;
+    border: 1px solid #253247;
+    border-radius: 9px;
+    background: #111824;
 }
 
-.full-width {
+#ranking-modal .full-width {
     width: 100%;
-    margin-bottom: 12px;
+    margin: 0 0 11px;
 }
 
-.box-label {
+#ranking-modal .box-label {
+    color: #8492ad;
     font-size: 9px;
-    font-weight: 800;
-    color: #8892b0;
+    font-weight: 900;
     letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-.box-value {
+#ranking-modal .box-value {
+    display: block;
+    max-width: 100%;
+    color: #f5f8ff;
     font-size: 12px;
     font-weight: 900;
-    color: #fff;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.45;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    text-overflow: clip;
 }
 
-.song-text {
-    color: #f39c12;
+#ranking-modal #val-overall {
+    color: #00d9ff;
+    font-size: 22px;
 }
 
-/* Logros del Modal */
-.ranking-achievements-list {
-    margin: 0;
-    padding: 0 0 0 18px;
-    max-height: 130px;
-    overflow-y: auto;
-}
-
-.ranking-achievements-list li {
-    color: #cccccc;
-    font-size: 10px;
-    font-weight: 600;
-    margin-bottom: 4px;
-}
-
-.ranking-achievements-list li::marker {
-    color: #00bfff;
+#ranking-modal .song-text {
+    color: #f2bd57;
 }
 
 /* =========================================
-   BORDES MULTICOLOR ROTATIVOS
+   7. LOGROS
    ========================================= */
 
-/* Tarjetas de Grilla */
-.ranking-grid .ranking-card:nth-child(4n+1) { border-color: #00bfff; box-shadow: 0 0 10px rgba(0, 191, 255, 0.25); }
-.ranking-grid .ranking-card:nth-child(4n+1) .rank-badge { border-color: #00bfff; color: #00bfff; }
+#ranking-modal .ranking-achievements-list {
+    max-height: 150px;
+    margin: 0;
+    padding: 0 0 0 17px;
+    overflow-y: auto;
+    background: transparent;
+    scrollbar-width: thin;
+    scrollbar-color: #24516b transparent;
+}
 
-.ranking-grid .ranking-card:nth-child(4n+2) { border-color: #00ff66; box-shadow: 0 0 10px rgba(0, 255, 102, 0.25); }
-.ranking-grid .ranking-card:nth-child(4n+2) .rank-badge { border-color: #00ff66; color: #00ff66; }
+#ranking-modal .ranking-achievements-list li {
+    margin: 0 0 7px;
+    padding-left: 2px;
+    color: #d1d9e8;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
 
-.ranking-grid .ranking-card:nth-child(4n+3) { border-color: #ffe600; box-shadow: 0 0 10px rgba(255, 230, 0, 0.25); }
-.ranking-grid .ranking-card:nth-child(4n+3) .rank-badge { border-color: #ffe600; color: #ffe600; }
+#ranking-modal .ranking-achievements-list li::marker {
+    color: #00cfff;
+}
 
-.ranking-grid .ranking-card:nth-child(4n+0) { border-color: #ff5500; box-shadow: 0 0 10px rgba(255, 85, 0, 0.25); }
-.ranking-grid .ranking-card:nth-child(4n+0) .rank-badge { border-color: #ff5500; color: #ff5500; }
+/* =========================================
+   8. TEMAS DE COLOR DEL MODAL
+   Las clases se agregan al propio modal-content
+   ========================================= */
 
-.ranking-grid .ranking-card:nth-child(4n+1):hover { box-shadow: 0 0 18px rgba(0, 191, 255, 0.6); }
-.ranking-grid .ranking-card:nth-child(4n+2):hover { box-shadow: 0 0 18px rgba(0, 255, 102, 0.6); }
-.ranking-grid .ranking-card:nth-child(4n+3):hover { box-shadow: 0 0 18px rgba(255, 230, 0, 0.6); }
-.ranking-grid .ranking-card:nth-child(4n+0):hover { box-shadow: 0 0 18px rgba(255, 85, 0, 0.6); }
+#ranking-modal .ranking-modal-content.modal-theme-cyan {
+    border-color: #00bfff !important;
+    border-top-color: #00d9ff !important;
+    box-shadow: 0 0 24px rgba(0,191,255,.17), 0 20px 60px rgba(0,0,0,.7) !important;
+}
 
-/* Temas del Modal */
-.modal-theme-cyan { border-color: #00bfff !important; box-shadow: 0 0 20px rgba(0, 191, 255, 0.3) !important; }
-.modal-theme-cyan .modal-top-badge { border-color: #00bfff; color: #00bfff; }
+#ranking-modal .ranking-modal-content.modal-theme-green {
+    border-color: #00ff66 !important;
+    border-top-color: #00ff9d !important;
+    box-shadow: 0 0 24px rgba(0,255,102,.15), 0 20px 60px rgba(0,0,0,.7) !important;
+}
 
-.modal-theme-green { border-color: #00ff66 !important; box-shadow: 0 0 20px rgba(0, 255, 102, 0.3) !important; }
-.modal-theme-green .modal-top-badge { border-color: #00ff66; color: #00ff66; }
+#ranking-modal .ranking-modal-content.modal-theme-gold {
+    border-color: #ffe600 !important;
+    border-top-color: #fff078 !important;
+    box-shadow: 0 0 24px rgba(255,230,0,.14), 0 20px 60px rgba(0,0,0,.7) !important;
+}
 
-.modal-theme-gold { border-color: #ffe600 !important; box-shadow: 0 0 20px rgba(255, 230, 0, 0.3) !important; }
-.modal-theme-gold .modal-top-badge { border-color: #ffe600; color: #ffe600; }
+#ranking-modal .ranking-modal-content.modal-theme-orange {
+    border-color: #ff5500 !important;
+    border-top-color: #ff7548 !important;
+    box-shadow: 0 0 24px rgba(255,85,0,.14), 0 20px 60px rgba(0,0,0,.7) !important;
+}
 
-.modal-theme-orange { border-color: #ff5500 !important; box-shadow: 0 0 20px rgba(255, 85, 0, 0.3) !important; }
-.modal-theme-orange .modal-top-badge { border-color: #ff5500; color: #ff5500; }
+#ranking-modal .ranking-modal-content.modal-theme-cyan .modal-top-badge {
+    border-color: #00bfff !important;
+    color: #00d9ff !important;
+}
+
+#ranking-modal .ranking-modal-content.modal-theme-green .modal-top-badge {
+    border-color: #00ff66 !important;
+    color: #00ff9d !important;
+}
+
+#ranking-modal .ranking-modal-content.modal-theme-gold .modal-top-badge {
+    border-color: #ffe600 !important;
+    color: #ffe600 !important;
+}
+
+#ranking-modal .ranking-modal-content.modal-theme-orange .modal-top-badge {
+    border-color: #ff5500 !important;
+    color: #ff7548 !important;
+}
+
+/* =========================================
+   9. PC — FICHA RECTANGULAR HORIZONTAL
+   Foto izquierda / identidad centro /
+   puesto a la derecha, a la misma altura
+   ========================================= */
+
+@media (min-width: 768px) {
+    #ranking-modal.modal {
+        padding: 24px;
+    }
+
+    #ranking-modal .ranking-modal-content {
+        width: min(92vw, 760px) !important;
+        max-width: 760px !important;
+        max-height: 90vh;
+        padding: 22px !important;
+        border-radius: 15px !important;
+    }
+
+    #ranking-modal .ranking-modal-content::after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+
+    #ranking-modal .modal-photo-container {
+        float: left;
+        width: 31%;
+        height: 245px;
+        margin: 0 20px 16px 0;
+    }
+
+    #ranking-modal .modal-identity {
+        position: relative;
+        display: flex;
+        min-height: 245px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 62px 16px 0;
+        padding: 12px 8px;
+        border-bottom: 1px solid #243145;
+        text-align: center;
+    }
+
+    #ranking-modal .modal-identity h2 {
+        font-size: clamp(23px, 3vw, 32px);
+    }
+
+    #ranking-modal .modal-nickname {
+        font-size: 11px;
+    }
+
+    #ranking-modal .modal-interpreter-line {
+        font-size: 11px;
+    }
+
+    #ranking-modal .modal-top-badge {
+        top: 12px !important;
+        right: 12px !important;
+        left: auto !important;
+        min-width: 48px;
+        min-height: 40px;
+        font-size: 17px !important;
+    }
+
+    #ranking-modal .modal-attributes-box {
+        clear: both;
+    }
+
+    #ranking-modal .modal-info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    #ranking-modal .modal-attributes-box h3 {
+        font-size: 11px;
+    }
+
+    #ranking-modal .attr-info {
+        font-size: 11px;
+    }
+
+    #ranking-modal .box-value {
+        font-size: 13px;
+    }
+
+    #ranking-modal .ranking-achievements-list li {
+        font-size: 12px;
+    }
+}
+
+/* =========================================
+   10. CELULAR — FICHA VERTICAL
+   ========================================= */
+
+@media (max-width: 420px) {
+    #ranking-modal.modal {
+        padding: 9px;
+    }
+
+    #ranking-modal .ranking-modal-content {
+        max-width: 390px !important;
+        padding: 12px !important;
+        max-height: 94vh;
+        border-radius: 12px !important;
+    }
+
+    #ranking-modal .modal-photo-container {
+        height: 205px;
+    }
+
+    #ranking-modal .modal-identity h2 {
+        font-size: 21px;
+    }
+
+    #ranking-modal .modal-info-grid {
+        gap: 7px;
+    }
+
+    #ranking-modal .info-card-box {
+        padding: 9px;
+    }
+
+    #ranking-modal .box-value {
+        font-size: 11px;
+    }
+
+    #ranking-modal .modal-attributes-box {
+        padding: 10px;
+    }
+}
+
+/* =========================================
+   11. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
+   ========================================= */
+
+#ranking-grid .ranking-card:focus-visible {
+    outline: 2px solid #00d9ff;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #ranking-grid .ranking-card,
+    #ranking-modal .ranking-modal-content,
+    #ranking-modal .attr-fill {
+        transition: none !important;
+    }
+}

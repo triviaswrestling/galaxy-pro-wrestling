@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Noticias - Galaxy Pro Wrestling</title>
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos de Navegación y Noticias -->
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="noticias.css">
+</head>
+<body>
+
+    <!-- Bordes Neón Laterales -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
+    <!-- El script.js inyectará el menú neón y el logo aquí -->
+    <header class="main-header"></header>
+
+    <main class="news-container">
+        <div class="page-title-bar">
+            <h2><i class="fa-solid fa-newspaper text-cyan"></i> ÚLTIMAS <span class="text-cyan">NOTICIAS</span></h2>
+        </div>
+
+        <!-- Grilla de noticias (2 col en mobile / 4 col en PC) -->
+        <section class="news-grid" id="newsGrid"></section>
+
+        <!-- Botonera de paginación automática (1, 2, 3...) -->
+        <div class="pagination-container" id="pagination"></div>
+    </main>
+
+    <!-- Scripts independientes -->
+    <script src="script.js"></script>
+    <script src="noticias.js"></script>
+</body>
+</html>

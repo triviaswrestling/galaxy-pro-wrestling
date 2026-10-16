@@ -124,19 +124,25 @@
     object-position: center top;
 }
 
+
 #ranking-grid .ranking-card::after {
     content: "";
     position: absolute;
-    inset: 30% 0 0;
-    z-index: -1;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 55%;
+    z-index: 1;
     pointer-events: none;
     background: linear-gradient(
         to bottom,
         transparent 0%,
-        rgba(3,7,13,.35) 35%,
+        rgba(3,7,13,.35) 30%,
+        rgba(3,7,13,.75) 65%,
         rgba(3,7,13,.98) 100%
     );
 }
+
 
 #ranking-grid .rank-badge {
     position: absolute;

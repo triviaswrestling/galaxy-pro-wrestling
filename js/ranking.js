@@ -55,14 +55,19 @@ function openRankingModal(globalIndex) {
     else if (rankMod === 2) modalContent.classList.add("modal-theme-gold");
     else if (rankMod === 3) modalContent.classList.add("modal-theme-orange");
 
-    // Datos principales
-    document.getElementById("modal-rank-num").textContent = `#${wrestler.rank || '-'}`;
-    document.getElementById("modal-division").textContent = wrestler.division || "";
-    document.getElementById("modal-name").textContent = wrestler.name;
-    document.getElementById("modal-interpreter").textContent = wrestler.interpreter || "";
+    // 1. Badge y Foto
+    const badgeElem = document.getElementById("modal-rank-badge");
+    if (badgeElem) badgeElem.textContent = `#${wrestler.rank || '-'}`;
     document.getElementById("modal-img").src = wrestler.image;
 
-    // Atributos
+    // 2. Identidad (Apodo, Nombre, Intérprete)
+    const nicknameElem = document.getElementById("modal-nickname");
+    if (nicknameElem) nicknameElem.textContent = wrestler.nickname || "GPW SUPERSTAR";
+    
+    document.getElementById("modal-name").textContent = wrestler.name;
+    document.getElementById("modal-interpreter").textContent = wrestler.interpreter || "Desconocido";
+
+    // 3. Atributos de combate y barras neón
     const stats = wrestler.stats || { micro: 70, charisma: 70, power: 70 };
     const microVal = stats.micro || 70;
     const charismaVal = stats.charisma || 70;
@@ -76,11 +81,18 @@ function openRankingModal(globalIndex) {
     document.getElementById("bar-charisma").style.width = `${charismaVal}%`;
     document.getElementById("bar-power").style.width = `${powerVal}%`;
 
-    // Overall
+    // 4. Overall
     const overall = Math.round((microVal + charismaVal + powerVal) / 3);
     document.getElementById("val-overall").textContent = overall;
 
-    // Logros
+    // 5. Bloques de Combate (Finisher y Theme Song)
+    const finisherElem = document.getElementById("modal-finisher");
+    if (finisherElem) finisherElem.textContent = wrestler.finisher || "N/A";
+
+    const themeElem = document.getElementById("modal-theme");
+    if (themeElem) themeElem.textContent = wrestler.themeSong ? `🎵 ${wrestler.themeSong}` : "🎵 N/A";
+
+    // 6. Logros
     const achievementsList = document.getElementById("modal-achievements");
     if (achievementsList) {
         achievementsList.innerHTML = "";
@@ -90,9 +102,14 @@ function openRankingModal(globalIndex) {
                 li.textContent = ach;
                 achievementsList.appendChild(li);
             });
+        } else {
+            const li = document.createElement("li");
+            li.textContent = "Sin logros registrados aún.";
+            achievementsList.appendChild(li);
         }
     }
 
+    // Mostrar modal
     document.getElementById("ranking-modal").classList.add("show");
     document.body.classList.add("modal-open");
 }
@@ -121,4 +138,4 @@ function initRankingScrollObserver() {
     }, { threshold: 0.1 });
 
     cards.forEach(card => observer.observe(card));
-      }
+}

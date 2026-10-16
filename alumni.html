@@ -1,21 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Alumni - Galaxy Pro Wrestling</title>
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos de Navegación y Tarjetas -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="wrestlercard.css">
+</head>
+<body>
+
+    <!-- Bordes Neón Laterales -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
+    <!-- El script.js inyectará el menú neón y el logo aquí -->
+    <header class="main-header"></header>
+
+    <!-- data-roster-status="inactive" carga únicamente a los inactivos (Alumni) -->
+    <main data-roster-status="inactive">
+        <div class="page-title-bar">
+            <h2><i class="fa-solid fa-history text-cyan"></i> GALAXY PRO <span class="text-cyan">ALUMNI</span></h2>
+        </div>
+
+        <!-- División Masculina Inactiva -->
+        <div class="roster-divider">
+            <h1>Masculino</h1>
+        </div>
+        <div id="roster" class="roster"></div>
+
+        <!-- División Femenina Inactiva (ID limpio) -->
+        <div class="roster-divider">
+            <h1>Femenino</h1>
+        </div>
+        <div id="femenino-roster" class="roster"></div>
+    </main>
+
     <!-- MODAL ÉPICO DE LOGROS E INTÉRPRETE -->
     <div id="modal" class="modal">
         <div class="modal-content">
             <button class="close-button" onclick="closeModal()">×</button>
             
-            <!-- 1. División arriba (en lugar de Career Highlights) -->
+            <!-- 1. División arriba de todo -->
             <h3 id="modal-division">MASCULINO</h3>
             
             <!-- 2. Nombre del luchador -->
-            <h2 id="modal-name">BRET HART</h2>
+            <h2 id="modal-name">Nombre</h2>
             
-            <!-- 3. Franja intermedia: Career Highlights + Intérprete -->
+            <!-- 3. Franja intermedia: Career Highlights + Intérprete en dorado -->
             <p>
                 <span>CAREER HIGHLIGHTS</span>
                 <span id="modal-interpreter" class="interpreter"></span>
             </p>
             
-            <!-- 4. Logros -->
+            <!-- 4. Lista de logros -->
             <ul id="modal-achievements"></ul>
         </div>
     </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="js/wrestlers.js"></script>
+    <script src="js/roster.js"></script>
+    <script src="js/modal.js"></script>
+</body>
+</html>

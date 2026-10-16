@@ -1,0 +1,122 @@
+/* ==========================================================
+   ESTILOS EXCLUSIVOS DE LA BARRA DE NAVEGACIÓN (NAV.CSS)
+   ========================================================== */
+
+/* Cabecera principal en páginas secundarias */
+.main-header {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    position: relative;
+    z-index: 100;
+}
+
+/* Área del Logo */
+.main-header .logo-area .site-logo {
+    max-width: 170px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+    filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.5));
+}
+
+/* Botón Hamburguesa Mobile */
+.menu-toggle {
+    background: rgba(2, 8, 25, 0.95);
+    border: 1.5px solid #00e1ff;
+    color: #00e1ff;
+    font-size: 1.2rem;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    will-change: transform;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+.menu-toggle:active {
+    transform: scale(0.92);
+    box-shadow: 0 0 15px rgba(0, 229, 255, 0.8);
+}
+
+/* Menú Desplegable en Celulares (Oculto por defecto) */
+.main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 16px;
+    width: 210px;
+    background: rgba(2, 8, 25, 0.98);
+    border: 1.5px solid #00e1ff;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9);
+    z-index: 101;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Clase active inyectada por JS al tocar el botón */
+.main-nav.active {
+    display: flex;
+    animation: menuFade 0.2s ease-in-out forwards;
+}
+
+@keyframes menuFade {
+    from { opacity: 0; transform: translateY(-8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Enlaces del menú */
+.main-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 0.82rem;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+/* Efecto al presionar o enlace activo de la página actual */
+.main-nav a:active,
+.main-nav a.active {
+    background: rgba(0, 225, 255, 0.15);
+    border-color: #00e1ff;
+    color: #00e1ff;
+    transform: scale(0.96);
+}
+
+/* Adaptación para pantallas más grandes (PC / Tablet) */
+@media (min-width: 768px) {
+    .menu-toggle {
+        display: none; /* Oculta el botón hamburguesa */
+    }
+
+    .main-nav {
+        display: flex !important;
+        position: static;
+        background: transparent;
+        border: none;
+        padding: 0;
+        box-shadow: none;
+        width: auto;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .main-nav a:hover {
+        background: rgba(0, 225, 255, 0.12);
+        border-color: #00e1ff;
+        color: #00e1ff;
+        transform: scale(0.96);
+    }
+}

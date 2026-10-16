@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>Ranking - Galaxy Pro Wrestling</title>
+    
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos generales, navegación, tarjetas y ranking -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+    <link rel="stylesheet" href="wrestlercard.css">
+    <link rel="stylesheet" href="ranking.css">
+</head>
+<body>
+
+    <!-- Bordes Neón Laterales -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
+    <!-- El script.js inyectará el menú neón y el logo aquí -->
+    <header class="main-header"></header>
+
+    <main>
+        <div class="page-title-bar">
+            <h2><i class="fa-solid fa-trophy text-cyan"></i> OFFICIAL <span class="text-cyan">RANKING</span></h2>
+        </div>
+
+        <!-- Grilla donde ranking.js inyectará los luchadores (3 cols en Mobile / 4 en PC) -->
+        <div id="ranking-grid" class="ranking-grid"></div>
+    </main>
+
+    <!-- MODAL DE ATRIBUTOS (ESTILO FICHA TÉCNICA DE VIDEOJUEGO) -->
+    <div id="ranking-modal" class="modal">
+        <div class="modal-content ranking-modal-content">
+            <button class="close-button" onclick="closeRankingModal()">×</button>
+
+            <!-- 1. Encabezado superior: Posición en la izquierda y División a la derecha -->
+            <div class="modal-rank-top">
+                <span id="modal-rank-num" class="rank-title-badge">#1</span>
+                <span id="modal-division" class="modal-division-text">MASCULINO</span>
+            </div>
+
+            <!-- 2. Perfil: Foto + Nombre + Intérprete en dorado -->
+            <div class="modal-profile-header">
+                <img id="modal-img" src="" alt="Luchador">
+                <div class="modal-profile-info">
+                    <h2 id="modal-name">Nombre</h2>
+                    <p class="interpreter-line">INTÉRPRETE: <span id="modal-interpreter" class="interpreter"></span></p>
+                    <div class="overall-badge">
+                        OVERALL: <span id="val-overall">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Subtítulo intermedio -->
+            <div class="modal-highlights-header">
+                <h3>ATRIBUTOS DE COMBATE Y MANEJO</h3>
+            </div>
+
+            <!-- 4. Barras de habilidades (Micro, Charisma y Power) -->
+            <div class="stats-bars-wrapper">
+                
+                <!-- MICRO (Verde Menta a Neón Tóxico) -->
+                <div class="stat-row">
+                    <div class="stat-labels">
+                        <span>MICRO</span>
+                        <span id="val-micro" class="stat-val-micro">0</span>
+                    </div>
+                    <div class="stat-bar-container">
+                        <div id="bar-micro" class="stat-bar-fill bar-micro" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- CHARISMA (Champagne a Dorado Eléctrico) -->
+                <div class="stat-row">
+                    <div class="stat-labels">
+                        <span>CHARISMA</span>
+                        <span id="val-charisma" class="stat-val-charisma">0</span>
+                    </div>
+                    <div class="stat-bar-container">
+                        <div id="bar-charisma" class="stat-bar-fill bar-charisma" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+                <!-- POWER (Rojo a Naranja Láser) -->
+                <div class="stat-row">
+                    <div class="stat-labels">
+                        <span>POWER</span>
+                        <span id="val-power" class="stat-val-power">0</span>
+                    </div>
+                    <div class="stat-bar-container">
+                        <div id="bar-power" class="stat-bar-fill bar-power" style="width: 0%;"></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 5. Logros o Campeonatos del Luchador -->
+            <div class="modal-highlights-header">
+                <h3>ACCOLADES & LOGROS</h3>
+            </div>
+            <ul id="modal-achievements" class="ranking-achievements-list"></ul>
+
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="js/wrestlers.js"></script>
+    <script src="js/ranking.js"></script>
+</body>
+</html>

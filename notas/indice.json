@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "titulo": "¡Anunciado el Evento Principal para Galactic Clash!",
+        "categoria": "GPW CLASH 2026",
+        "resumen": "Los máximos exponentes del universo GPW se enfrentarán en una lucha sin precedentes por la gloria intergaláctica.",
+        "imagen": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&auto=format&fit=crop",
+        "fecha": "2026-10-15",
+        "link": "noticia.html?id=1"
+    },
+    {
+        "id": 2,
+        "titulo": "Nuevo Contendiente #1 al Campeonato Mundial",
+        "categoria": "CAMPEONATO MUNDIAL",
+        "resumen": "Tras una contienda brutal el pasado fin de semana, tenemos un nuevo retador oficial al cinturón de GPW.",
+        "imagen": "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&auto=format&fit=crop",
+        "fecha": "2026-10-12",
+        "link": "noticia.html?id=2"
+    }
+]

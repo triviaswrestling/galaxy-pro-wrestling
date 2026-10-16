@@ -70,7 +70,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     filter: drop-shadow(0 0 10px rgba(0, 229, 255, 0.6));
 }
 
-/* SECCIÓN BIENVENIDA (LIGERA, SIN BLUR) */
+/* SECCIÓN BIENVENIDA */
 .welcome-section {
     text-align: center;
     margin: 8px auto 14px auto;
@@ -193,7 +193,14 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     line-height: 1.3;
 }
 
-/* BOTONES CON ACELERACIÓN GPU (OPTIMIZADO MOBILE) */
+/* ==========================================================
+   TRANSICIONES Y EFECTO TÁCTIL SUAVE (0.3s TIPO APP)
+   ========================================================== */
+.news-btn, .category-card, .social-card {
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 .news-btn {
     align-self: flex-start;
     margin-top: 4px;
@@ -207,12 +214,12 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    will-change: transform;
-    transition: transform 0.1s ease;
+    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
 }
 
 .news-btn:active {
-    transform: scale(0.94);
+    transform: scale(0.92);
+    box-shadow: 0 0 18px rgba(0, 229, 255, 0.9);
 }
 
 /* CUADRÍCULA DE CATEGORÍAS (2 COLUMNAS MOBILE) */
@@ -232,13 +239,12 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     color: white;
     display: flex;
     flex-direction: column;
-    will-change: transform;
-    transition: transform 0.1s ease, border-color 0.1s ease;
 }
 
 .category-card:active {
-    transform: scale(0.95);
+    transform: scale(0.94);
     border-color: #00e1ff;
+    box-shadow: 0 0 20px rgba(0, 229, 255, 0.8);
 }
 
 .card-image-wrapper {
@@ -302,12 +308,15 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     color: #ffffff;
     background: #020819;
     border: 1px solid rgba(0, 229, 255, 0.4);
-    will-change: transform;
-    transition: transform 0.1s ease, border-color 0.1s ease;
+}
+
+.social-card:active {
+    transform: scale(0.94);
 }
 
 .social-icon-box i {
     font-size: 1.2rem;
+    transition: color 0.3s ease;
 }
 
 .social-details {
@@ -329,17 +338,17 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     text-overflow: ellipsis;
 }
 
-/* Respuestas táctiles específicas para redes sociales en mobile */
-.social-card.instagram:active { border-color: #e1306c; transform: scale(0.95); }
+/* Colores dinámicos y respuesta táctil para redes sociales */
+.social-card.instagram:active { border-color: #e1306c; }
 .social-card.instagram:active .social-icon-box i { color: #e1306c; }
 
-.social-card.whatsapp:active { border-color: #25d366; transform: scale(0.95); }
+.social-card.whatsapp:active { border-color: #25d366; }
 .social-card.whatsapp:active .social-icon-box i { color: #25d366; }
 
-.social-card.youtube:active { border-color: #ff0000; transform: scale(0.95); }
+.social-card.youtube:active { border-color: #ff0000; }
 .social-card.youtube:active .social-icon-box i { color: #ff0000; }
 
-.social-card.facebook:active { border-color: #1877f2; transform: scale(0.95); }
+.social-card.facebook:active { border-color: #1877f2; }
 .social-card.facebook:active .social-icon-box i { color: #1877f2; }
 
 /* ADAPTACIÓN PARA COMPUTADORAS (PC) */
@@ -392,5 +401,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     .category-card:hover {
         transform: scale(0.96);
         border-color: #00e1ff;
+    }
+    .news-btn:hover {
+        box-shadow: 0 0 18px rgba(0, 229, 255, 0.9);
     }
 }

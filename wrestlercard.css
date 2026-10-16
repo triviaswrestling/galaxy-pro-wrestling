@@ -115,29 +115,34 @@ main > h1 {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.9), 0 0 25px rgba(0, 191, 255, 0.3);
 }
 
-/* Contenedor de la imagen del luchador */
+/* Contenedor de la imagen del luchador con desvanecido inferior */
 .wrestler img {
     width: 100%;
     height: auto;
     display: block;
     position: relative;
     z-index: 2; /* Mantiene el render transparente por encima del resplandor */
-    border-bottom: 2px solid #292929;
     aspect-ratio: 3 / 4; /* Compatible con tus imágenes 3:4 */
     object-fit: cover;
+    border-bottom: none; /* Quitamos la línea dura inferior */
+    
+    /* Funde suavemente la parte baja de la foto */
+    -webkit-mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 75%, transparent 100%);
 }
 
-/* Halo de resplandor / brillo celeste claro detrás del PNG (Estilo Póster) */
+/* Halo de resplandor superior + brillo celeste difuminado abajo */
 .wrestler::before {
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 75%;
+    height: 100%;
     background: 
-        radial-gradient(circle at 50% 35%, rgba(0, 191, 255, 0.3) 0%, rgba(0, 119, 190, 0.12) 55%, transparent 80%),
-        radial-gradient(ellipse at center, rgba(15, 15, 15, 0) 40%, rgba(5, 5, 5, 0.85) 90%);
+        radial-gradient(circle at 50% 30%, rgba(0, 191, 255, 0.35) 0%, rgba(0, 119, 190, 0.15) 50%, transparent 75%),
+        radial-gradient(circle at 50% 80%, rgba(0, 191, 255, 0.28) 0%, transparent 65%), /* Brillo celeste en la base de la imagen */
+        linear-gradient(to bottom, transparent 60%, rgba(11, 11, 11, 0.95) 90%); /* Sombra oscura para conectar con el texto */
     z-index: 1;
     pointer-events: none;
 }

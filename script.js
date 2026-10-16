@@ -1,16 +1,11 @@
 /* ==========================================================
-   GALAXY PRO WRESTLING (GPW) - SCRIPT UNIFICADO
+   GALAXY PRO WRESTLING (GPW) - NAVEGACIÓN (PÁGINAS INTERNAS)
    ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // ======================================================
-    // 1. INYECCIÓN DEL MENÚ EN PÁGINAS SECUNDARIAS
-    // ======================================================
     const headerElement = document.querySelector(".main-header");
 
     if (headerElement) {
-        // Inyecta el logo.webp, el botón hamburguesa y el menú desplegable
         headerElement.innerHTML = `
             <div class="logo-area">
                 <a href="index.html">
@@ -39,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
             </nav>
         `;
 
-        // Marca el enlace de la página en la que estás parado
+        // Marca el enlace activo según la página actual
         const currentPage = window.location.pathname.split("/").pop() || "index.html";
         const navLinks = headerElement.querySelectorAll(".main-nav a");
 
@@ -49,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Lógica para abrir/cerrar el menú en celulares
+        // Lógica para abrir/cerrar el menú hamburguesa en celulares
         const menuButton = document.getElementById("menuButton");
         const nav = document.getElementById("mainNav");
 
@@ -66,24 +61,4 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
-
-    // ======================================================
-    // 2. ROTACIÓN AUTOMÁTICA DE NOTICIAS DESTACADAS (INDEX)
-    // ======================================================
-    const newsItems = document.querySelectorAll('.news-item');
-    if (newsItems.length > 0) {
-        let currentIndex = 0;
-
-        setInterval(() => {
-            // Oculta la noticia actual
-            newsItems[currentIndex].classList.remove('active');
-
-            // Pasa a la siguiente (vuelve a 0 al llegar al final)
-            currentIndex = (currentIndex + 1) % newsItems.length;
-
-            // Muestra la nueva noticia
-            newsItems[currentIndex].classList.add('active');
-        }, 7000); // 7 segundos exactos por noticia
-    }
-
 });

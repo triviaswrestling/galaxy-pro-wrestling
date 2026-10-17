@@ -21,6 +21,17 @@ const wrestlers = [
             "Triple Crown Champion"
         ]
     },
+
+    {name: "Velveteen Dream", nickname: "The American Nightmare", division: "masculino",
+        status: "active", rank: 3,  interpreter: "Manu HPS 🇩🇴",
+        image: "imagen/gpw_logo_original.webp",
+        themeSong: "Kingdom - Downstait", finisher: "Cross Rhodes",
+        signature: "Cody Cutter / Disaster Kick",
+        stats: { micro: 72,  charisma: 96, power: 88},
+        achievements: ["Undisputed GPW Universal Champion",
+                       "Royal Rumble Winner",
+                       "Triple Crown Champion"]},
+    
     {
         name: "Bret Hart",
         nickname: "The Darkman",

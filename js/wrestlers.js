@@ -31,6 +31,28 @@ const wrestlers = [
         achievements: ["Undisputed GPW Universal Champion",
                        "Royal Rumble Winner",
                        "Triple Crown Champion"]},
+
+    
+
+    {id: "manolete",
+     name: "Manolete",
+     nickname: "El Inesperado",
+     division: "masculino",
+     status: "active",
+     rank: 5,
+     interpreter: "Manolete 🇪🇸",
+     image: "imagen/gpw_logo_original.webp",
+     presentations: {},
+     rosterPresentation: "manolete",
+     rankingPresentation: "manolete",
+     alterego: [],
+     stable: "",
+     themeSong: "",
+     finisher: "",
+     signature: "",
+     stats: { micro: 10, charisma: 20, power: 30 },
+     achievements: []}
+    
     
     {
         name: "Bret Hart",

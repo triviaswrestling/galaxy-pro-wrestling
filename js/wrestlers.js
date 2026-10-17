@@ -28,7 +28,7 @@ const wrestlers = [
         status: "active",
         rank: 2,
         interpreter: "Bret Hart",
-        image: "images/Darkman Hart.webp",
+        image: "imagen/gpw_cody_rhodes.webp",
         stable: "Hart ReFoundation",
         themeSong: "Hitman - Jim Johnston",
         finisher: "Sharpshooter",

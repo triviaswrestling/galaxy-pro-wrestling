@@ -14,26 +14,58 @@ html, body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: #010614;
+    background-color: #050505;
 }
 
 /* ==========================================================
-   2. FONDO CÓSMICO DE ALTO RENDIMIENTO (ANCHO COMPLETO)
+   2. FONDO NEGRO CON POLVO DE COLORES AEW DYNAMITE 2019
    ========================================================== */
 body {
-    background-image: 
-        radial-gradient(circle at 50% 35%, rgba(0, 130, 255, 0.2) 0%, transparent 60%),
-        linear-gradient(135deg, #030a1c 0%, #010614 50%, #000208 100%);
-    background-size: 100% 100%;
-    background-attachment: fixed;
+    /* Base negra estilo AEW Dynamite 2019: el color vive en los laterales. */
+    background: #050505;
     color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     position: relative;
+    isolation: isolate;
     padding-bottom: 50px;
     padding-left: 16px;
     padding-right: 16px;
+}
+
+/* Nubes de pigmento multicolor. Solo gradientes CSS: no requiere imágenes ni descargas. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(ellipse at 0% 18%, rgba(232, 255, 0, .48) 0%, rgba(232, 255, 0, .16) 13%, transparent 31%),
+        radial-gradient(ellipse at 8% 48%, rgba(70, 255, 28, .50) 0%, rgba(70, 255, 28, .18) 16%, transparent 34%),
+        radial-gradient(ellipse at 28% 78%, rgba(0, 230, 180, .34) 0%, transparent 30%),
+        radial-gradient(ellipse at 100% 17%, rgba(255, 0, 190, .48) 0%, rgba(255, 0, 190, .16) 15%, transparent 34%),
+        radial-gradient(ellipse at 95% 54%, rgba(117, 35, 255, .52) 0%, rgba(117, 35, 255, .18) 18%, transparent 36%),
+        radial-gradient(ellipse at 75% 88%, rgba(0, 116, 255, .36) 0%, transparent 30%),
+        radial-gradient(ellipse at 50% 0%, rgba(0, 190, 255, .14) 0%, transparent 28%);
+    opacity: .95;
+}
+
+/* Oscurece el centro para mantener las cajas y los textos legibles. */
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: linear-gradient(90deg,
+        rgba(0,0,0,.04) 0%,
+        rgba(0,0,0,.48) 18%,
+        rgba(0,0,0,.78) 39%,
+        rgba(0,0,0,.78) 61%,
+        rgba(0,0,0,.48) 82%,
+        rgba(0,0,0,.04) 100%);
 }
 
 /* ==========================================================
@@ -46,13 +78,13 @@ body {
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(180deg, rgba(0,229,255,0) 0%, rgba(0,183,255,0.85) 50%, rgba(0,229,255,0) 100%);
-    box-shadow: 0 0 15px rgba(0, 229, 255, 0.7);
-    opacity: 0.85;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 190, 255, .45) 35%, rgba(185, 55, 255, .42) 65%, transparent 100%);
+    box-shadow: 0 0 10px rgba(0, 190, 255, .22);
+    opacity: 0.45;
 }
 
-.glow-border.left { left: 0; border-right: 1.5px solid #00e1ff; }
-.glow-border.right { right: 0; border-left: 1.5px solid #00e1ff; }
+.glow-border.left { left: 0; border-right: 1px solid rgba(105, 255, 70, .30); }
+.glow-border.right { right: 0; border-left: 1px solid rgba(190, 70, 255, .30); }
 
 /* ==========================================================
    4. CONTENEDORES PRINCIPALES
@@ -76,7 +108,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     max-width: 250px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 15px rgba(0, 229, 255, 0.7));
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .8)) drop-shadow(0 0 10px rgba(0, 170, 255, .32));
 }
 
 /* SECCIÓN BIENVENIDA */
@@ -84,9 +116,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     text-align: center;
     margin: 10px auto 18px auto;
     padding: 12px 16px;
-    background: rgba(2, 8, 25, 0.95);
+    background: rgba(7, 8, 12, 0.84);
     border-radius: 12px;
-    border: 1.5px solid rgba(0, 229, 255, 0.5);
+    border: 1px solid rgba(130, 190, 220, 0.32);
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
 }
 
@@ -95,8 +127,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     font-weight: 900;
     text-transform: uppercase;
     margin-bottom: 6px;
-    color: #00e1ff;
-    text-shadow: 0 0 8px rgba(0, 225, 255, 0.7);
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .9);
 }
 
 .welcome-section p {
@@ -116,10 +148,10 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(90deg, #020924 0%, #061c4d 100%);
+    background: linear-gradient(90deg, rgba(8,8,10,.97) 0%, rgba(22,25,32,.92) 55%, rgba(8,8,10,.97) 100%);
     padding: 10px 14px;
     border-radius: 10px 10px 0 0;
-    border: 1.5px solid #00e1ff;
+    border: 1px solid rgba(125, 193, 224, .48);
     border-bottom: none;
 }
 
@@ -131,13 +163,13 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .text-cyan {
-    color: #00e1ff;
-    text-shadow: 0 0 8px rgba(0, 225, 255, 0.8);
+    color: #8edbff;
+    text-shadow: 0 0 7px rgba(0, 170, 255, .32);
 }
 
 .news-showcase-card {
-    background: rgba(2, 8, 25, 0.95);
-    border: 1.5px solid #00e1ff;
+    background: rgba(7, 8, 12, 0.84);
+    border: 1px solid rgba(125, 193, 224, .48);
     border-radius: 0 0 12px 12px;
     overflow: hidden;
     position: relative;
@@ -149,7 +181,6 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .news-item {
     display: none;
     opacity: 0;
-    will-change: opacity, filter;
     flex-direction: column;
 }
 
@@ -205,9 +236,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .news-badge {
     align-self: flex-start;
-    background: rgba(0, 225, 255, 0.2);
-    color: #00e1ff;
-    border: 1px solid #00e1ff;
+    background: rgba(0, 170, 255, .13);
+    color: #a9e5ff;
+    border: 1px solid rgba(105, 200, 255, .62);
     font-size: 0.65rem;
     font-weight: 800;
     padding: 3px 8px;
@@ -238,8 +269,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .news-btn {
     align-self: flex-start;
     margin-top: 6px;
-    background: linear-gradient(135deg, #00ffff 0%, #0088ff 100%);
-    color: #010413;
+    background: linear-gradient(135deg, #d9f4ff 0%, #42bfff 48%, #1769df 100%);
+    color: #02060b;
     font-weight: 900;
     font-size: 0.75rem;
     padding: 7px 14px;
@@ -248,12 +279,12 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .4), 0 0 9px rgba(0, 160, 255, .22);
 }
 
 .news-btn:active {
     transform: scale(0.93);
-    box-shadow: 0 0 12px rgba(0, 229, 255, 0.6);
+    box-shadow: 0 0 14px rgba(0, 190, 255, .42);
 }
 
 /* ==========================================================
@@ -267,8 +298,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .category-card {
-    background: rgba(2, 8, 25, 0.95);
-    border: 1.5px solid rgba(0, 229, 255, 0.5);
+    background: rgba(7, 8, 12, 0.84);
+    border: 1px solid rgba(130, 190, 220, 0.32);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -281,8 +312,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .category-card:hover,
 .category-card:active {
     transform: scale(0.95);
-    border-color: #00e1ff;
-    box-shadow: 0 0 20px rgba(0, 229, 255, 0.9);
+    border-color: rgba(117, 210, 255, .9);
+    box-shadow: 0 0 16px rgba(0, 155, 255, .38), 0 5px 15px rgba(0,0,0,.55);
 }
 
 .card-image-wrapper {
@@ -330,7 +361,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     margin-bottom: 12px;
     color: #ffffff;
     text-transform: uppercase;
-    text-shadow: 0 0 8px rgba(0, 225, 255, 0.7);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
 }
 
 .social-grid {
@@ -347,8 +378,8 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     border-radius: 12px;
     text-decoration: none;
     color: #ffffff;
-    background: rgba(2, 8, 25, 0.95);
-    border: 1.5px solid rgba(0, 229, 255, 0.45);
+    background: rgba(7, 8, 12, 0.84);
+    border: 1px solid rgba(135, 190, 220, .30);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
@@ -443,5 +474,27 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     }
     .social-details small {
         font-size: 0.68rem;
+    }
+}
+
+
+/* ==========================================================
+   10. ACABADO AEW DYNAMITE 2019 — PULIDO Y ACCESIBILIDAD
+   ========================================================== */
+@media (min-width: 768px) {
+    body::before { opacity: 1; }
+    body::after {
+        background: linear-gradient(90deg,
+            rgba(0,0,0,.02) 0%, rgba(0,0,0,.38) 15%,
+            rgba(0,0,0,.76) 34%, rgba(0,0,0,.82) 50%,
+            rgba(0,0,0,.76) 66%, rgba(0,0,0,.38) 85%, rgba(0,0,0,.02) 100%);
+    }
+}
+
+/* Evita que los efectos táctiles se vuelvan demasiado intensos. */
+@media (prefers-reduced-motion: reduce) {
+    .news-btn, .category-card, .social-card, .news-item.active {
+        animation: none !important;
+        transition: none !important;
     }
 }

@@ -1,5 +1,5 @@
 /* ==========================================================
-   1. RESETEO BÁSICO Y CONTROL STRICTO DE BORDES
+   1. RESETEO BÃSICO Y CONTROL STRICTO DE BORDES
    ========================================================== */
 * {
     box-sizing: border-box;
@@ -14,14 +14,15 @@ html, body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: #03060a;
+    background-color: #050505;
 }
 
 /* ==========================================================
-   2. FONDO CIBERNÉTICO FRÍO - ATMÓSFERA Y POLVO DE LUZ GPW
+   2. FONDO NEGRO CON POLVO DE COLORES AEW DYNAMITE 2019
    ========================================================== */
 body {
-    background: #03060a;
+    /* Base negra estilo AEW Dynamite 2019: el color vive en los laterales. */
+    background: #050505;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -33,7 +34,7 @@ body {
     padding-right: 16px;
 }
 
-/* Nubes y explosión de pigmento gélido en los laterales (Estilo GPW Cyber) */
+/* Nubes de pigmento multicolor. Solo gradientes CSS: no requiere imÃ¡genes ni descargas. */
 body::before {
     content: "";
     position: fixed;
@@ -41,34 +42,29 @@ body::before {
     z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse at 2% 15%, rgba(0, 240, 255, .35) 0%, rgba(0, 170, 255, .15) 15%, transparent 35%),
-        radial-gradient(ellipse at 5% 50%, rgba(0, 100, 255, .38) 0%, rgba(0, 50, 180, .15) 18%, transparent 38%),
-        radial-gradient(ellipse at 20% 82%, rgba(0, 200, 255, .25) 0%, transparent 32%),
-        radial-gradient(ellipse at 98% 18%, rgba(0, 210, 255, .35) 0%, rgba(0, 120, 255, .15) 15%, transparent 35%),
-        radial-gradient(ellipse at 95% 52%, rgba(0, 80, 220, .40) 0%, rgba(10, 30, 100, .18) 20%, transparent 38%),
-        radial-gradient(ellipse at 80% 85%, rgba(0, 180, 255, .25) 0%, transparent 32%),
-        radial-gradient(ellipse at 50% 0%, rgba(0, 230, 255, .18) 0%, transparent 30%);
-    opacity: .95;
+        radial-gradient(ellipse at 4% 22%, rgba(0, 190, 255, .30) 0%, rgba(0, 190, 255, .10) 16%, transparent 34%),
+        radial-gradient(ellipse at 13% 63%, rgba(0, 111, 255, .23) 0%, transparent 30%),
+        radial-gradient(ellipse at 35% 88%, rgba(0, 225, 255, .13) 0%, transparent 29%),
+        radial-gradient(ellipse at 98% 20%, rgba(104, 57, 255, .25) 0%, transparent 32%),
+        radial-gradient(ellipse at 88% 63%, rgba(0, 170, 255, .24) 0%, transparent 34%),
+        radial-gradient(ellipse at 50% 0%, rgba(0, 190, 255, .10) 0%, transparent 34%);
+    opacity: .88;
 }
 
-/* Sombra central para enfocar el contenido */
+/* Oscurece el centro para mantener las cajas y los textos legibles. */
 body::after {
     content: "";
     position: fixed;
     inset: 0;
     z-index: -1;
     pointer-events: none;
-    background: linear-gradient(90deg,
-        rgba(3,6,10,.05) 0%,
-        rgba(3,6,10,.55) 18%,
-        rgba(3,6,10,.85) 39%,
-        rgba(3,6,10,.85) 61%,
-        rgba(3,6,10,.55) 82%,
-        rgba(3,6,10,.05) 100%);
+    background:
+        radial-gradient(ellipse at center, rgba(3, 7, 14, .18) 0%, rgba(3, 7, 14, .64) 68%, rgba(0, 0, 0, .82) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.12) 0%, rgba(0,0,0,.32) 18%, rgba(0,0,0,.72) 50%, rgba(0,0,0,.32) 82%, rgba(0,0,0,.12) 100%);
 }
 
 /* ==========================================================
-   3. BARRAS DE NEÓN LATERALES CIBERNÉTICAS
+   3. BARRAS DE NEÃ“N LATERALES FIJAS
    ========================================================== */
 .glow-border {
     position: fixed;
@@ -77,16 +73,16 @@ body::after {
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, .50) 35%, rgba(0, 102, 255, .45) 65%, transparent 100%);
-    box-shadow: 0 0 12px rgba(0, 190, 255, .30);
-    opacity: 0.6;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 190, 255, .34) 34%, rgba(0, 112, 255, .22) 58%, rgba(120, 75, 255, .20) 72%, transparent 100%);
+    box-shadow: 0 0 18px rgba(0, 174, 255, .14);
+    opacity: 0.32;
 }
 
-.glow-border.left { left: 0; border-right: 1px solid rgba(0, 240, 255, .35); }
-.glow-border.right { right: 0; border-left: 1px solid rgba(0, 150, 255, .35); }
+.glow-border.left { left: 0; border-right: 1px solid rgba(105, 255, 70, .30); }
+.glow-border.right { right: 0; border-left: 1px solid rgba(190, 70, 255, .30); }
 
 /* ==========================================================
-   4. CONTENEDORES PRINCIPALES Y MARCOS TRANSPARENTES
+   4. CONTENEDORES PRINCIPALES
    ========================================================== */
 header, .welcome-section, .featured-news-section, .category-grid, .social-section {
     position: relative;
@@ -107,19 +103,19 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     max-width: 250px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .9)) drop-shadow(0 0 15px rgba(0, 180, 255, .45));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .85)) drop-shadow(0 0 14px rgba(0, 174, 255, .18));
 }
 
-/* SECCIÓN BIENVENIDA */
+/* SECCIÃ“N BIENVENIDA */
 .welcome-section {
     text-align: center;
     margin: 10px auto 18px auto;
-    padding: 14px 18px;
-    background: rgba(5, 12, 22, 0.75);
-    backdrop-filter: blur(8px);
-    border-radius: 12px;
-    border: 1px solid rgba(0, 212, 255, 0.25);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(0, 170, 255, 0.08);
+    padding: 12px 16px;
+    background: linear-gradient(135deg, rgba(10, 17, 27, .94), rgba(4, 7, 12, .91));
+    border-radius: 3px;
+    border: 1px solid rgba(86, 190, 238, .28);
+    border-left: 3px solid rgba(0, 190, 255, .78);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255,255,255,.035);
 }
 
 .welcome-section h2 {
@@ -128,17 +124,17 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     text-transform: uppercase;
     margin-bottom: 6px;
     color: #ffffff;
-    text-shadow: 0 0 10px rgba(0, 200, 255, .5);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .9);
 }
 
 .welcome-section p {
     font-size: 0.8rem;
-    color: #bce3ff;
-    line-height: 1.4;
+    color: #b8c9dc;
+    line-height: 1.55;
 }
 
 /* ==========================================================
-   5. MARCO DESTACADO Y TRANSICIÓN DE NOTICIAS
+   5. MARCO DESTACADO Y TRANSICIÃ“N DE NOTICIAS (FADE / PARPADEO)
    ========================================================== */
 .featured-news-section {
     margin: 0 auto 25px auto;
@@ -148,11 +144,12 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(90deg, rgba(4,10,20,.95) 0%, rgba(10,25,48,.90) 55%, rgba(4,10,20,.95) 100%);
-    padding: 10px 14px;
-    border-radius: 10px 10px 0 0;
-    border: 1px solid rgba(0, 212, 255, .35);
-    border-bottom: none;
+    background: linear-gradient(100deg, rgba(5, 10, 17, .99) 0%, rgba(11, 28, 43, .96) 58%, rgba(5, 10, 17, .99) 100%);
+    padding: 12px 15px;
+    border-radius: 3px 3px 0 0;
+    border: 1px solid rgba(0, 190, 255, .42);
+    border-bottom: 2px solid #13bdf3;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.045);
 }
 
 .section-header-bar h3 {
@@ -163,22 +160,22 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .text-cyan {
-    color: #00f0ff;
-    text-shadow: 0 0 8px rgba(0, 240, 255, .6);
+    color: #55d5ff;
+    text-shadow: 0 0 12px rgba(0, 174, 255, .22);
 }
 
 .news-showcase-card {
-    background: rgba(5, 12, 22, 0.75);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 212, 255, .35);
-    border-radius: 0 0 12px 12px;
+    background: linear-gradient(145deg, rgba(7, 13, 21, .97), rgba(3, 5, 9, .97));
+    border: 1px solid rgba(0, 190, 255, .34);
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    box-shadow: 0 16px 34px rgba(0, 0, 0, .42);
     min-height: 220px;
 }
 
-/* Transición optimizada de desvanecimiento con parpadeo suave */
+/* TransiciÃ³n optimizada de desvanecimiento con parpadeo suave */
 .news-item {
     display: none;
     opacity: 0;
@@ -197,7 +194,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     }
     50% {
         opacity: 0.6;
-        filter: brightness(1.2);
+        filter: brightness(1.15);
     }
     100% {
         opacity: 1;
@@ -210,7 +207,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     height: 140px;
     position: relative;
     overflow: hidden;
-    background-color: #020508;
+    background-color: #000;
 }
 
 .news-image-wrapper img {
@@ -225,7 +222,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(3, 6, 12, 0.1) 0%, rgba(3, 6, 12, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(2, 8, 18, .04) 0%, rgba(2, 8, 18, .28) 42%, rgba(2, 7, 14, .96) 100%);
 }
 
 .news-content-box {
@@ -237,14 +234,13 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .news-badge {
     align-self: flex-start;
-    background: rgba(0, 212, 255, .15);
-    color: #72e5ff;
-    border: 1px solid rgba(0, 212, 255, .50);
+    background: rgba(0, 174, 255, .10);
+    color: #65d8ff;
+    border: 1px solid rgba(65, 198, 255, .42);
     font-size: 0.65rem;
     font-weight: 800;
     padding: 3px 8px;
     border-radius: 4px;
-    box-shadow: inset 0 0 6px rgba(0, 240, 255, .2);
 }
 
 .news-heading {
@@ -256,46 +252,43 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .news-excerpt {
     font-size: 0.78rem;
-    color: #a0c8f0;
-    line-height: 1.35;
+    color: #a9bacd;
+    line-height: 1.5;
 }
 
 /* ==========================================================
-   6. INTERACTIVIDAD CON HALO INTERIOR Y EFECTO TÁCTIL
+   6. ANIMACIÃ“N TÃCTIL RÃPIDA Y FLUIDA (BOTONES Y TARJETAS)
    ========================================================== */
 .news-btn, .category-card, .social-card {
-    will-change: transform, box-shadow, border-color;
-    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), 
-                border-color 0.18s ease, 
-                box-shadow 0.18s ease;
+    will-change: transform;
+    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .news-btn {
     align-self: flex-start;
     margin-top: 6px;
-    background: linear-gradient(135deg, #e6fbff 0%, #00b7ff 50%, #0055ff 100%);
-    color: #010814;
+    background: linear-gradient(110deg, #9beaff 0%, #28c5f5 48%, #0877d8 100%);
+    color: #03101a;
     font-weight: 900;
     font-size: 0.75rem;
-    padding: 8px 16px;
-    border-radius: 6px;
+    padding: 7px 14px;
+    border-radius: 3px;
     text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: .45px;
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, .5), 0 0 10px rgba(0, 180, 255, .3);
-    position: relative;
-    overflow: hidden;
+    box-shadow: 0 5px 14px rgba(0, 0, 0, .38), inset 0 1px 0 rgba(255,255,255,.38);
 }
 
-.news-btn:hover,
 .news-btn:active {
-    transform: scale(0.94);
-    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.8), 0 0 18px rgba(0, 212, 255, .7);
+    transform: scale(0.93);
+    box-shadow: 0 0 14px rgba(0, 190, 255, .42);
 }
 
 /* ==========================================================
-   7. CUADRÍCULA DE CATEGORÍAS CON BORDE TRANSPARENTE Y HALO
+   7. CUADRÃCULA DE CATEGORÃAS (2 COLUMNAS MOBILE / 4 PC)
    ========================================================== */
 .category-grid {
     margin: 0 auto 25px auto;
@@ -305,32 +298,29 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .category-card {
-    background: rgba(5, 12, 22, 0.75);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 212, 255, 0.22);
-    border-radius: 12px;
+    background: linear-gradient(150deg, rgba(10, 18, 29, .96), rgba(4, 7, 12, .96));
+    border: 1px solid rgba(99, 169, 202, .23);
+    border-radius: 4px;
     overflow: hidden;
     text-decoration: none;
     color: white;
     display: flex;
     flex-direction: column;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255,255,255,.025);
 }
 
 .category-card:hover,
 .category-card:active {
-    transform: scale(0.95);
-    border-color: rgba(0, 240, 255, .8);
-    /* HALO INTERIOR Y BRILLO EXTERIOR GÉLIDO */
-    box-shadow: inset 0 0 18px rgba(0, 212, 255, 0.45), 
-                0 0 15px rgba(0, 170, 255, 0.35);
+    transform: translateY(-3px);
+    border-color: rgba(63, 204, 255, .72);
+    box-shadow: 0 12px 26px rgba(0,0,0,.42), 0 0 18px rgba(0, 155, 255, .12);
 }
 
 .card-image-wrapper {
     width: 100%;
     height: 90px;
     overflow: hidden;
-    background-color: #020508;
+    background-color: #000;
 }
 
 .card-image-wrapper img {
@@ -338,6 +328,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     height: 100%;
     object-fit: cover;
     opacity: 0.88;
+    filter: saturate(.88) contrast(1.06);
 }
 
 .card-info {
@@ -353,11 +344,11 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .card-info p {
     font-size: 0.68rem;
-    color: #a0c8f0;
+    color: #a9bacd;
 }
 
 /* ==========================================================
-   8. SECCIÓN SOCIAL / REDES CON HALOS DINÁMICOS
+   8. SECCIÃ“N SOCIAL / REDES
    ========================================================== */
 .social-section {
     margin: 0 auto;
@@ -371,7 +362,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     margin-bottom: 12px;
     color: #ffffff;
     text-transform: uppercase;
-    text-shadow: 0 0 10px rgba(0, 200, 255, .4);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
 }
 
 .social-grid {
@@ -388,22 +379,21 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     border-radius: 12px;
     text-decoration: none;
     color: #ffffff;
-    background: rgba(5, 12, 22, 0.75);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 212, 255, .22);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(135deg, rgba(10, 18, 29, .96), rgba(4, 7, 12, .96));
+    border: 1px solid rgba(99, 169, 202, .23);
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .34), inset 0 1px 0 rgba(255,255,255,.025);
 }
 
 .social-card:hover,
 .social-card:active {
-    transform: scale(0.95);
-    /* Halo interior genérico antes del color de red */
-    box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.35);
+    transform: translateY(-2px);
+    border-color: rgba(63, 204, 255, .58);
 }
 
 .social-icon-box i {
     font-size: 1.4rem;
-    transition: color 0.18s ease;
+    transition: color 0.15s ease;
 }
 
 .social-details {
@@ -420,39 +410,27 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .social-details small {
     font-size: 0.6rem;
-    color: #a0c8f0;
+    color: #a5bce0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Colores y Halos Interiores por Red Social */
-.social-card.instagram:hover, .social-card.instagram:active { 
-    border-color: #e1306c; 
-    box-shadow: inset 0 0 16px rgba(225, 48, 108, 0.4), 0 0 12px rgba(225, 48, 108, 0.3);
-}
+/* Colores dinÃ¡micos para redes sociales */
+.social-card.instagram:hover, .social-card.instagram:active { border-color: #e1306c; }
 .social-card.instagram:hover .social-icon-box i, .social-card.instagram:active .social-icon-box i { color: #e1306c; }
 
-.social-card.whatsapp:hover, .social-card.whatsapp:active { 
-    border-color: #25d366; 
-    box-shadow: inset 0 0 16px rgba(37, 211, 102, 0.4), 0 0 12px rgba(37, 211, 102, 0.3);
-}
+.social-card.whatsapp:hover, .social-card.whatsapp:active { border-color: #25d366; }
 .social-card.whatsapp:hover .social-icon-box i, .social-card.whatsapp:active .social-icon-box i { color: #25d366; }
 
-.social-card.youtube:hover, .social-card.youtube:active { 
-    border-color: #ff0000; 
-    box-shadow: inset 0 0 16px rgba(255, 0, 0, 0.4), 0 0 12px rgba(255, 0, 0, 0.3);
-}
+.social-card.youtube:hover, .social-card.youtube:active { border-color: #ff0000; }
 .social-card.youtube:hover .social-icon-box i, .social-card.youtube:active .social-icon-box i { color: #ff0000; }
 
-.social-card.facebook:hover, .social-card.facebook:active { 
-    border-color: #1877f2; 
-    box-shadow: inset 0 0 16px rgba(24, 119, 242, 0.4), 0 0 12px rgba(24, 119, 242, 0.3);
-}
+.social-card.facebook:hover, .social-card.facebook:active { border-color: #1877f2; }
 .social-card.facebook:hover .social-icon-box i, .social-card.facebook:active .social-icon-box i { color: #1877f2; }
 
 /* ==========================================================
-   9. ADAPTACIÓN PARA COMPUTADORAS (PC)
+   9. ADAPTACIÃ“N PARA COMPUTADORAS (PC)
    ========================================================== */
 @media (min-width: 768px) {
     body {
@@ -502,19 +480,20 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     }
 }
 
+
 /* ==========================================================
-   10. PULIDO FINAL Y ACCESIBILIDAD
+   10. ACABADO AEW DYNAMITE 2019 â€” PULIDO Y ACCESIBILIDAD
    ========================================================== */
 @media (min-width: 768px) {
     body::before { opacity: 1; }
     body::after {
-        background: linear-gradient(90deg,
-            rgba(3,6,10,.02) 0%, rgba(3,6,10,.40) 15%,
-            rgba(3,6,10,.80) 34%, rgba(3,6,10,.86) 50%,
-            rgba(3,6,10,.80) 66%, rgba(3,6,10,.40) 85%, rgba(3,6,10,.02) 100%);
+        background:
+            radial-gradient(ellipse at center, rgba(3, 7, 14, .20) 0%, rgba(3, 7, 14, .66) 70%, rgba(0,0,0,.84) 100%),
+            linear-gradient(90deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.34) 20%, rgba(0,0,0,.70) 50%, rgba(0,0,0,.34) 80%, rgba(0,0,0,.08) 100%);
     }
 }
 
+/* Evita que los efectos tÃ¡ctiles se vuelvan demasiado intensos. */
 @media (prefers-reduced-motion: reduce) {
     .news-btn, .category-card, .social-card, .news-item.active {
         animation: none !important;

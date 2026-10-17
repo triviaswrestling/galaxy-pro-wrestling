@@ -1,5 +1,5 @@
 /* ==========================================================
-   1. RESETEO BÃSICO Y CONTROL STRICTO DE BORDES
+   1. RESETEO BÁSICO Y CONTROL STRICTO DE BORDES
    ========================================================== */
 * {
     box-sizing: border-box;
@@ -34,7 +34,7 @@ body {
     padding-right: 16px;
 }
 
-/* Nubes de pigmento multicolor. Solo gradientes CSS: no requiere imÃ¡genes ni descargas. */
+/* Nubes de pigmento multicolor. Solo gradientes CSS: no requiere imágenes ni descargas. */
 body::before {
     content: "";
     position: fixed;
@@ -64,7 +64,7 @@ body::after {
 }
 
 /* ==========================================================
-   3. BARRAS DE NEÃ“N LATERALES FIJAS
+   3. BARRAS DE NEÓN LATERALES FIJAS
    ========================================================== */
 .glow-border {
     position: fixed;
@@ -106,7 +106,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .85)) drop-shadow(0 0 14px rgba(0, 174, 255, .18));
 }
 
-/* SECCIÃ“N BIENVENIDA */
+/* SECCIÓN BIENVENIDA */
 .welcome-section {
     text-align: center;
     margin: 10px auto 18px auto;
@@ -134,7 +134,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 /* ==========================================================
-   5. MARCO DESTACADO Y TRANSICIÃ“N DE NOTICIAS (FADE / PARPADEO)
+   5. MARCO DESTACADO Y TRANSICIÓN DE NOTICIAS (FADE / PARPADEO)
    ========================================================== */
 .featured-news-section {
     margin: 0 auto 25px auto;
@@ -175,7 +175,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     min-height: 220px;
 }
 
-/* TransiciÃ³n optimizada de desvanecimiento con parpadeo suave */
+/* Transición optimizada de desvanecimiento con parpadeo suave */
 .news-item {
     display: none;
     opacity: 0;
@@ -257,7 +257,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 /* ==========================================================
-   6. ANIMACIÃ“N TÃCTIL RÃPIDA Y FLUIDA (BOTONES Y TARJETAS)
+   6. ANIMACIÓN TÁCTIL RÁPIDA Y FLUIDA (BOTONES Y TARJETAS)
    ========================================================== */
 .news-btn, .category-card, .social-card {
     will-change: transform;
@@ -288,7 +288,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 /* ==========================================================
-   7. CUADRÃCULA DE CATEGORÃAS (2 COLUMNAS MOBILE / 4 PC)
+   7. CUADRÍCULA DE CATEGORÍAS (2 COLUMNAS MOBILE / 4 PC)
    ========================================================== */
 .category-grid {
     margin: 0 auto 25px auto;
@@ -348,7 +348,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 /* ==========================================================
-   8. SECCIÃ“N SOCIAL / REDES
+   8. SECCIÓN SOCIAL / REDES
    ========================================================== */
 .social-section {
     margin: 0 auto;
@@ -416,7 +416,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     text-overflow: ellipsis;
 }
 
-/* Colores dinÃ¡micos para redes sociales */
+/* Colores dinámicos para redes sociales */
 .social-card.instagram:hover, .social-card.instagram:active { border-color: #e1306c; }
 .social-card.instagram:hover .social-icon-box i, .social-card.instagram:active .social-icon-box i { color: #e1306c; }
 
@@ -430,7 +430,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .social-card.facebook:hover .social-icon-box i, .social-card.facebook:active .social-icon-box i { color: #1877f2; }
 
 /* ==========================================================
-   9. ADAPTACIÃ“N PARA COMPUTADORAS (PC)
+   9. ADAPTACIÓN PARA COMPUTADORAS (PC)
    ========================================================== */
 @media (min-width: 768px) {
     body {
@@ -482,7 +482,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 
 /* ==========================================================
-   10. ACABADO AEW DYNAMITE 2019 â€” PULIDO Y ACCESIBILIDAD
+   10. ACABADO AEW DYNAMITE 2019 — PULIDO Y ACCESIBILIDAD
    ========================================================== */
 @media (min-width: 768px) {
     body::before { opacity: 1; }
@@ -493,10 +493,221 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     }
 }
 
-/* Evita que los efectos tÃ¡ctiles se vuelvan demasiado intensos. */
+/* Evita que los efectos táctiles se vuelvan demasiado intensos. */
 @media (prefers-reduced-motion: reduce) {
     .news-btn, .category-card, .social-card, .news-item.active {
         animation: none !important;
         transition: none !important;
     }
+}
+
+/* ==========================================================
+   11. DYNAMITE COLOR DUST + WCW Y2K / SUPERSTAR CARD FINISH
+   Capa de acabado visual: conserva los selectores y el layout original.
+   ========================================================== */
+:root {
+    --ice: #eafaff;
+    --cyan: #37d7ff;
+    --electric-blue: #087dff;
+    --steel: #aebdca;
+    --chrome: #e1edf4;
+    --ink: #030609;
+}
+
+/* Polvo de pigmento inspirado en las promos de Dynamite: color irregular,
+   partículas finas y manchas frías; el centro sigue oscuro para leer bien. */
+body::before {
+    background-color: #030507;
+    background-image:
+        radial-gradient(ellipse at 8% 28%, rgba(54, 221, 255, .34) 0%, rgba(54, 221, 255, .16) 8%, transparent 25%),
+        radial-gradient(ellipse at 16% 48%, rgba(0, 112, 255, .32) 0%, rgba(0, 112, 255, .13) 12%, transparent 29%),
+        radial-gradient(ellipse at 29% 76%, rgba(227, 247, 255, .12) 0%, rgba(0, 194, 255, .12) 9%, transparent 25%),
+        radial-gradient(ellipse at 42% 12%, rgba(0, 211, 255, .16) 0%, transparent 24%),
+        radial-gradient(ellipse at 91% 24%, rgba(0, 186, 255, .31) 0%, rgba(0, 186, 255, .13) 10%, transparent 27%),
+        radial-gradient(ellipse at 84% 54%, rgba(72, 92, 255, .30) 0%, rgba(72, 92, 255, .12) 13%, transparent 30%),
+        radial-gradient(ellipse at 73% 83%, rgba(188, 224, 241, .13) 0%, rgba(0, 174, 255, .10) 9%, transparent 25%),
+        radial-gradient(circle at 12% 35%, rgba(231, 250, 255, .65) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 22% 66%, rgba(61, 214, 255, .7) 0 1px, transparent 2px),
+        radial-gradient(circle at 34% 22%, rgba(225, 246, 255, .48) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 66% 18%, rgba(76, 213, 255, .58) 0 1px, transparent 2px),
+        radial-gradient(circle at 79% 61%, rgba(218, 246, 255, .52) 0 1px, transparent 1.8px),
+        radial-gradient(circle at 92% 43%, rgba(43, 184, 255, .68) 0 1px, transparent 2px),
+        repeating-radial-gradient(circle at 50% 50%, rgba(198, 235, 248, .055) 0 .7px, transparent 1px 5px);
+    background-size: auto, auto, auto, auto, auto, auto, auto, 97px 113px, 137px 151px, 173px 127px, 149px 181px, 191px 139px, 127px 167px, 9px 9px;
+    opacity: .96;
+}
+
+/* Un viñeteado suave, no una mancha negra plana encima del pigmento. */
+body::after {
+    background:
+        radial-gradient(ellipse at 50% 42%, rgba(2, 6, 11, .08) 0%, rgba(2, 6, 11, .30) 48%, rgba(0, 0, 0, .76) 100%),
+        linear-gradient(90deg, rgba(0,0,0,.16) 0%, rgba(0,0,0,.26) 18%, rgba(0,0,0,.62) 50%, rgba(0,0,0,.26) 82%, rgba(0,0,0,.16) 100%);
+}
+
+/* Bordes cromados fríos: menos tubo de neón, más marco de producción premium. */
+.glow-border {
+    width: 5px;
+    background: linear-gradient(180deg, transparent, rgba(229, 249, 255, .72) 18%, rgba(55, 215, 255, .82) 42%, rgba(8, 125, 255, .52) 68%, transparent);
+    box-shadow: 0 0 10px rgba(55, 215, 255, .22), 0 0 26px rgba(8, 125, 255, .10);
+    opacity: .58;
+}
+.glow-border.left { border-right: 1px solid rgba(220, 246, 255, .38); }
+.glow-border.right { border-left: 1px solid rgba(55, 215, 255, .38); }
+
+.site-logo {
+    filter: drop-shadow(0 3px 5px rgba(0,0,0,.95)) drop-shadow(0 0 12px rgba(55,215,255,.25));
+}
+
+.welcome-section {
+    position: relative;
+    background:
+        linear-gradient(110deg, rgba(8, 18, 27, .94), rgba(4, 8, 13, .92) 58%, rgba(8, 19, 29, .94));
+    border: 1px solid rgba(174, 205, 222, .30);
+    border-left: 3px solid var(--cyan);
+    box-shadow: 0 12px 28px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10), inset 0 -1px 0 rgba(55,215,255,.10);
+}
+.welcome-section::after,
+.section-header-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 27%;
+    height: 1px;
+    pointer-events: none;
+    background: linear-gradient(90deg, transparent, rgba(233,250,255,.72));
+}
+.welcome-section p { color: #d0e2ec; }
+
+.section-header-bar {
+    position: relative;
+    background:
+        linear-gradient(100deg, rgba(3,7,11,.98), rgba(10,29,43,.97) 48%, rgba(4,8,13,.98)),
+        repeating-linear-gradient(135deg, rgba(255,255,255,.035) 0 1px, transparent 1px 5px);
+    border-color: rgba(166, 211, 231, .38);
+    border-bottom: 2px solid transparent;
+    border-image: linear-gradient(90deg, #e5f7ff, #37d7ff 38%, #087dff 75%, #aebdca) 1;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 4px 16px rgba(0,0,0,.20);
+}
+.section-header-bar h3 { letter-spacing: 1px; text-shadow: 0 1px 0 #000, 0 0 12px rgba(55,215,255,.12); }
+.text-cyan {
+    color: var(--ice);
+    text-shadow: 0 0 5px rgba(55,215,255,.60), 0 0 16px rgba(8,125,255,.28);
+}
+
+.news-showcase-card {
+    background: linear-gradient(145deg, rgba(8,15,22,.98), rgba(2,4,7,.98));
+    border-color: rgba(158, 201, 220, .34);
+    box-shadow: 0 18px 38px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.055);
+}
+.news-image-wrapper::after,
+.card-image-wrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 48%, rgba(2,7,12,.62) 100%), linear-gradient(115deg, rgba(55,215,255,.08), transparent 45%, rgba(8,125,255,.08));
+    box-shadow: inset 0 0 0 1px rgba(230,248,255,.07);
+}
+.news-image-wrapper img,
+.card-image-wrapper img { transition: transform .35s ease, filter .35s ease; }
+.news-showcase-card:hover .news-image-wrapper img { transform: scale(1.025); }
+.news-content-box { background: linear-gradient(180deg, rgba(7,13,19,.96), rgba(3,6,9,.98)); }
+.news-badge {
+    background: linear-gradient(100deg, rgba(55,215,255,.17), rgba(8,125,255,.08));
+    color: #e7faff;
+    border-color: rgba(117,220,255,.52);
+    border-radius: 2px;
+    letter-spacing: .7px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.10);
+}
+.news-heading { text-shadow: 0 2px 12px rgba(0,0,0,.65); }
+.news-excerpt { color: #b7cbd7; }
+
+.news-btn {
+    background: linear-gradient(110deg, #f0fbff 0%, #8deaff 18%, #37d7ff 48%, #087dff 100%);
+    border: 1px solid rgba(237,251,255,.68);
+    border-radius: 2px;
+    box-shadow: 0 4px 13px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.72), inset 0 -2px 0 rgba(0,35,75,.22);
+    letter-spacing: .65px;
+}
+.news-btn:hover { filter: brightness(1.12); box-shadow: 0 0 18px rgba(55,215,255,.28), inset 0 1px 0 rgba(255,255,255,.7); }
+
+/* Tarjetas con un acabado de carta coleccionable: bisel plateado,
+   brillo holográfico muy discreto y una franja cian de rareza. */
+.category-card {
+    position: relative;
+    isolation: isolate;
+    background: linear-gradient(145deg, rgba(12,22,31,.98), rgba(3,6,10,.98) 62%, rgba(7,20,31,.98));
+    border: 1px solid rgba(177, 211, 228, .30);
+    border-radius: 3px;
+    box-shadow: 0 9px 22px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.08), inset 0 -1px 0 rgba(55,215,255,.08);
+}
+.category-card::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+    opacity: .42;
+    background: linear-gradient(118deg, transparent 0%, rgba(222,248,255,.10) 18%, transparent 31%, transparent 67%, rgba(55,215,255,.10) 83%, transparent 100%);
+}
+.category-card::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    pointer-events: none;
+    background: linear-gradient(90deg, #dff7ff 0%, #37d7ff 35%, #087dff 72%, #b7c9d5 100%);
+    opacity: .78;
+}
+.category-card:hover,
+.category-card:active {
+    transform: translateY(-3px) scale(1.008);
+    border-color: rgba(185,235,255,.76);
+    box-shadow: 0 14px 30px rgba(0,0,0,.50), 0 0 20px rgba(55,215,255,.17), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.card-image-wrapper { position: relative; }
+.card-image-wrapper img { opacity: .96; filter: saturate(1.08) contrast(1.08); }
+.category-card:hover .card-image-wrapper img { transform: scale(1.035); filter: saturate(1.18) contrast(1.08); }
+.card-info {
+    position: relative;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(8,15,22,.96), rgba(3,6,10,.99));
+    border-top: 1px solid rgba(176,218,237,.14);
+}
+.card-info h2 { letter-spacing: .35px; text-shadow: 0 1px 0 #000, 0 0 10px rgba(55,215,255,.10); }
+.card-info p { color: #c0d4df; }
+
+.social-card {
+    background: linear-gradient(145deg, rgba(10,18,26,.97), rgba(3,6,10,.98));
+    border: 1px solid rgba(158,199,219,.26);
+    border-radius: 3px;
+    box-shadow: 0 7px 18px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.045);
+}
+.social-card:hover,
+.social-card:active {
+    transform: translateY(-2px);
+    border-color: rgba(55,215,255,.58);
+    box-shadow: 0 10px 22px rgba(0,0,0,.40), 0 0 15px rgba(55,215,255,.10);
+}
+.social-details small { color: #b5cad6; }
+.section-title { text-shadow: 0 2px 0 #000, 0 0 15px rgba(55,215,255,.12); }
+
+/* Evita efectos intensos en pantallas pequeñas y respeta movimiento reducido. */
+@media (max-width: 767px) {
+    body::before { opacity: .82; }
+    body::after {
+        background: radial-gradient(ellipse at 50% 38%, rgba(2,6,11,.12) 0%, rgba(2,6,11,.43) 57%, rgba(0,0,0,.78) 100%);
+    }
+    .glow-border { width: 3px; opacity: .42; }
+    .category-grid, .social-grid { gap: 10px; }
+    .category-card:hover, .category-card:active { transform: translateY(-1px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .news-image-wrapper img, .card-image-wrapper img { transition: none !important; }
 }

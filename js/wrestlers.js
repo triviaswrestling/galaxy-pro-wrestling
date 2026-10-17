@@ -51,7 +51,7 @@ const wrestlers = [
      finisher: "",
      signature: "",
      stats: { micro: 10, charisma: 20, power: 30 },
-     achievements: []}
+     achievements: []},
     
     
     {

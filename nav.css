@@ -169,8 +169,9 @@
 }
 
 
+
 /* =========================================
-   NAV — ANCHO COMPLETO DE PANTALLA
+   NAV — ANCHO COMPLETO + AJUSTE DE PC
    ========================================= */
 
 .main-header {
@@ -180,10 +181,39 @@
     box-sizing: border-box;
 }
 
-@media (min-width: 768px) {
+/* PC: logo a la izquierda y enlaces compactos */
+@media (min-width: 900px) {
     .main-header {
         width: calc(100% + 90px);
         margin-left: -45px;
         margin-right: -45px;
+        padding-left: 12px;
+        padding-right: 12px;
+        gap: 8px;
+    }
+
+    .main-header .logo-area {
+        flex: 0 0 auto;
+        margin-right: auto;
+    }
+
+    .main-header .logo-area .site-logo {
+        max-width: 180px;
+        height: 40px;
+    }
+
+    .main-nav {
+        flex: 0 1 auto;
+        justify-content: flex-end;
+        gap: clamp(3px, 0.6vw, 9px);
+        min-width: 0;
+    }
+
+    .main-nav a {
+        padding: 6px 5px;
+        font-size: clamp(9px, 0.78vw, 11px);
+        letter-spacing: 0.5px;
+        white-space: nowrap;
     }
 }
+

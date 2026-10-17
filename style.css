@@ -14,15 +14,14 @@ html, body {
     width: 100%;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: #050505;
+    background-color: #03060a;
 }
 
 /* ==========================================================
-   2. FONDO NEGRO CON POLVO DE COLORES AEW DYNAMITE 2019
+   2. FONDO CIBERNÉTICO FRÍO - ATMÓSFERA Y POLVO DE LUZ GPW
    ========================================================== */
 body {
-    /* Base negra estilo AEW Dynamite 2019: el color vive en los laterales. */
-    background: #050505;
+    background: #03060a;
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -34,7 +33,7 @@ body {
     padding-right: 16px;
 }
 
-/* Nubes de pigmento multicolor. Solo gradientes CSS: no requiere imágenes ni descargas. */
+/* Nubes y explosión de pigmento gélido en los laterales (Estilo GPW Cyber) */
 body::before {
     content: "";
     position: fixed;
@@ -42,17 +41,17 @@ body::before {
     z-index: -1;
     pointer-events: none;
     background:
-        radial-gradient(ellipse at 0% 18%, rgba(232, 255, 0, .48) 0%, rgba(232, 255, 0, .16) 13%, transparent 31%),
-        radial-gradient(ellipse at 8% 48%, rgba(70, 255, 28, .50) 0%, rgba(70, 255, 28, .18) 16%, transparent 34%),
-        radial-gradient(ellipse at 28% 78%, rgba(0, 230, 180, .34) 0%, transparent 30%),
-        radial-gradient(ellipse at 100% 17%, rgba(255, 0, 190, .48) 0%, rgba(255, 0, 190, .16) 15%, transparent 34%),
-        radial-gradient(ellipse at 95% 54%, rgba(117, 35, 255, .52) 0%, rgba(117, 35, 255, .18) 18%, transparent 36%),
-        radial-gradient(ellipse at 75% 88%, rgba(0, 116, 255, .36) 0%, transparent 30%),
-        radial-gradient(ellipse at 50% 0%, rgba(0, 190, 255, .14) 0%, transparent 28%);
+        radial-gradient(ellipse at 2% 15%, rgba(0, 240, 255, .35) 0%, rgba(0, 170, 255, .15) 15%, transparent 35%),
+        radial-gradient(ellipse at 5% 50%, rgba(0, 100, 255, .38) 0%, rgba(0, 50, 180, .15) 18%, transparent 38%),
+        radial-gradient(ellipse at 20% 82%, rgba(0, 200, 255, .25) 0%, transparent 32%),
+        radial-gradient(ellipse at 98% 18%, rgba(0, 210, 255, .35) 0%, rgba(0, 120, 255, .15) 15%, transparent 35%),
+        radial-gradient(ellipse at 95% 52%, rgba(0, 80, 220, .40) 0%, rgba(10, 30, 100, .18) 20%, transparent 38%),
+        radial-gradient(ellipse at 80% 85%, rgba(0, 180, 255, .25) 0%, transparent 32%),
+        radial-gradient(ellipse at 50% 0%, rgba(0, 230, 255, .18) 0%, transparent 30%);
     opacity: .95;
 }
 
-/* Oscurece el centro para mantener las cajas y los textos legibles. */
+/* Sombra central para enfocar el contenido */
 body::after {
     content: "";
     position: fixed;
@@ -60,16 +59,16 @@ body::after {
     z-index: -1;
     pointer-events: none;
     background: linear-gradient(90deg,
-        rgba(0,0,0,.04) 0%,
-        rgba(0,0,0,.48) 18%,
-        rgba(0,0,0,.78) 39%,
-        rgba(0,0,0,.78) 61%,
-        rgba(0,0,0,.48) 82%,
-        rgba(0,0,0,.04) 100%);
+        rgba(3,6,10,.05) 0%,
+        rgba(3,6,10,.55) 18%,
+        rgba(3,6,10,.85) 39%,
+        rgba(3,6,10,.85) 61%,
+        rgba(3,6,10,.55) 82%,
+        rgba(3,6,10,.05) 100%);
 }
 
 /* ==========================================================
-   3. BARRAS DE NEÓN LATERALES FIJAS
+   3. BARRAS DE NEÓN LATERALES CIBERNÉTICAS
    ========================================================== */
 .glow-border {
     position: fixed;
@@ -78,16 +77,16 @@ body::after {
     height: 100%;
     z-index: 1;
     pointer-events: none;
-    background: linear-gradient(180deg, transparent 0%, rgba(0, 190, 255, .45) 35%, rgba(185, 55, 255, .42) 65%, transparent 100%);
-    box-shadow: 0 0 10px rgba(0, 190, 255, .22);
-    opacity: 0.45;
+    background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, .50) 35%, rgba(0, 102, 255, .45) 65%, transparent 100%);
+    box-shadow: 0 0 12px rgba(0, 190, 255, .30);
+    opacity: 0.6;
 }
 
-.glow-border.left { left: 0; border-right: 1px solid rgba(105, 255, 70, .30); }
-.glow-border.right { right: 0; border-left: 1px solid rgba(190, 70, 255, .30); }
+.glow-border.left { left: 0; border-right: 1px solid rgba(0, 240, 255, .35); }
+.glow-border.right { right: 0; border-left: 1px solid rgba(0, 150, 255, .35); }
 
 /* ==========================================================
-   4. CONTENEDORES PRINCIPALES
+   4. CONTENEDORES PRINCIPALES Y MARCOS TRANSPARENTES
    ========================================================== */
 header, .welcome-section, .featured-news-section, .category-grid, .social-section {
     position: relative;
@@ -108,18 +107,19 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     max-width: 250px;
     height: auto;
     object-fit: contain;
-    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, .8)) drop-shadow(0 0 10px rgba(0, 170, 255, .32));
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, .9)) drop-shadow(0 0 15px rgba(0, 180, 255, .45));
 }
 
 /* SECCIÓN BIENVENIDA */
 .welcome-section {
     text-align: center;
     margin: 10px auto 18px auto;
-    padding: 12px 16px;
-    background: rgba(7, 8, 12, 0.84);
+    padding: 14px 18px;
+    background: rgba(5, 12, 22, 0.75);
+    backdrop-filter: blur(8px);
     border-radius: 12px;
-    border: 1px solid rgba(130, 190, 220, 0.32);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), inset 0 0 12px rgba(0, 170, 255, 0.08);
 }
 
 .welcome-section h2 {
@@ -128,17 +128,17 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     text-transform: uppercase;
     margin-bottom: 6px;
     color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, .9);
+    text-shadow: 0 0 10px rgba(0, 200, 255, .5);
 }
 
 .welcome-section p {
     font-size: 0.8rem;
-    color: #d0e0ff;
+    color: #bce3ff;
     line-height: 1.4;
 }
 
 /* ==========================================================
-   5. MARCO DESTACADO Y TRANSICIÓN DE NOTICIAS (FADE / PARPADEO)
+   5. MARCO DESTACADO Y TRANSICIÓN DE NOTICIAS
    ========================================================== */
 .featured-news-section {
     margin: 0 auto 25px auto;
@@ -148,10 +148,10 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     display: flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(90deg, rgba(8,8,10,.97) 0%, rgba(22,25,32,.92) 55%, rgba(8,8,10,.97) 100%);
+    background: linear-gradient(90deg, rgba(4,10,20,.95) 0%, rgba(10,25,48,.90) 55%, rgba(4,10,20,.95) 100%);
     padding: 10px 14px;
     border-radius: 10px 10px 0 0;
-    border: 1px solid rgba(125, 193, 224, .48);
+    border: 1px solid rgba(0, 212, 255, .35);
     border-bottom: none;
 }
 
@@ -163,17 +163,18 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .text-cyan {
-    color: #8edbff;
-    text-shadow: 0 0 7px rgba(0, 170, 255, .32);
+    color: #00f0ff;
+    text-shadow: 0 0 8px rgba(0, 240, 255, .6);
 }
 
 .news-showcase-card {
-    background: rgba(7, 8, 12, 0.84);
-    border: 1px solid rgba(125, 193, 224, .48);
+    background: rgba(5, 12, 22, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 212, 255, .35);
     border-radius: 0 0 12px 12px;
     overflow: hidden;
     position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
     min-height: 220px;
 }
 
@@ -196,7 +197,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     }
     50% {
         opacity: 0.6;
-        filter: brightness(1.15);
+        filter: brightness(1.2);
     }
     100% {
         opacity: 1;
@@ -209,7 +210,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     height: 140px;
     position: relative;
     overflow: hidden;
-    background-color: #000;
+    background-color: #020508;
 }
 
 .news-image-wrapper img {
@@ -224,7 +225,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(180deg, rgba(2, 8, 25, 0.1) 0%, rgba(2, 8, 25, 0.95) 100%);
+    background: linear-gradient(180deg, rgba(3, 6, 12, 0.1) 0%, rgba(3, 6, 12, 0.95) 100%);
 }
 
 .news-content-box {
@@ -236,13 +237,14 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .news-badge {
     align-self: flex-start;
-    background: rgba(0, 170, 255, .13);
-    color: #a9e5ff;
-    border: 1px solid rgba(105, 200, 255, .62);
+    background: rgba(0, 212, 255, .15);
+    color: #72e5ff;
+    border: 1px solid rgba(0, 212, 255, .50);
     font-size: 0.65rem;
     font-weight: 800;
     padding: 3px 8px;
     border-radius: 4px;
+    box-shadow: inset 0 0 6px rgba(0, 240, 255, .2);
 }
 
 .news-heading {
@@ -254,41 +256,46 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .news-excerpt {
     font-size: 0.78rem;
-    color: #a5bce0;
+    color: #a0c8f0;
     line-height: 1.35;
 }
 
 /* ==========================================================
-   6. ANIMACIÓN TÁCTIL RÁPIDA Y FLUIDA (BOTONES Y TARJETAS)
+   6. INTERACTIVIDAD CON HALO INTERIOR Y EFECTO TÁCTIL
    ========================================================== */
 .news-btn, .category-card, .social-card {
-    will-change: transform;
-    transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    will-change: transform, box-shadow, border-color;
+    transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                border-color 0.18s ease, 
+                box-shadow 0.18s ease;
 }
 
 .news-btn {
     align-self: flex-start;
     margin-top: 6px;
-    background: linear-gradient(135deg, #d9f4ff 0%, #42bfff 48%, #1769df 100%);
-    color: #02060b;
+    background: linear-gradient(135deg, #e6fbff 0%, #00b7ff 50%, #0055ff 100%);
+    color: #010814;
     font-weight: 900;
     font-size: 0.75rem;
-    padding: 7px 14px;
+    padding: 8px 16px;
     border-radius: 6px;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    box-shadow: 0 3px 12px rgba(0, 0, 0, .4), 0 0 9px rgba(0, 160, 255, .22);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, .5), 0 0 10px rgba(0, 180, 255, .3);
+    position: relative;
+    overflow: hidden;
 }
 
+.news-btn:hover,
 .news-btn:active {
-    transform: scale(0.93);
-    box-shadow: 0 0 14px rgba(0, 190, 255, .42);
+    transform: scale(0.94);
+    box-shadow: inset 0 0 12px rgba(255, 255, 255, 0.8), 0 0 18px rgba(0, 212, 255, .7);
 }
 
 /* ==========================================================
-   7. CUADRÍCULA DE CATEGORÍAS (2 COLUMNAS MOBILE / 4 PC)
+   7. CUADRÍCULA DE CATEGORÍAS CON BORDE TRANSPARENTE Y HALO
    ========================================================== */
 .category-grid {
     margin: 0 auto 25px auto;
@@ -298,8 +305,9 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 }
 
 .category-card {
-    background: rgba(7, 8, 12, 0.84);
-    border: 1px solid rgba(130, 190, 220, 0.32);
+    background: rgba(5, 12, 22, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 212, 255, 0.22);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -312,22 +320,24 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 .category-card:hover,
 .category-card:active {
     transform: scale(0.95);
-    border-color: rgba(117, 210, 255, .9);
-    box-shadow: 0 0 16px rgba(0, 155, 255, .38), 0 5px 15px rgba(0,0,0,.55);
+    border-color: rgba(0, 240, 255, .8);
+    /* HALO INTERIOR Y BRILLO EXTERIOR GÉLIDO */
+    box-shadow: inset 0 0 18px rgba(0, 212, 255, 0.45), 
+                0 0 15px rgba(0, 170, 255, 0.35);
 }
 
 .card-image-wrapper {
     width: 100%;
     height: 90px;
     overflow: hidden;
-    background-color: #000;
+    background-color: #020508;
 }
 
 .card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    opacity: 0.9;
+    opacity: 0.88;
 }
 
 .card-info {
@@ -343,11 +353,11 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .card-info p {
     font-size: 0.68rem;
-    color: #a5bce0;
+    color: #a0c8f0;
 }
 
 /* ==========================================================
-   8. SECCIÓN SOCIAL / REDES
+   8. SECCIÓN SOCIAL / REDES CON HALOS DINÁMICOS
    ========================================================== */
 .social-section {
     margin: 0 auto;
@@ -361,7 +371,7 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     margin-bottom: 12px;
     color: #ffffff;
     text-transform: uppercase;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, .85);
+    text-shadow: 0 0 10px rgba(0, 200, 255, .4);
 }
 
 .social-grid {
@@ -378,19 +388,22 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     border-radius: 12px;
     text-decoration: none;
     color: #ffffff;
-    background: rgba(7, 8, 12, 0.84);
-    border: 1px solid rgba(135, 190, 220, .30);
+    background: rgba(5, 12, 22, 0.75);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 212, 255, .22);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .social-card:hover,
 .social-card:active {
     transform: scale(0.95);
+    /* Halo interior genérico antes del color de red */
+    box-shadow: inset 0 0 15px rgba(0, 212, 255, 0.35);
 }
 
 .social-icon-box i {
     font-size: 1.4rem;
-    transition: color 0.15s ease;
+    transition: color 0.18s ease;
 }
 
 .social-details {
@@ -407,23 +420,35 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
 
 .social-details small {
     font-size: 0.6rem;
-    color: #a5bce0;
+    color: #a0c8f0;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
-/* Colores dinámicos para redes sociales */
-.social-card.instagram:hover, .social-card.instagram:active { border-color: #e1306c; }
+/* Colores y Halos Interiores por Red Social */
+.social-card.instagram:hover, .social-card.instagram:active { 
+    border-color: #e1306c; 
+    box-shadow: inset 0 0 16px rgba(225, 48, 108, 0.4), 0 0 12px rgba(225, 48, 108, 0.3);
+}
 .social-card.instagram:hover .social-icon-box i, .social-card.instagram:active .social-icon-box i { color: #e1306c; }
 
-.social-card.whatsapp:hover, .social-card.whatsapp:active { border-color: #25d366; }
+.social-card.whatsapp:hover, .social-card.whatsapp:active { 
+    border-color: #25d366; 
+    box-shadow: inset 0 0 16px rgba(37, 211, 102, 0.4), 0 0 12px rgba(37, 211, 102, 0.3);
+}
 .social-card.whatsapp:hover .social-icon-box i, .social-card.whatsapp:active .social-icon-box i { color: #25d366; }
 
-.social-card.youtube:hover, .social-card.youtube:active { border-color: #ff0000; }
+.social-card.youtube:hover, .social-card.youtube:active { 
+    border-color: #ff0000; 
+    box-shadow: inset 0 0 16px rgba(255, 0, 0, 0.4), 0 0 12px rgba(255, 0, 0, 0.3);
+}
 .social-card.youtube:hover .social-icon-box i, .social-card.youtube:active .social-icon-box i { color: #ff0000; }
 
-.social-card.facebook:hover, .social-card.facebook:active { border-color: #1877f2; }
+.social-card.facebook:hover, .social-card.facebook:active { 
+    border-color: #1877f2; 
+    box-shadow: inset 0 0 16px rgba(24, 119, 242, 0.4), 0 0 12px rgba(24, 119, 242, 0.3);
+}
 .social-card.facebook:hover .social-icon-box i, .social-card.facebook:active .social-icon-box i { color: #1877f2; }
 
 /* ==========================================================
@@ -477,21 +502,19 @@ header, .welcome-section, .featured-news-section, .category-grid, .social-sectio
     }
 }
 
-
 /* ==========================================================
-   10. ACABADO AEW DYNAMITE 2019 — PULIDO Y ACCESIBILIDAD
+   10. PULIDO FINAL Y ACCESIBILIDAD
    ========================================================== */
 @media (min-width: 768px) {
     body::before { opacity: 1; }
     body::after {
         background: linear-gradient(90deg,
-            rgba(0,0,0,.02) 0%, rgba(0,0,0,.38) 15%,
-            rgba(0,0,0,.76) 34%, rgba(0,0,0,.82) 50%,
-            rgba(0,0,0,.76) 66%, rgba(0,0,0,.38) 85%, rgba(0,0,0,.02) 100%);
+            rgba(3,6,10,.02) 0%, rgba(3,6,10,.40) 15%,
+            rgba(3,6,10,.80) 34%, rgba(3,6,10,.86) 50%,
+            rgba(3,6,10,.80) 66%, rgba(3,6,10,.40) 85%, rgba(3,6,10,.02) 100%);
     }
 }
 
-/* Evita que los efectos táctiles se vuelvan demasiado intensos. */
 @media (prefers-reduced-motion: reduce) {
     .news-btn, .category-card, .social-card, .news-item.active {
         animation: none !important;

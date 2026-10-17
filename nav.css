@@ -167,3 +167,23 @@
         color: #00e1ff;
     }
 }
+
+
+/* =========================================
+   NAV — ANCHO COMPLETO DE PANTALLA
+   ========================================= */
+
+.main-header {
+    width: calc(100% + 32px);
+    margin-left: -16px;
+    margin-right: -16px;
+    box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+    .main-header {
+        width: calc(100% + 90px);
+        margin-left: -45px;
+        margin-right: -45px;
+    }
+}

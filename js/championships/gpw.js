@@ -43,28 +43,38 @@
 
         reigns: [
 
-            {
-                id: "gpw-reign-010",
-                number: 10,
-                championId: "test-champion-010",
-                champion: "Adrian Storm",
-                image: "",
-                startDate: "2026-08-01",
-                endDate: "2026-10-10",
-                wonAt: "GPW: Final Collision",
-                lostAt: "GPW: Grand Finale",
-                wonAgainst: "Marcus Steel",
-                lostAgainst: "Dante Cross",
-                description:
-                    "Ganó el campeonato en una lucha individual. " +
-                    "Su reinado terminó tras una defensa titular.",
-                defenses: 3,
-                eventIds: [
-                    "test-event-101",
-                    "test-event-102",
-                    "test-event-103"
-                ]
-            },
+            
+{
+    id: "gpw-reign-010",
+    number: 10,
+
+    championId: "bray-wyatt",
+    presentationId: "the-fiend",
+    champion: "The Fiend",
+    image: "",
+
+    startDate: "2026-08-01",
+    endDate: "2026-10-10",
+
+    wonAt: "GPW: Final Collision",
+    lostAt: "GPW: Grand Finale",
+
+    wonAgainst: "Marcus Steel",
+    lostAgainst: "Dante Cross",
+
+    description:
+        "Ganó el campeonato en una lucha individual. " +
+        "Su reinado terminó tras una defensa titular.",
+
+    defenses: 3,
+
+    eventIds: [
+        "test-event-101",
+        "test-event-102",
+        "test-event-103"
+    ]
+}
+,
 
             {
                 id: "gpw-reign-009",

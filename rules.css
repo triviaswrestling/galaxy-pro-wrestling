@@ -1,0 +1,604 @@
+
+/* ==========================================================
+   GALAXY PRO WRESTLING — OFFICIAL RULEBOOK
+   Archivo: rules.css
+
+   RESPONSABILIDAD:
+   - Diseño exclusivo del reglamento.
+   - No reemplaza style.css.
+   - No modifica nav.css ni el navbar.
+   - No establece el fondo global del sitio.
+   - Animaciones ligeras para PC y móviles.
+   ========================================================== */
+
+
+/* ==========================================================
+   01. VARIABLES LOCALES
+   ========================================================== */
+
+.rules-page {
+    --rules-blue: #43bfff;
+    --rules-cyan: #91e5ff;
+    --rules-text: #e9f2fa;
+    --rules-muted: #a5b4c5;
+    --rules-line: rgba(145, 195, 225, 0.18);
+
+    width: min(100% - 28px, 1100px);
+    margin: 0 auto;
+    padding: 34px 0 48px;
+    color: var(--rules-text);
+    font-family: inherit;
+    box-sizing: border-box;
+}
+
+.rules-page *,
+.rules-page *::before,
+.rules-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   02. ENCABEZADO
+   ========================================================== */
+
+.rules-heading {
+    position: relative;
+    margin: 0 auto 30px;
+    padding: 22px 12px 25px;
+    text-align: center;
+    border-bottom: 1px solid var(--rules-line);
+    isolation: isolate;
+}
+
+.rules-eyebrow {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: var(--rules-cyan);
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(67, 191, 255, 0.25);
+}
+
+.rules-heading h1 {
+    margin: 0;
+    color: #f5fbff;
+    font-size: clamp(1.75rem, 5vw, 3.4rem);
+    font-weight: 950;
+    line-height: 1.08;
+    letter-spacing: 0.035em;
+    text-wrap: balance;
+    text-shadow:
+        0 1px 0 #7b91a4,
+        0 2px 0 #34495d,
+        0 4px 16px rgba(67, 191, 255, 0.16);
+}
+
+.rules-heading h1 span {
+    color: var(--rules-blue);
+    text-shadow:
+        0 0 8px rgba(67, 191, 255, 0.35),
+        0 0 22px rgba(67, 191, 255, 0.12);
+}
+
+.rules-heading > p {
+    max-width: 680px;
+    margin: 15px auto 0;
+    color: var(--rules-muted);
+    font-size: 0.95rem;
+    line-height: 1.75;
+}
+
+
+/* ==========================================================
+   03. INTRODUCCIÓN
+   ========================================================== */
+
+.rules-intro {
+    position: relative;
+    margin: 0 0 28px;
+    padding: 20px 21px;
+    border: 1px solid rgba(67, 191, 255, 0.23);
+    border-left: 3px solid var(--rules-blue);
+    border-radius: 10px;
+    box-shadow:
+        inset 0 0 22px rgba(67, 191, 255, 0.025),
+        0 7px 22px rgba(0, 0, 0, 0.12);
+}
+
+.rules-label {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: var(--rules-blue);
+    font-size: 0.68rem;
+    font-weight: 850;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+.rules-intro h2,
+.rules-closing h2 {
+    margin: 0 0 12px;
+    color: #f2f8ff;
+    font-size: clamp(1.15rem, 3vw, 1.55rem);
+    font-weight: 850;
+    line-height: 1.3;
+}
+
+.rules-intro p,
+.rules-closing p {
+    margin: 9px 0 0;
+    color: #bac8d7;
+    font-size: 0.93rem;
+    line-height: 1.8;
+}
+
+
+/* ==========================================================
+   04. CONTENEDOR DEL ACORDEÓN
+   ========================================================== */
+
+.rules-accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    width: 100%;
+    min-width: 0;
+}
+
+
+/* ==========================================================
+   05. TARJETAS DESPLEGABLES
+   ========================================================== */
+
+.rules-item {
+    --section-color: #43bfff;
+    --section-soft: #a3e8ff;
+
+    position: relative;
+    min-width: 0;
+    border: 1px solid color-mix(
+        in srgb,
+        var(--section-color) 36%,
+        transparent
+    );
+    border-left: 3px solid var(--section-color);
+    border-radius: 9px;
+    overflow: clip;
+    box-shadow:
+        inset 0 0 16px color-mix(
+            in srgb,
+            var(--section-color) 3%,
+            transparent
+        ),
+        0 5px 16px rgba(0, 0, 0, 0.12);
+    transition:
+        border-color 180ms ease,
+        box-shadow 180ms ease,
+        transform 180ms ease;
+}
+
+/* Línea luminosa superior */
+.rules-item::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 1px;
+    pointer-events: none;
+    opacity: 0.5;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--section-soft),
+        transparent
+    );
+}
+
+/* Colores individuales de las ocho secciones */
+.rules-item:nth-child(1) {
+    --section-color: #43c8ff;
+    --section-soft: #a4e9ff;
+}
+
+.rules-item:nth-child(2) {
+    --section-color: #45d69a;
+    --section-soft: #a2f2ce;
+}
+
+.rules-item:nth-child(3) {
+    --section-color: #ff9d52;
+    --section-soft: #ffd0a3;
+}
+
+.rules-item:nth-child(4) {
+    --section-color: #b49aff;
+    --section-soft: #ded0ff;
+}
+
+.rules-item:nth-child(5) {
+    --section-color: #ffd166;
+    --section-soft: #fff0b8;
+}
+
+.rules-item:nth-child(6) {
+    --section-color: #ff75b5;
+    --section-soft: #ffc1df;
+}
+
+.rules-item:nth-child(7) {
+    --section-color: #6ddce0;
+    --section-soft: #c0f5f5;
+}
+
+.rules-item:nth-child(8) {
+    --section-color: #ff6878;
+    --section-soft: #ffb6be;
+}
+
+
+/* ==========================================================
+   06. BOTÓN / TÍTULO DE CADA SECCIÓN
+   ========================================================== */
+
+.rules-item > summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    min-height: 65px;
+    padding: 17px 49px 17px 17px;
+    color: #f1f6fc;
+    font-size: 0.96rem;
+    font-weight: 850;
+    line-height: 1.45;
+    letter-spacing: 0.015em;
+    list-style: none;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    transition:
+        color 180ms ease,
+        padding 180ms ease;
+}
+
+.rules-item > summary::-webkit-details-marker {
+    display: none;
+}
+
+.rules-item > summary::marker {
+    content: "";
+}
+
+/* Indicador de apertura */
+.rules-item > summary::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 17px;
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    border: 1px solid color-mix(
+        in srgb,
+        var(--section-color) 60%,
+        transparent
+    );
+    border-radius: 6px;
+    color: var(--section-color);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1;
+    transform: translateY(-50%);
+    transition:
+        transform 180ms ease,
+        color 180ms ease,
+        border-color 180ms ease;
+}
+
+.rules-item[open] > summary::after {
+    content: "−";
+    transform: translateY(-50%) rotate(180deg);
+}
+
+/* Número inicial, si el HTML incluye un span */
+.rules-item > summary > span {
+    flex-shrink: 0;
+    color: var(--section-color);
+}
+
+/* Respuesta visible al tocar */
+.rules-item[open] > summary {
+    color: var(--section-soft);
+    padding-bottom: 19px;
+}
+
+.rules-item[open] {
+    border-color: color-mix(
+        in srgb,
+        var(--section-color) 65%,
+        transparent
+    );
+    box-shadow:
+        inset 0 0 20px color-mix(
+            in srgb,
+            var(--section-color) 5%,
+            transparent
+        ),
+        0 0 14px color-mix(
+            in srgb,
+            var(--section-color) 10%,
+            transparent
+        );
+}
+
+
+/* ==========================================================
+   07. CONTENIDO INTERNO DE LAS SECCIONES
+   ========================================================== */
+
+.rules-item > p,
+.rules-item > div,
+.rules-item > ul,
+.rules-item > ol {
+    color: #c5d1de;
+    font-size: 0.92rem;
+    line-height: 1.85;
+}
+
+.rules-item > p {
+    margin: 0 19px 17px;
+}
+
+.rules-item > div {
+    margin-right: 19px;
+    margin-bottom: 18px;
+    margin-left: 19px;
+}
+
+.rules-item > ul,
+.rules-item > ol {
+    margin: 0 19px 19px;
+    padding-left: 23px;
+}
+
+.rules-item li {
+    padding-left: 3px;
+    margin-bottom: 8px;
+}
+
+.rules-item li::marker {
+    color: var(--section-color);
+}
+
+.rules-item strong,
+.rules-item b {
+    color: var(--section-soft);
+    font-weight: 800;
+}
+
+.rules-item a {
+    color: var(--section-soft);
+    text-decoration-color: var(--section-color);
+    text-underline-offset: 3px;
+}
+
+.rules-item a:focus-visible,
+.rules-item > summary:focus-visible {
+    outline: 2px solid var(--section-color);
+    outline-offset: 4px;
+}
+
+
+/* ==========================================================
+   08. CIERRE DEL REGLAMENTO
+   ========================================================== */
+
+.rules-closing {
+    position: relative;
+    margin-top: 31px;
+    padding: 23px 18px;
+    text-align: center;
+    border-top: 1px solid var(--rules-line);
+    border-bottom: 1px solid var(--rules-line);
+}
+
+.rules-closing .rules-label {
+    color: var(--rules-cyan);
+}
+
+.rules-closing h2 {
+    max-width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.rules-closing p {
+    max-width: 640px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+
+/* ==========================================================
+   09. ANIMACIONES LIGERAS
+   ========================================================== */
+
+/* Brillo sutil al pasar el cursor en PC */
+@media (hover: hover) and (pointer: fine) {
+    .rules-item:hover {
+        border-color: color-mix(
+            in srgb,
+            var(--section-color) 78%,
+            transparent
+        );
+        box-shadow:
+            inset 0 0 18px color-mix(
+                in srgb,
+                var(--section-color) 5%,
+                transparent
+            ),
+            0 0 13px color-mix(
+                in srgb,
+                var(--section-color) 12%,
+                transparent
+            );
+        transform: translateY(-1px);
+    }
+
+    .rules-item > summary:hover {
+        color: var(--section-soft);
+    }
+}
+
+/* Pulso discreto al abrir */
+@keyframes rules-open-glow {
+    0% {
+        box-shadow: 0 0 0 transparent;
+    }
+
+    100% {
+        box-shadow:
+            0 0 14px color-mix(
+                in srgb,
+                var(--section-color) 10%,
+                transparent
+            );
+    }
+}
+
+.rules-item[open] {
+    animation: rules-open-glow 220ms ease-out both;
+}
+
+
+/* ==========================================================
+   10. TABLET Y MÓVILES
+   ========================================================== */
+
+@media (max-width: 700px) {
+    .rules-page {
+        width: calc(100% - 22px);
+        padding-top: 22px;
+        padding-bottom: 32px;
+    }
+
+    .rules-heading {
+        margin-bottom: 23px;
+        padding: 18px 5px 21px;
+    }
+
+    .rules-eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.19em;
+    }
+
+    .rules-heading > p {
+        max-width: 440px;
+        font-size: 0.87rem;
+        line-height: 1.7;
+    }
+
+    .rules-intro {
+        margin-bottom: 22px;
+        padding: 17px 15px;
+    }
+
+    .rules-intro p,
+    .rules-closing p {
+        font-size: 0.88rem;
+        line-height: 1.75;
+    }
+
+    .rules-accordion {
+        gap: 9px;
+    }
+
+    .rules-item > summary {
+        min-height: 59px;
+        gap: 9px;
+        padding: 15px 43px 15px 13px;
+        font-size: 0.88rem;
+    }
+
+    .rules-item > summary::after {
+        right: 12px;
+        width: 23px;
+        height: 23px;
+    }
+
+    .rules-item > p,
+    .rules-item > div,
+    .rules-item > ul,
+    .rules-item > ol {
+        font-size: 0.87rem;
+        line-height: 1.8;
+    }
+
+    .rules-item > p {
+        margin-right: 14px;
+        margin-left: 14px;
+    }
+
+    .rules-item > div {
+        margin-right: 14px;
+        margin-left: 14px;
+    }
+
+    .rules-item > ul,
+    .rules-item > ol {
+        margin-right: 14px;
+        margin-left: 14px;
+        padding-left: 21px;
+    }
+
+    .rules-closing {
+        margin-top: 24px;
+        padding: 20px 8px;
+    }
+}
+
+
+/* ==========================================================
+   11. TELÉFONOS PEQUEÑOS
+   ========================================================== */
+
+@media (max-width: 380px) {
+    .rules-page {
+        width: calc(100% - 16px);
+    }
+
+    .rules-heading h1 {
+        font-size: 1.65rem;
+    }
+
+    .rules-item > summary {
+        font-size: 0.82rem;
+        padding-left: 10px;
+    }
+
+    .rules-item > p,
+    .rules-item > div,
+    .rules-item > ul,
+    .rules-item > ol {
+        font-size: 0.84rem;
+    }
+}
+
+
+/* ==========================================================
+   12. ACCESIBILIDAD: REDUCIR MOVIMIENTO
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .rules-item,
+    .rules-item > summary,
+    .rules-item > summary::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}

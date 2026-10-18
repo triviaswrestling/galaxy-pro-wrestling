@@ -1,78 +1,93 @@
 
-/* =====================================================
-   GALAXY PRO WRESTLING
-   SISTEMA DE CAMPEONATOS — PÁGINA INDIVIDUAL
-
+/* ==========================================================
+   GALAXY PRO WRESTLING — CHAMPIONSHIP SYSTEM
    Archivo: js/campeonato.js
-
-   FUNCIONES:
-   - Leer el ID del campeonato desde la URL.
-   - Buscarlo en GPWChampionshipIndex.
-   - Cargar su archivo de datos correspondiente.
-   - Mostrar la información del campeonato.
-   - Alternar entre Reinados e Historia.
-   - Mostrar errores claros si falta algún dato.
-   ===================================================== */
+   ========================================================== */
 
 (function () {
     "use strict";
 
-    const INDEX = window.GPWChampionshipIndex;
-
-    const $ = (selector) => document.querySelector(selector);
+    /* ======================================================
+       ELEMENTOS HTML
+       ====================================================== */
 
     const elements = {
-        hero: $("#championship-hero"),
-        category: $("#championship-category"),
-        name: $("#championship-name"),
-        subtitle: $("#championship-subtitle"),
-        statusIndicator: $("#championship-status-indicator"),
-        status: $("#championship-status"),
-        belt: $("#championship-belt"),
-        currentChampion: $("#championship-current-champion"),
-        totalReigns: $("#championship-total-reigns"),
-        established: $("#championship-established"),
-        sectionTitle: $("#championship-section-title"),
-        sectionDescription: $("#championship-section-description"),
-        tabReigns: $("#tab-reigns"),
-        tabHistory: $("#tab-history"),
-        panelReigns: $("#panel-reigns"),
-        panelHistory: $("#panel-history"),
-        reignsCount: $("#reigns-count"),
-        reigns: $("#championship-reigns"),
-        historyDescription: $("#championship-history-description"),
-        timeline: $("#championship-timeline")
+        hero: document.getElementById("championship-hero"),
+        category: document.getElementById("championship-category"),
+        name: document.getElementById("championship-name"),
+        subtitle: document.getElementById("championship-subtitle"),
+
+        statusIndicator: document.getElementById(
+            "championship-status-indicator"
+        ),
+        status: document.getElementById("championship-status"),
+
+        belt: document.getElementById("championship-belt"),
+
+        currentChampion: document.getElementById(
+            "championship-current-champion"
+        ),
+        totalReigns: document.getElementById(
+            "championship-total-reigns"
+        ),
+        established: document.getElementById(
+            "championship-established"
+        ),
+
+        sectionTitle: document.getElementById(
+            "championship-section-title"
+        ),
+        sectionDescription: document.getElementById(
+            "championship-section-description"
+        ),
+
+        tabReigns: document.getElementById("tab-reigns"),
+        tabHistory: document.getElementById("tab-history"),
+
+        panelReigns: document.getElementById("panel-reigns"),
+        panelHistory: document.getElementById("panel-history"),
+
+        reigns: document.getElementById("championship-reigns"),
+        reignsCount: document.getElementById("reigns-count"),
+
+        historyIntro: document.getElementById(
+            "championship-history-intro"
+        ),
+        historyDescription: document.getElementById(
+            "championship-history-description"
+        ),
+        timeline: document.getElementById("championship-timeline")
     };
 
-    const CATEGORY_NAMES = {
-        world: "CAMPEONATO MUNDIAL",
-        midcard: "CAMPEONATO MIDCARD",
-        women: "CAMPEONATO FEMENINO",
-        specialty: "CAMPEONATO ESPECIAL",
-        tag: "CAMPEONATO EN PAREJAS"
-    };
 
-    const STATUS_NAMES = {
-        active: "CAMPEONATO ACTIVO",
-        vacant: "CAMPEONATO VACANTE",
-        retired: "CAMPEONATO RETIRADO"
-    };
+    /* ======================================================
+       FUNCIONES GENERALES
+       ====================================================== */
 
-    let championship = null;
-    let championshipData = null;
+    function setText(element, value) {
+        if (!element) return;
+
+        element.textContent =
+            value !== undefined &&
+            value !== null &&
+            String(value).trim() !== ""
+                ? String(value)
+                : "No registrado";
+    }
 
 
-    /* =============================================
-       UTILIDADES
-       ============================================= */
+    function createElement(tag, className, text) {
+        const element = document.createElement(tag);
 
-    function setText(element, value, fallback = "Por determinar") {
-        if (element) {
-            element.textContent =
-                value !== undefined && value !== null && value !== ""
-                    ? String(value)
-                    : fallback;
+        if (className) {
+            element.className = className;
         }
+
+        if (text !== undefined && text !== null) {
+            element.textContent = String(text);
+        }
+
+        return element;
     }
 
 
@@ -81,9 +96,11 @@
 
         container.replaceChildren();
 
-        const paragraph = document.createElement("p");
-        paragraph.className = "championship-message";
-        paragraph.textContent = message;
+        const paragraph = createElement(
+            "p",
+            "championship-loading",
+            message
+        );
 
         container.appendChild(paragraph);
     }
@@ -91,183 +108,126 @@
 
     function getChampionshipId() {
         const params = new URLSearchParams(window.location.search);
-        return (params.get("id") || "").trim();
+
+        return params.get("id");
     }
 
 
-    function getDataValue(...keys) {
+    function getDataValue(data, keys, fallback) {
         for (const key of keys) {
             if (
-                championshipData &&
-                championshipData[key] !== undefined &&
-                championshipData[key] !== null
+                data &&
+                data[key] !== undefined &&
+                data[key] !== null &&
+                data[key] !== ""
             ) {
-                return championshipData[key];
-            }
-
-            if (
-                championship &&
-                championship[key] !== undefined &&
-                championship[key] !== null
-            ) {
-                return championship[key];
+                return data[key];
             }
         }
 
-        return null;
+        return fallback;
+    }
+
+
+    /* ======================================================
+       FECHAS
+       ====================================================== */
+
+    function parseDate(value) {
+        if (!value) return null;
+
+        if (value instanceof Date) {
+            return isNaN(value.getTime()) ? null : value;
+        }
+
+        const text = String(value).trim();
+
+        if (!text) return null;
+
+        let date;
+
+        if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+            date = new Date(text + "T00:00:00");
+        } else {
+            date = new Date(text);
+        }
+
+        return isNaN(date.getTime()) ? null : date;
     }
 
 
     function formatDate(value) {
-        if (!value) return "Fecha no registrada";
+        const date = parseDate(value);
 
-        const date = new Date(value + "T00:00:00");
-
-        if (Number.isNaN(date.getTime())) {
-            return String(value);
+        if (!date) {
+            return "Sin registrar";
         }
 
-        return new Intl.DateTimeFormat("es-AR", {
-            day: "numeric",
-            month: "long",
+        return date.toLocaleDateString("es-AR", {
+            day: "2-digit",
+            month: "short",
             year: "numeric"
-        }).format(date);
+        }).replace(/\./g, "").toUpperCase();
     }
 
 
-    function formatDuration(start, end) {
-        if (!start) return "Duración no registrada";
+    function formatDuration(startValue, endValue) {
+        const start = parseDate(startValue);
+        const end = parseDate(endValue) || new Date();
 
-        const first = new Date(start + "T00:00:00");
-        const last = end
-            ? new Date(end + "T00:00:00")
-            : new Date();
-
-        if (
-            Number.isNaN(first.getTime()) ||
-            Number.isNaN(last.getTime())
-        ) {
-            return "Duración no registrada";
+        if (!start) {
+            return "No registrada";
         }
 
-        const days = Math.max(
+        const difference = Math.max(
             0,
-            Math.floor((last - first) / 86400000)
+            Math.floor((end - start) / 86400000)
         );
 
-        if (days === 0) return "1 día";
+        if (difference === 1) {
+            return "1 día";
+        }
 
-        return days + (days === 1 ? " día" : " días");
+        return difference + " días";
     }
 
 
-    function createElement(tag, className, text) {
-        const element = document.createElement(tag);
+    /* ======================================================
+       CARGAR INFORMACIÓN DEL CAMPEONATO
+       ====================================================== */
 
-        if (className) element.className = className;
-        if (text !== undefined) element.textContent = text;
-
-        return element;
-    }
-
-
-    /* =============================================
-       ESTADO DE LA PÁGINA
-       ============================================= */
-
-    function showPageError(title, message) {
-        setText(elements.name, title);
-        setText(elements.subtitle, message);
-        setText(elements.category, "GALAXY PRO WRESTLING");
-        setText(elements.status, "INFORMACIÓN NO DISPONIBLE");
-        setText(elements.currentChampion, "No disponible");
-        setText(elements.totalReigns, "—");
-        setText(elements.established, "—");
-
-        showMessage(
-            elements.reigns,
-            message
-        );
-
-        showMessage(
-            elements.timeline,
-            message
-        );
-
-        setText(
-            elements.historyDescription,
-            message
-        );
-
-        document.title = title + " | Galaxy Pro Wrestling";
-    }
-
-
-    /* =============================================
-       CARGA DEL ARCHIVO HISTÓRICO
-       ============================================= */
-
-    function loadChampionshipData() {
-        return new Promise((resolve, reject) => {
+    function loadChampionshipData(championship) {
+        return new Promise(function (resolve, reject) {
             if (!championship || !championship.archivo) {
-                reject(new Error(
-                    "El índice no indica un archivo para este campeonato."
-                ));
+                reject(
+                    new Error("No se encontró el archivo del campeonato.")
+                );
                 return;
             }
-
-            /*
-             * Cada archivo debe registrar sus datos en:
-             *
-             * window.GPWChampionshipData
-             *
-             * Se elimina una posible referencia anterior para
-             * evitar confundir los datos de dos campeonatos.
-             */
-
-            window.GPWChampionshipData = null;
 
             const script = document.createElement("script");
 
             script.src =
-                "js/championships/" +
-                encodeURIComponent(championship.archivo);
-
-            script.async = true;
+                "js/championships/" + championship.archivo;
 
             script.onload = function () {
-                const data = window.GPWChampionshipData;
-
-                if (!data || typeof data !== "object") {
-                    reject(new Error(
-                        "El archivo se cargó, pero no registró GPWChampionshipData."
-                    ));
-                    return;
+                if (window.GPWChampionshipData) {
+                    resolve(window.GPWChampionshipData);
+                } else {
+                    reject(
+                        new Error(
+                            "El archivo no definió GPWChampionshipData."
+                        )
+                    );
                 }
-
-                const loadedId =
-                    data.id ||
-                    data.championshipId ||
-                    data.historialId;
-
-                if (
-                    loadedId &&
-                    loadedId !== championship.id &&
-                    loadedId !== championship.historialId
-                ) {
-                    reject(new Error(
-                        "El ID del archivo no coincide con el campeonato solicitado."
-                    ));
-                    return;
-                }
-
-                resolve(data);
             };
 
             script.onerror = function () {
-                reject(new Error(
-                    "No se pudo cargar el archivo: " + championship.archivo
-                ));
+                reject(
+                    new Error(
+                        "No se pudo cargar " + championship.archivo
+                    )
+                );
             };
 
             document.head.appendChild(script);
@@ -275,214 +235,225 @@
     }
 
 
-    /* =============================================
-       INFORMACIÓN PRINCIPAL
-       ============================================= */
+    /* ======================================================
+       RENDERIZAR INFORMACIÓN GENERAL
+       ====================================================== */
 
-    function renderChampionship() {
-        const name = getDataValue("nombre", "name") ||
-            championship.nombre;
-
-        const subtitle = getDataValue(
-            "subtitulo",
-            "subtitle",
-            "descripcion",
-            "description"
-        ) || "Galaxy Pro Wrestling";
+    function renderChampionship(championship, data) {
+        const title = getDataValue(
+            data,
+            ["nombre", "name", "titulo", "title"],
+            championship.nombre || championship.name || "Campeonato"
+        );
 
         const category = getDataValue(
-            "categoria",
-            "category"
-        ) || championship.categoria;
+            data,
+            ["categoria", "category"],
+            championship.categoria || championship.category || "Campeonato"
+        );
+
+        const subtitle = getDataValue(
+            data,
+            ["subtitulo", "subtitle", "descripcionCorta"],
+            ""
+        );
 
         const status = getDataValue(
-            "estado",
-            "status"
-        ) || championship.estado;
+            data,
+            ["estado", "status"],
+            championship.estado || championship.status || "Activo"
+        );
 
-        const beltImage = getDataValue(
-            "imagen",
-            "beltImage",
-            "belt",
-            "imagenCinturon"
+        const belt = getDataValue(
+            data,
+            ["imagen", "belt", "beltImage", "imagenCampeonato"],
+            "images/championships/placeholder.png"
         );
 
         const established = getDataValue(
-            "establecido",
-            "fechaCreacion",
-            "established",
-            "creationDate"
+            data,
+            ["establecido", "fechaCreacion", "established"],
+            "No registrado"
         );
 
-        const reigns = getDataValue(
-            "reinados",
-            "reigns"
-        );
+        const reigns = getReigns(data);
+        const currentChampion = getCurrentChampion(data, reigns);
 
-        const history = getDataValue(
-            "historia",
-            "history"
-        );
-
-        setText(elements.name, name);
+        setText(elements.name, title);
+        setText(elements.category, category);
         setText(elements.subtitle, subtitle);
+        setText(elements.status, status);
+        setText(elements.established, established);
+        setText(elements.currentChampion, currentChampion);
+        setText(elements.totalReigns, reigns.length);
 
-        setText(
-            elements.category,
-            CATEGORY_NAMES[category] || category
-        );
-
-        setText(
-            elements.status,
-            STATUS_NAMES[status] || status
-        );
-
-        if (elements.statusIndicator) {
-            elements.statusIndicator.dataset.status = status;
-        }
-
-        if (elements.belt && beltImage) {
-            elements.belt.src = beltImage;
-            elements.belt.alt = "Cinturón de " + name;
-
+        if (elements.belt) {
+            elements.belt.src = belt;
+            elements.belt.alt = title;
             elements.belt.onerror = function () {
-                this.style.visibility = "hidden";
+                this.onerror = null;
+                this.src = "images/championships/placeholder.png";
             };
         }
 
-        setText(
-            elements.established,
-            established ? formatDate(established) : null
-        );
+        if (elements.hero) {
+            elements.hero.dataset.category = String(category)
+                .toLowerCase()
+                .replace(/\s+/g, "-");
+        }
 
-        const reignList = Array.isArray(reigns) ? reigns : [];
-
-        setText(elements.totalReigns, reignList.length);
-        setText(elements.reignsCount, reignList.length);
-
-        const currentReign = reignList.find((reign) => {
-            return (
-                !reign.fin &&
-                !reign.endDate &&
-                !reign.fechaFin
+        if (elements.statusIndicator) {
+            elements.statusIndicator.classList.toggle(
+                "is-inactive",
+                /inactivo|retirado|desactivado|vacante/i.test(
+                    String(status)
+                )
             );
-        });
+        }
 
-        const currentChampion = getDataValue(
-            "campeonActual",
-            "currentChampion"
-        ) || (
-            currentReign
-                ? (
-                    currentReign.campeon ||
-                    currentReign.champion ||
-                    currentReign.nombre
-                )
-                : null
-        );
-
-        setText(
-            elements.currentChampion,
-            currentChampion || (
-                status === "vacant"
-                    ? "Vacante"
-                    : "Por determinar"
-            )
-        );
-
-        setText(
-            elements.sectionTitle,
-            "HISTORIA DEL CAMPEONATO"
-        );
-
-        setText(
-            elements.sectionDescription,
-            "Cada reinado forma parte de la historia de GPW."
-        );
-
-        setText(
-            elements.historyDescription,
-            typeof history === "string"
-                ? history
-                : (
-                    history && history.descripcion
-                        ? history.descripcion
-                        : "La historia de este campeonato se presenta en la cronología."
-                )
-        );
-
-        renderReigns(reignList);
-        renderHistory(history);
-
-        document.title = name + " | Galaxy Pro Wrestling";
+        renderReigns(reigns);
+        renderHistory(data);
     }
 
 
-    /* =============================================
-       RENDERIZADO DE REINADOS
-       ============================================= */
+    /* ======================================================
+       OBTENER REINADOS
+       ====================================================== */
+
+    function getReigns(data) {
+        const reigns = getDataValue(
+            data,
+            ["reinados", "reigns", "historialReinados", "historial"],
+            []
+        );
+
+        return Array.isArray(reigns) ? reigns : [];
+    }
+
+
+    function getCurrentChampion(data, reigns) {
+        const directChampion = getDataValue(
+            data,
+            [
+                "campeonActual",
+                "campeon",
+                "currentChampion",
+                "champion"
+            ],
+            null
+        );
+
+        if (directChampion) {
+            if (typeof directChampion === "object") {
+                return getDataValue(
+                    directChampion,
+                    ["nombre", "name"],
+                    "No registrado"
+                );
+            }
+
+            return directChampion;
+        }
+
+        const currentReign = reigns.find(function (reign) {
+            const end = getDataValue(
+                reign,
+                ["fin", "fechaFin", "endDate", "end"],
+                null
+            );
+
+            return !end;
+        });
+
+        if (currentReign) {
+            return getDataValue(
+                currentReign,
+                ["campeon", "champion", "nombre"],
+                "No registrado"
+            );
+        }
+
+        return "Vacante";
+    }
+
+
+    /* ======================================================
+       RENDERIZAR REINADOS
+       ====================================================== */
 
     function renderReigns(reigns) {
         if (!elements.reigns) return;
 
         elements.reigns.replaceChildren();
 
+        if (elements.reignsCount) {
+            elements.reignsCount.textContent = String(reigns.length);
+        }
+
         if (!reigns.length) {
             showMessage(
                 elements.reigns,
-                "Todavía no hay reinados registrados para este campeonato."
+                "Todavía no hay reinados registrados."
             );
             return;
         }
 
-        reigns.forEach((reign, index) => {
+        reigns.forEach(function (reign, index) {
             const card = createElement(
                 "article",
                 "championship-reign"
             );
+
+            /* IMAGEN DEL CAMPEÓN */
 
             const image = createElement(
                 "img",
                 "championship-reign-image"
             );
 
-            const photo = reign.foto ||
-                reign.imagen ||
-                reign.photo ||
-                reign.image;
+            image.loading = "lazy";
+            image.alt = getDataValue(
+                reign,
+                ["campeon", "champion", "nombre"],
+                "Campeón"
+            );
 
-            if (photo) {
-                image.src = photo;
-                image.alt = "Campeón: " + (
-                    reign.campeon ||
-                    reign.champion ||
-                    "Campeón"
-                );
-                image.loading = "lazy";
-                image.decoding = "async";
+            image.src = getDataValue(
+                reign,
+                [
+                    "imagen",
+                    "image",
+                    "foto",
+                    "fotoCampeon",
+                    "championImage"
+                ],
+                "images/Vacante.jpg"
+            );
 
-                image.onerror = function () {
-                    this.style.visibility = "hidden";
-                };
-            } else {
-                image.alt = "Imagen no disponible";
-                image.classList.add("is-empty");
-            }
+            image.onerror = function () {
+                this.onerror = null;
+                this.src = "images/Vacante.jpg";
+            };
+
+
+            /* CONTENIDO DEL REINADO */
 
             const details = createElement(
                 "div",
                 "championship-reign-details"
             );
 
-            const number = reign.numero ||
-                reign.numeroReinado ||
-                reign.number ||
-                (index + 1);
+            const number = getDataValue(
+                reign,
+                ["numero", "numeroReinado", "number"],
+                index + 1
+            );
 
-            const champion = reign.campeon ||
-                reign.champion ||
-                reign.nombre ||
-                "Campeón no registrado";
+            const champion = getDataValue(
+                reign,
+                ["campeon", "champion", "nombre"],
+                "Campeón no registrado"
+            );
 
             const heading = createElement(
                 "h4",
@@ -499,50 +470,129 @@
             const description = createElement(
                 "p",
                 "championship-reign-description",
-                reign.descripcion ||
-                reign.description ||
-                "Sin descripción registrada."
+                getDataValue(
+                    reign,
+                    ["descripcion", "description"],
+                    "Sin descripción registrada."
+                )
             );
 
-            const start = reign.inicio ||
-                reign.fechaInicio ||
-                reign.startDate ||
-                reign.start;
 
-            const end = reign.fin ||
-                reign.fechaFin ||
-                reign.endDate ||
-                reign.end;
+            /* ==========================================
+               FECHAS: PLACAS SEPARADAS
+               ========================================== */
 
-            const dateText = end
-                ? formatDate(start) + " — " + formatDate(end)
-                : start
-                    ? formatDate(start) + " — Actualidad"
-                    : "Fechas no registradas";
+            const start = getDataValue(
+                reign,
+                ["inicio", "fechaInicio", "startDate", "start"],
+                null
+            );
+
+            const end = getDataValue(
+                reign,
+                ["fin", "fechaFin", "endDate", "end"],
+                null
+            );
 
             const dates = createElement(
-                "p",
-                "championship-reign-dates",
-                dateText
+                "div",
+                "championship-reign-dates"
             );
+
+            /* PLACA DE INICIO */
+
+            const startBox = createElement(
+                "div",
+                "championship-date-box championship-date-start"
+            );
+
+            const startLabel = createElement(
+                "span",
+                "championship-date-label",
+                "INICIO"
+            );
+
+            const startValue = createElement(
+                "strong",
+                "",
+                start ? formatDate(start) : "Sin registrar"
+            );
+
+            startBox.append(startLabel, startValue);
+
+
+            /* PLACA DE FINALIZACIÓN O REINADO ACTUAL */
+
+            const endBox = createElement(
+                "div",
+                "championship-date-box championship-date-end"
+            );
+
+            const endLabel = createElement(
+                "span",
+                "championship-date-label",
+                end ? "FINALIZACIÓN" : "EN CURSO"
+            );
+
+            const endValue = createElement(
+                "strong",
+                "",
+                end ? formatDate(end) : "Actualidad"
+            );
+
+            endBox.append(endLabel, endValue);
+            dates.append(startBox, endBox);
+
+
+            /* ==========================================
+               DURACIÓN
+               ========================================== */
 
             const duration = createElement(
                 "p",
                 "championship-reign-duration",
-                "Duración: " + formatDuration(start, end)
+                "DURACIÓN"
             );
 
-            const defensesValue = reign.defensas ??
-                reign.defenses;
+            const durationValue = createElement(
+                "strong",
+                "",
+                formatDuration(start, end)
+            );
+
+            duration.appendChild(durationValue);
+
+
+            /* ==========================================
+               DEFENSAS
+               ========================================== */
+
+            const defensesValue = getDataValue(
+                reign,
+                ["defensas", "defenses"],
+                null
+            );
 
             const defenses = createElement(
                 "p",
                 "championship-reign-defenses",
-                defensesValue !== undefined &&
-                defensesValue !== null
-                    ? "Defensas: " + defensesValue
-                    : "Defensas: no registradas"
+                "DEFENSAS"
             );
+
+            const defensesNumber = createElement(
+                "strong",
+                "",
+                defensesValue !== null
+                    ? String(defensesValue)
+                    : "Sin registrar"
+            );
+
+            defenses.appendChild(defensesNumber);
+
+
+            /* ==========================================
+               ORDEN FINAL
+               ========================================== */
 
             details.append(
                 reignNumber,
@@ -559,112 +609,136 @@
     }
 
 
-    /* =============================================
-       RENDERIZADO DE HISTORIA
-       ============================================= */
+    /* ======================================================
+       RENDERIZAR HISTORIA DEL CAMPEONATO
+       ====================================================== */
 
-    function renderHistory(history) {
+    function renderHistory(data) {
+        const history = getDataValue(
+            data,
+            ["historia", "history", "lineage", "historialHistorico"],
+            null
+        );
+
+        if (!history) {
+            setText(
+                elements.historyIntro,
+                "Historia del campeonato"
+            );
+
+            setText(
+                elements.historyDescription,
+                "Todavía no hay información histórica registrada."
+            );
+
+            if (elements.timeline) {
+                elements.timeline.replaceChildren();
+            }
+
+            return;
+        }
+
+        const intro = typeof history === "string"
+            ? history
+            : getDataValue(
+                history,
+                ["introduccion", "intro", "descripcion", "description"],
+                "Historia del campeonato"
+            );
+
+        const description = typeof history === "object"
+            ? getDataValue(
+                history,
+                ["descripcionGeneral", "resumen", "summary"],
+                ""
+            )
+            : "";
+
+        setText(elements.historyIntro, intro);
+        setText(elements.historyDescription, description);
+
+        const events = typeof history === "object"
+            ? getDataValue(
+                history,
+                ["eventos", "timeline", "cambios", "events"],
+                []
+            )
+            : [];
+
+        renderTimeline(Array.isArray(events) ? events : []);
+    }
+
+
+    /* ======================================================
+       LÍNEA DE TIEMPO
+       ====================================================== */
+
+    function renderTimeline(events) {
         if (!elements.timeline) return;
 
         elements.timeline.replaceChildren();
 
-        let entries = [];
-
-        if (Array.isArray(history)) {
-            entries = history;
-        } else if (history && Array.isArray(history.eventos)) {
-            entries = history.eventos;
-        } else if (history && Array.isArray(history.events)) {
-            entries = history.events;
-        } else if (championshipData) {
-            const directHistory =
-                championshipData.cronologia ||
-                championshipData.timeline;
-
-            if (Array.isArray(directHistory)) {
-                entries = directHistory;
-            }
-        }
-
-        if (!entries.length) {
+        if (!events.length) {
             showMessage(
                 elements.timeline,
-                "Todavía no hay acontecimientos históricos registrados."
+                "No hay acontecimientos históricos registrados."
             );
             return;
         }
 
-        entries.forEach((entry) => {
+        events.forEach(function (event) {
             const item = createElement(
                 "article",
                 "championship-timeline-item"
             );
 
-            const date = entry.fecha ||
-                entry.date ||
-                entry.anio ||
-                entry.year;
+            const date = getDataValue(
+                event,
+                ["fecha", "date", "año", "year"],
+                ""
+            );
 
-            const heading = createElement(
-                "h4",
-                "championship-timeline-title",
-                entry.titulo ||
-                entry.nombre ||
-                entry.title ||
+            const title = getDataValue(
+                event,
+                ["titulo", "title", "nombre", "name"],
                 "Acontecimiento histórico"
+            );
+
+            const description = getDataValue(
+                event,
+                ["descripcion", "description", "detalle", "detail"],
+                ""
             );
 
             const dateElement = createElement(
                 "span",
                 "championship-timeline-date",
-                date ? formatDateIfPossible(date) : "Fecha no registrada"
+                date
             );
 
-            const description = createElement(
+            const heading = createElement(
+                "h4",
+                "championship-timeline-title",
+                title
+            );
+
+            const paragraph = createElement(
                 "p",
                 "championship-timeline-description",
-                entry.descripcion ||
-                entry.description ||
-                "Sin descripción registrada."
-            );
-
-            item.append(
-                dateElement,
-                heading,
                 description
             );
 
-            const type = entry.tipo || entry.type;
-
-            if (type) {
-                item.dataset.type = String(type);
-            }
-
+            item.append(dateElement, heading, paragraph);
             elements.timeline.appendChild(item);
         });
     }
 
 
-    function formatDateIfPossible(value) {
-        const text = String(value);
+    /* ======================================================
+       PESTAÑAS: REINADOS / HISTORIA
+       ====================================================== */
 
-        if (/^\d{4}$/.test(text)) {
-            return text;
-        }
-
-        if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
-            return formatDate(text);
-        }
-
-        return text;
-    }
-
-
-    /* =============================================
-       PESTAÑAS
-       ============================================= */
-
-    function switchTab(view) {
+    function activateTab(view) {
         const showReigns = view === "reigns";
 
         if (elements.tabReigns) {
@@ -677,8 +751,6 @@
                 "aria-selected",
                 String(showReigns)
             );
-
-            elements.tabReigns.tabIndex = showReigns ? 0 : -1;
         }
 
         if (elements.tabHistory) {
@@ -691,95 +763,97 @@
                 "aria-selected",
                 String(!showReigns)
             );
-
-            elements.tabHistory.tabIndex = showReigns ? -1 : 0;
         }
 
         if (elements.panelReigns) {
             elements.panelReigns.hidden = !showReigns;
-            elements.panelReigns.classList.toggle(
-                "is-active",
-                showReigns
-            );
         }
 
         if (elements.panelHistory) {
             elements.panelHistory.hidden = showReigns;
-            elements.panelHistory.classList.toggle(
-                "is-active",
-                !showReigns
-            );
         }
+
+        setText(
+            elements.sectionTitle,
+            showReigns ? "Historial de reinados" : "Historia del campeonato"
+        );
+
+        setText(
+            elements.sectionDescription,
+            showReigns
+                ? "Todos los reinados registrados de este campeonato."
+                : "El origen, la evolución y los cambios de este campeonato."
+        );
     }
 
 
     function initializeTabs() {
         if (elements.tabReigns) {
-            elements.tabReigns.addEventListener(
-                "click",
-                () => switchTab("reigns")
-            );
+            elements.tabReigns.addEventListener("click", function () {
+                activateTab("reigns");
+            });
         }
 
         if (elements.tabHistory) {
-            elements.tabHistory.addEventListener(
-                "click",
-                () => switchTab("history")
-            );
+            elements.tabHistory.addEventListener("click", function () {
+                activateTab("history");
+            });
         }
 
-        switchTab("reigns");
+        activateTab("reigns");
     }
 
 
-    /* =============================================
+    /* ======================================================
        INICIALIZACIÓN
-       ============================================= */
+       ====================================================== */
 
     async function initialize() {
         initializeTabs();
 
-        if (!INDEX || typeof INDEX.obtener !== "function") {
-            showPageError(
-                "ÍNDICE NO DISPONIBLE",
-                "No se encontró GPWChampionshipIndex. Revisá la ruta y el nombre del archivo del índice."
-            );
-            return;
-        }
-
         const id = getChampionshipId();
 
         if (!id) {
-            showPageError(
-                "CAMPEONATO NO ESPECIFICADO",
-                "Abrí esta página desde el catálogo o agregá un ID válido a la URL."
+            showMessage(
+                elements.reigns,
+                "No se especificó qué campeonato querés consultar."
             );
             return;
         }
 
-        championship = INDEX.obtener(id);
+        if (!window.GPWChampionshipIndex) {
+            showMessage(
+                elements.reigns,
+                "No se pudo cargar el índice de campeonatos."
+            );
+            return;
+        }
+
+        const championship =
+            window.GPWChampionshipIndex.obtener(id);
 
         if (!championship) {
-            showPageError(
-                "CAMPEONATO NO ENCONTRADO",
-                "El ID '" + id + "' no está registrado en el índice de campeonatos."
+            showMessage(
+                elements.reigns,
+                "No se encontró el campeonato solicitado."
             );
             return;
         }
 
         try {
-            championshipData = await loadChampionshipData();
-            renderChampionship();
+            const data = await loadChampionshipData(championship);
+
+            renderChampionship(championship, data);
+
         } catch (error) {
             console.error(
-                "[GPW Championships]",
+                "Error al cargar el campeonato:",
                 error
             );
 
-            showPageError(
-                championship.nombre || "CAMPEONATO",
-                error.message ||
-                "No se pudieron cargar los datos de este campeonato."
+            showMessage(
+                elements.reigns,
+                "No se pudo cargar la información del campeonato."
             );
         }
     }
@@ -788,8 +862,7 @@
     if (document.readyState === "loading") {
         document.addEventListener(
             "DOMContentLoaded",
-            initialize,
-            { once: true }
+            initialize
         );
     } else {
         initialize();

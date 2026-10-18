@@ -1,133 +1,129 @@
 
 window.GPW_DATOS_TEMPORADAS = window.GPW_DATOS_TEMPORADAS || {};
-
 window.GPW_DATOS_TEMPORADAS["temporada-1"] = {
     id: "temporada-1",
     nombre: "TEMPORADA 1",
-    eventos: [
-        {
-            id: "t1-galaxymania",
-            nombre: "GALAXYMANIA",
-            fecha: "2026-12-20",
-            poster: "images/eventos/galaxymania.jpg",
-            descripcion: "La noche más grande de GPW.",
-            sagaId: "el-ascenso",
-            combates: [
-                {
-                    id: "gm-01",
-                    tipo: "SINGLES",
-                    estipulacion: "SINGLES MATCH",
-                    tituloEnJuego: "GPW UNIVERSAL CHAMPIONSHIP",
-                    lados: [
-                        {id:"cody",nombre:"Cody Rhodes",participantes:[{wrestlerId:"cody-rhodes",presentationId:"default"}]},
-                        {id:"bray",nombre:"Bray Wyatt",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["cody"],metodo:"PINfall",detalle:"Cody Rhodes gana tras conectar dos Cross Rhodes."}
-                },
-                {
-                    id: "gm-02",
-                    tipo: "SINGLES",
-                    estipulacion: "NO DISQUALIFICATION MATCH",
-                    tituloEnJuego: "",
-                    lados: [
-                        {id:"fiend",nombre:"The Fiend",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"}]},
-                        {id:"finn",nombre:"Finn Bálor",participantes:[{wrestlerId:"finn-balor",presentationId:"finn-balor"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["fiend"],metodo:"PINfall",detalle:"The Fiend gana tras aplicar Sister Abigail sobre una silla."}
-                },
-                {
-                    id: "gm-03",
-                    tipo: "TRIPLE_THREAT",
-                    estipulacion: "TRIPLE THREAT MATCH",
-                    tituloEnJuego: "",
-                    lados: [
-                        {id:"bret",nombre:"Bret Hart",participantes:[{wrestlerId:"bret-hart",presentationId:"default"}]},
-                        {id:"dream",nombre:"El Único Velveteen Dream",participantes:[{wrestlerId:"el-unico-velveteen-dream",presentationId:"default"}]},
-                        {id:"manolete",nombre:"Manolete",participantes:[{wrestlerId:"manolete",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["bret"],metodo:"SUBMISSION",detalle:"Bret Hart hace rendir a Manolete con el Sharpshooter mientras Dream está fuera del ring."}
-                },
-                {
-                    id: "gm-04",
-                    tipo: "FATAL_4_WAY",
-                    estipulacion: "FATAL 4-WAY ELIMINATION MATCH",
-                    tituloEnJuego: "",
-                    lados: [
-                        {id:"cody",nombre:"Cody Rhodes",participantes:[{wrestlerId:"cody-rhodes",presentationId:"default"}]},
-                        {id:"finn",nombre:"Finn Bálor",participantes:[{wrestlerId:"finn-balor",presentationId:"the-demon"}]},
-                        {id:"bray",nombre:"Bray Wyatt",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"}]},
-                        {id:"bret",nombre:"Bret Hart",participantes:[{wrestlerId:"bret-hart",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["finn"],metodo:"PINfall",detalle:"The Demon elimina a Cody y después cubre a Bray Bálor tras el Coup de Grâce."}
-                },
-                {
-                    id: "gm-05",
-                    tipo: "TAG_TEAM",
-                    estipulacion: "TAG TEAM MATCH",
-                    tituloEnJuego: "GPW WORLD TAG TEAM CHAMPIONSHIP",
-                    lados: [
-                        {id:"team-a",nombre:"NIGHTMARE & HITMAN",participantes:[{wrestlerId:"cody-rhodes",presentationId:"default"},{wrestlerId:"bret-hart",presentationId:"default"}]},
-                        {id:"team-b",nombre:"THE DARKNESS",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"},{wrestlerId:"finn-balor",presentationId:"the-demon"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["team-b"],metodo:"PINfall",detalle:"The Fiend cubre a Cody Rhodes después de una combinación con The Demon."}
-                },
-                {
-                    id: "gm-06",
-                    tipo: "MULTI_TEAM",
-                    estipulacion: "TRIPLE THREAT TAG TEAM MATCH",
-                    tituloEnJuego: "",
-                    lados: [
-                        {id:"team-a",nombre:"TEAM CODY",participantes:[{wrestlerId:"cody-rhodes",presentationId:"default"},{wrestlerId:"manolete",presentationId:"default"}]},
-                        {id:"team-b",nombre:"TEAM WYATT",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"},{wrestlerId:"finn-balor",presentationId:"finn-balor"}]},
-                        {id:"team-c",nombre:"DREAM & HITMAN",participantes:[{wrestlerId:"el-unico-velveteen-dream",presentationId:"default"},{wrestlerId:"bret-hart",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["team-c"],metodo:"PINfall",detalle:"Dream distrae a Cody y Bret cubre a Manolete tras un Piledriver."}
-                },
-                {
-                    id: "gm-07",
-                    tipo: "HANDICAP",
-                    estipulacion: "2-ON-1 HANDICAP MATCH",
-                    tituloEnJuego: "",
-                    lados: [
-                        {id:"solo",nombre:"The Fiend",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"}]},
-                        {id:"duo",nombre:"Cody Rhodes & Manolete",participantes:[{wrestlerId:"cody-rhodes",presentationId:"default"},{wrestlerId:"manolete",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["solo"],metodo:"PINfall",detalle:"The Fiend resiste el ataque combinado y cubre a Manolete tras Sister Abigail."}
-                },
-                {
-                    id: "gm-08",
-                    tipo: "SINGLES",
-                    estipulacion: "STEEL CAGE MATCH",
-                    tituloEnJuego: "",
-                    lados: [
-                        {id:"finn",nombre:"The Demon",participantes:[{wrestlerId:"finn-balor",presentationId:"the-demon"}]},
-                        {id:"bret",nombre:"Bret Hart",participantes:[{wrestlerId:"bret-hart",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["bret"],metodo:"ESCAPE",detalle:"Bret Hart logra escapar de la jaula segundos antes de que Finn pueda detenerlo."}
-                },
-                {
-                    id: "gm-09",
-                    tipo: "BATTLE_ROYAL",
-                    estipulacion: "BATTLE ROYAL",
-                    tituloEnJuego: "GANADOR: OPORTUNIDAD TITULAR",
-                    lados: [
-                        {id:"participantes",nombre:"PARTICIPANTES",participantes:[{wrestlerId:"cody-rhodes",presentationId:"default"},{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"},{wrestlerId:"finn-balor",presentationId:"finn-balor"},{wrestlerId:"bret-hart",presentationId:"default"},{wrestlerId:"el-unico-velveteen-dream",presentationId:"default"},{wrestlerId:"manolete",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["bret-hart"],metodo:"ULTIMA ELIMINACION",detalle:"Bret Hart elimina a The Fiend en último lugar y gana una oportunidad titular."}
-                },
-                {
-                    id: "gm-10",
-                    tipo: "SINGLES",
-                    estipulacion: "LADDER MATCH",
-                    tituloEnJuego: "GPW UNIVERSAL CHAMPIONSHIP — FUTURE TITLE CONTRACT",
-                    lados: [
-                        {id:"dream",nombre:"El Único Velveteen Dream",participantes:[{wrestlerId:"el-unico-velveteen-dream",presentationId:"default"}]},
-                        {id:"manolete",nombre:"Manolete",participantes:[{wrestlerId:"manolete",presentationId:"default"}]}
-                    ],
-                    resultado: {estado:"finalizado",ganadores:["dream"],metodo:"OBJETO RECUPERADO",detalle:"Velveteen Dream descuelga el contrato y asegura una futura oportunidad por el campeonato."}
-                }
-            ]
-        }
-    ]
+    eventos: [{
+        id: "t1-galaxymania",
+        nombre: "GALAXYMANIA",
+        fecha: "2026-12-20",
+        poster: "images/eventos/galaxymania.jpg",
+        descripcion: "Una noche. Todas las versiones. Solo un Bray Wyatt puede dominar GPW.",
+        sagaId: "el-legado-wyatt",
+        combates: [
+            {
+                id: "combate-1",
+                tipo: "Singles",
+                estipulacion: "Combate por el Campeonato Universal GPW",
+                titulo: "CAMPEONATO UNIVERSAL GPW",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["fiend"], metodo: "Pinfall", detalle: "The Fiend conecta el Mandible Claw y consigue la cuenta de tres."}
+            },
+            {
+                id: "combate-2",
+                tipo: "Singles",
+                estipulacion: "Sin descalificación",
+                titulo: "BRAY WYATT VS. THE FIEND",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["bray"], metodo: "Pinfall", detalle: "Bray revierte el Mandible Claw y sorprende a The Fiend con un Sister Abigail."}
+            },
+            {
+                id: "combate-3",
+                tipo: "Singles",
+                estipulacion: "Combate en jaula de acero",
+                titulo: "STEEL CAGE",
+                lados: [
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]},
+                    {id: "demonio", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt-wwe"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["demonio"], metodo: "Escape", detalle: "La versión campeona escapa de la jaula mientras The Fiend queda atrapado entre las cuerdas."}
+            },
+            {
+                id: "combate-4",
+                tipo: "Triple Threat",
+                estipulacion: "El primero en conseguir una cuenta gana",
+                titulo: "TRIPLE THREAT",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]},
+                    {id: "campeon", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt-intercontinental"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["campeon"], metodo: "Pinfall", detalle: "El Bray Wyatt campeón aprovecha el enfrentamiento entre sus dos rivales y logra la cuenta sobre The Fiend."}
+            },
+            {
+                id: "combate-5",
+                tipo: "Singles",
+                estipulacion: "Combate de escaleras",
+                titulo: "LADDER MATCH",
+                lados: [
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]},
+                    {id: "campeon", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt-wwe-2"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["fiend"], metodo: "Objeto recuperado", detalle: "The Fiend sube la escalera y descuelga el contrato antes de que su rival pueda detenerlo."}
+            },
+            {
+                id: "combate-6",
+                tipo: "Singles",
+                estipulacion: "Combate de rendición",
+                titulo: "SUBMISSION MATCH",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["bray"], metodo: "Rendición", detalle: "Bray atrapa a The Fiend en una llave improvisada y consigue que se rinda."}
+            },
+            {
+                id: "combate-7",
+                tipo: "Fatal 4-Way",
+                estipulacion: "Eliminación",
+                titulo: "FATAL 4-WAY ELIMINATION",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]},
+                    {id: "campeon", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt-wwe"}]},
+                    {id: "intercontinental", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt-intercontinental"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["fiend"], metodo: "Última eliminación", detalle: "The Fiend elimina a las otras tres presentaciones y queda como el último hombre en pie."}
+            },
+            {
+                id: "combate-8",
+                tipo: "Singles",
+                estipulacion: "Iron Man Match de 15 minutos",
+                titulo: "IRON MAN MATCH",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["bray"], metodo: "Mayor puntuación", detalle: "Bray gana por 2-1 al conseguir la última caída en los segundos finales."}
+            },
+            {
+                id: "combate-9",
+                tipo: "Singles",
+                estipulacion: "Combate con ataúd",
+                titulo: "CASKET MATCH",
+                lados: [
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]},
+                    {id: "campeon", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt-wwe-2"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["campeon"], metodo: "Encierro en ataúd", detalle: "El campeón logra encerrar a The Fiend en el ataúd y cierra la tapa para llevarse la victoria."}
+            },
+            {
+                id: "combate-10",
+                tipo: "Singles",
+                estipulacion: "Combate final sin descalificación",
+                titulo: "THE FINAL CHAPTER",
+                lados: [
+                    {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
+                    {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]}
+                ],
+                resultado: {tipo: "victoria", ganadores: ["fiend"], metodo: "Pinfall", detalle: "Tras una batalla brutal, The Fiend conecta dos Mandible Claw consecutivos y consigue la cuenta definitiva."}
+            }
+        ]
+    }]
 };
-

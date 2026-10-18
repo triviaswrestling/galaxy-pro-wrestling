@@ -38,7 +38,7 @@ const wrestlers = [
      name: "Manolete",
      nickname: "El Inesperado",
      division: "masculino",
-     status: "active",
+     status: "inactive",
      rank: 5,
      interpreter: "Manolete 🇪🇸",
      image: "imagen/gpw_logo_original.webp",

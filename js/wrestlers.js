@@ -136,3 +136,5 @@ const wrestlers = [
         ]
     }
 ];
+
+window.GPW_WRESTLERS = wrestlers;

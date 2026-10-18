@@ -34,8 +34,7 @@ const wrestlers = [
 
     { id: "bray-wyatt", name: "Bray Wyatt", nickname: "The Eater of Worlds", division: "masculino",
     status: "active", rank: 8, interpreter: "Bray Wyatt",
-    image: "imagen/bray-wyatt.webp", stable: "",
-    alterego: ["the-fiend"],
+    image: "imagen/bray-wyatt.webp", stable: "The Wyatt Family",
     presentations: {
         "bray-wyatt": { name: "Bray Wyatt", nickname: "The Eater of Worlds", image: "imagen/bray-wyatt.webp", type: "normal" },
         "the-fiend": { name: "The Fiend", nickname: "The Fiend", image: "imagen/the-fiend.webp", type: "alterego" },

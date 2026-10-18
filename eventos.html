@@ -1,1 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#090c12">
+    <title>Eventos - Galaxy Pro Wrestling</title>
 
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos globales y navegación -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+</head>
+<body class="eventos-page">
+
+    <!-- Bordes Neón Laterales -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
+    <!-- Menú y logo globales -->
+    <header class="main-header"></header>
+
+    <main class="eventos-main">
+
+        <!-- =================================
+             MENÚ DE TEMPORADAS
+             ================================= -->
+        <section id="temporadas-view" class="eventos-view">
+
+            <div class="page-title-bar">
+                <h2>
+                    <i class="fa-solid fa-calendar-days text-cyan"></i>
+                    GALAXY PRO <span class="text-cyan">EVENTOS</span>
+                </h2>
+            </div>
+
+            <div class="eventos-heading">
+                <h1>ARCHIVO DE TEMPORADAS</h1>
+                <p>Explorá la historia de Galaxy Pro Wrestling.</p>
+            </div>
+
+            <!-- eventos.js genera las tarjetas -->
+            <div id="temporadas-grid" class="temporadas-grid">
+                <p class="eventos-loading">
+                    CARGANDO TEMPORADAS...
+                </p>
+            </div>
+
+        </section>
+
+        <!-- =================================
+             EVENTOS DE LA TEMPORADA
+             ================================= -->
+        <section id="eventos-view" class="eventos-view" hidden>
+
+            <button type="button"
+                    id="volver-temporadas"
+                    class="eventos-back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+                VOLVER A TEMPORADAS
+            </button>
+
+            <div class="page-title-bar">
+                <h2 id="temporada-titulo">
+                    TEMPORADA
+                </h2>
+            </div>
+
+            <div class="eventos-heading">
+                <p id="temporada-descripcion"></p>
+            </div>
+
+            <!-- Aquí se cargarán los eventos, del más nuevo al más antiguo -->
+            <div id="eventos-grid" class="eventos-grid"></div>
+
+        </section>
+
+        <!-- =================================
+             DETALLE DE UNA NOCHE
+             ================================= -->
+        <section id="evento-detalle-view" class="eventos-view" hidden>
+
+            <button type="button"
+                    id="volver-eventos"
+                    class="eventos-back-button">
+                <i class="fa-solid fa-arrow-left"></i>
+                VOLVER A LOS EVENTOS
+            </button>
+
+            <!-- evento.js mostrará el poster, los combates y resultados -->
+            <div id="evento-detalle"></div>
+
+        </section>
+
+    </main>
+
+    <!-- =================================
+         SCRIPTS
+         ================================= -->
+    <script src="script.js"></script>
+    <script src="js/wrestlers.js"></script>
+    <script src="js/eventos.js"></script>
+
+</body>
+</html>

@@ -1,32 +1,38 @@
 
 /* =========================================================
-   GALAXY PRO WRESTLING — CATÁLOGO DE CAMPEONATOS
-   Archivo: css/campeonatos.css
-   Diseño compacto, responsive y optimizado para móviles.
-   La navegación global pertenece a nav.css.
+   GALAXY PRO WRESTLING
+   CATÁLOGO DE CAMPEONATOS
+   Archivo raíz: campeonatos.css
+
+   Compatible con campeonatos.html.
+   No modifica style.css, nav.css ni script.js.
    ========================================================= */
 
 
 /* =========================================================
-   1. VARIABLES Y BASE
+   01. BASE Y PALETA GPW
    ========================================================= */
 
 .championship-catalog-page {
-    --champ-red: #d90024;
-    --champ-red-light: #ff354f;
-    --champ-bg: #090909;
-    --champ-panel: #121212;
-    --champ-panel-light: #191919;
-    --champ-border: #292929;
-    --champ-text: #f3f3f3;
-    --champ-muted: #a5a5a5;
-    --champ-green: #20c878;
-    --champ-gold: #d4af37;
+    --catalog-bg: #080b12;
+    --catalog-panel: rgba(15, 19, 28, 0.94);
+    --catalog-panel-soft: rgba(20, 25, 36, 0.88);
+    --catalog-border: rgba(170, 190, 215, 0.16);
+    --catalog-text: #f2f5fa;
+    --catalog-muted: #a2adbd;
 
-    background: var(--champ-bg);
-    color: var(--champ-text);
-    font-family: Arial, Helvetica, sans-serif;
+    --catalog-cyan: #39d9ff;
+    --catalog-blue: #3985ff;
+    --catalog-green: #a5ef45;
+    --catalog-yellow: #f4df52;
+    --catalog-purple: #b77aff;
+    --catalog-pink: #fa72ce;
+
+    background-color: var(--catalog-bg);
+    color: var(--catalog-text);
+    font-family: 'Montserrat', Arial, sans-serif;
     min-height: 100vh;
+    overflow-x: clip;
 }
 
 .championship-catalog-page *,
@@ -51,378 +57,615 @@
     -webkit-tap-highlight-color: transparent;
 }
 
-.championship-catalog-page a {
-    color: inherit;
+.championship-catalog-page button {
+    cursor: pointer;
+}
+
+.championship-catalog-page [hidden] {
+    display: none !important;
 }
 
 
 /* =========================================================
-   2. CONTENEDOR GENERAL
+   02. CONTENEDOR PRINCIPAL
    ========================================================= */
 
-.championship-catalog-page .catalog-container {
-    width: min(1180px, calc(100% - 36px));
-    margin: 0 auto;
-    padding: 28px 0 44px;
+#championship-catalog {
+    width: 100%;
+    max-width: 1500px;
+    margin-inline: auto;
+    padding: 28px clamp(14px, 3vw, 42px) 24px;
 }
 
-.championship-catalog-page .catalog-section {
-    margin-bottom: 26px;
+.championship-catalog-page section {
+    min-width: 0;
 }
 
 
 /* =========================================================
-   3. ENCABEZADO DEL CATÁLOGO
+   03. DETALLES MULTICOLOR GPW
+   Solo gradientes estáticos; sin filtros pesados.
+   ========================================================= */
+
+.championship-catalog-page .catalog-hero,
+.championship-catalog-page .catalog-controls,
+.championship-catalog-page .catalog-history-note {
+    position: relative;
+    isolation: isolate;
+}
+
+.championship-catalog-page .catalog-hero::before,
+.championship-catalog-page .catalog-controls::before,
+.championship-catalog-page .catalog-history-note::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(
+            ellipse at 0% 100%,
+            rgba(165, 239, 69, 0.075),
+            transparent 37%
+        ),
+        radial-gradient(
+            ellipse at 100% 0%,
+            rgba(57, 133, 255, 0.09),
+            transparent 40%
+        );
+}
+
+
+/* =========================================================
+   04. HERO / PRESENTACIÓN
    ========================================================= */
 
 .championship-catalog-page .catalog-hero {
-    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 245px;
+    padding: clamp(24px, 5vw, 54px);
+    margin-bottom: 18px;
     overflow: hidden;
-    padding: 26px 24px;
-    margin-bottom: 20px;
-    background: linear-gradient(
-        115deg,
-        #171717 0%,
-        #101010 58%,
-        #16090c 100%
-    );
-    border: 1px solid #303030;
-    border-left: 4px solid var(--champ-red);
-    border-radius: 8px;
+
+    background:
+        linear-gradient(
+            112deg,
+            rgba(17, 23, 34, 0.98),
+            rgba(8, 11, 18, 0.96) 70%
+        );
+
+    border: 1px solid var(--catalog-border);
+    border-left: 2px solid var(--catalog-cyan);
+    border-radius: 4px;
 }
 
 .championship-catalog-page .catalog-hero::after {
     content: "";
     position: absolute;
-    right: 0;
-    top: 0;
-    width: 30%;
-    height: 100%;
+    z-index: -1;
+    top: -40%;
+    right: -5%;
+    width: 42%;
+    height: 180%;
     pointer-events: none;
+
     background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(217, 0, 36, 0.07)
+        125deg,
+        transparent 15%,
+        rgba(165, 239, 69, 0.045) 35%,
+        rgba(57, 217, 255, 0.075) 52%,
+        rgba(183, 122, 255, 0.055) 68%,
+        transparent 85%
     );
+
+    transform: skewX(-16deg);
+}
+
+.championship-catalog-page .catalog-hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 820px;
 }
 
 .championship-catalog-page .catalog-eyebrow {
-    position: relative;
-    z-index: 1;
-    margin: 0 0 7px;
-    color: var(--champ-red-light);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-}
-
-.championship-catalog-page .catalog-title {
-    position: relative;
-    z-index: 1;
-    margin: 0;
-    color: #fff;
-    font-size: clamp(25px, 4vw, 39px);
-    line-height: 1.08;
+    margin: 0 0 10px;
+    color: var(--catalog-cyan);
+    font-size: 10px;
     font-weight: 900;
-    letter-spacing: 1px;
+    letter-spacing: 3px;
+    line-height: 1.5;
     text-transform: uppercase;
-    overflow-wrap: anywhere;
 }
 
-.championship-catalog-page .catalog-description {
-    position: relative;
-    z-index: 1;
-    max-width: 700px;
-    margin: 11px 0 0;
-    color: #bcbcbc;
+.championship-catalog-page #catalog-title {
+    max-width: 100%;
+    margin: 0;
+    color: #f7f9ff;
+    font-size: clamp(32px, 5.5vw, 64px);
+    font-weight: 900;
+    letter-spacing: -1.8px;
+    line-height: 1.02;
+    overflow-wrap: anywhere;
+    text-shadow: 0 2px 16px rgba(57, 217, 255, 0.08);
+}
+
+.championship-catalog-page .catalog-intro {
+    max-width: 650px;
+    margin: 17px 0 0;
+    color: #b4bfce;
     font-size: 13px;
-    line-height: 1.6;
+    font-weight: 400;
+    line-height: 1.9;
+}
+
+.championship-catalog-page .catalog-hero-decoration {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 23px;
+}
+
+.championship-catalog-page .catalog-hero-decoration span {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+}
+
+.championship-catalog-page .catalog-hero-decoration span:nth-child(1) {
+    width: 36px;
+    background: var(--catalog-green);
+}
+
+.championship-catalog-page .catalog-hero-decoration span:nth-child(2) {
+    width: 22px;
+    background: var(--catalog-cyan);
+}
+
+.championship-catalog-page .catalog-hero-decoration span:nth-child(3) {
+    width: 12px;
+    background: var(--catalog-purple);
 }
 
 
 /* =========================================================
-   4. CONTADORES
+   05. RESUMEN / CONTADORES
    ========================================================= */
 
 .championship-catalog-page .catalog-summary {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-    margin-bottom: 22px;
+    margin-bottom: 26px;
 }
 
-.championship-catalog-page .catalog-stat {
+.championship-catalog-page .catalog-summary-card {
+    position: relative;
     min-width: 0;
-    padding: 15px 17px;
-    background: var(--champ-panel);
-    border: 1px solid var(--champ-border);
-    border-radius: 7px;
+    padding: 19px 20px;
+    overflow: hidden;
+
+    background: var(--catalog-panel);
+    border: 1px solid var(--catalog-border);
+    border-radius: 4px;
 }
 
-.championship-catalog-page .catalog-stat-label {
+.championship-catalog-page .catalog-summary-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 45px;
+    height: 2px;
+    background: var(--catalog-cyan);
+}
+
+.championship-catalog-page .catalog-summary-card:nth-child(2)::before {
+    background: var(--catalog-green);
+}
+
+.championship-catalog-page .catalog-summary-card:nth-child(3)::before {
+    background: var(--catalog-purple);
+}
+
+.championship-catalog-page .catalog-summary-label {
     display: block;
-    margin-bottom: 7px;
-    color: var(--champ-muted);
-    font-size: 10px;
+    margin-bottom: 11px;
+    color: var(--catalog-muted);
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 1.2px;
-    text-transform: uppercase;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
 }
 
-.championship-catalog-page .catalog-stat-value {
+.championship-catalog-page .catalog-summary-card strong {
     display: block;
-    color: #fff;
-    font-size: 27px;
-    line-height: 1;
+    color: #f5f8ff;
+    font-size: clamp(25px, 3vw, 34px);
     font-weight: 900;
+    line-height: 1;
     font-variant-numeric: tabular-nums;
 }
 
-.championship-catalog-page .catalog-stat.active .catalog-stat-value {
-    color: var(--champ-green);
+.championship-catalog-page #catalog-active {
+    color: var(--catalog-green);
 }
 
-.championship-catalog-page .catalog-stat.vacant .catalog-stat-value {
-    color: var(--champ-red-light);
+.championship-catalog-page #catalog-vacant {
+    color: var(--catalog-purple);
 }
 
 
 /* =========================================================
-   5. BUSCADOR Y FILTROS
+   06. CONTROLES DEL CATÁLOGO
    ========================================================= */
 
-.championship-catalog-page .catalog-tools {
-    padding: 17px;
-    margin-bottom: 22px;
-    background: #111;
-    border: 1px solid var(--champ-border);
-    border-radius: 8px;
+.championship-catalog-page .catalog-controls {
+    padding: clamp(16px, 3vw, 25px);
+    margin-bottom: 32px;
+
+    background-color: var(--catalog-panel);
+    border: 1px solid var(--catalog-border);
+    border-radius: 4px;
 }
 
-.championship-catalog-page .catalog-search-row {
+.championship-catalog-page .catalog-controls-heading {
     display: flex;
-    gap: 9px;
-    margin-bottom: 14px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 23px;
+    padding-bottom: 17px;
+    border-bottom: 1px solid rgba(170, 190, 215, 0.13);
+}
+
+.championship-catalog-page .catalog-controls-heading .catalog-eyebrow {
+    margin-bottom: 6px;
+}
+
+.championship-catalog-page .catalog-controls-heading h2,
+.championship-catalog-page .catalog-collection-heading h2 {
+    margin: 0;
+    color: #f3f6fc;
+    font-size: clamp(15px, 2vw, 21px);
+    font-weight: 900;
+    line-height: 1.35;
+    letter-spacing: 0.1px;
+    overflow-wrap: anywhere;
+}
+
+.championship-catalog-page .catalog-results-count {
+    flex: 0 0 auto;
+    padding: 7px 10px;
+    color: var(--catalog-cyan);
+    background: rgba(57, 217, 255, 0.055);
+    border: 1px solid rgba(57, 217, 255, 0.19);
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+}
+
+
+/* =========================================================
+   07. BUSCADOR
+   ========================================================= */
+
+.championship-catalog-page .catalog-search-wrapper {
+    margin-bottom: 18px;
+}
+
+.championship-catalog-page .catalog-field-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #b6c2d2;
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 1.1px;
+    line-height: 1.5;
+}
+
+.championship-catalog-page .catalog-search-box {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-width: 0;
+    min-height: 48px;
+    padding: 0 13px;
+
+    background: rgba(4, 7, 12, 0.8);
+    border: 1px solid rgba(170, 190, 215, 0.2);
+    border-radius: 3px;
+}
+
+.championship-catalog-page .catalog-search-box:focus-within {
+    border-color: rgba(57, 217, 255, 0.72);
+}
+
+.championship-catalog-page .catalog-search-icon {
+    flex: 0 0 auto;
+    color: var(--catalog-cyan);
+    font-size: 14px;
 }
 
 .championship-catalog-page #catalog-search {
     flex: 1;
     width: 100%;
     min-width: 0;
-    min-height: 43px;
-    padding: 11px 13px;
-    color: #fff;
-    background: #080808;
-    border: 1px solid #383838;
-    border-radius: 5px;
-    outline: none;
-    font-size: 13px;
-    transition: border-color 0.15s ease;
+    min-height: 44px;
+    padding: 10px 0;
+
+    color: #f2f5fa;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    font-size: 12px;
 }
 
 .championship-catalog-page #catalog-search::placeholder {
-    color: #777;
+    color: #778397;
+    opacity: 1;
 }
 
-.championship-catalog-page #catalog-search:focus {
-    border-color: var(--champ-red);
+.championship-catalog-page #catalog-search::-webkit-search-cancel-button {
+    display: none;
 }
+
+.championship-catalog-page .catalog-clear-search {
+    display: grid;
+    flex: 0 0 30px;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+
+    color: #bac5d5;
+    background: #1a2230;
+    border: 1px solid var(--catalog-border);
+    border-radius: 3px;
+}
+
+.championship-catalog-page .catalog-clear-search:hover {
+    color: #fff;
+    border-color: var(--catalog-cyan);
+}
+
+
+/* =========================================================
+   08. FILTROS
+   ========================================================= */
 
 .championship-catalog-page .catalog-filters {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 10px;
+    gap: 13px;
+    align-items: end;
 }
 
 .championship-catalog-page .catalog-filter {
     min-width: 0;
 }
 
-.championship-catalog-page .catalog-filter label {
+.championship-catalog-page .catalog-filter select {
     display: block;
-    margin-bottom: 6px;
-    color: #aaa;
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-}
-
-.championship-catalog-page #catalog-category,
-.championship-catalog-page #catalog-status,
-.championship-catalog-page #catalog-sort {
     width: 100%;
     min-width: 0;
-    min-height: 40px;
-    padding: 9px 10px;
-    color: #eee;
-    background: #090909;
-    border: 1px solid #353535;
-    border-radius: 5px;
-    font-size: 12px;
+    min-height: 43px;
+    padding: 10px 30px 10px 11px;
+
+    color: #e7edf6;
+    background-color: #0b1019;
+    border: 1px solid rgba(170, 190, 215, 0.2);
+    border-radius: 3px;
     outline: none;
+    font-size: 11px;
+    line-height: 1.4;
 }
 
-.championship-catalog-page #catalog-category:focus,
-.championship-catalog-page #catalog-status:focus,
-.championship-catalog-page #catalog-sort:focus {
-    border-color: var(--champ-red);
+.championship-catalog-page .catalog-filter select:focus {
+    border-color: var(--catalog-cyan);
 }
 
-.championship-catalog-page .catalog-button {
+.championship-catalog-page .catalog-filter option {
+    color: #f2f5fa;
+    background: #0b1019;
+}
+
+.championship-catalog-page .catalog-reset-button {
     display: inline-flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    gap: 7px;
-    min-height: 40px;
+    gap: 8px;
+    min-height: 43px;
     padding: 10px 14px;
-    color: #fff;
-    background: #202020;
-    border: 1px solid #383838;
-    border-radius: 5px;
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.15s ease, border-color 0.15s ease;
-}
 
-.championship-catalog-page .catalog-button:hover {
-    background: #292929;
-    border-color: #666;
-}
-
-.championship-catalog-page #catalog-clear-search {
-    flex: 0 0 auto;
-}
-
-.championship-catalog-page #catalog-reset {
-    margin-top: 13px;
-    color: #ffb5bf;
-    border-color: #54212a;
-    background: #1a0c0f;
-}
-
-.championship-catalog-page #catalog-reset:hover {
-    background: #2a1015;
-    border-color: var(--champ-red);
-}
-
-
-/* =========================================================
-   6. TÍTULO DE LA LISTA
-   ========================================================= */
-
-.championship-catalog-page .catalog-list-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    margin: 0 0 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #303030;
-}
-
-.championship-catalog-page .catalog-list-heading h2 {
-    min-width: 0;
-    margin: 0;
-    color: #fff;
-    font-size: 17px;
+    color: #dbe7f5;
+    background: rgba(110, 130, 160, 0.08);
+    border: 1px solid rgba(170, 190, 215, 0.2);
+    border-radius: 3px;
+    font-size: 10px;
     font-weight: 900;
-    text-transform: uppercase;
     letter-spacing: 0.5px;
+    line-height: 1.4;
+    text-align: center;
 }
 
-.championship-catalog-page .catalog-result-count {
-    flex: 0 0 auto;
-    color: #aaa;
-    font-size: 11px;
+.championship-catalog-page .catalog-reset-button:hover {
+    color: #fff;
+    background: rgba(57, 217, 255, 0.09);
+    border-color: rgba(57, 217, 255, 0.5);
+}
+
+.championship-catalog-page .catalog-reset-button i {
+    color: var(--catalog-cyan);
 }
 
 
 /* =========================================================
-   7. GRILLA DE CAMPEONATOS
+   09. ENCABEZADO DE LA COLECCIÓN
    ========================================================= */
 
-.championship-catalog-page #championship-grid,
+.championship-catalog-page .catalog-collection {
+    min-width: 0;
+    margin-bottom: 35px;
+}
+
+.championship-catalog-page .catalog-collection-heading {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    margin-bottom: 20px;
+}
+
+.championship-catalog-page .catalog-collection-heading .catalog-eyebrow {
+    margin-bottom: 6px;
+}
+
+.championship-catalog-page .catalog-collection-line {
+    flex: 1;
+    min-width: 20px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        rgba(57, 217, 255, 0.55),
+        rgba(57, 133, 255, 0.2) 45%,
+        rgba(183, 122, 255, 0.2),
+        transparent
+    );
+}
+
+
+/* =========================================================
+   10. GRILLA DE TARJETAS
+   ========================================================= */
+
 .championship-catalog-page .championship-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 16px;
     align-items: stretch;
+    gap: 16px;
+    min-width: 0;
+}
+
+.championship-catalog-page .championship-grid > * {
+    min-width: 0;
 }
 
 
-/* =========================================================
-   8. TARJETAS
-   Compatible con las clases comunes del catálogo.
-   ========================================================= */
+/* Tarjeta generada por JavaScript.
+   Se contempla tanto una tarjeta con clase como un enlace
+   o artículo colocado directamente dentro de la grilla. */
 
-.championship-catalog-page .championship-card {
+.championship-catalog-page .championship-grid > .championship-card,
+.championship-catalog-page .championship-grid > a,
+.championship-catalog-page .championship-grid > article {
     position: relative;
     display: flex;
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
-    color: #fff;
-    background: linear-gradient(160deg, #181818, #0e0e0e 75%);
-    border: 1px solid #303030;
-    border-radius: 8px;
+
+    color: var(--catalog-text);
+    background: linear-gradient(
+        145deg,
+        rgba(22, 28, 40, 0.96),
+        rgba(10, 14, 22, 0.98)
+    );
+    border: 1px solid rgba(170, 190, 215, 0.17);
+    border-radius: 4px;
     text-decoration: none;
-    isolation: isolate;
-    transition: border-color 0.16s ease, background 0.16s ease;
 }
 
-.championship-catalog-page .championship-card:hover {
-    border-color: #8c172a;
-    background: linear-gradient(160deg, #201316, #101010 75%);
-}
-
-.championship-catalog-page .championship-card:focus-visible {
-    outline: 2px solid var(--champ-red-light);
-    outline-offset: 3px;
-}
-
-.championship-catalog-page .championship-card::before {
+.championship-catalog-page .championship-grid > .championship-card::before,
+.championship-catalog-page .championship-grid > a::before,
+.championship-catalog-page .championship-grid > article::before {
     content: "";
     position: absolute;
     z-index: 2;
     top: 0;
     left: 0;
     right: 0;
-    height: 3px;
-    background: var(--champ-red);
+    height: 2px;
     pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        var(--catalog-green),
+        var(--catalog-cyan) 38%,
+        var(--catalog-blue) 68%,
+        var(--catalog-purple)
+    );
 }
 
-.championship-catalog-page .championship-card-image,
-.championship-catalog-page .championship-image,
-.championship-catalog-page .championship-card-media {
-    position: relative;
+.championship-catalog-page .championship-grid > .championship-card:hover,
+.championship-catalog-page .championship-grid > a:hover,
+.championship-catalog-page .championship-grid > article:hover {
+    border-color: rgba(57, 217, 255, 0.48);
+}
+
+.championship-catalog-page .championship-grid > a:focus-visible,
+.championship-catalog-page .championship-grid > .championship-card:focus-visible {
+    outline: 2px solid var(--catalog-cyan);
+    outline-offset: 3px;
+}
+
+
+/* Imágenes del cinturón */
+
+.championship-catalog-page .championship-grid img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+.championship-catalog-page .championship-grid .championship-image,
+.championship-catalog-page .championship-grid .championship-card-image,
+.championship-catalog-page .championship-grid .championship-card-media {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     aspect-ratio: 4 / 3;
-    min-height: 0;
+    min-width: 0;
     overflow: hidden;
-    padding: 13px;
-    background: radial-gradient(ellipse at center, #252525 0%, #111 65%, #090909 100%);
-    border-bottom: 1px solid #292929;
+    padding: 12px;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(93, 117, 150, 0.14),
+            transparent 70%
+        ),
+        #0b1019;
+    border-bottom: 1px solid rgba(170, 190, 215, 0.13);
 }
 
-.championship-catalog-page .championship-card-image img,
-.championship-catalog-page .championship-image img,
-.championship-catalog-page .championship-card-media img,
-.championship-catalog-page .championship-card > img {
-    display: block;
+.championship-catalog-page .championship-grid .championship-image img,
+.championship-catalog-page .championship-grid .championship-card-image img,
+.championship-catalog-page .championship-grid .championship-card-media img {
     width: 100%;
     height: 100%;
-    max-height: 185px;
     object-fit: contain;
-    object-position: center;
 }
+
+.championship-catalog-page .championship-grid > a > img,
+.championship-catalog-page .championship-grid > article > img,
+.championship-catalog-page .championship-grid > .championship-card > img {
+    width: 100%;
+    height: auto;
+    max-height: 190px;
+    aspect-ratio: 4 / 3;
+    padding: 12px;
+    object-fit: contain;
+    background: #0b1019;
+    border-bottom: 1px solid rgba(170, 190, 215, 0.13);
+}
+
+
+/* Contenido interior habitual de las tarjetas */
 
 .championship-catalog-page .championship-card-body,
 .championship-catalog-page .championship-card-content {
@@ -434,39 +677,40 @@
     padding: 14px;
 }
 
+.championship-catalog-page .championship-grid h3,
+.championship-catalog-page .championship-card-title {
+    max-width: 100%;
+    margin: 0 0 10px;
+    color: #f5f8ff;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.championship-catalog-page .championship-grid p {
+    color: #aab6c7;
+    font-size: 11px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
 .championship-catalog-page .championship-card-category {
     display: inline-block;
     max-width: 100%;
-    margin-bottom: 8px;
-    padding: 4px 7px;
-    color: #ffb5bf;
-    background: #260e13;
-    border: 1px solid #4b1a25;
-    border-radius: 3px;
+    margin-bottom: 9px;
+    padding: 5px 7px;
+
+    color: var(--catalog-cyan);
+    background: rgba(57, 217, 255, 0.055);
+    border: 1px solid rgba(57, 217, 255, 0.18);
+    border-radius: 2px;
     font-size: 9px;
     font-weight: 900;
-    letter-spacing: 0.7px;
-    line-height: 1.3;
+    letter-spacing: 0.5px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
     text-transform: uppercase;
-    overflow-wrap: anywhere;
-}
-
-.championship-catalog-page .championship-card h3,
-.championship-catalog-page .championship-card-title {
-    width: 100%;
-    margin: 0 0 9px;
-    color: #fff;
-    font-size: 16px;
-    line-height: 1.3;
-    font-weight: 900;
-    overflow-wrap: anywhere;
-}
-
-.championship-catalog-page .championship-card-description {
-    margin: 0 0 12px;
-    color: #aaa;
-    font-size: 11px;
-    line-height: 1.5;
 }
 
 .championship-catalog-page .championship-card-status {
@@ -476,269 +720,456 @@
     max-width: 100%;
     margin-top: auto;
     padding: 6px 8px;
-    border: 1px solid #343434;
-    border-radius: 4px;
-    color: #ccc;
-    background: #151515;
+
+    color: #c5d0df;
+    background: rgba(170, 190, 215, 0.06);
+    border: 1px solid rgba(170, 190, 215, 0.16);
+    border-radius: 3px;
     font-size: 9px;
     font-weight: 900;
-    letter-spacing: 0.5px;
-    line-height: 1.3;
-    text-transform: uppercase;
+    line-height: 1.4;
     overflow-wrap: anywhere;
+    text-transform: uppercase;
 }
 
 .championship-catalog-page .championship-card-status.active,
 .championship-catalog-page .status-active {
-    color: #72e5ad;
-    background: #0c2017;
-    border-color: #1d543a;
+    color: var(--catalog-green);
+    background: rgba(165, 239, 69, 0.06);
+    border-color: rgba(165, 239, 69, 0.22);
 }
 
 .championship-catalog-page .championship-card-status.vacant,
 .championship-catalog-page .status-vacant {
-    color: #ff7385;
-    background: #260e13;
-    border-color: #63202c;
+    color: var(--catalog-purple);
+    background: rgba(183, 122, 255, 0.07);
+    border-color: rgba(183, 122, 255, 0.24);
 }
 
 .championship-catalog-page .championship-card-status.retired,
 .championship-catalog-page .status-retired {
-    color: #aaa;
-    background: #191919;
-    border-color: #393939;
+    color: #aab6c7;
+    background: rgba(170, 190, 215, 0.045);
+    border-color: rgba(170, 190, 215, 0.14);
 }
 
 .championship-catalog-page .championship-card-footer {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
     gap: 8px;
     width: 100%;
     margin-top: 13px;
     padding-top: 11px;
-    border-top: 1px solid #292929;
-    color: #aaa;
+    color: #aab6c7;
+    border-top: 1px solid rgba(170, 190, 215, 0.13);
     font-size: 10px;
 }
 
 .championship-catalog-page .championship-card-link {
-    color: #ff6478;
+    color: var(--catalog-cyan);
     font-size: 10px;
     font-weight: 900;
-    letter-spacing: 0.4px;
     text-transform: uppercase;
 }
 
 
 /* =========================================================
-   9. ESTADO VACÍO
+   11. CARGA
    ========================================================= */
 
-.championship-catalog-page #catalog-empty {
-    padding: 28px 16px;
-    margin-top: 10px;
-    color: #aaa;
-    background: #111;
-    border: 1px dashed #3a3a3a;
-    border-radius: 7px;
+.championship-catalog-page .catalog-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    grid-column: 1 / -1;
+    min-height: 150px;
+    padding: 22px;
+    color: var(--catalog-muted);
+    background: rgba(15, 19, 28, 0.8);
+    border: 1px solid var(--catalog-border);
     text-align: center;
-    font-size: 13px;
-    line-height: 1.6;
 }
 
-.championship-catalog-page #catalog-empty[hidden] {
-    display: none !important;
+.championship-catalog-page .catalog-loading p {
+    margin: 12px 0 0;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+.championship-catalog-page .catalog-loading-indicator {
+    display: block;
+    width: 23px;
+    height: 23px;
+    border: 2px solid rgba(57, 217, 255, 0.2);
+    border-top-color: var(--catalog-cyan);
+    border-radius: 50%;
+    animation: catalog-loading-spin 0.8s linear infinite;
+}
+
+@keyframes catalog-loading-spin {
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 
 /* =========================================================
-   10. NOTA INFORMATIVA Y PIE
+   12. SIN RESULTADOS
    ========================================================= */
 
-.championship-catalog-page .catalog-note {
-    margin-top: 24px;
-    padding: 13px 15px;
-    color: #999;
-    background: #111;
-    border-left: 3px solid #444;
-    font-size: 11px;
-    line-height: 1.6;
+.championship-catalog-page .catalog-empty {
+    padding: 35px 18px;
+    margin-top: 12px;
+
+    background: rgba(15, 19, 28, 0.85);
+    border: 1px dashed rgba(170, 190, 215, 0.25);
+    text-align: center;
 }
 
-.championship-catalog-page .catalog-note strong {
-    color: #ddd;
+.championship-catalog-page .catalog-empty > i {
+    color: var(--catalog-purple);
+    font-size: 27px;
+}
+
+.championship-catalog-page .catalog-empty h3 {
+    margin: 14px 0 8px;
+    color: #f2f5fa;
+    font-size: 15px;
+    font-weight: 900;
+    line-height: 1.5;
+}
+
+.championship-catalog-page .catalog-empty p {
+    margin: 0 0 17px;
+    color: var(--catalog-muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.championship-catalog-page .catalog-empty .catalog-reset-button {
+    max-width: 100%;
 }
 
 
 /* =========================================================
-   11. TABLET
+   13. BLOQUE DE CONTINUIDAD HISTÓRICA
+   ========================================================= */
+
+.championship-catalog-page .catalog-history-note {
+    display: grid;
+    grid-template-columns: 76px minmax(0, 1fr);
+    align-items: center;
+    gap: 24px;
+    padding: clamp(20px, 4vw, 34px);
+    margin-bottom: 35px;
+    overflow: hidden;
+
+    background: linear-gradient(
+        115deg,
+        rgba(17, 23, 34, 0.96),
+        rgba(9, 13, 21, 0.97)
+    );
+    border: 1px solid var(--catalog-border);
+    border-left: 2px solid var(--catalog-purple);
+    border-radius: 4px;
+}
+
+.championship-catalog-page .catalog-history-decoration {
+    display: grid;
+    place-items: center;
+    width: 68px;
+    height: 68px;
+    color: var(--catalog-cyan);
+    background: rgba(57, 217, 255, 0.055);
+    border: 1px solid rgba(57, 217, 255, 0.2);
+    border-radius: 4px;
+    font-size: 26px;
+}
+
+.championship-catalog-page .catalog-history-note-content {
+    min-width: 0;
+}
+
+.championship-catalog-page .catalog-history-note h2 {
+    margin: 0 0 12px;
+    color: #f4f7ff;
+    font-size: clamp(16px, 2.3vw, 23px);
+    font-weight: 900;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.championship-catalog-page .catalog-history-note-content > p:not(.catalog-eyebrow) {
+    margin: 8px 0 0;
+    color: #aeb9c9;
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   14. FOOTER DEL CATÁLOGO
+   ========================================================= */
+
+.championship-catalog-page .catalog-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 10px 24px;
+    text-align: center;
+}
+
+.championship-catalog-page .catalog-footer-line {
+    width: min(280px, 65%);
+    height: 1px;
+    margin-bottom: 20px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--catalog-green),
+        var(--catalog-cyan),
+        var(--catalog-blue),
+        var(--catalog-purple),
+        transparent
+    );
+}
+
+.championship-catalog-page .catalog-footer-brand {
+    margin: 0;
+    color: #e9f0fb;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+    line-height: 1.8;
+}
+
+.championship-catalog-page .catalog-footer-description {
+    margin: 5px 0 17px;
+    color: #7f8da2;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 1.1px;
+    line-height: 1.8;
+}
+
+.championship-catalog-page .catalog-footer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 40px;
+    padding: 10px 15px;
+
+    color: var(--catalog-cyan);
+    background: rgba(57, 217, 255, 0.045);
+    border: 1px solid rgba(57, 217, 255, 0.2);
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 900;
+    text-decoration: none;
+}
+
+.championship-catalog-page .catalog-footer-link:hover {
+    background: rgba(57, 217, 255, 0.1);
+}
+
+
+/* =========================================================
+   15. TABLETS
    ========================================================= */
 
 @media (max-width: 900px) {
-    .championship-catalog-page .catalog-container {
-        width: calc(100% - 28px);
-        padding-top: 22px;
+    #championship-catalog {
+        padding: 22px 20px 20px;
     }
 
-    .championship-catalog-page #championship-grid,
+    .championship-catalog-page .catalog-hero {
+        min-height: 215px;
+    }
+
     .championship-catalog-page .championship-grid {
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 12px;
     }
 
+    .championship-catalog-page .catalog-summary {
+        gap: 9px;
+    }
+
     .championship-catalog-page .championship-card-body,
     .championship-catalog-page .championship-card-content {
         padding: 11px;
     }
 
-    .championship-catalog-page .championship-card h3,
+    .championship-catalog-page .championship-grid h3,
     .championship-catalog-page .championship-card-title {
-        font-size: 14px;
-    }
-
-    .championship-catalog-page .championship-card-image,
-    .championship-catalog-page .championship-image,
-    .championship-catalog-page .championship-card-media {
-        padding: 10px;
+        font-size: 13px;
     }
 }
 
 
 /* =========================================================
-   12. MÓVILES
+   16. MÓVILES
    ========================================================= */
 
 @media (max-width: 600px) {
-    .championship-catalog-page .catalog-container {
-        width: calc(100% - 20px);
-        padding: 17px 0 30px;
+    #championship-catalog {
+        padding: 14px 11px 15px;
     }
 
     .championship-catalog-page .catalog-hero {
-        padding: 19px 15px;
-        margin-bottom: 14px;
-        border-radius: 6px;
+        min-height: 0;
+        padding: 25px 17px;
+        margin-bottom: 12px;
     }
 
     .championship-catalog-page .catalog-eyebrow {
+        margin-bottom: 7px;
         font-size: 9px;
         letter-spacing: 2px;
     }
 
-    .championship-catalog-page .catalog-title {
-        font-size: clamp(23px, 7vw, 31px);
-        letter-spacing: 0.3px;
+    .championship-catalog-page #catalog-title {
+        font-size: clamp(29px, 8.5vw, 43px);
+        letter-spacing: -0.8px;
+        line-height: 1.08;
     }
 
-    .championship-catalog-page .catalog-description {
-        margin-top: 8px;
+    .championship-catalog-page .catalog-intro {
+        margin-top: 12px;
         font-size: 11px;
-        line-height: 1.5;
+        line-height: 1.8;
+    }
+
+    .championship-catalog-page .catalog-hero-decoration {
+        margin-top: 17px;
     }
 
     .championship-catalog-page .catalog-summary {
         gap: 7px;
-        margin-bottom: 15px;
+        margin-bottom: 19px;
     }
 
-    .championship-catalog-page .catalog-stat {
-        padding: 11px 9px;
-        border-radius: 5px;
+    .championship-catalog-page .catalog-summary-card {
+        padding: 12px 9px;
     }
 
-    .championship-catalog-page .catalog-stat-label {
+    .championship-catalog-page .catalog-summary-label {
+        min-height: 26px;
+        margin-bottom: 7px;
+        font-size: 7px;
+        letter-spacing: 0.45px;
+        line-height: 1.6;
+    }
+
+    .championship-catalog-page .catalog-summary-card strong {
+        font-size: 25px;
+    }
+
+    .championship-catalog-page .catalog-controls {
+        padding: 13px 11px;
+        margin-bottom: 25px;
+    }
+
+    .championship-catalog-page .catalog-controls-heading {
+        align-items: flex-start;
+        gap: 9px;
+        margin-bottom: 17px;
+        padding-bottom: 13px;
+    }
+
+    .championship-catalog-page .catalog-controls-heading h2 {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .championship-catalog-page .catalog-controls-heading .catalog-eyebrow {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .championship-catalog-page .catalog-results-count {
+        padding: 6px 7px;
+        font-size: 9px;
+    }
+
+    .championship-catalog-page .catalog-search-wrapper {
+        margin-bottom: 14px;
+    }
+
+    .championship-catalog-page .catalog-field-label {
         margin-bottom: 6px;
         font-size: 8px;
-        letter-spacing: 0.4px;
-        line-height: 1.3;
+        letter-spacing: 0.8px;
     }
 
-    .championship-catalog-page .catalog-stat-value {
-        font-size: 22px;
-    }
-
-    .championship-catalog-page .catalog-tools {
-        padding: 11px;
-        margin-bottom: 18px;
-        border-radius: 6px;
-    }
-
-    .championship-catalog-page .catalog-search-row {
-        gap: 6px;
-        margin-bottom: 11px;
+    .championship-catalog-page .catalog-search-box {
+        gap: 8px;
+        min-height: 44px;
+        padding-inline: 10px;
     }
 
     .championship-catalog-page #catalog-search {
-        min-height: 41px;
-        padding: 9px;
-        font-size: 12px;
-    }
-
-    .championship-catalog-page .catalog-button {
-        min-height: 39px;
-        padding: 8px 10px;
-        font-size: 10px;
+        min-height: 42px;
+        font-size: 11px;
     }
 
     .championship-catalog-page .catalog-filters {
         grid-template-columns: minmax(0, 1fr);
-        gap: 9px;
+        gap: 11px;
     }
 
-    .championship-catalog-page .catalog-filter label {
-        margin-bottom: 5px;
-        font-size: 9px;
+    .championship-catalog-page .catalog-filter select {
+        min-height: 42px;
+        font-size: 11px;
     }
 
-    .championship-catalog-page #catalog-category,
-    .championship-catalog-page #catalog-status,
-    .championship-catalog-page #catalog-sort {
-        min-height: 39px;
-        font-size: 12px;
-    }
-
-    .championship-catalog-page #catalog-reset {
+    .championship-catalog-page .catalog-reset-button {
         width: 100%;
-        margin-top: 10px;
-    }
-
-    .championship-catalog-page .catalog-list-heading {
-        align-items: flex-start;
-        margin-bottom: 11px;
-    }
-
-    .championship-catalog-page .catalog-list-heading h2 {
-        font-size: 14px;
-    }
-
-    .championship-catalog-page .catalog-result-count {
+        min-height: 42px;
         font-size: 10px;
-        text-align: right;
     }
 
-    .championship-catalog-page #championship-grid,
+    .championship-catalog-page .catalog-collection {
+        margin-bottom: 25px;
+    }
+
+    .championship-catalog-page .catalog-collection-heading {
+        gap: 12px;
+        margin-bottom: 13px;
+    }
+
+    .championship-catalog-page .catalog-collection-heading h2 {
+        font-size: 16px;
+    }
+
+    .championship-catalog-page .catalog-collection-heading .catalog-eyebrow {
+        font-size: 8px;
+        letter-spacing: 1.7px;
+    }
+
     .championship-catalog-page .championship-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 9px;
     }
 
-    .championship-catalog-page .championship-card {
-        border-radius: 6px;
-    }
-
-    .championship-catalog-page .championship-card-image,
-    .championship-catalog-page .championship-image,
-    .championship-catalog-page .championship-card-media {
+    .championship-catalog-page .championship-grid .championship-image,
+    .championship-catalog-page .championship-grid .championship-card-image,
+    .championship-catalog-page .championship-grid .championship-card-media {
         aspect-ratio: 1 / 0.82;
-        padding: 8px;
+        padding: 7px;
     }
 
-    .championship-catalog-page .championship-card-image img,
-    .championship-catalog-page .championship-image img,
-    .championship-catalog-page .championship-card-media img,
-    .championship-catalog-page .championship-card > img {
+    .championship-catalog-page .championship-grid > a > img,
+    .championship-catalog-page .championship-grid > article > img,
+    .championship-catalog-page .championship-grid > .championship-card > img {
+        aspect-ratio: 1 / 0.82;
         max-height: 125px;
+        padding: 7px;
     }
 
     .championship-catalog-page .championship-card-body,
@@ -746,36 +1177,33 @@
         padding: 9px;
     }
 
-    .championship-catalog-page .championship-card-category {
-        margin-bottom: 6px;
-        padding: 3px 5px;
-        font-size: 8px;
-        letter-spacing: 0.3px;
-    }
-
-    .championship-catalog-page .championship-card h3,
+    .championship-catalog-page .championship-grid h3,
     .championship-catalog-page .championship-card-title {
         margin-bottom: 7px;
-        font-size: 12px;
-        line-height: 1.3;
+        font-size: 11px;
+        line-height: 1.5;
     }
 
-    .championship-catalog-page .championship-card-description {
-        margin-bottom: 9px;
+    .championship-catalog-page .championship-grid p {
         font-size: 10px;
-        line-height: 1.4;
+        line-height: 1.6;
+    }
+
+    .championship-catalog-page .championship-card-category {
+        margin-bottom: 7px;
+        padding: 4px 5px;
+        font-size: 8px;
+        letter-spacing: 0.2px;
     }
 
     .championship-catalog-page .championship-card-status {
         gap: 4px;
         padding: 5px 6px;
         font-size: 8px;
-        letter-spacing: 0.2px;
     }
 
     .championship-catalog-page .championship-card-footer {
-        flex-wrap: wrap;
-        gap: 5px;
+        gap: 6px;
         margin-top: 9px;
         padding-top: 8px;
         font-size: 9px;
@@ -785,24 +1213,67 @@
         font-size: 9px;
     }
 
-    .championship-catalog-page .catalog-note {
-        margin-top: 18px;
-        padding: 11px;
+    .championship-catalog-page .catalog-history-note {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 15px;
+        padding: 19px 15px;
+        margin-bottom: 25px;
+    }
+
+    .championship-catalog-page .catalog-history-decoration {
+        width: 47px;
+        height: 47px;
+        font-size: 19px;
+    }
+
+    .championship-catalog-page .catalog-history-note h2 {
+        font-size: 17px;
+    }
+
+    .championship-catalog-page .catalog-history-note-content > p:not(.catalog-eyebrow) {
         font-size: 10px;
+        line-height: 1.8;
+    }
+
+    .championship-catalog-page .catalog-footer-brand {
+        font-size: 9px;
+        letter-spacing: 2px;
+    }
+
+    .championship-catalog-page .catalog-footer-description {
+        max-width: 290px;
+        font-size: 7px;
+        letter-spacing: 0.7px;
     }
 }
 
 
 /* =========================================================
-   13. MÓVILES MUY ANGOSTOS
+   17. TELÉFONOS ANGOSTOS
    ========================================================= */
 
 @media (max-width: 360px) {
-    .championship-catalog-page .catalog-container {
-        width: calc(100% - 14px);
+    #championship-catalog {
+        padding-inline: 8px;
     }
 
-    .championship-catalog-page #championship-grid,
+    .championship-catalog-page .catalog-summary {
+        gap: 5px;
+    }
+
+    .championship-catalog-page .catalog-summary-card {
+        padding: 10px 6px;
+    }
+
+    .championship-catalog-page .catalog-summary-label {
+        font-size: 6.5px;
+        letter-spacing: 0.2px;
+    }
+
+    .championship-catalog-page .catalog-summary-card strong {
+        font-size: 22px;
+    }
+
     .championship-catalog-page .championship-grid {
         gap: 7px;
     }
@@ -812,38 +1283,19 @@
         padding: 7px;
     }
 
-    .championship-catalog-page .championship-card h3,
+    .championship-catalog-page .championship-grid h3,
     .championship-catalog-page .championship-card-title {
-        font-size: 11px;
-    }
-
-    .championship-catalog-page .catalog-stat {
-        padding: 9px 6px;
-    }
-
-    .championship-catalog-page .catalog-stat-value {
-        font-size: 20px;
+        font-size: 10px;
     }
 }
 
 
 /* =========================================================
-   14. ACCESIBILIDAD Y RENDIMIENTO
+   18. REDUCCIÓN DE MOVIMIENTO
    ========================================================= */
 
-@media (hover: none) {
-    .championship-catalog-page .championship-card:hover {
-        background: linear-gradient(160deg, #181818, #0e0e0e 75%);
-        border-color: #303030;
-    }
-}
-
 @media (prefers-reduced-motion: reduce) {
-    .championship-catalog-page *,
-    .championship-catalog-page *::before,
-    .championship-catalog-page *::after {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important;
+    .championship-catalog-page .catalog-loading-indicator {
+        animation: none;
     }
 }

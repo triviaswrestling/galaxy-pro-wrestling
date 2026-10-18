@@ -54,13 +54,13 @@
     image: "",
 
     startDate: "2026-08-01",
-    endDate: "2026-10-10",
+    endDate: null,
 
     wonAt: "GPW: Final Collision",
-    lostAt: "GPW: Grand Finale",
+    lostAt: null,
 
     wonAgainst: "Marcus Steel",
-    lostAgainst: "Dante Cross",
+    lostAgainst: null,
 
     description:
         "Ganó el campeonato en una lucha individual. " +

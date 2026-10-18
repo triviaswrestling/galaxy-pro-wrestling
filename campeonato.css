@@ -1143,3 +1143,157 @@
         transition-duration: .01ms !important;
     }
 }
+/* =========================================================
+   GPW — REINADOS: PLACAS DE FECHAS, DURACIÓN Y DEFENSAS
+   Pegar al FINAL de campeonato.css
+   ========================================================= */
+
+/* Datos de cada reinado */
+.championship-page .championship-reign-dates,
+.championship-page .reign-dates,
+.championship-page .championship-reign-meta,
+.championship-page .reign-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 5px;
+    width: 100%;
+    min-width: 0;
+    margin-top: 5px;
+}
+
+/* Placas individuales: fechas y defensas */
+.championship-page .championship-date-badge,
+.championship-page .reign-date-badge,
+.championship-page .championship-reign-date,
+.championship-page .reign-date,
+.championship-page .championship-defenses,
+.championship-page .reign-defenses,
+.championship-page .defenses-count,
+.championship-page .championship-reign-defenses {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    min-width: 0;
+    max-width: 100%;
+    padding: 5px 7px;
+    color: #c9d5e5;
+    background: rgba(5, 10, 18, .7);
+    border: 1px solid #354254;
+    border-radius: 4px;
+    font-size: .67rem;
+    font-weight: 700;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+/* Fecha de inicio y fecha de finalización */
+.championship-page .championship-date-start,
+.championship-page .reign-date-start,
+.championship-page .date-start {
+    border-left: 2px solid #00c8ff;
+}
+
+.championship-page .championship-date-end,
+.championship-page .reign-date-end,
+.championship-page .date-end {
+    border-left: 2px solid #a855f7;
+}
+
+/* Duración: placa destacada, estilo estadística */
+.championship-page .championship-reign-days,
+.championship-page .reign-days,
+.championship-page .days-count,
+.championship-page .championship-reign-duration,
+.championship-page .reign-duration {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-start;
+    gap: 5px;
+    width: fit-content;
+    max-width: 100%;
+    margin-top: 5px;
+    padding: 6px 9px;
+    color: #f1d98c;
+    background: linear-gradient(
+        135deg,
+        rgba(232, 199, 106, .10),
+        rgba(232, 199, 106, .025)
+    );
+    border: 1px solid rgba(232, 199, 106, .45);
+    border-radius: 4px;
+    font-size: .72rem;
+    font-weight: 900;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+}
+
+.championship-page .championship-reign-days strong,
+.championship-page .reign-days strong,
+.championship-page .days-count strong,
+.championship-page .championship-reign-duration strong,
+.championship-page .reign-duration strong {
+    color: #ffe7a1;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Defensas: marco fino con acento cian */
+.championship-page .championship-defenses,
+.championship-page .reign-defenses,
+.championship-page .defenses-count,
+.championship-page .championship-reign-defenses {
+    color: #aeeeff;
+    background: rgba(0, 200, 255, .045);
+    border: 1px solid rgba(0, 200, 255, .35);
+    border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Si el número de defensas está dentro de una placa */
+.championship-page .championship-defenses strong,
+.championship-page .reign-defenses strong,
+.championship-page .defenses-count strong,
+.championship-page .championship-reign-defenses strong {
+    color: #fff;
+}
+
+/* Placa de campeón actual */
+.championship-page .championship-current-badge,
+.championship-page .current-badge {
+    border: 1px solid rgba(53, 212, 154, .55);
+    border-radius: 4px;
+}
+
+/* Adaptación a las tarjetas de dos columnas en celular */
+@media (max-width: 600px) {
+    .championship-page .championship-reign-dates,
+    .championship-page .reign-dates,
+    .championship-page .championship-reign-meta,
+    .championship-page .reign-meta {
+        gap: 4px;
+        margin-top: 4px;
+    }
+
+    .championship-page .championship-date-badge,
+    .championship-page .reign-date-badge,
+    .championship-page .championship-reign-date,
+    .championship-page .reign-date,
+    .championship-page .championship-defenses,
+    .championship-page .reign-defenses,
+    .championship-page .defenses-count,
+    .championship-page .championship-reign-defenses {
+        padding: 4px 5px;
+        font-size: .59rem;
+    }
+
+    .championship-page .championship-reign-days,
+    .championship-page .reign-days,
+    .championship-page .days-count,
+    .championship-page .championship-reign-duration,
+    .championship-page .reign-duration {
+        padding: 5px 7px;
+        font-size: .64rem;
+    }
+   }

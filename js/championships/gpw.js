@@ -49,7 +49,7 @@
     number: 10,
 
     championId: "bray-wyatt",
-    presentationId: "bray-wyatt",
+    presentationId: "the-fiend",
     champion: "The Fiend",
     image: "",
 

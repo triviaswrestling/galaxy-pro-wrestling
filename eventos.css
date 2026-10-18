@@ -1,0 +1,619 @@
+
+/* ==========================================================
+   GALAXY PRO WRESTLING — EVENTOS
+   Diseño independiente: no modifica el roster ni el fondo global
+   ========================================================== */
+
+.eventos-main {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto;
+    min-width: 0;
+}
+
+/* Las vistas ocultas no deben ocupar espacio */
+.eventos-view[hidden] {
+    display: none !important;
+}
+
+.eventos-view {
+    width: 100%;
+    min-width: 0;
+    animation: eventosEntrada .24s ease-out both;
+}
+
+@keyframes eventosEntrada {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==========================================================
+   ENCABEZADOS
+   ========================================================== */
+
+.eventos-main .page-title-bar {
+    position: relative;
+    width: 100%;
+    margin: 12px auto 18px;
+    padding: 13px 12px;
+    overflow: hidden;
+    text-align: center;
+    background:
+        linear-gradient(
+            105deg,
+            rgba(3, 8, 14, .97),
+            rgba(9, 28, 43, .96),
+            rgba(3, 7, 12, .98)
+        );
+    border: 1px solid rgba(174, 220, 240, .32);
+    border-bottom: 2px solid #37d7ff;
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, .32),
+        inset 0 1px 0 rgba(255, 255, 255, .08);
+}
+
+.eventos-main .page-title-bar h2 {
+    font-size: clamp(.95rem, 3vw, 1.35rem);
+    line-height: 1.3;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #f3fbff;
+    text-shadow: 0 0 12px rgba(55, 215, 255, .15);
+}
+
+.eventos-heading {
+    width: 100%;
+    margin: 0 auto 20px;
+    text-align: center;
+}
+
+.eventos-heading h1 {
+    color: #f0faff;
+    font-size: clamp(1rem, 3.5vw, 1.5rem);
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    line-height: 1.35;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .8);
+}
+
+.eventos-heading p {
+    margin-top: 7px;
+    color: #b8cfdd;
+    font-size: .8rem;
+    line-height: 1.6;
+}
+
+/* ==========================================================
+   CUADRÍCULA DE TEMPORADAS
+   2 columnas en celular; 3 en PC
+   ========================================================== */
+
+.temporadas-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 0 auto 28px;
+    align-items: stretch;
+}
+
+/* Tarjeta generada por eventos.js */
+.temporada-card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    padding: 0;
+    text-align: left;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    background:
+        radial-gradient(
+            ellipse at 50% 0%,
+            rgba(0, 164, 255, .19),
+            transparent 58%
+        ),
+        linear-gradient(
+            145deg,
+            rgba(12, 24, 35, .98),
+            rgba(3, 6, 11, .98) 68%,
+            rgba(7, 17, 28, .98)
+        );
+    border: 1px solid rgba(174, 211, 230, .34);
+    border-radius: 3px;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, .38),
+        inset 0 1px 0 rgba(255, 255, 255, .09);
+    transition:
+        transform .16s ease,
+        border-color .16s ease,
+        box-shadow .16s ease;
+}
+
+.temporada-card::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(
+            125deg,
+            transparent 15%,
+            rgba(210, 244, 255, .08) 38%,
+            transparent 55%
+        );
+}
+
+.temporada-card::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        #dff8ff,
+        #37d7ff 38%,
+        #087dff 75%,
+        #aebdca
+    );
+}
+
+.temporada-card:hover,
+.temporada-card:focus-visible {
+    transform: translateY(-3px);
+    border-color: rgba(150, 230, 255, .8);
+    outline: none;
+    box-shadow:
+        0 12px 25px rgba(0, 0, 0, .48),
+        0 0 17px rgba(55, 215, 255, .17);
+}
+
+.temporada-card:active {
+    transform: scale(.985);
+}
+
+/* Área de póster o arte de temporada */
+.temporada-card-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse at 50% 28%,
+            rgba(0, 183, 255, .36),
+            transparent 42%
+        ),
+        radial-gradient(
+            ellipse at 12% 70%,
+            rgba(27, 91, 255, .24),
+            transparent 45%
+        ),
+        linear-gradient(
+            145deg,
+            #101e2b,
+            #03070d 65%,
+            #0b1725
+        );
+}
+
+.temporada-card-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.temporada-card-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        180deg,
+        rgba(1, 5, 10, .02) 20%,
+        rgba(1, 5, 10, .12) 48%,
+        rgba(1, 5, 10, .8) 100%
+    );
+    box-shadow: inset 0 0 0 1px rgba(224, 248, 255, .08);
+}
+
+/* Texto inferior */
+.temporada-card-info {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 9px 12px;
+    background: linear-gradient(
+        180deg,
+        rgba(8, 17, 26, .98),
+        rgba(3, 6, 10, .99)
+    );
+    border-top: 1px solid rgba(174, 218, 238, .16);
+}
+
+.temporada-card-info h2 {
+    color: #f2fbff;
+    font-size: clamp(.76rem, 2.5vw, 1rem);
+    font-weight: 900;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
+    text-shadow: 0 0 10px rgba(55, 215, 255, .12);
+}
+
+.temporada-card-info p {
+    color: #abc4d4;
+    font-size: .7rem;
+    line-height: 1.45;
+}
+
+/* ==========================================================
+   LISTADO DE EVENTOS
+   ========================================================== */
+
+.eventos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 0 auto 28px;
+    align-items: stretch;
+}
+
+/* Tarjeta individual de cada noche */
+.evento-card {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+    background: linear-gradient(
+        145deg,
+        rgba(12, 22, 31, .98),
+        rgba(3, 6, 10, .99)
+    );
+    border: 1px solid rgba(177, 211, 228, .29);
+    border-radius: 3px;
+    box-shadow:
+        0 8px 19px rgba(0, 0, 0, .38),
+        inset 0 1px 0 rgba(255, 255, 255, .06);
+    transition:
+        transform .16s ease,
+        border-color .16s ease,
+        box-shadow .16s ease;
+}
+
+.evento-card::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        125deg,
+        rgba(55, 215, 255, .07),
+        transparent 35%,
+        transparent 72%,
+        rgba(8, 125, 255, .07)
+    );
+}
+
+.evento-card:hover,
+.evento-card:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(120, 224, 255, .75);
+    outline: none;
+    box-shadow:
+        0 12px 24px rgba(0, 0, 0, .45),
+        0 0 15px rgba(55, 215, 255, .14);
+}
+
+.evento-card:active {
+    transform: scale(.985);
+}
+
+.evento-card img,
+.evento-card-poster {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: center;
+    background: linear-gradient(
+        145deg,
+        #102131,
+        #03070c 70%,
+        #0a1725
+    );
+}
+
+.evento-card-info {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px;
+    flex: 1;
+    background: linear-gradient(
+        180deg,
+        rgba(8, 16, 24, .98),
+        rgba(3, 6, 10, .99)
+    );
+    border-top: 1px solid rgba(174, 218, 238, .16);
+}
+
+.evento-card-info h2 {
+    color: #f3fbff;
+    font-size: .8rem;
+    font-weight: 900;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
+
+.evento-card-info p,
+.evento-fecha {
+    color: #b5cbd8;
+    font-size: .7rem;
+    line-height: 1.45;
+}
+
+/* ==========================================================
+   BOTONES PARA VOLVER
+   ========================================================== */
+
+.eventos-back-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    max-width: 100%;
+    margin: 8px 0 10px;
+    padding: 10px 13px;
+    color: #eafaff;
+    font-family: inherit;
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: .35px;
+    text-align: center;
+    cursor: pointer;
+    background: linear-gradient(
+        110deg,
+        rgba(11, 30, 44, .98),
+        rgba(4, 10, 17, .98)
+    );
+    border: 1px solid rgba(100, 206, 244, .48);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08);
+    transition:
+        border-color .15s ease,
+        background-color .15s ease;
+}
+
+.eventos-back-button:hover,
+.eventos-back-button:focus-visible {
+    border-color: #55d5ff;
+    outline: none;
+}
+
+.eventos-back-button:active {
+    background: rgba(13, 49, 70, .98);
+}
+
+/* ==========================================================
+   DETALLE DE EVENTO
+   Clases para el contenido que renderizará evento.js
+   ========================================================== */
+
+.evento-detalle {
+    width: 100%;
+    min-width: 0;
+}
+
+.evento-detalle-header {
+    margin: 10px 0 22px;
+    text-align: center;
+}
+
+.evento-detalle-header img {
+    display: block;
+    width: 100%;
+    max-width: 620px;
+    max-height: 760px;
+    margin: 0 auto 16px;
+    object-fit: contain;
+    background: rgba(2, 5, 9, .8);
+    border: 1px solid rgba(158, 218, 241, .34);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
+}
+
+.evento-detalle-header h1 {
+    color: #f0faff;
+    font-size: clamp(1.15rem, 4vw, 1.8rem);
+    font-weight: 900;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+.evento-detalle-header p {
+    margin-top: 7px;
+    color: #b7d1df;
+    font-size: .82rem;
+}
+
+.evento-combates {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 24px;
+}
+
+.evento-combate {
+    position: relative;
+    min-width: 0;
+    padding: 13px;
+    color: #fff;
+    background: linear-gradient(
+        145deg,
+        rgba(10, 20, 29, .97),
+        rgba(3, 6, 10, .99)
+    );
+    border: 1px solid rgba(151, 201, 222, .28);
+    border-left: 3px solid #37d7ff;
+    box-shadow: 0 7px 18px rgba(0, 0, 0, .32);
+}
+
+.evento-combate h3 {
+    margin-bottom: 8px;
+    color: #eafaff;
+    font-size: .88rem;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.evento-combate p {
+    color: #bdced9;
+    font-size: .78rem;
+    line-height: 1.55;
+}
+
+.evento-resultado {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 8px;
+    color: #eafaff;
+    font-size: .68rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: rgba(55, 215, 255, .1);
+    border: 1px solid rgba(55, 215, 255, .36);
+}
+
+/* Mensajes de carga o archivo vacío */
+.eventos-loading,
+.eventos-empty,
+.eventos-error {
+    grid-column: 1 / -1;
+    padding: 18px 12px;
+    color: #c1d7e4;
+    font-size: .8rem;
+    line-height: 1.6;
+    text-align: center;
+    background: rgba(5, 12, 19, .88);
+    border: 1px solid rgba(113, 189, 220, .25);
+}
+
+/* ==========================================================
+   PC
+   ========================================================== */
+
+@media (min-width: 768px) {
+    .eventos-main {
+        max-width: 1100px;
+    }
+
+    .eventos-main .page-title-bar {
+        margin-top: 18px;
+        margin-bottom: 24px;
+        padding: 16px;
+    }
+
+    .eventos-heading {
+        margin-bottom: 26px;
+    }
+
+    .temporadas-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .temporada-card-image {
+        aspect-ratio: 5 / 3;
+    }
+
+    .temporada-card-info {
+        padding: 13px 12px 15px;
+    }
+
+    .temporada-card-info h2 {
+        font-size: 1rem;
+    }
+
+    .temporada-card-info p {
+        font-size: .76rem;
+    }
+
+    .eventos-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+    }
+
+    .evento-card-info {
+        padding: 12px;
+    }
+
+    .evento-card-info h2 {
+        font-size: .92rem;
+    }
+
+    .evento-combates {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+}
+
+/* ==========================================================
+   CELULARES PEQUEÑOS Y ACCESIBILIDAD
+   ========================================================== */
+
+@media (max-width: 360px) {
+    .temporadas-grid,
+    .eventos-grid {
+        gap: 8px;
+    }
+
+    .temporada-card-info,
+    .evento-card-info {
+        padding: 8px 7px;
+    }
+
+    .temporada-card-info h2,
+    .evento-card-info h2 {
+        font-size: .72rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .eventos-view,
+    .temporada-card,
+    .evento-card,
+    .eventos-back-button {
+        animation: none !important;
+        transition: none !important;
+    }
+}

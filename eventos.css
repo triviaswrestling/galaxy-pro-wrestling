@@ -423,198 +423,682 @@ outline: none;
 background: rgba(13, 49, 70, .98);
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* ==========================================================
-DETALLE DE EVENTO
-Clases para el contenido que renderizará evento.js
+DETALLE DE EVENTO — GALAXY PRO WRESTLING
+Conserva la estética metálica original
 ========================================================== */
 
 .evento-detalle {
-width: 100%;
-min-width: 0;
+    width: 100%;
+    min-width: 0;
 }
 
+/* Cabecera del evento */
 .evento-detalle-header {
-margin: 10px 0 22px;
-text-align: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    width: 100%;
+    margin: 10px 0 24px;
+    padding: 13px;
+    color: #f3fbff;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(0, 164, 255, .12), transparent 65%),
+        linear-gradient(145deg, rgba(10, 22, 33, .98), rgba(3, 6, 11, .99));
+    border: 1px solid rgba(174, 220, 240, .32);
+    border-bottom: 2px solid #37d7ff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, .32), inset 0 1px 0 rgba(255, 255, 255, .06);
 }
 
-.evento-detalle-header img {
-display: block;
-width: 100%;
-max-width: 620px;
-max-height: 760px;
-margin: 0 auto 16px;
-object-fit: contain;
-background: rgba(2, 5, 9, .8);
-border: 1px solid rgba(158, 218, 241, .34);
-box-shadow: 0 12px 28px rgba(0, 0, 0, .4);
+.evento-detalle-poster {
+    width: 100%;
+    max-width: 300px;
+    min-width: 0;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #03070c;
+    border: 1px solid rgba(174, 220, 240, .34);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .35);
 }
 
-.evento-detalle-header h1 {
-color: #f0faff;
-font-size: clamp(1.15rem, 4vw, 1.8rem);
-font-weight: 900;
-line-height: 1.3;
-overflow-wrap: anywhere;
+.evento-detalle-poster img {
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    margin: 0;
+    object-fit: cover;
 }
 
-.evento-detalle-header p {
-margin-top: 7px;
-color: #b7d1df;
-font-size: .82rem;
+.evento-detalle-info {
+    min-width: 0;
+    align-self: center;
 }
+
+.evento-detalle-fecha {
+    display: inline-block;
+    margin: 0 0 9px;
+    padding: 5px 8px;
+    color: #37d7ff;
+    font-size: .7rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background: rgba(55, 215, 255, .08);
+    border: 1px solid rgba(55, 215, 255, .35);
+}
+
+.evento-detalle-titulo {
+    margin: 0 0 9px;
+    color: #f3fbff;
+    font-size: clamp(1.25rem, 5vw, 2rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .8);
+}
+
+.evento-detalle-descripcion {
+    margin: 0;
+    color: #b8cfdd;
+    font-size: .8rem;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+}
+
+.evento-detalle-total {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 6px 9px;
+    color: #eafaff;
+    font-size: .7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: rgba(55, 215, 255, .08);
+    border: 1px solid rgba(55, 215, 255, .3);
+}
+
+/* ==========================================================
+CUADRÍCULA DE COMBATES
+Una columna en celular; dos en PC
+========================================================== */
 
 .evento-combates {
-display: grid;
-grid-template-columns: minmax(0, 1fr);
-gap: 12px;
-width: 100%;
-margin-bottom: 24px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 14px;
+    width: 100%;
+    min-width: 0;
+    margin: 0 auto 26px;
 }
+
+/* ==========================================================
+TARJETA DE COMBATE
+========================================================== */
 
 .evento-combate {
-position: relative;
-min-width: 0;
-padding: 13px;
-color: #fff;
-background: linear-gradient(
-145deg,
-rgba(10, 20, 29, .97),
-rgba(3, 6, 10, .99)
-);
-border: 1px solid rgba(151, 201, 222, .28);
-border-left: 3px solid #37d7ff;
-box-shadow: 0 7px 18px rgba(0, 0, 0, .32);
+    --evento-acento: #37d7ff;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+    color: #fff;
+    background:
+        radial-gradient(ellipse at 50% 0%, rgba(0, 164, 255, .09), transparent 60%),
+        linear-gradient(145deg, rgba(12, 23, 34, .99), rgba(3, 6, 11, .99));
+    border: 1px solid rgba(174, 211, 230, .34);
+    border-radius: 3px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .35), inset 0 1px 0 rgba(255, 255, 255, .06);
 }
 
-.evento-combate h3 {
-margin-bottom: 8px;
-color: #eafaff;
-font-size: .88rem;
-font-weight: 900;
-line-height: 1.4;
+.evento-combate::before {
+    content: "";
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    pointer-events: none;
+    background: linear-gradient(90deg, #dff8ff, var(--evento-acento), #087dff, #aebdca);
 }
 
-.evento-combate p {
-color: #bdced9;
-font-size: .78rem;
-line-height: 1.55;
+.evento-combate-encabezado {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    min-width: 0;
+    padding: 11px 11px 9px;
+    background: linear-gradient(100deg, rgba(12, 29, 43, .95), rgba(3, 7, 12, .95));
+    border-bottom: 1px solid rgba(174, 220, 240, .2);
 }
+
+.evento-combate-numero {
+    flex: 0 0 auto;
+    color: var(--evento-acento);
+    font-size: .7rem;
+    font-weight: 900;
+    letter-spacing: .7px;
+    text-transform: uppercase;
+}
+
+.evento-combate-tipo {
+    min-width: 0;
+    color: #c9e5f1;
+    font-size: .65rem;
+    font-weight: 900;
+    line-height: 1.35;
+    text-align: right;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+/* ==========================================================
+CAMPEONATO EN JUEGO
+========================================================== */
+
+.evento-combate-titulo {
+    --evento-titulo-color: #37d7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 0;
+    margin: 10px 10px 0;
+    padding: 10px 8px;
+    color: #f3fbff;
+    font-size: .85rem;
+    font-weight: 900;
+    line-height: 1.35;
+    text-align: center;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    background: linear-gradient(100deg, rgba(10, 29, 43, .98), rgba(4, 10, 17, .98));
+    border: 1px solid var(--evento-titulo-color);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+
+.evento-combate-titulo-etiqueta {
+    color: var(--evento-titulo-color);
+    font-size: .61rem;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+}
+
+.evento-combate-estipulacion {
+    margin: 8px 10px 0;
+    padding: 7px 9px;
+    color: #b8cfdd;
+    font-size: .7rem;
+    font-weight: 700;
+    line-height: 1.45;
+    text-align: center;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    background: rgba(2, 7, 12, .72);
+    border: 1px solid rgba(174, 211, 230, .18);
+}
+
+/* ==========================================================
+BANDOS Y PARTICIPANTES
+========================================================== */
+
+.evento-combate-lados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 8px;
+    width: 100%;
+    min-width: 0;
+    padding: 11px;
+}
+
+.evento-lado {
+    --evento-lado-color: #168bd2;
+    min-width: 0;
+    overflow: hidden;
+    background: rgba(3, 8, 14, .65);
+    border: 1px solid var(--evento-lado-color);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .025);
+}
+
+.evento-equipo-nombre {
+    display: block;
+    padding: 7px 4px;
+    color: var(--evento-lado-color);
+    font-size: .68rem;
+    font-weight: 900;
+    line-height: 1.35;
+    text-align: center;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    background: rgba(2, 7, 12, .92);
+    border-bottom: 1px solid var(--evento-lado-color);
+}
+
+.evento-participantes {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 5px;
+    min-width: 0;
+    padding: 5px;
+}
+
+/* ==========================================================
+IMÁGENES DE LUCHADORES
+Cuadradas 1:1; originales sin modificar
+========================================================== */
+
+.evento-luchador {
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    background: var(--evento-lado-color, #101722);
+    border: 1px solid rgba(220, 245, 255, .16);
+}
+
+.evento-luchador-imagen {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+    background: var(--evento-lado-color, #101722);
+}
+
+.evento-luchador-imagen img {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+}
+
+/* Degradado para que los nombres se lean sobre la imagen */
+.evento-luchador-overlay {
+    position: absolute;
+    z-index: 1;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        transparent 40%,
+        rgba(0, 0, 0, .12) 53%,
+        rgba(0, 0, 0, .75) 78%,
+        rgba(0, 0, 0, .96) 100%
+    );
+}
+
+.evento-luchador-rol {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    left: 5px;
+    max-width: calc(100% - 10px);
+    padding: 4px 5px;
+    color: #fff;
+    font-size: .58rem;
+    font-weight: 900;
+    line-height: 1.2;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    background: rgba(2, 7, 12, .9);
+    border: 1px solid rgba(255, 255, 255, .3);
+}
+
+.evento-luchador-apodo,
+.evento-luchador-nombre {
+    position: absolute;
+    z-index: 2;
+    right: 3px;
+    left: 3px;
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+    text-shadow: 0 1px 3px #000;
+}
+
+.evento-luchador-apodo {
+    bottom: 23px;
+    color: #9ceaff;
+    font-size: .62rem;
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+.evento-luchador-nombre {
+    bottom: 5px;
+    color: #fff;
+    font-size: .76rem;
+    font-weight: 900;
+    line-height: 1.2;
+}
+
+/* ==========================================================
+EQUIPOS
+Cada bando en una fila; integrantes juntos
+========================================================== */
+
+.evento-combate-lados:has(.evento-lado .evento-luchador:nth-child(2)) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+}
+
+.evento-lado:has(.evento-luchador:nth-child(2)) .evento-participantes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 6px;
+}
+
+.evento-lado:has(.evento-luchador:nth-child(3)) .evento-participantes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evento-lado:has(.evento-luchador:nth-child(4)) .evento-participantes {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.evento-lado:has(.evento-luchador:nth-child(2)) .evento-luchador-nombre {
+    right: 2px;
+    left: 2px;
+    bottom: 4px;
+    font-size: .65rem;
+}
+
+.evento-lado:has(.evento-luchador:nth-child(2)) .evento-luchador-apodo {
+    display: none;
+}
+
+/* ==========================================================
+COMBATES MULTITUDINARIOS
+========================================================== */
+
+.evento-combate-multitudinario .evento-combate-lados {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 5px;
+    padding: 8px;
+}
+
+.evento-combate-multitudinario .evento-lado {
+    border-radius: 2px;
+}
+
+.evento-combate-multitudinario .evento-participantes {
+    gap: 3px;
+    padding: 3px;
+}
+
+.evento-combate-multitudinario .evento-luchador-rol {
+    top: 2px;
+    left: 2px;
+    padding: 2px 3px;
+    font-size: .52rem;
+}
+
+.evento-combate-multitudinario .evento-luchador-apodo {
+    display: none;
+}
+
+.evento-combate-multitudinario .evento-luchador-nombre {
+    right: 2px;
+    left: 2px;
+    bottom: 3px;
+    font-size: .58rem;
+}
+
+/* Combates con tres o cuatro participantes/bandos */
+.evento-combate[data-cantidad-lados="3"] .evento-combate-lados {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 5px;
+    padding: 8px;
+}
+
+.evento-combate[data-cantidad-lados="4"] .evento-combate-lados {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px;
+}
+
+.evento-combate[data-cantidad-lados="3"] .evento-luchador-apodo,
+.evento-combate[data-cantidad-lados="4"] .evento-luchador-apodo {
+    display: none;
+}
+
+.evento-combate[data-cantidad-lados="3"] .evento-luchador-nombre,
+.evento-combate[data-cantidad-lados="4"] .evento-luchador-nombre {
+    right: 2px;
+    left: 2px;
+    bottom: 3px;
+    font-size: .62rem;
+}
+
+/* ==========================================================
+RESULTADO FINAL
+========================================================== */
 
 .evento-resultado {
-display: inline-block;
-margin-top: 8px;
-padding: 4px 8px;
-color: #eafaff;
-font-size: .68rem;
-font-weight: 900;
-text-transform: uppercase;
-background: rgba(55, 215, 255, .1);
-border: 1px solid rgba(55, 215, 255, .36);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+    margin-top: auto;
+    padding: 11px;
+    color: #eafaff;
+    background: linear-gradient(100deg, rgba(7, 17, 26, .99), rgba(3, 7, 12, .99));
+    border-top: 1px solid rgba(174, 220, 240, .28);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .025);
 }
 
-/* Mensajes de carga o archivo vacío */
-.eventos-loading,
-.eventos-empty,
-.eventos-error {
-grid-column: 1 / -1;
-padding: 18px 12px;
-color: #c1d7e4;
-font-size: .8rem;
-line-height: 1.6;
-text-align: center;
-background: rgba(5, 12, 19, .88);
-border: 1px solid rgba(113, 189, 220, .25);
+.evento-resultado-titulo {
+    margin: 0;
+    color: #37d7ff;
+    font-size: .67rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.evento-resultado p,
+.evento-resultado div,
+.evento-resultado span {
+    overflow-wrap: anywhere;
+}
+
+.evento-resultado-ganadores {
+    color: #fff;
+    font-size: .84rem;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.evento-resultado-metodo {
+    color: #9ceaff;
+    font-size: .72rem;
+    font-weight: 800;
+    line-height: 1.45;
+}
+
+.evento-resultado-detalle,
+.evento-resultado-puntuacion,
+.evento-resultado-eliminaciones {
+    color: #b8cfdd;
+    font-size: .72rem;
+    line-height: 1.5;
+}
+
+.evento-resultado:empty {
+    display: none;
 }
 
 /* ==========================================================
-PC
+TABLETS Y PC
 ========================================================== */
+
+@media (min-width: 600px) {
+    .evento-detalle-header {
+        grid-template-columns: minmax(170px, 260px) minmax(0, 1fr);
+        align-items: center;
+        gap: 20px;
+        padding: 17px;
+        text-align: left;
+    }
+
+    .evento-detalle-poster {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+    }
+
+    .evento-combates {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+    }
+
+    .evento-combate-multitudinario .evento-combate-lados {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .evento-luchador-nombre {
+        font-size: .8rem;
+    }
+}
 
 @media (min-width: 768px) {
-.eventos-main {
-max-width: 1100px;
-}
+    .evento-detalle-header {
+        grid-template-columns: minmax(190px, 280px) minmax(0, 1fr);
+        gap: 24px;
+        padding: 20px;
+    }
 
-.eventos-main .page-title-bar {  
-    margin-top: 18px;  
-    margin-bottom: 24px;  
-    padding: 16px;  
-}  
+    .evento-detalle-titulo {
+        font-size: clamp(1.5rem, 3vw, 2.2rem);
+    }
 
-.eventos-heading {  
-    margin-bottom: 26px;  
-}  
+    .evento-combates {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
 
-.temporadas-grid {  
-    grid-template-columns: repeat(3, minmax(0, 1fr));  
-    gap: 18px;  
-}  
+    .evento-combate {
+        padding: 0;
+    }
 
-.temporada-card-image {  
-    aspect-ratio: 5 / 3;  
-}  
+    .evento-combate-multitudinario .evento-combate-lados {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
 
-.temporada-card-info {  
-    padding: 13px 12px 15px;  
-}  
-
-.temporada-card-info h2 {  
-    font-size: 1rem;  
-}  
-
-.temporada-card-info p {  
-    font-size: .76rem;  
-}  
-
-.eventos-grid {  
-    grid-template-columns: repeat(3, minmax(0, 1fr));  
-    gap: 18px;  
-}  
-
-.evento-card-info {  
-    padding: 12px;  
-}  
-
-.evento-card-info h2 {  
-    font-size: .92rem;  
-}  
-
-.evento-combates {  
-    grid-template-columns: repeat(2, minmax(0, 1fr));  
-    gap: 16px;  
-}
-
+    .evento-luchador-nombre {
+        font-size: .78rem;
+    }
 }
 
 /* ==========================================================
-CELULARES PEQUEÑOS Y ACCESIBILIDAD
+MÓVILES ESTRECHOS
 ========================================================== */
 
-@media (max-width: 360px) {
-.temporadas-grid,
-.eventos-grid {
-gap: 8px;
+@media (max-width: 380px) {
+    .evento-detalle-header {
+        gap: 11px;
+        padding: 10px;
+    }
+
+    .evento-detalle-poster {
+        max-width: 230px;
+    }
+
+    .evento-combates {
+        gap: 11px;
+    }
+
+    .evento-combate-encabezado {
+        padding: 9px 8px 8px;
+    }
+
+    .evento-combate-numero {
+        font-size: .63rem;
+    }
+
+    .evento-combate-tipo {
+        font-size: .59rem;
+    }
+
+    .evento-combate-lados {
+        gap: 5px;
+        padding: 8px;
+    }
+
+    .evento-luchador-apodo {
+        bottom: 20px;
+        font-size: .54rem;
+    }
+
+    .evento-luchador-nombre {
+        right: 2px;
+        left: 2px;
+        bottom: 4px;
+        font-size: .65rem;
+    }
+
+    .evento-luchador-rol {
+        top: 3px;
+        left: 3px;
+        padding: 3px;
+        font-size: .5rem;
+    }
+
+    .evento-combate-multitudinario .evento-combate-lados {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: 6px;
+    }
 }
 
-.temporada-card-info,  
-.evento-card-info {  
-    padding: 8px 7px;  
-}  
-
-.temporada-card-info h2,  
-.evento-card-info h2 {  
-    font-size: .72rem;  
-}
-
-}
+/* ==========================================================
+ACCESIBILIDAD Y RENDIMIENTO
+========================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-.eventos-view,
-.temporada-card,
-.evento-card,
-.eventos-back-button {
-animation: none !important;
-transition: none !important;
+    .eventos-view {
+        animation: none !important;
+    }
 }
-}
+

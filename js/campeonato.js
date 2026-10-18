@@ -129,6 +129,55 @@
     }
 
 
+/* ======================================================
+   CONEXIÓN CON WRESTLERS.JS
+   ====================================================== */
+
+function getWrestlerPresentation(reign) {
+    const wrestlers = window.GPW_WRESTLERS;
+
+    if (!Array.isArray(wrestlers)) {
+        return null;
+    }
+
+    const wrestlerId = reign && reign.wrestlerId;
+
+    if (!wrestlerId) {
+        return null;
+    }
+
+    const wrestler = wrestlers.find(function (item) {
+        return item.id === wrestlerId;
+    });
+
+    if (!wrestler) {
+        return null;
+    }
+
+    const presentations = wrestler.presentations || {};
+    const presentationId =
+        reign.presentationId ||
+        wrestler.rosterPresentation ||
+        wrestler.id;
+
+    const presentation =
+        presentations[presentationId] || null;
+
+    if (!presentation) {
+        return null;
+    }
+
+    return {
+        wrestler: wrestler,
+        presentation: presentation,
+        name: presentation.name || wrestler.name || "Campeón",
+        nickname: presentation.nickname || wrestler.nickname || "",
+        image: presentation.image || wrestler.image || "images/Vacante.jpg"
+    };
+}
+   
+
+   
     /* ======================================================
        FECHAS
        ====================================================== */
@@ -404,36 +453,40 @@
                 "championship-reign"
             );
 
-            /* IMAGEN DEL CAMPEÓN */
+            
+/* IMAGEN Y PRESENTACIÓN EXACTA DEL CAMPEÓN */
 
-            const image = createElement(
-                "img",
-                "championship-reign-image"
-            );
+const wrestlerInfo = getWrestlerPresentation(reign);
 
-            image.loading = "lazy";
-            image.alt = getDataValue(
-                reign,
-                ["campeon", "champion", "nombre"],
-                "Campeón"
-            );
+const championName = wrestlerInfo
+    ? wrestlerInfo.name
+    : getDataValue(
+        reign,
+        ["campeon", "champion", "nombre"],
+        "Campeón no registrado"
+    );
 
-            image.src = getDataValue(
-                reign,
-                [
-                    "imagen",
-                    "image",
-                    "foto",
-                    "fotoCampeon",
-                    "championImage"
-                ],
-                "images/Vacante.jpg"
-            );
+const image = createElement(
+    "img",
+    "championship-reign-image"
+);
 
-            image.onerror = function () {
-                this.onerror = null;
-                this.src = "images/Vacante.jpg";
-            };
+image.loading = "lazy";
+image.alt = championName;
+
+image.src = wrestlerInfo
+    ? wrestlerInfo.image
+    : getDataValue(
+        reign,
+        ["imagen", "image", "foto", "fotoCampeon", "championImage"],
+        "images/Vacante.jpg"
+    );
+
+image.onerror = function () {
+    this.onerror = null;
+    this.src = "images/Vacante.jpg";
+};
+
 
 
             /* CONTENIDO DEL REINADO */
@@ -449,11 +502,7 @@
                 index + 1
             );
 
-            const champion = getDataValue(
-                reign,
-                ["campeon", "champion", "nombre"],
-                "Campeón no registrado"
-            );
+            const champion = championName;
 
             const heading = createElement(
                 "h4",

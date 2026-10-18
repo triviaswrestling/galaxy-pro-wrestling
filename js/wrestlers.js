@@ -43,7 +43,7 @@ const wrestlers = [
         "bray-wyatt-intercontinental": { name: "Bray Wyatt", nickname: "Intercontinental Champion", image: "imagen/bray-wyatt-intercontinental.webp", type: "champion" },
         "bray-wyatt-wwe-2": { name: "Bray Wyatt", nickname: "WWE Champion", image: "imagen/bray-wyatt-wwe-2.webp", type: "champion" }
     },
-    rosterPresentation: "the-fiend", rankingPresentation: "bray-wyatt",
+    rosterPresentation: "bray-wyatt-wwe", rankingPresentation: "the-fiend",
     themeSong: "Live in Fear", finisher: "Sister Abigail",
     signature: "Mandible Claw / Uranage",
     stats: { micro: 90, charisma: 98, power: 91 },

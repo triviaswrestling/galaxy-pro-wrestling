@@ -1161,10 +1161,12 @@ ACCESIBILIDAD Y RENDIMIENTO
 
 
 
-/* CATÁLOGO DE EVENTOS — TÍTULOS MÁS PEQUEÑOS EN MOBILE */
+
+/* GPW — CATÁLOGO DE EVENTOS: TÍTULOS MOBILE */
 @media (max-width: 767px) {
-    .evento-card-info h2 {
+    .evento-card-info h3 {
         font-size: 0.55rem !important;
-        line-height: 1.2;
+        line-height: 1.2 !important;
     }
 }
+

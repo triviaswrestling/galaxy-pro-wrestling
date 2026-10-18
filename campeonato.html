@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Championship | Galaxy Pro Wrestling</title>
+
+    <meta
+        name="description"
+        content="Historia, reinados y campeones de Galaxy Pro Wrestling."
+    >
+    <meta name="theme-color" content="#080b12">
+
+    <link rel="stylesheet" href="css/campeonato.css">
+
+    <script src="js/campeonato.js" defer></script>
+</head>
+
+<body class="championship-page">
+
+    <!-- =========================================
+         HEADER DEL CAMPEONATO
+         ========================================= -->
+
+    <header class="championship-header">
+
+        <a
+            href="campeonatos.html"
+            class="championship-back"
+            aria-label="Volver al catálogo de campeonatos"
+        >
+            <span aria-hidden="true">←</span>
+            <span>CHAMPIONSHIPS</span>
+        </a>
+
+        <div class="championship-header-brand">
+            <span class="championship-brand-line"></span>
+            <span>GALAXY PRO WRESTLING</span>
+            <span class="championship-brand-line"></span>
+        </div>
+
+    </header>
+
+
+    <main id="championship-main">
+
+        <!-- =====================================
+             PRESENTACIÓN DEL TÍTULO
+             ===================================== -->
+
+        <section
+            id="championship-hero"
+            class="championship-hero"
+            aria-labelledby="championship-name"
+        >
+
+            <div class="championship-hero-background"
+                 aria-hidden="true"></div>
+
+            <div class="championship-hero-content">
+
+                <div class="championship-title-information">
+
+                    <p
+                        id="championship-category"
+                        class="championship-category"
+                    >
+                        CHAMPIONSHIP
+                    </p>
+
+                    <h1 id="championship-name">
+                        LOADING CHAMPIONSHIP
+                    </h1>
+
+                    <p
+                        id="championship-subtitle"
+                        class="championship-subtitle"
+                    >
+                        THE HISTORY OF GOLD
+                    </p>
+
+                    <div class="championship-status">
+                        <span
+                            id="championship-status-indicator"
+                            class="championship-status-indicator"
+                            aria-hidden="true"
+                        ></span>
+
+                        <span id="championship-status">
+                            LOADING
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="championship-belt-container">
+
+                    <div class="championship-belt-frame">
+
+                        <img
+                            id="championship-belt"
+                            class="championship-belt"
+                            src="images/Vacante.jpg"
+                            alt="Campeonato de Galaxy Pro Wrestling"
+                        >
+
+                    </div>
+
+                    <p class="championship-belt-caption">
+                        GALAXY PRO WRESTLING
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div
+                class="championship-hero-bottom-line"
+                aria-hidden="true"
+            ></div>
+
+        </section>
+
+
+        <!-- =====================================
+             DATOS GENERALES DEL CAMPEONATO
+             ===================================== -->
+
+        <section
+            class="championship-overview"
+            aria-label="Información del campeonato"
+        >
+
+            <article class="championship-overview-card">
+
+                <span class="overview-label">
+                    CURRENT CHAMPION
+                </span>
+
+                <strong
+                    id="championship-current-champion"
+                    class="overview-value"
+                >
+                    VACANT
+                </strong>
+
+            </article>
+
+            <article class="championship-overview-card">
+
+                <span class="overview-label">
+                    TOTAL REIGNS
+                </span>
+
+                <strong
+                    id="championship-total-reigns"
+                    class="overview-value"
+                >
+                    0
+                </strong>
+
+            </article>
+
+            <article class="championship-overview-card">
+
+                <span class="overview-label">
+                    ESTABLISHED
+                </span>
+
+                <strong
+                    id="championship-established"
+                    class="overview-value"
+                >
+                    —
+                </strong>
+
+            </article>
+
+        </section>
+
+
+        <!-- =====================================
+             NAVEGACIÓN ENTRE REINADOS E HISTORIA
+             ===================================== -->
+
+        <section class="championship-content">
+
+            <div class="championship-section-heading">
+
+                <p class="championship-eyebrow">
+                    THE LEGACY
+                </p>
+
+                <h2 id="championship-section-title">
+                    CHAMPIONSHIP RECORDS
+                </h2>
+
+                <p id="championship-section-description">
+                    Explore the champions and the history behind the title.
+                </p>
+
+            </div>
+
+
+            <div
+                class="championship-tabs"
+                role="tablist"
+                aria-label="Secciones del campeonato"
+            >
+
+                <button
+                    type="button"
+                    id="tab-reigns"
+                    class="championship-tab is-active"
+                    role="tab"
+                    aria-selected="true"
+                    aria-controls="panel-reigns"
+                    tabindex="0"
+                    data-view="reigns"
+                >
+                    <span class="championship-tab-number">01</span>
+                    <span>REINADOS</span>
+                </button>
+
+                <button
+                    type="button"
+                    id="tab-history"
+                    class="championship-tab"
+                    role="tab"
+                    aria-selected="false"
+                    aria-controls="panel-history"
+                    tabindex="-1"
+                    data-view="history"
+                >
+                    <span class="championship-tab-number">02</span>
+                    <span>HISTORIA</span>
+                </button>
+
+            </div>
+
+
+            <!-- =================================
+                 VISTA 1: REINADOS
+                 ================================= -->
+
+            <section
+                id="panel-reigns"
+                class="championship-panel is-active"
+                role="tabpanel"
+                aria-labelledby="tab-reigns"
+                tabindex="0"
+            >
+
+                <div class="championship-panel-heading">
+
+                    <div>
+                        <p class="championship-eyebrow">
+                            THE CHAMPIONS
+                        </p>
+
+                        <h3>HISTORIAL DE REINADOS</h3>
+                    </div>
+
+                    <span
+                        id="reigns-count"
+                        class="championship-count"
+                    >
+                        0 REINADOS
+                    </span>
+
+                </div>
+
+
+                <div
+                    id="championship-reigns"
+                    class="championship-reigns"
+                    aria-live="polite"
+                >
+
+                    <!--
+                        js/campeonato.js generará aquí
+                        las tarjetas de cada reinado.
+                    -->
+
+                    <div class="championship-loading">
+                        <span class="championship-loading-line"></span>
+                        <p>CARGANDO HISTORIAL...</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================
+                 VISTA 2: HISTORIA
+                 ================================= -->
+
+            <section
+                id="panel-history"
+                class="championship-panel"
+                role="tabpanel"
+                aria-labelledby="tab-history"
+                tabindex="0"
+                hidden
+            >
+
+                <div class="championship-panel-heading">
+
+                    <div>
+                        <p class="championship-eyebrow">
+                            THE EVOLUTION
+                        </p>
+
+                        <h3>HISTORIA DEL CAMPEONATO</h3>
+                    </div>
+
+                </div>
+
+
+                <div
+                    id="championship-history-intro"
+                    class="championship-history-intro"
+                >
+
+                    <p
+                        id="championship-history-description"
+                        class="championship-history-description"
+                    >
+                        La historia de este campeonato aparecerá aquí.
+                    </p>
+
+                </div>
+
+
+                <div class="championship-timeline-heading">
+
+                    <span class="championship-timeline-line"></span>
+
+                    <h3>HISTORIAL Y EVOLUCIÓN</h3>
+
+                    <span class="championship-timeline-line"></span>
+
+                </div>
+
+
+                <div
+                    id="championship-timeline"
+                    class="championship-timeline"
+                    aria-live="polite"
+                >
+
+                    <!--
+                        js/campeonato.js generará aquí
+                        los acontecimientos históricos:
+
+                        - Creación del campeonato.
+                        - Cambios de nombre.
+                        - Cambios de diseño.
+                        - Unificaciones.
+                        - Separaciones o sucesiones.
+                    -->
+
+                    <div class="championship-loading">
+                        <span class="championship-loading-line"></span>
+                        <p>CARGANDO HISTORIA...</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- =====================================
+             PIE DE LA FICHA
+             ===================================== -->
+
+        <footer class="championship-footer">
+
+            <div class="championship-footer-line"></div>
+
+            <p class="championship-footer-brand">
+                GALAXY PRO WRESTLING
+            </p>
+
+            <p class="championship-footer-description">
+                EVERY TITLE HAS A STORY.
+                EVERY CHAMPION LEAVES A LEGACY.
+            </p>
+
+            <a
+                href="campeonatos.html"
+                class="championship-return-link"
+            >
+                <span aria-hidden="true">←</span>
+                VOLVER AL CATÁLOGO
+            </a>
+
+        </footer>
+
+    </main>
+
+
+    <!-- =========================================
+         MENSAJE DE ERROR CONTROLADO
+         ========================================= -->
+
+    <noscript>
+        <p class="championship-noscript">
+            Activá JavaScript para consultar los reinados
+            y la historia de este campeonato.
+        </p>
+    </noscript>
+
+</body>
+</html>

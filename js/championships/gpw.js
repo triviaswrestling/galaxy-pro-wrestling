@@ -27,7 +27,7 @@
 
         status: "active",
         currentChampionId: "bray-wtatt",
-        vacantSince: "2026-10-11",
+        vacantSince: "null",
 
         established: "2022-01-01",
 

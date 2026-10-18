@@ -37,7 +37,7 @@ const wrestlers = [
     image: "imagen/gpw_cody_rhodes.webp", stable: "The Wyatt Family",
     presentations: {
         "bray-wyatt": { name: "Bray Wyatt", nickname: "The Eater of Worlds", image: "imagen/gpw_cody_rhodes.webp", type: "normal" },
-        "the-fiend": { name: "The Fiend", nickname: "The Fiend", image: "imagen/the-fiend.webp", type: "alterego" },
+        "the-fiend": { name: "The Fiend", nickname: "The Fiend", image: "imagen/gpw_logo_original.webp", type: "alterego" },
         "bray-wyatt-wwe": { name: "Bray Wyatt", nickname: "WWE Champion", image: "imagen/bray-wyatt-wwe.webp", type: "champion" },
         "bray-wyatt-intercontinental": { name: "Bray Wyatt", nickname: "Intercontinental Champion", image: "imagen/bray-wyatt-intercontinental.webp", type: "champion" },
         "bray-wyatt-wwe-2": { name: "Bray Wyatt", nickname: "WWE Champion", image: "imagen/bray-wyatt-wwe-2.webp", type: "champion" }

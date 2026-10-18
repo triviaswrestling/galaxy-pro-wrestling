@@ -1,0 +1,876 @@
+
+/* ==========================================================
+   GALAXY PRO WRESTLING — STIPULATIONS CATALOG
+   Archivo: stipulations.css
+   Diseño: App catalog / Multicolor / Responsive
+   Sin JavaScript
+   ========================================================== */
+
+
+/* ==========================================================
+   01. CONTENEDOR GENERAL
+   No modifica el fondo global ni el menú.
+   ========================================================== */
+
+.stipulations-page {
+    --stip-text: #f2f4f8;
+    --stip-muted: #929baa;
+    --stip-panel: rgba(15, 18, 25, 0.78);
+    --stip-border: rgba(255, 255, 255, 0.09);
+    --stip-accent: #35a7ff;
+
+    width: min(1100px, calc(100% - 28px));
+    margin: 0 auto;
+    padding: 34px 0 48px;
+    color: var(--stip-text);
+    box-sizing: border-box;
+}
+
+.stipulations-page *,
+.stipulations-page *::before,
+.stipulations-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   02. ENCABEZADO
+   ========================================================== */
+
+.stipulations-heading {
+    position: relative;
+    margin: 0 0 28px;
+    padding: 8px 0 23px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.stipulations-eyebrow {
+    display: inline-block;
+    margin-bottom: 9px;
+    color: #ff4059;
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.23em;
+    text-transform: uppercase;
+}
+
+.stipulations-heading h1 {
+    margin: 0;
+    color: #f7f8fb;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 1000;
+    line-height: 1;
+    letter-spacing: 0.055em;
+    text-transform: uppercase;
+    text-shadow:
+        0 2px 0 rgba(255, 255, 255, 0.10),
+        0 5px 22px rgba(53, 167, 255, 0.13);
+}
+
+.stipulations-subtitle {
+    margin: 12px 0 0;
+    color: #58baff;
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.19em;
+    text-transform: uppercase;
+}
+
+.stipulations-description {
+    width: min(600px, 100%);
+    margin: 15px auto 0;
+    color: #aab2c0;
+    font-size: 0.91rem;
+    line-height: 1.65;
+}
+
+.stipulations-counter {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 8px 13px;
+    color: #cbd4e1;
+    background: rgba(255, 255, 255, 0.035);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 999px;
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.counter-dot {
+    width: 7px;
+    height: 7px;
+    flex: 0 0 7px;
+    background: #4bd7a5;
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(75, 215, 165, 0.35);
+}
+
+
+/* ==========================================================
+   03. CUADRÍCULA DEL CATÁLOGO
+   Dos columnas en PC.
+   ========================================================== */
+
+.stipulations-catalog {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    gap: 13px;
+    width: 100%;
+}
+
+
+/* ==========================================================
+   04. TARJETA BASE
+   Cada tarjeta utiliza --stip-color y --stip-soft del HTML.
+   ========================================================== */
+
+.stipulation-card {
+    --stip-color: #35a7ff;
+    --stip-soft: rgba(53, 167, 255, 0.12);
+
+    position: relative;
+    min-width: 0;
+    overflow: hidden;
+    color: var(--stip-text);
+    background:
+        linear-gradient(
+            135deg,
+            var(--stip-soft),
+            rgba(16, 19, 27, 0.92) 47%,
+            rgba(10, 12, 17, 0.94)
+        );
+    border: 1px solid color-mix(
+        in srgb,
+        var(--stip-color) 43%,
+        transparent
+    );
+    border-left: 3px solid var(--stip-color);
+    border-radius: 11px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.035),
+        0 3px 12px rgba(0, 0, 0, 0.12);
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease,
+        transform 0.18s ease;
+}
+
+.stipulation-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12px;
+    right: 12px;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in srgb, var(--stip-color) 75%, white),
+        transparent
+    );
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+.stipulation-card[open] {
+    border-color: color-mix(
+        in srgb,
+        var(--stip-color) 72%,
+        transparent
+    );
+    box-shadow:
+        inset 0 0 18px var(--stip-soft),
+        0 0 15px color-mix(
+            in srgb,
+            var(--stip-color) 12%,
+            transparent
+        );
+}
+
+@media (hover: hover) {
+    .stipulation-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--stip-color);
+        box-shadow:
+            inset 0 0 15px var(--stip-soft),
+            0 0 15px color-mix(
+                in srgb,
+                var(--stip-color) 17%,
+                transparent
+            );
+    }
+}
+
+
+/* ==========================================================
+   05. CABECERA CLICABLE DE LA TARJETA
+   ========================================================== */
+
+.stipulation-card > summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    min-height: 76px;
+    padding: 11px 12px;
+    cursor: pointer;
+    list-style: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+.stipulation-card > summary::-webkit-details-marker {
+    display: none;
+}
+
+.stipulation-card > summary::marker {
+    content: "";
+}
+
+.stipulation-card > summary:focus-visible {
+    outline: 2px solid var(--stip-color);
+    outline-offset: -3px;
+    border-radius: 9px;
+}
+
+
+/* ==========================================================
+   06. ICONO / SÍMBOLO
+   ========================================================== */
+
+.stipulation-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    color: var(--stip-color);
+    background: var(--stip-soft);
+    border: 1px solid color-mix(
+        in srgb,
+        var(--stip-color) 48%,
+        transparent
+    );
+    border-radius: 10px;
+    font-size: 1.38rem;
+    font-weight: 900;
+    line-height: 1;
+    text-shadow: 0 0 10px var(--stip-soft);
+}
+
+
+/* ==========================================================
+   07. NOMBRE, NÚMERO Y ETIQUETA
+   ========================================================== */
+
+.stipulation-heading {
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    min-width: 0;
+}
+
+.stipulation-number {
+    color: var(--stip-color);
+    font-size: 0.62rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1;
+}
+
+.stipulation-name {
+    display: block;
+    width: 100%;
+    color: #f4f6fa;
+    font-size: 0.91rem;
+    font-weight: 900;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+    text-wrap: pretty;
+}
+
+.stipulation-tag {
+    display: inline-block;
+    max-width: 100%;
+    color: color-mix(in srgb, var(--stip-color) 90%, white);
+    font-size: 0.56rem;
+    font-weight: 900;
+    letter-spacing: 0.075em;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+
+
+/* ==========================================================
+   08. INDICADOR ABRIR / CERRAR
+   ========================================================== */
+
+.stipulation-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    flex: 0 0 25px;
+    margin-left: auto;
+    color: var(--stip-color);
+    background: var(--stip-soft);
+    border: 1px solid color-mix(
+        in srgb,
+        var(--stip-color) 38%,
+        transparent
+    );
+    border-radius: 50%;
+}
+
+.stipulation-toggle::before,
+.stipulation-toggle::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 2px;
+    background: currentColor;
+    border-radius: 2px;
+}
+
+.stipulation-toggle::after {
+    transform: rotate(90deg);
+    transition: transform 0.16s ease;
+}
+
+.stipulation-card[open] .stipulation-toggle::after {
+    transform: rotate(0deg);
+}
+
+
+/* ==========================================================
+   09. CONTENIDO DESPLEGABLE
+   ========================================================== */
+
+.stipulation-content {
+    position: relative;
+    padding: 13px 15px 16px;
+    color: #c3cad5;
+    background: rgba(0, 0, 0, 0.19);
+    border-top: 1px solid color-mix(
+        in srgb,
+        var(--stip-color) 30%,
+        transparent
+    );
+    font-size: 0.84rem;
+    line-height: 1.65;
+    overflow-wrap: anywhere;
+}
+
+.stipulation-content p {
+    margin: 0 0 10px;
+}
+
+.stipulation-content p:last-child {
+    margin-bottom: 0;
+}
+
+.stipulation-content ul,
+.stipulation-content ol {
+    margin: 8px 0 0;
+    padding-left: 19px;
+}
+
+.stipulation-content li {
+    margin: 6px 0;
+    padding-left: 2px;
+}
+
+.stipulation-content li::marker {
+    color: var(--stip-color);
+}
+
+.stipulation-content strong,
+.stipulation-content b {
+    color: #ffffff;
+    font-weight: 900;
+}
+
+.stipulation-pending {
+    margin-top: 10px !important;
+    padding: 9px 10px;
+    color: #aab4c3;
+    background: rgba(255, 255, 255, 0.035);
+    border-left: 2px solid var(--stip-color);
+    border-radius: 0 6px 6px 0;
+    font-size: 0.76rem;
+    line-height: 1.55;
+}
+
+
+/* ==========================================================
+   10. NOTA INFORMATIVA
+   ========================================================== */
+
+.stipulations-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 23px;
+    padding: 16px;
+    background: rgba(255, 255, 255, 0.025);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 10px;
+}
+
+.stipulations-note-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    color: #58baff;
+    background: rgba(53, 167, 255, 0.10);
+    border: 1px solid rgba(53, 167, 255, 0.25);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 900;
+}
+
+.stipulations-note h2 {
+    margin: 0 0 6px;
+    color: #f1f4f8;
+    font-size: 0.91rem;
+    font-weight: 900;
+}
+
+.stipulations-note p {
+    margin: 0;
+    color: #a7b0bf;
+    font-size: 0.81rem;
+    line-height: 1.65;
+}
+
+
+/* ==========================================================
+   11. BLOQUE PARA UNIRSE A GPW
+   ========================================================== */
+
+.stipulations-join {
+    position: relative;
+    margin-top: 27px;
+    padding: 29px 20px 24px;
+    overflow: hidden;
+    text-align: center;
+    background:
+        linear-gradient(
+            120deg,
+            rgba(53, 167, 255, 0.08),
+            rgba(14, 17, 24, 0.72) 48%,
+            rgba(255, 64, 89, 0.08)
+        );
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 13px;
+}
+
+.stipulations-join::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 12%;
+    right: 12%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #35a7ff 28%,
+        #f2f4f8 50%,
+        #ff4059 72%,
+        transparent
+    );
+    opacity: 0.9;
+}
+
+.join-eyebrow {
+    display: inline-block;
+    margin-bottom: 10px;
+    color: #ff6377;
+    font-size: 0.65rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+}
+
+.stipulations-join h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.45rem, 4vw, 2.1rem);
+    font-weight: 1000;
+    line-height: 1.15;
+    letter-spacing: 0.035em;
+}
+
+.stipulations-join > p {
+    width: min(520px, 100%);
+    margin: 12px auto 20px;
+    color: #aeb7c5;
+    font-size: 0.88rem;
+    line-height: 1.65;
+}
+
+.stipulations-join-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    min-height: 48px;
+    max-width: 100%;
+    padding: 13px 23px;
+    color: #ffffff;
+    background: linear-gradient(110deg, #176dc2, #258eea 55%, #176dc2);
+    border: 1px solid rgba(135, 207, 255, 0.72);
+    border-radius: 7px;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.18),
+        0 5px 18px rgba(23, 109, 194, 0.20);
+    font-size: 0.78rem;
+    font-weight: 1000;
+    letter-spacing: 0.12em;
+    text-decoration: none;
+    transition:
+        transform 0.16s ease,
+        box-shadow 0.16s ease,
+        filter 0.16s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.stipulations-join-button:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 4px;
+}
+
+.join-arrow {
+    font-size: 1.12rem;
+    line-height: 1;
+}
+
+@media (hover: hover) {
+    .stipulations-join-button:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.12);
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.2),
+            0 7px 22px rgba(23, 109, 194, 0.30);
+    }
+}
+
+.join-footnote {
+    display: block;
+    margin-top: 17px;
+    color: #788394;
+    font-size: 0.57rem;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+    line-height: 1.6;
+}
+
+
+/* ==========================================================
+   12. TABLETS
+   Mantiene las dos columnas.
+   ========================================================== */
+
+@media (max-width: 760px) {
+    .stipulations-page {
+        width: calc(100% - 22px);
+        padding-top: 25px;
+        padding-bottom: 35px;
+    }
+
+    .stipulations-catalog {
+        gap: 10px;
+    }
+
+    .stipulation-card > summary {
+        min-height: 70px;
+        gap: 9px;
+        padding: 10px;
+    }
+
+    .stipulation-icon {
+        width: 38px;
+        height: 38px;
+        flex-basis: 38px;
+        border-radius: 9px;
+        font-size: 1.2rem;
+    }
+
+    .stipulation-name {
+        font-size: 0.84rem;
+    }
+
+    .stipulation-tag {
+        font-size: 0.51rem;
+        letter-spacing: 0.04em;
+    }
+
+    .stipulation-content {
+        padding: 12px;
+        font-size: 0.81rem;
+    }
+}
+
+
+/* ==========================================================
+   13. CELULARES
+   Dos columnas compactas para que el catálogo sea tipo app.
+   ========================================================== */
+
+@media (max-width: 480px) {
+    .stipulations-page {
+        width: calc(100% - 16px);
+        padding-top: 21px;
+        padding-bottom: 28px;
+    }
+
+    .stipulations-heading {
+        margin-bottom: 19px;
+        padding-bottom: 19px;
+    }
+
+    .stipulations-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 0.17em;
+    }
+
+    .stipulations-heading h1 {
+        font-size: clamp(1.8rem, 8vw, 2.55rem);
+    }
+
+    .stipulations-subtitle {
+        font-size: 0.65rem;
+        letter-spacing: 0.13em;
+    }
+
+    .stipulations-description {
+        margin-top: 12px;
+        font-size: 0.82rem;
+        line-height: 1.55;
+    }
+
+    .stipulations-counter {
+        margin-top: 14px;
+        padding: 7px 11px;
+        font-size: 0.61rem;
+    }
+
+    .stipulations-catalog {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .stipulation-card {
+        border-radius: 9px;
+        border-left-width: 2px;
+    }
+
+    .stipulation-card > summary {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 7px;
+        min-height: 0;
+        padding: 9px 8px 10px;
+    }
+
+    .stipulation-icon {
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+        font-size: 1.05rem;
+        border-radius: 8px;
+    }
+
+    .stipulation-heading {
+        flex: 1 1 calc(100% - 43px);
+        gap: 4px;
+        min-width: 0;
+    }
+
+    .stipulation-number {
+        font-size: 0.56rem;
+    }
+
+    .stipulation-name {
+        font-size: 0.76rem;
+        line-height: 1.28;
+        overflow-wrap: anywhere;
+    }
+
+    .stipulation-tag {
+        font-size: 0.48rem;
+        line-height: 1.35;
+    }
+
+    .stipulation-toggle {
+        position: absolute;
+        top: 9px;
+        right: 8px;
+        width: 20px;
+        height: 20px;
+        margin: 0;
+        opacity: 0.9;
+    }
+
+    .stipulation-toggle::before,
+    .stipulation-toggle::after {
+        width: 7px;
+    }
+
+    .stipulation-content {
+        padding: 10px 9px 12px;
+        font-size: 0.77rem;
+        line-height: 1.55;
+    }
+
+    .stipulation-content ul,
+    .stipulation-content ol {
+        padding-left: 16px;
+    }
+
+    .stipulation-content li {
+        margin: 5px 0;
+    }
+
+    .stipulation-pending {
+        padding: 8px;
+        font-size: 0.72rem;
+    }
+
+    .stipulations-note {
+        gap: 9px;
+        margin-top: 17px;
+        padding: 12px;
+    }
+
+    .stipulations-note-icon {
+        width: 26px;
+        height: 26px;
+        flex-basis: 26px;
+        font-size: 0.9rem;
+    }
+
+    .stipulations-note h2 {
+        font-size: 0.85rem;
+    }
+
+    .stipulations-note p {
+        font-size: 0.76rem;
+    }
+
+    .stipulations-join {
+        margin-top: 20px;
+        padding: 24px 13px 20px;
+        border-radius: 10px;
+    }
+
+    .join-eyebrow {
+        font-size: 0.58rem;
+        letter-spacing: 0.14em;
+    }
+
+    .stipulations-join h2 {
+        font-size: 1.5rem;
+    }
+
+    .stipulations-join > p {
+        font-size: 0.81rem;
+    }
+
+    .stipulations-join-button {
+        width: 100%;
+        min-height: 46px;
+        padding: 12px 16px;
+        font-size: 0.75rem;
+    }
+
+    .join-footnote {
+        font-size: 0.51rem;
+        letter-spacing: 0.08em;
+    }
+}
+
+
+/* ==========================================================
+   14. CELULARES MUY ANGOSTOS
+   ========================================================== */
+
+@media (max-width: 350px) {
+    .stipulations-page {
+        width: calc(100% - 12px);
+    }
+
+    .stipulations-catalog {
+        gap: 6px;
+    }
+
+    .stipulation-card > summary {
+        padding: 8px 6px 9px;
+        gap: 6px;
+    }
+
+    .stipulation-icon {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
+        font-size: 0.95rem;
+    }
+
+    .stipulation-heading {
+        flex-basis: calc(100% - 36px);
+    }
+
+    .stipulation-name {
+        font-size: 0.71rem;
+    }
+
+    .stipulation-tag {
+        font-size: 0.44rem;
+    }
+
+    .stipulation-toggle {
+        top: 7px;
+        right: 6px;
+        width: 18px;
+        height: 18px;
+    }
+
+    .stipulation-content {
+        padding: 8px 7px 10px;
+        font-size: 0.73rem;
+    }
+}
+
+
+/* ==========================================================
+   15. ACCESIBILIDAD
+   Reduce efectos si el dispositivo lo solicita.
+   ========================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    .stipulation-card,
+    .stipulation-toggle::after,
+    .stipulations-join-button {
+        transition: none;
+    }
+
+    .stipulation-card:hover,
+    .stipulations-join-button:hover {
+        transform: none;
+    }
+}

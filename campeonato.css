@@ -1,57 +1,35 @@
 
 /* =========================================================
-   GALAXY PRO WRESTLING
-   CHAMPIONSHIP PROFILE — GPW
+   GALAXY PRO WRESTLING — CHAMPIONSHIP PAGE
    Archivo: campeonato.css
-
-   - Compatible con style.css y nav.css
-   - Conserva el navbar global de GPW
-   - Diseño multicolor oscuro, profesional y compacto
-   - PC, tablet y móvil
-   - Efectos livianos para Samsung A12
+   Diseño exclusivo de la página individual de campeonatos.
+   No modifica style.css, nav.css ni el menú global.
    ========================================================= */
 
 
 /* =========================================================
-   01. VARIABLES EXCLUSIVAS DE ESTA PÁGINA
+   01. BASE Y FONDO
    ========================================================= */
 
 .championship-page {
-    --cp-bg: #090c12;
-    --cp-panel: #101620;
-    --cp-panel-light: #151d29;
-    --cp-panel-hover: #192332;
+    --champ-bg: #080a10;
+    --champ-panel: #11151e;
+    --champ-panel-light: #171d29;
+    --champ-border: #283142;
+    --champ-text: #f2f4f8;
+    --champ-muted: #9ba6b8;
+    --champ-cyan: #00c8ff;
+    --champ-blue: #287bff;
+    --champ-purple: #a855f7;
+    --champ-gold: #e8c76a;
+    --champ-green: #35d49a;
+    --champ-red: #ff5268;
 
-    --cp-text: #f2f5fa;
-    --cp-muted: #a0adbf;
-    --cp-dim: #758398;
-
-    --cp-cyan: #43d9ff;
-    --cp-blue: #477bff;
-    --cp-purple: #a66bff;
-    --cp-gold: #e9c77a;
-    --cp-green: #46e6a5;
-    --cp-red: #ff526b;
-
-    --cp-border: rgba(153, 178, 214, 0.17);
-    --cp-border-bright: rgba(67, 217, 255, 0.35);
-
-    --cp-radius: 10px;
-    --cp-width: 1160px;
-
-    background-color: var(--cp-bg);
-    color: var(--cp-text);
-    font-family: "Rajdhani", Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
+    color: var(--champ-text);
+    background: var(--champ-bg);
+    min-height: 100vh;
     overflow-x: clip;
 }
-
-
-/* =========================================================
-   02. BASE
-   No modifica los estilos globales de otras páginas.
-   ========================================================= */
 
 .championship-page *,
 .championship-page *::before,
@@ -63,11 +41,6 @@
     max-width: 100%;
 }
 
-.championship-page button,
-.championship-page a {
-    -webkit-tap-highlight-color: transparent;
-}
-
 .championship-page button {
     font: inherit;
 }
@@ -76,550 +49,323 @@
     color: inherit;
 }
 
-.championship-page h1,
-.championship-page h2,
-.championship-page h3,
-.championship-page p {
-    overflow-wrap: anywhere;
-}
-
 .championship-page #championship-main {
-    width: min(var(--cp-width), calc(100% - 40px));
-    margin: 0 auto;
-    padding: 26px 0 55px;
-    min-width: 0;
+    width: min(1180px, calc(100% - 36px));
+    margin-inline: auto;
+    padding: 30px 0 42px;
 }
 
 
 /* =========================================================
-   03. PRESENTACIÓN PRINCIPAL
+   02. PORTADA DEL CAMPEONATO
    ========================================================= */
 
 .championship-page .championship-hero {
     position: relative;
-    isolation: isolate;
-
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(260px, 0.92fr);
+    grid-template-columns: minmax(0, 1.15fr) minmax(260px, .85fr);
     align-items: center;
     gap: 30px;
-
-    min-width: 0;
-    min-height: 350px;
-    padding: 36px 38px;
-
+    min-height: 330px;
+    padding: 34px;
     overflow: hidden;
-
+    isolation: isolate;
     background:
-        linear-gradient(
-            115deg,
-            #151c29 0%,
-            #0e131d 56%,
-            #131525 100%
-        );
-
-    border: 1px solid var(--cp-border);
-    border-radius: 13px;
+        radial-gradient(
+            ellipse at 15% 15%,
+            rgba(0, 200, 255, .12),
+            transparent 48%
+        ),
+        radial-gradient(
+            ellipse at 90% 85%,
+            rgba(168, 85, 247, .10),
+            transparent 45%
+        ),
+        #0d111a;
+    border: 1px solid var(--champ-border);
+    border-radius: 14px;
 }
-
-
-/* Iluminación estática y económica */
 
 .championship-page .championship-hero::before {
     content: "";
     position: absolute;
-    z-index: -1;
-
-    top: -100px;
-    left: -100px;
-
-    width: 330px;
-    height: 270px;
-
-    background: radial-gradient(
-        ellipse,
-        rgba(55, 128, 255, 0.16),
-        transparent 70%
+    inset: 0 auto 0 0;
+    width: 4px;
+    background: linear-gradient(
+        to bottom,
+        var(--champ-cyan),
+        var(--champ-blue),
+        var(--champ-purple)
     );
-
-    pointer-events: none;
 }
-
-.championship-page .championship-hero::after {
-    content: "";
-    position: absolute;
-    z-index: -1;
-
-    right: -100px;
-    bottom: -130px;
-
-    width: 320px;
-    height: 280px;
-
-    background: radial-gradient(
-        ellipse,
-        rgba(160, 91, 255, 0.13),
-        transparent 70%
-    );
-
-    pointer-events: none;
-}
-
-
-/* Fondo opcional del campeonato */
 
 .championship-page .championship-hero-background {
     position: absolute;
-    z-index: -2;
     inset: 0;
-
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    opacity: 0.10;
+    z-index: -1;
     pointer-events: none;
+    background:
+        linear-gradient(
+            110deg,
+            rgba(8, 10, 16, .12),
+            rgba(8, 10, 16, .7)
+        );
 }
-
-
-/* Línea cromática inferior */
-
-.championship-page .championship-hero-bottom-line {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    left: 0;
-
-    height: 2px;
-
-    background: linear-gradient(
-        90deg,
-        transparent,
-        var(--cp-blue) 22%,
-        var(--cp-cyan) 43%,
-        var(--cp-purple) 73%,
-        transparent
-    );
-
-    pointer-events: none;
-}
-
-
-/* =========================================================
-   04. NOMBRE, CATEGORÍA Y ESTADO
-   ========================================================= */
 
 .championship-page .championship-hero-content {
-    min-width: 0;
     position: relative;
     z-index: 1;
+    min-width: 0;
 }
 
 .championship-page .championship-title-information {
     min-width: 0;
 }
 
-.championship-page #championship-category {
+.championship-page .championship-category {
     display: inline-flex;
     align-items: center;
-
     max-width: 100%;
-    min-height: 25px;
-
-    margin: 0 0 15px;
-    padding: 5px 10px;
-
-    color: var(--cp-cyan);
-    background: rgba(67, 217, 255, 0.08);
-
-    border: 1px solid rgba(67, 217, 255, 0.30);
-    border-radius: 3px;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
+    margin-bottom: 15px;
+    padding: 6px 11px;
+    color: var(--champ-cyan);
+    background: rgba(0, 200, 255, .08);
+    border: 1px solid rgba(0, 200, 255, .3);
+    border-radius: 4px;
+    font-size: .72rem;
     font-weight: 800;
-    letter-spacing: 1.3px;
-    line-height: 1.4;
+    letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
 .championship-page #championship-name {
-    max-width: 660px;
-
     margin: 0;
-
-    color: #ffffff;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: clamp(29px, 4vw, 51px);
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 3.3rem);
     font-weight: 900;
-    line-height: 1.06;
-    letter-spacing: -1.1px;
-
+    line-height: 1.08;
+    letter-spacing: -.8px;
     overflow-wrap: anywhere;
-    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    text-wrap: balance;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, .35);
 }
 
-.championship-page #championship-subtitle {
-    max-width: 470px;
-
-    margin: 15px 0 19px;
-
-    color: var(--cp-muted);
-    font-size: 15px;
-    font-weight: 600;
-    line-height: 1.65;
+.championship-page .championship-subtitle {
+    margin: 13px 0 0;
+    color: #b7c3d4;
+    font-size: clamp(.9rem, 1.5vw, 1.05rem);
+    line-height: 1.6;
 }
-
-
-/* Estado activo, vacante o inactivo */
 
 .championship-page .championship-status {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: 8px;
-
-    max-width: 100%;
-    min-height: 31px;
-
-    padding: 6px 10px;
-
-    background: rgba(5, 8, 14, 0.65);
-    border: 1px solid var(--cp-border);
-    border-radius: 4px;
-}
-
-.championship-page #championship-status-indicator {
-    flex: 0 0 7px;
-
-    width: 7px;
-    height: 7px;
-
-    background: var(--cp-green);
-    border-radius: 50%;
-}
-
-.championship-page #championship-status {
-    color: #dce5f2;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1px;
+    gap: 9px;
+    margin-top: 22px;
+    color: #c7d0dd;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .8px;
     text-transform: uppercase;
 }
 
-
-/* =========================================================
-   05. CINTURÓN DEL CAMPEONATO
-   ========================================================= */
+.championship-page .championship-status-indicator {
+    flex: 0 0 9px;
+    width: 9px;
+    height: 9px;
+    background: var(--champ-green);
+    border-radius: 50%;
+}
 
 .championship-page .championship-belt-container {
-    position: relative;
-    z-index: 1;
-
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-
     min-width: 0;
-    padding: 6px 0;
+    min-height: 220px;
 }
 
 .championship-page .championship-belt-frame {
-    position: relative;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     width: 100%;
-    max-width: 410px;
-    min-height: 205px;
-
-    padding: 15px;
-
-    background: radial-gradient(
-        ellipse at center,
-        rgba(106, 127, 165, 0.13),
-        transparent 70%
-    );
-
-    border: 1px solid rgba(153, 178, 214, 0.12);
-    border-radius: 9px;
+    min-height: 210px;
+    padding: 12px;
+    background: rgba(4, 7, 13, .35);
+    border: 1px solid rgba(255, 255, 255, .07);
+    border-radius: 10px;
 }
 
-.championship-page .championship-belt-frame::before {
-    content: "";
-    position: absolute;
-    inset: 8px;
-
-    border: 1px solid rgba(153, 178, 214, 0.07);
-    border-radius: 5px;
-
-    pointer-events: none;
-}
-
-.championship-page #championship-belt {
+.championship-page .championship-belt {
     display: block;
-
     width: 100%;
-    max-width: 365px;
-    max-height: 255px;
-
+    max-width: 390px;
+    max-height: 245px;
     object-fit: contain;
-    object-position: center;
-
-    filter: drop-shadow(0 7px 7px rgba(0, 0, 0, 0.38));
 }
 
 .championship-page .championship-belt-caption {
-    margin: 0;
-
-    color: #8997ac;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
+    margin-top: 10px;
+    color: var(--champ-muted);
+    font-size: .7rem;
     font-weight: 700;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     text-align: center;
+    text-transform: uppercase;
+}
+
+.championship-page .championship-hero-bottom-line {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--champ-cyan),
+        var(--champ-blue),
+        var(--champ-purple),
+        transparent
+    );
 }
 
 
 /* =========================================================
-   06. TARJETAS DE INFORMACIÓN
+   03. RESUMEN DEL CAMPEONATO
    ========================================================= */
 
 .championship-page .championship-overview {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 12px;
-
-    margin: 14px 0 42px;
+    margin-top: 18px;
 }
 
 .championship-page .championship-overview-card {
-    position: relative;
-
     min-width: 0;
-    padding: 18px 19px;
-
-    background: linear-gradient(
-        140deg,
-        #151c28,
-        #0e131c
-    );
-
-    border: 1px solid var(--cp-border);
-    border-radius: 8px;
-
-    overflow: hidden;
-}
-
-.championship-page .championship-overview-card::before {
-    content: "";
-    position: absolute;
-
-    top: 0;
-    left: 17px;
-
-    width: 36px;
-    height: 2px;
-
-    background: var(--cp-cyan);
-}
-
-.championship-page .championship-overview-card:nth-child(2)::before {
-    background: var(--cp-purple);
-}
-
-.championship-page .championship-overview-card:nth-child(3)::before {
-    background: var(--cp-gold);
+    padding: 18px 20px;
+    background: var(--champ-panel);
+    border: 1px solid var(--champ-border);
+    border-radius: 9px;
 }
 
 .championship-page .overview-label {
     display: block;
-
-    margin-bottom: 7px;
-
-    color: #8f9db2;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    line-height: 1.5;
+    margin-bottom: 8px;
+    color: var(--champ-muted);
+    font-size: .69rem;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
 }
 
 .championship-page .overview-value {
     display: block;
-
-    color: var(--cp-text);
-    font-size: clamp(17px, 2vw, 23px);
-    font-weight: 700;
-    line-height: 1.3;
-
+    color: #fff;
+    font-size: clamp(.95rem, 2vw, 1.25rem);
+    font-weight: 800;
+    line-height: 1.35;
     overflow-wrap: anywhere;
-}
-
-.championship-page #championship-total-reigns {
-    color: var(--cp-purple);
-}
-
-.championship-page #championship-established {
-    color: var(--cp-gold);
 }
 
 
 /* =========================================================
-   07. SECCIÓN DE HISTORIAL
+   04. CONTENIDO Y ENCABEZADOS
    ========================================================= */
 
 .championship-page .championship-content {
-    min-width: 0;
+    margin-top: 42px;
 }
 
 .championship-page .championship-section-heading {
-    margin-bottom: 23px;
+    margin-bottom: 22px;
 }
 
 .championship-page .championship-eyebrow {
-    margin: 0 0 8px;
-
-    color: var(--cp-cyan);
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 2.5px;
-    line-height: 1.5;
+    display: block;
+    margin-bottom: 8px;
+    color: var(--champ-cyan);
+    font-size: .7rem;
+    font-weight: 900;
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 .championship-page #championship-section-title {
     margin: 0;
-
-    color: #f6f8fc;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: clamp(23px, 3vw, 33px);
-    font-weight: 800;
+    color: #fff;
+    font-size: clamp(1.45rem, 3vw, 2.15rem);
+    font-weight: 900;
     line-height: 1.2;
-    letter-spacing: -0.5px;
+    overflow-wrap: anywhere;
 }
 
 .championship-page #championship-section-description {
-    max-width: 650px;
-
+    max-width: 720px;
     margin: 10px 0 0;
-
-    color: var(--cp-muted);
-    font-size: 14px;
-    line-height: 1.7;
+    color: var(--champ-muted);
+    font-size: .9rem;
+    line-height: 1.65;
 }
 
 
 /* =========================================================
-   08. PESTAÑAS: REINADOS / HISTORIA
+   05. PESTAÑAS
    ========================================================= */
 
 .championship-page .championship-tabs {
     display: flex;
-    align-items: stretch;
-    gap: 5px;
-
-    margin-bottom: 21px;
-    padding: 5px;
-
-    background: #0d121b;
-    border: 1px solid var(--cp-border);
-    border-radius: 8px;
+    gap: 8px;
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--champ-border);
 }
 
 .championship-page .championship-tab {
-    position: relative;
-
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-
-    flex: 1;
-    min-width: 0;
-    min-height: 46px;
-
-    padding: 10px 14px;
-
-    color: #8f9db2;
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: 5px;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 10px;
+    gap: 9px;
+    min-height: 42px;
+    padding: 10px 17px;
+    color: #aeb9ca;
+    background: #10141d;
+    border: 1px solid var(--champ-border);
+    border-radius: 6px;
+    font-size: .8rem;
     font-weight: 800;
-    letter-spacing: 0.7px;
-
     cursor: pointer;
+}
 
-    transition:
-        color 0.15s ease,
-        background-color 0.15s ease,
-        border-color 0.15s ease;
+.championship-page .championship-tab.is-active {
+    color: #fff;
+    background: #172332;
+    border-color: var(--champ-cyan);
 }
 
 .championship-page .championship-tab-number {
-    color: #687991;
-    font-size: 9px;
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 21px;
+    height: 21px;
+    padding: 0 5px;
+    color: var(--champ-cyan);
+    background: rgba(0, 200, 255, .1);
+    border-radius: 4px;
+    font-size: .68rem;
 }
 
-.championship-page .championship-tab:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.035);
-}
-
-.championship-page .championship-tab.is-active,
-.championship-page .championship-tab[aria-selected="true"] {
-    color: #ffffff;
-
-    background: linear-gradient(
-        110deg,
-        rgba(71, 123, 255, 0.16),
-        rgba(67, 217, 255, 0.07)
-    );
-
-    border-color: rgba(67, 217, 255, 0.30);
-}
-
-.championship-page .championship-tab.is-active .championship-tab-number,
-.championship-page .championship-tab[aria-selected="true"] .championship-tab-number {
-    color: var(--cp-cyan);
-}
-
-.championship-page .championship-tab.is-active::after,
-.championship-page .championship-tab[aria-selected="true"]::after {
-    content: "";
-    position: absolute;
-
-    right: 15px;
-    bottom: -1px;
-    left: 15px;
-
-    height: 2px;
-    background: var(--cp-cyan);
-}
-
-.championship-page .championship-tab:focus-visible {
-    outline: 2px solid var(--cp-cyan);
-    outline-offset: 3px;
+.championship-page .championship-tab.is-active .championship-tab-number {
+    color: #061018;
+    background: var(--champ-cyan);
 }
 
 
 /* =========================================================
-   09. PANELES
+   06. PANELES
    ========================================================= */
 
 .championship-page .championship-panel {
@@ -634,864 +380,757 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-
-    margin-bottom: 17px;
+    gap: 12px;
+    margin-bottom: 16px;
 }
 
 .championship-page .championship-panel-heading h3 {
     margin: 0;
-
-    color: #eef2f9;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    line-height: 1.4;
+    color: #edf2fa;
+    font-size: 1rem;
+    font-weight: 900;
 }
-
-.championship-page .championship-panel-heading .championship-eyebrow {
-    margin-bottom: 5px;
-}
-
-
-/* Contador de reinados */
 
 .championship-page .championship-count {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    flex-shrink: 0;
-    min-height: 28px;
-
-    padding: 5px 9px;
-
-    color: var(--cp-cyan);
-    background: rgba(67, 217, 255, 0.07);
-    border: 1px solid rgba(67, 217, 255, 0.22);
-    border-radius: 4px;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.5px;
-}
-
-
-/* =========================================================
-   10. CARGA Y ESTADOS VACÍOS
-   ========================================================= */
-
-.championship-page .championship-loading,
-.championship-page .championship-empty,
-.championship-page .championship-error {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 9px;
-
-    min-width: 0;
-    min-height: 105px;
-
-    padding: 22px 16px;
-
-    color: var(--cp-muted);
-    background: #0d121b;
-    border: 1px dashed rgba(153, 178, 214, 0.22);
-    border-radius: 8px;
-
-    text-align: center;
-}
-
-.championship-page .championship-loading p {
-    margin: 0;
-
-    color: #9ba9bd;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 1.2px;
-}
-
-.championship-page .championship-loading-line {
-    display: block;
-
-    width: 35px;
-    height: 3px;
-
-    background: linear-gradient(
-        90deg,
-        var(--cp-blue),
-        var(--cp-cyan),
-        var(--cp-purple)
-    );
-
+    min-width: 28px;
+    min-height: 25px;
+    padding: 4px 8px;
+    color: var(--champ-cyan);
+    background: rgba(0, 200, 255, .08);
+    border: 1px solid rgba(0, 200, 255, .22);
     border-radius: 5px;
-}
-
-.championship-page .championship-empty strong,
-.championship-page .championship-error strong {
-    color: #edf2fa;
-    font-size: 15px;
-}
-
-.championship-page .championship-empty p,
-.championship-page .championship-error p {
-    max-width: 560px;
-    margin: 0;
-
-    color: var(--cp-muted);
-    font-size: 13px;
-    line-height: 1.7;
+    font-size: .72rem;
+    font-weight: 900;
 }
 
 
 /* =========================================================
-   11. TARJETAS DE REINADOS
-   Clases para los elementos que genere campeonato.js.
+   07. LISTA DE REINADOS
    ========================================================= */
 
 .championship-page .championship-reigns {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
-    min-width: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    align-items: stretch;
 }
 
+/* Tarjeta individual de reinado.
+   Se admiten varios nombres de clase para mantener
+   compatibilidad con distintas versiones del render JS. */
+
 .championship-page .championship-reign,
+.championship-page .championship-reign-card,
 .championship-page .reign-card {
+    position: relative;
     display: grid;
-    grid-template-columns: 65px minmax(0, 1fr);
-    align-items: center;
-    gap: 15px;
-
+    grid-template-columns: 108px minmax(0, 1fr);
+    gap: 13px;
     min-width: 0;
-    padding: 14px;
+    padding: 12px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #151b27, #10141c);
+    border: 1px solid #293447;
+    border-radius: 9px;
+}
 
+.championship-page .championship-reign.is-current,
+.championship-page .championship-reign-card.is-current,
+.championship-page .reign-card.is-current {
+    border-color: rgba(0, 200, 255, .65);
+}
+
+.championship-page .championship-reign::before,
+.championship-page .championship-reign-card::before,
+.championship-page .reign-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
     background: linear-gradient(
-        110deg,
-        #151c28,
-        #10151e
+        90deg,
+        var(--champ-cyan),
+        var(--champ-blue),
+        var(--champ-purple)
     );
-
-    border: 1px solid var(--cp-border);
-    border-radius: 8px;
 }
 
 .championship-page .championship-reign-image,
 .championship-page .reign-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    overflow: hidden;
+    background: #090d14;
+    border: 1px solid #303b4d;
+    border-radius: 6px;
+}
+
+.championship-page .championship-reign-image img,
+.championship-page .reign-image img,
+.championship-page .championship-reign img,
+.championship-page .championship-reign-card img,
+.championship-page .reign-card img {
     display: block;
-
-    width: 65px;
-    height: 75px;
-
+    width: 100%;
+    height: 100%;
+    min-height: 0;
     object-fit: cover;
     object-position: center top;
+}
 
-    background: #090d14;
-    border: 1px solid rgba(153, 178, 214, 0.16);
-    border-radius: 5px;
+.championship-page .championship-reign-content,
+.championship-page .reign-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    min-width: 0;
+    gap: 6px;
 }
 
 .championship-page .championship-reign-number,
 .championship-page .reign-number {
+    color: var(--champ-cyan);
+    font-size: .68rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.championship-page .championship-reign-name,
+.championship-page .reign-name,
+.championship-page .championship-reign-content h4,
+.championship-page .reign-content h4 {
+    margin: 0;
+    color: #fff;
+    font-size: .96rem;
+    font-weight: 900;
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+}
+
+.championship-page .championship-reign-description,
+.championship-page .reign-description {
+    margin: 0;
+    color: #aeb9ca;
+    font-size: .76rem;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.championship-page .championship-reign-days,
+.championship-page .reign-days,
+.championship-page .days-count {
+    color: #e0e7f1;
+    font-size: .76rem;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+.championship-page .championship-reign-days .number,
+.championship-page .days-count strong {
+    color: var(--champ-cyan);
+}
+
+.championship-page .championship-current-badge,
+.championship-page .current-badge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-
-    min-width: 30px;
-    min-height: 27px;
-    margin-bottom: 5px;
-    padding: 4px 7px;
-
-    color: var(--cp-cyan);
-    background: rgba(67, 217, 255, 0.07);
-    border: 1px solid rgba(67, 217, 255, 0.20);
+    gap: 5px;
+    max-width: 100%;
+    margin-top: 3px;
+    padding: 5px 7px;
+    color: #07130f;
+    background: var(--champ-green);
     border-radius: 4px;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 10px;
-    font-weight: 800;
+    font-size: .61rem;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: .4px;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
 }
 
-.championship-page .championship-reign h3,
-.championship-page .reign-card h3 {
-    margin: 0;
-
-    color: #f2f5fb;
-    font-size: 17px;
-    font-weight: 700;
-    line-height: 1.3;
+.championship-page .championship-current-badge::before,
+.championship-page .current-badge::before {
+    content: "";
+    flex: 0 0 6px;
+    width: 6px;
+    height: 6px;
+    background: #07130f;
+    border-radius: 50%;
 }
 
-.championship-page .championship-reign p,
-.championship-page .reign-card p {
-    margin: 5px 0 0;
+/* Estado vacío y carga */
 
-    color: var(--cp-muted);
-    font-size: 13px;
+.championship-page .championship-loading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 90px;
+    padding: 18px;
+    color: var(--champ-muted);
+    background: var(--champ-panel);
+    border: 1px solid var(--champ-border);
+    border-radius: 8px;
+    font-size: .85rem;
     line-height: 1.6;
 }
 
-.championship-page .championship-reign-meta,
-.championship-page .reign-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px 13px;
-
-    margin-top: 8px;
-
-    color: #8e9db2;
-    font-size: 11px;
-}
-
-.championship-page .championship-reign-meta strong,
-.championship-page .reign-meta strong {
-    color: #dce5f2;
+.championship-page .championship-loading-line {
+    flex: 0 0 25px;
+    width: 25px;
+    height: 3px;
+    background: var(--champ-cyan);
+    border-radius: 2px;
 }
 
 
 /* =========================================================
-   12. HISTORIA Y LINAJE
+   08. HISTORIAL Y LÍNEA TEMPORAL
    ========================================================= */
 
 .championship-page .championship-history-intro {
-    margin-bottom: 23px;
+    margin-bottom: 22px;
     padding: 17px 19px;
-
     background: #111722;
-    border: 1px solid var(--cp-border);
-    border-left: 3px solid var(--cp-purple);
+    border-left: 3px solid var(--champ-blue);
     border-radius: 0 7px 7px 0;
 }
 
 .championship-page #championship-history-description {
     margin: 0;
-
-    color: #b1bdcf;
-    font-size: 14px;
-    line-height: 1.8;
+    color: #b8c3d3;
+    font-size: .85rem;
+    line-height: 1.7;
 }
-
-
-/* Encabezado de la cronología */
 
 .championship-page .championship-timeline-heading {
     display: flex;
     align-items: center;
     gap: 12px;
-
-    margin: 0 0 18px;
+    margin: 25px 0 18px;
+    color: #edf2fa;
+    font-size: 1rem;
+    font-weight: 900;
 }
 
-.championship-page .championship-timeline-heading h3 {
-    flex-shrink: 0;
-
-    margin: 0;
-
-    color: #eaf0fa;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.4px;
-}
-
-.championship-page .championship-timeline-heading .championship-timeline-line {
-    display: block;
-
+.championship-page .championship-timeline-line {
     flex: 1;
-    min-width: 10px;
     height: 1px;
-
     background: linear-gradient(
         90deg,
-        rgba(67, 217, 255, 0.4),
-        rgba(153, 178, 214, 0.06)
+        var(--champ-border),
+        transparent
     );
 }
 
-
-/* Contenedor de acontecimientos */
-
 .championship-page .championship-timeline {
-    display: flex;
-    flex-direction: column;
+    position: relative;
+    display: grid;
     gap: 12px;
-
     min-width: 0;
 }
 
 .championship-page .championship-timeline-item,
 .championship-page .timeline-item {
     position: relative;
-
     min-width: 0;
-    padding: 17px 19px;
-
-    background: #101620;
-    border: 1px solid var(--cp-border);
-    border-radius: 8px;
+    padding: 16px 18px 16px 22px;
+    background: var(--champ-panel);
+    border: 1px solid var(--champ-border);
+    border-radius: 7px;
 }
 
-.championship-page .championship-timeline-item h3,
-.championship-page .timeline-item h3 {
-    margin: 0 0 7px;
-
-    color: #f1f4fa;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 1.4;
-}
-
-.championship-page .championship-timeline-item p,
-.championship-page .timeline-item p {
-    margin: 0;
-
-    color: var(--cp-muted);
-    font-size: 13px;
-    line-height: 1.8;
+.championship-page .championship-timeline-item::before,
+.championship-page .timeline-item::before {
+    content: "";
+    position: absolute;
+    top: 18px;
+    bottom: 18px;
+    left: 0;
+    width: 3px;
+    background: var(--champ-blue);
+    border-radius: 0 3px 3px 0;
 }
 
 .championship-page .championship-timeline-date,
 .championship-page .timeline-date {
     display: block;
+    margin-bottom: 6px;
+    color: var(--champ-cyan);
+    font-size: .72rem;
+    font-weight: 900;
+    letter-spacing: .6px;
+    text-transform: uppercase;
+}
 
-    margin-bottom: 7px;
+.championship-page .championship-timeline-title,
+.championship-page .timeline-title {
+    margin: 0;
+    color: #f5f7fb;
+    font-size: .95rem;
+    font-weight: 900;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+}
 
-    color: var(--cp-cyan);
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
+.championship-page .championship-timeline-description,
+.championship-page .timeline-description {
+    margin: 7px 0 0;
+    color: var(--champ-muted);
+    font-size: .8rem;
+    line-height: 1.65;
 }
 
 
 /* =========================================================
-   13. PIE DE PÁGINA
+   09. PIE DE PÁGINA DE LA PÁGINA DE CAMPEONATO
    ========================================================= */
 
 .championship-page .championship-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-
-    margin-top: 50px;
-    padding: 24px 15px 5px;
-
-    border-top: 1px solid rgba(153, 178, 214, 0.13);
+    margin-top: 42px;
+    padding-top: 20px;
+    border-top: 1px solid var(--champ-border);
     text-align: center;
 }
 
 .championship-page .championship-footer-line {
-    width: 55px;
-    height: 2px;
-    margin-bottom: 5px;
-
+    width: 75px;
+    height: 3px;
+    margin: 0 auto 15px;
     background: linear-gradient(
         90deg,
-        var(--cp-blue),
-        var(--cp-cyan),
-        var(--cp-purple)
+        var(--champ-cyan),
+        var(--champ-purple)
     );
+    border-radius: 3px;
 }
 
 .championship-page .championship-footer-brand {
     margin: 0;
-
-    color: #e7edf8;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
+    color: #f5f7fb;
+    font-size: .8rem;
+    font-weight: 900;
     letter-spacing: 2px;
 }
 
 .championship-page .championship-footer-description {
-    margin: 0;
-
-    color: #8290a5;
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.6px;
-    line-height: 1.8;
+    margin: 8px 0 16px;
+    color: var(--champ-muted);
+    font-size: .75rem;
+    line-height: 1.6;
 }
 
 .championship-page .championship-return-link {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-
-    min-height: 39px;
-    margin-top: 10px;
-    padding: 9px 15px;
-
-    color: #dce7f6;
-    background: #111925;
-    border: 1px solid var(--cp-border);
-    border-radius: 5px;
-
-    font-family: "Orbitron", Arial, sans-serif;
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    min-height: 40px;
+    padding: 10px 15px;
+    color: var(--champ-cyan);
+    background: #111722;
+    border: 1px solid #2c4058;
+    border-radius: 6px;
+    font-size: .78rem;
+    font-weight: 800;
     text-decoration: none;
-
-    transition:
-        color 0.15s ease,
-        border-color 0.15s ease,
-        background-color 0.15s ease;
 }
 
-.championship-page .championship-return-link:hover {
-    color: var(--cp-cyan);
-    background: #151f2d;
-    border-color: var(--cp-border-bright);
+.championship-page .championship-return-link:focus-visible,
+.championship-page .championship-tab:focus-visible {
+    outline: 2px solid var(--champ-cyan);
+    outline-offset: 3px;
 }
 
 
 /* =========================================================
-   14. MENSAJE SIN JAVASCRIPT
+   10. ERROR Y SIN JAVASCRIPT
    ========================================================= */
 
+.championship-page .championship-error {
+    padding: 22px;
+    color: #ffd7dd;
+    background: #211117;
+    border: 1px solid #743044;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
 .championship-page .championship-noscript {
-    width: min(600px, calc(100% - 30px));
-    margin: 20px auto;
-    padding: 15px;
-
-    color: #fff;
-    background: #25131a;
-    border: 1px solid rgba(255, 82, 107, 0.4);
+    margin: 20px 0;
+    padding: 16px;
+    color: #ffe0a6;
+    background: #211b10;
+    border: 1px solid #67502a;
     border-radius: 7px;
-
-    font-size: 13px;
-    text-align: center;
+    font-size: .85rem;
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   15. TABLET
+   11. TABLETS
    ========================================================= */
 
 @media (max-width: 850px) {
     .championship-page #championship-main {
         width: calc(100% - 28px);
-        padding-top: 20px;
+        padding-top: 22px;
     }
 
     .championship-page .championship-hero {
-        grid-template-columns: minmax(0, 1fr) minmax(210px, 0.8fr);
+        grid-template-columns: minmax(0, 1fr) minmax(200px, .75fr);
         gap: 20px;
-        min-height: 310px;
-        padding: 27px 24px;
+        min-height: 290px;
+        padding: 26px;
     }
 
-    .championship-page #championship-name {
-        font-size: clamp(27px, 4.2vw, 39px);
+    .championship-page .championship-belt-container {
+        min-height: 180px;
     }
 
     .championship-page .championship-belt-frame {
-        min-height: 165px;
+        min-height: 170px;
+    }
+
+    .championship-page .championship-belt {
+        max-height: 205px;
+    }
+
+    .championship-page .championship-reigns {
+        gap: 10px;
+    }
+
+    .championship-page .championship-reign,
+    .championship-page .championship-reign-card,
+    .championship-page .reign-card {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 10px;
         padding: 10px;
-    }
-
-    .championship-page #championship-belt {
-        max-height: 210px;
-    }
-
-    .championship-page .championship-overview {
-        margin-bottom: 34px;
-    }
-
-    .championship-page .championship-overview-card {
-        padding: 15px;
     }
 }
 
 
 /* =========================================================
-   16. MÓVIL
+   12. MÓVILES
    ========================================================= */
 
 @media (max-width: 600px) {
     .championship-page #championship-main {
-        width: calc(100% - 22px);
-        padding-top: 13px;
-        padding-bottom: 35px;
+        width: calc(100% - 20px);
+        padding-top: 16px;
+        padding-bottom: 28px;
     }
-
-
-    /* Presentación en una columna */
 
     .championship-page .championship-hero {
         grid-template-columns: minmax(0, 1fr);
-        gap: 13px;
-
+        gap: 18px;
         min-height: 0;
-        padding: 21px 15px 19px;
-
-        border-radius: 9px;
+        padding: 23px 17px 19px;
+        border-radius: 10px;
     }
 
-    .championship-page .championship-hero::before {
-        top: -100px;
-        left: -100px;
-        width: 270px;
-        height: 220px;
+    .championship-page .championship-hero-content {
+        order: 1;
     }
 
-    .championship-page .championship-hero::after {
-        right: -120px;
-        bottom: -130px;
-        width: 250px;
-        height: 230px;
+    .championship-page .championship-belt-container {
+        order: 2;
+        min-height: 0;
     }
 
-    .championship-page #championship-category {
+    .championship-page .championship-title-information {
+        width: 100%;
+    }
+
+    .championship-page .championship-category {
         margin-bottom: 11px;
         padding: 5px 8px;
-        font-size: 8px;
+        font-size: .64rem;
         letter-spacing: 1px;
     }
 
     .championship-page #championship-name {
-        max-width: 100%;
-        font-size: clamp(25px, 7.6vw, 36px);
-        line-height: 1.09;
-        letter-spacing: -0.7px;
+        font-size: clamp(1.55rem, 7vw, 2.15rem);
+        line-height: 1.12;
     }
 
-    .championship-page #championship-subtitle {
-        margin: 10px 0 13px;
-        font-size: 13px;
-        line-height: 1.6;
+    .championship-page .championship-subtitle {
+        margin-top: 9px;
+        font-size: .84rem;
     }
 
     .championship-page .championship-status {
-        min-height: 29px;
-        padding: 5px 9px;
-    }
-
-    .championship-page #championship-status {
-        font-size: 8px;
-    }
-
-
-    /* Cinturón */
-
-    .championship-page .championship-belt-container {
-        gap: 7px;
-        padding: 0;
+        margin-top: 15px;
+        font-size: .7rem;
     }
 
     .championship-page .championship-belt-frame {
         width: 100%;
-        max-width: 340px;
-        min-height: 125px;
-        padding: 8px 12px;
+        min-height: 0;
+        padding: 10px;
     }
 
-    .championship-page .championship-belt-frame::before {
-        inset: 6px;
-    }
-
-    .championship-page #championship-belt {
+    .championship-page .championship-belt {
         width: 100%;
-        max-width: 280px;
+        max-width: 300px;
         max-height: 180px;
     }
 
     .championship-page .championship-belt-caption {
-        font-size: 8px;
-        letter-spacing: 1.7px;
+        margin-top: 8px;
+        font-size: .62rem;
     }
-
-
-    /* Tres datos compactos */
 
     .championship-page .championship-overview {
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 6px;
-        margin: 10px 0 30px;
+        gap: 7px;
+        margin-top: 12px;
     }
 
     .championship-page .championship-overview-card {
-        padding: 13px 8px;
-        border-radius: 6px;
-    }
-
-    .championship-page .championship-overview-card::before {
-        left: 9px;
-        width: 25px;
+        padding: 12px 9px;
+        border-radius: 7px;
     }
 
     .championship-page .overview-label {
-        min-height: 25px;
         margin-bottom: 6px;
-        font-size: 7px;
-        letter-spacing: 0.2px;
-        line-height: 1.45;
-    }
-
-    .championship-page .overview-value {
-        font-size: clamp(11px, 3.3vw, 15px);
+        font-size: .57rem;
+        letter-spacing: .5px;
         line-height: 1.35;
     }
 
+    .championship-page .overview-value {
+        font-size: .78rem;
+        line-height: 1.35;
+    }
 
-    /* Título de sección */
+    .championship-page .championship-content {
+        margin-top: 30px;
+    }
 
     .championship-page .championship-section-heading {
         margin-bottom: 17px;
     }
 
     .championship-page .championship-eyebrow {
-        margin-bottom: 6px;
-        font-size: 8px;
-        letter-spacing: 1.8px;
+        font-size: .63rem;
+        letter-spacing: 1.5px;
     }
 
     .championship-page #championship-section-title {
-        font-size: clamp(21px, 6vw, 28px);
-        line-height: 1.2;
+        font-size: 1.5rem;
     }
 
     .championship-page #championship-section-description {
-        margin-top: 8px;
-        font-size: 12px;
-        line-height: 1.7;
+        font-size: .81rem;
     }
 
-
-    /* Pestañas */
-
     .championship-page .championship-tabs {
-        gap: 4px;
-        margin-bottom: 17px;
-        padding: 4px;
+        gap: 6px;
+        margin-bottom: 15px;
+        padding-bottom: 10px;
     }
 
     .championship-page .championship-tab {
+        flex: 1;
         gap: 6px;
-        min-height: 42px;
-        padding: 9px 5px;
-        font-size: 9px;
-        letter-spacing: 0;
+        min-width: 0;
+        min-height: 40px;
+        padding: 9px 7px;
+        font-size: .72rem;
     }
 
     .championship-page .championship-tab-number {
-        font-size: 8px;
+        min-width: 19px;
+        height: 19px;
+        font-size: .63rem;
     }
-
-    .championship-page .championship-tab.is-active::after,
-    .championship-page .championship-tab[aria-selected="true"]::after {
-        right: 10px;
-        left: 10px;
-    }
-
-
-    /* Encabezados de panel */
 
     .championship-page .championship-panel-heading {
-        gap: 9px;
-        margin-bottom: 13px;
+        margin-bottom: 12px;
     }
 
     .championship-page .championship-panel-heading h3 {
-        font-size: 12px;
+        font-size: .9rem;
     }
 
-    .championship-page .championship-count {
-        min-height: 25px;
-        padding: 4px 6px;
-        font-size: 8px;
-        letter-spacing: 0;
-    }
-
-
-    /* Estados vacíos */
-
-    .championship-page .championship-loading,
-    .championship-page .championship-empty,
-    .championship-page .championship-error {
-        min-height: 90px;
-        padding: 18px 12px;
-    }
-
-    .championship-page .championship-loading p {
-        font-size: 8px;
-        letter-spacing: 0.8px;
-    }
-
-
-    /* Reinado */
-
+    /* Dos tarjetas por fila, también en móviles estrechos. */
     .championship-page .championship-reigns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
     }
 
     .championship-page .championship-reign,
+    .championship-page .championship-reign-card,
     .championship-page .reign-card {
-        grid-template-columns: 48px minmax(0, 1fr);
-        gap: 11px;
-        padding: 11px;
+        grid-template-columns: minmax(0, 1fr);
+        align-content: start;
+        gap: 8px;
+        padding: 8px;
+        border-radius: 7px;
     }
 
     .championship-page .championship-reign-image,
     .championship-page .reign-image {
-        width: 48px;
-        height: 60px;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        max-height: none;
+    }
+
+    .championship-page .championship-reign-content,
+    .championship-page .reign-content {
+        justify-content: flex-start;
+        gap: 5px;
     }
 
     .championship-page .championship-reign-number,
     .championship-page .reign-number {
-        min-height: 23px;
-        font-size: 9px;
+        font-size: .59rem;
+        letter-spacing: .6px;
     }
 
-    .championship-page .championship-reign h3,
-    .championship-page .reign-card h3 {
-        font-size: 14px;
-        line-height: 1.35;
+    .championship-page .championship-reign-name,
+    .championship-page .reign-name,
+    .championship-page .championship-reign-content h4,
+    .championship-page .reign-content h4 {
+        font-size: .79rem;
+        line-height: 1.3;
     }
 
-    .championship-page .championship-reign p,
-    .championship-page .reign-card p {
-        font-size: 12px;
-        line-height: 1.6;
+    .championship-page .championship-reign-description,
+    .championship-page .reign-description {
+        font-size: .68rem;
+        line-height: 1.45;
     }
 
-    .championship-page .championship-reign-meta,
-    .championship-page .reign-meta {
-        gap: 5px 10px;
-        font-size: 10px;
+    .championship-page .championship-reign-days,
+    .championship-page .reign-days,
+    .championship-page .days-count {
+        font-size: .67rem;
+        line-height: 1.4;
     }
 
+    .championship-page .championship-current-badge,
+    .championship-page .current-badge {
+        gap: 4px;
+        padding: 4px 5px;
+        font-size: .53rem;
+        letter-spacing: 0;
+    }
 
-    /* Historia */
+    .championship-page .championship-current-badge::before,
+    .championship-page .current-badge::before {
+        flex-basis: 5px;
+        width: 5px;
+        height: 5px;
+    }
 
     .championship-page .championship-history-intro {
-        margin-bottom: 19px;
+        margin-bottom: 18px;
         padding: 13px;
     }
 
     .championship-page #championship-history-description {
-        font-size: 12px;
-        line-height: 1.75;
+        font-size: .8rem;
     }
 
     .championship-page .championship-timeline-heading {
-        gap: 8px;
-        margin-bottom: 14px;
-    }
-
-    .championship-page .championship-timeline-heading h3 {
-        font-size: 9px;
-        letter-spacing: 0;
-    }
-
-    .championship-page .championship-timeline {
         gap: 9px;
+        margin: 20px 0 13px;
+        font-size: .9rem;
     }
 
     .championship-page .championship-timeline-item,
     .championship-page .timeline-item {
-        padding: 13px;
+        padding: 13px 13px 13px 17px;
     }
 
-    .championship-page .championship-timeline-item h3,
-    .championship-page .timeline-item h3 {
-        font-size: 14px;
+    .championship-page .championship-timeline-title,
+    .championship-page .timeline-title {
+        font-size: .86rem;
     }
 
-    .championship-page .championship-timeline-item p,
-    .championship-page .timeline-item p {
-        font-size: 12px;
-        line-height: 1.75;
+    .championship-page .championship-timeline-description,
+    .championship-page .timeline-description {
+        font-size: .76rem;
     }
-
-
-    /* Pie */
 
     .championship-page .championship-footer {
-        gap: 7px;
-        margin-top: 35px;
-        padding: 20px 10px 4px;
-    }
-
-    .championship-page .championship-footer-brand {
-        font-size: 10px;
-        letter-spacing: 1.5px;
-    }
-
-    .championship-page .championship-footer-description {
-        font-size: 10px;
-        letter-spacing: 0.2px;
-    }
-
-    .championship-page .championship-return-link {
-        min-height: 38px;
-        margin-top: 8px;
-        padding: 9px 12px;
-        font-size: 8px;
+        margin-top: 30px;
     }
 }
 
 
 /* =========================================================
-   17. PANTALLAS MUY ESTRECHAS
+   13. MÓVILES MUY ESTRECHOS
    ========================================================= */
 
 @media (max-width: 360px) {
     .championship-page #championship-main {
-        width: calc(100% - 16px);
+        width: calc(100% - 14px);
     }
 
     .championship-page .championship-hero {
-        padding: 18px 12px 16px;
-    }
-
-    .championship-page #championship-name {
-        font-size: 25px;
+        padding: 19px 12px 15px;
     }
 
     .championship-page .championship-overview {
-        gap: 4px;
+        gap: 5px;
     }
 
     .championship-page .championship-overview-card {
-        padding: 11px 6px;
+        padding: 10px 6px;
     }
 
     .championship-page .overview-label {
-        font-size: 6.5px;
-        letter-spacing: 0;
+        font-size: .52rem;
     }
 
     .championship-page .overview-value {
-        font-size: 11px;
+        font-size: .7rem;
     }
 
-    .championship-page .championship-tab {
-        gap: 4px;
-        font-size: 8px;
+    .championship-page .championship-reigns {
+        gap: 6px;
     }
 
-    .championship-page .championship-panel-heading h3 {
-        font-size: 11px;
+    .championship-page .championship-reign,
+    .championship-page .championship-reign-card,
+    .championship-page .reign-card {
+        gap: 6px;
+        padding: 6px;
+    }
+
+    .championship-page .championship-reign-name,
+    .championship-page .reign-name,
+    .championship-page .championship-reign-content h4,
+    .championship-page .reign-content h4 {
+        font-size: .72rem;
+    }
+
+    .championship-page .championship-reign-description,
+    .championship-page .reign-description {
+        font-size: .63rem;
+    }
+
+    .championship-page .championship-reign-days,
+    .championship-page .reign-days,
+    .championship-page .days-count {
+        font-size: .62rem;
     }
 }
 
 
 /* =========================================================
-   18. ACCESIBILIDAD
+   14. ACCESIBILIDAD Y MOVIMIENTO REDUCIDO
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
@@ -1499,7 +1138,8 @@
     .championship-page *::before,
     .championship-page *::after {
         scroll-behavior: auto !important;
-        transition: none !important;
-        animation: none !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
     }
 }

@@ -1299,28 +1299,39 @@
    }
 
 
-/* GPW — PLACAS DE FECHAS DE CADA REINADO */
+
+/* =====================================================
+   GPW — PLACAS DEFINITIVAS DE REINADOS
+   ===================================================== */
 
 .championship-page .championship-reign-dates {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
     width: 100%;
-    margin-top: 8px;
+    margin-top: 7px;
 }
 
 .championship-page .championship-date-box {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     justify-content: center;
     gap: 5px;
     min-width: 0;
-    min-height: 51px;
-    padding: 7px 9px;
+    min-height: 48px;
+    padding: 7px 8px;
+    overflow: hidden;
     background: linear-gradient(145deg, #171e29, #0b1018);
     border: 1px solid #344154;
     border-radius: 5px;
-    overflow-wrap: anywhere;
+}
+
+/* Evita duplicar INICIO y FINALIZACIÓN */
+.championship-page .championship-date-start::before,
+.championship-page .championship-date-end::before {
+    content: none !important;
+    display: none !important;
 }
 
 .championship-page .championship-date-start {
@@ -1332,10 +1343,11 @@
 }
 
 .championship-page .championship-date-label {
-    color: #9eacbf;
-    font-size: .58rem;
+    font-size: .55rem;
     font-weight: 900;
-    letter-spacing: 1px;
+    letter-spacing: .8px;
+    line-height: 1.2;
+    color: #9baabe;
 }
 
 .championship-page .championship-date-start .championship-date-label {
@@ -1348,16 +1360,62 @@
 
 .championship-page .championship-date-box strong {
     color: #f4f6fb;
-    font-size: .76rem;
+    font-size: .72rem;
     font-weight: 900;
-    line-height: 1.3;
+    line-height: 1.35;
+    overflow-wrap: anywhere;
     font-variant-numeric: tabular-nums;
 }
 
-.championship-page .championship-date-end:has(.championship-date-label) {
-    border-top-color: #344154;
+/* Duración: placa dorada */
+.championship-page .championship-reign-duration {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 7px 0 0;
+    padding: 6px 9px;
+    color: #e8c76a;
+    background: rgba(232, 199, 106, .06);
+    border: 1px solid rgba(232, 199, 106, .45);
+    border-radius: 4px;
+    font-size: .65rem;
+    font-weight: 900;
+    line-height: 1.4;
 }
 
+.championship-page .championship-reign-duration strong {
+    color: #ffe7a1;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Defensas: placa fina cian */
+.championship-page .championship-reign-defenses {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    max-width: 100%;
+    margin: 5px 0 0;
+    padding: 5px 9px;
+    color: #9baabe;
+    background: rgba(0, 200, 255, .035);
+    border: 1px solid rgba(0, 200, 255, .35);
+    border-radius: 4px;
+    font-size: .65rem;
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.championship-page .championship-reign-defenses strong {
+    color: #aeeeff;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Ajuste móvil: mantiene dos tarjetas por fila */
 @media (max-width: 600px) {
     .championship-page .championship-reign-dates {
         gap: 4px;
@@ -1365,17 +1423,24 @@
     }
 
     .championship-page .championship-date-box {
-        min-height: 45px;
-        padding: 6px;
+        min-height: 44px;
+        padding: 6px 5px;
         gap: 4px;
     }
 
     .championship-page .championship-date-label {
-        font-size: .51rem;
-        letter-spacing: .6px;
+        font-size: .49rem;
+        letter-spacing: .4px;
     }
 
     .championship-page .championship-date-box strong {
-        font-size: .65rem;
+        font-size: .61rem;
+    }
+
+    .championship-page .championship-reign-duration,
+    .championship-page .championship-reign-defenses {
+        gap: 4px;
+        padding: 5px 6px;
+        font-size: .59rem;
     }
 }

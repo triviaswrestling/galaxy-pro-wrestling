@@ -92,38 +92,92 @@ window.GPW_DATOS_TEMPORADAS["temporada-1"] = {
                     {id:"fiend",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"}]}
                 ],
                 resultado:{tipo:"victoria",ganadores:["fiend"],metodo:"Pinfall",detalle:"Tras una batalla brutal, The Fiend conecta dos Mandible Claw consecutivos y consigue la cuenta definitiva."}
-            },
-            {
-                id:"combate-11",tipo:"Six-Man",estipulacion:"3 contra 3",titulo:"6-MAN SHOWDOWN",
+            },            {
+                id:"combate-11",tipo:"Tag Team",estipulacion:"2 contra 2",titulo:"TAG TEAM MATCH",
                 lados:[
                     {id:"team-bray",nombre:"TEAM BRAY",participantes:[
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"},
-                        {wrestlerId:"bray-wyatt",presentationId:"the-fiend"},
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe"}
                     ]},
-                    {id:"team-dark",nombre:"TEAM DARK",participantes:[
+                    {id:"team-fiend",nombre:"TEAM FIEND",participantes:[
+                        {wrestlerId:"bray-wyatt",presentationId:"the-fiend"},
+                        {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-intercontinental"}
+                    ]}
+                ],
+                resultado:{tipo:"victoria",ganadores:["team-fiend"],metodo:"Pinfall",detalle:"Team Fiend consigue la victoria."}
+            },
+            {
+                id:"combate-12",tipo:"Six-Man Tag Team",estipulacion:"3 contra 3",titulo:"TRIOS MATCH",
+                lados:[
+                    {id:"trio-bray",nombre:"TRIO BRAY",participantes:[
+                        {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"},
+                        {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe"},
+                        {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe-2"}
+                    ]},
+                    {id:"trio-fiend",nombre:"TRIO FIEND",participantes:[
+                        {wrestlerId:"bray-wyatt",presentationId:"the-fiend"},
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-intercontinental"},
-                        {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe-2"},
                         {wrestlerId:"bray-wyatt",presentationId:"the-fiend"}
                     ]}
                 ],
-                resultado:{tipo:"victoria",ganadores:["team-bray"],metodo:"Pinfall",detalle:"Team Bray consigue la victoria en el combate de seis participantes."}
+                resultado:{tipo:"victoria",ganadores:["trio-fiend"],metodo:"Pinfall",detalle:"El Trio Fiend gana el combate."}
             },
             {
-                id:"combate-12",tipo:"Tag Team",estipulacion:"3 contra 3",titulo:"TRIOS MATCH",
+                id:"combate-13",tipo:"Fatal 5-Way",estipulacion:"Cinco participantes; gana quien consiga la cuenta",titulo:"FATAL 5-WAY",
                 lados:[
-                    {id:"trio-fiend",nombre:"TRIO FIEND",participantes:[
+                    {id:"bray",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"}]},
+                    {id:"fiend",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"}]},
+                    {id:"wwe",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe"}]},
+                    {id:"ic",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-intercontinental"}]},
+                    {id:"wwe2",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe-2"}]}
+                ],
+                resultado:{tipo:"victoria",ganadores:["fiend"],metodo:"Pinfall",detalle:"The Fiend gana el Fatal 5-Way."}
+            },
+            {
+                id:"combate-14",tipo:"Six-Way",estipulacion:"Seis participantes individuales",titulo:"6-PACK CHALLENGE",
+                lados:[
+                    {id:"bray",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"}]},
+                    {id:"fiend",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"}]},
+                    {id:"wwe",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe"}]},
+                    {id:"ic",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-intercontinental"}]},
+                    {id:"wwe2",participantes:[{wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe-2"}]},
+                    {id:"fiend2",participantes:[{wrestlerId:"bray-wyatt",presentationId:"the-fiend"}]}
+                ],
+                resultado:{tipo:"victoria",ganadores:["fiend2"],metodo:"Pinfall",detalle:"La sexta presentación de Bray Wyatt consigue la victoria."}
+            },
+            {
+                id:"combate-15",tipo:"Six-Man",estipulacion:"3 contra 3",titulo:"6-MAN SHOWDOWN",
+                lados:[
+                    {id:"team-dark",nombre:"TEAM DARK",participantes:[
                         {wrestlerId:"bray-wyatt",presentationId:"the-fiend"},
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt"},
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe"}
                     ]},
-                    {id:"trio-wyatt",nombre:"TRIO WYATT",participantes:[
+                    {id:"team-wyatt",nombre:"TEAM WYATT",participantes:[
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-intercontinental"},
                         {wrestlerId:"bray-wyatt",presentationId:"bray-wyatt-wwe-2"},
                         {wrestlerId:"bray-wyatt",presentationId:"the-fiend"}
                     ]}
                 ],
-                resultado:{tipo:"victoria",ganadores:["trio-fiend"],metodo:"Pinfall",detalle:"El Trio Fiend consigue la victoria tras una combinación de ataques."}
+                resultado:{tipo:"victoria",ganadores:["team-dark"],metodo:"Pinfall",detalle:"Team Dark se lleva la victoria."}
+            },
+            {
+                id:"combate-16",tipo:"Royal Rumble",estipulacion:"30 participantes; eliminación por encima de la tercera cuerda",titulo:"30-MAN ROYAL RUMBLE",
+                lados:[{
+                    id:"rumble",nombre:"PARTICIPANTES",
+                    participantes:Array.from({length:30},(_,i)=>({
+                        id:"rumble-"+String(i+1).padStart(2,"0"),
+                        wrestlerId:"bray-wyatt",
+                        presentationId:[
+                            "bray-wyatt",
+                            "the-fiend",
+                            "bray-wyatt-wwe",
+                            "bray-wyatt-intercontinental",
+                            "bray-wyatt-wwe-2"
+                        ][i%5]
+                    }))
+                }],
+                resultado:{tipo:"victoria",ganadores:["rumble-30"],metodo:"Último en el ring",detalle:"El participante número 30 gana el Royal Rumble."}
             },
             {
                 id:"combate-13",tipo:"Royal Rumble",estipulacion:"30 participantes; eliminación por encima de la tercera cuerda",titulo:"30-MAN ROYAL RUMBLE",

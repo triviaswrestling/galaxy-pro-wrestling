@@ -662,51 +662,18 @@ image.onerror = function () {
        RENDERIZAR HISTORIA DEL CAMPEONATO
        ====================================================== */
 
-    function renderHistory(data) {
-        const history = getDataValue(
-            data,
-            ["historia", "history", "lineage", "historialHistorico"],
-            null
-        );
+    
+function renderHistory(data) {
+    const history = getDataValue(
+        data,
+        ["historia", "history", "lineage", "historialHistorico"],
+        []
+    );
 
-        if (!history) {
-            setText(
-                elements.historyIntro,
-                "Historia del campeonato"
-            );
-
-            setText(
-                elements.historyDescription,
-                "Todavía no hay información histórica registrada."
-            );
-
-            if (elements.timeline) {
-                elements.timeline.replaceChildren();
-            }
-
-            return;
-        }
-
-        const intro = typeof history === "string"
-            ? history
-            : getDataValue(
-                history,
-                ["introduccion", "intro", "descripcion", "description"],
-                "Historia del campeonato"
-            );
-
-        const description = typeof history === "object"
-            ? getDataValue(
-                history,
-                ["descripcionGeneral", "resumen", "summary"],
-                ""
-            )
-            : "";
-
-        setText(elements.historyIntro, intro);
-        setText(elements.historyDescription, description);
-
-        const events = typeof history === "object"
+    // Aceptar tanto un array de acontecimientos como un objeto.
+    const events = Array.isArray(history)
+        ? history
+        : history && typeof history === "object"
             ? getDataValue(
                 history,
                 ["eventos", "timeline", "cambios", "events"],
@@ -714,8 +681,28 @@ image.onerror = function () {
             )
             : [];
 
-        renderTimeline(Array.isArray(events) ? events : []);
-    }
+    // Introducción de la historia.
+    const intro = !Array.isArray(history) && history
+        ? getDataValue(
+            history,
+            ["introduccion", "intro", "descripcion", "description"],
+            "Historia del campeonato"
+        )
+        : "Historia del campeonato";
+
+    const description = !Array.isArray(history) && history
+        ? getDataValue(
+            history,
+            ["descripcionGeneral", "resumen", "summary"],
+            "El origen, la evolución y los acontecimientos que marcaron el título."
+        )
+        : "El origen, la evolución y los acontecimientos que marcaron el título.";
+
+    setText(elements.historyIntro, intro);
+    setText(elements.historyDescription, description);
+
+    renderTimeline(Array.isArray(events) ? events : []);
+}
 
 
     /* ======================================================

@@ -1,39 +1,52 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#090c12">
-    <title>Eventos - Galaxy Pro Wrestling</title>
 
-    <!-- Fuentes e Íconos -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Eventos | Galaxy Pro Wrestling</title>
+    <meta name="description" content="Explorá las temporadas, eventos, carteleras y resultados históricos de Galaxy Pro Wrestling.">
+
+    <!-- Fuentes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Estilos globales y navegación -->
+    <!-- Estilos globales -->
     <link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="nav.css">
-<link rel="stylesheet" href="eventos.css">
+    <link rel="stylesheet" href="nav.css">
+
+    <!-- Estilos exclusivos de Eventos -->
+    <link rel="stylesheet" href="eventos.css">
 </head>
+
 <body class="eventos-page">
 
-    <!-- Bordes Neón Laterales -->
+    <!-- Bordes visuales globales -->
     <div class="glow-border left"></div>
     <div class="glow-border right"></div>
 
-    <!-- Menú y logo globales -->
+    <!-- Navegación global -->
     <header class="main-header"></header>
 
     <main class="eventos-main">
 
-        <!-- =================================
-             MENÚ DE TEMPORADAS
-             ================================= -->
-        <section id="temporadas-view" class="eventos-view">
-
+        <!-- =====================================
+             VISTA 1: ARCHIVO DE TEMPORADAS
+             ===================================== -->
+        <section
+            id="temporadas-view"
+            class="eventos-view"
+            aria-labelledby="titulo-temporadas"
+        >
             <div class="page-title-bar">
-                <h2>
-                    <i class="fa-solid fa-calendar-days text-cyan"></i>
+                <h2 id="titulo-temporadas">
+                    <i class="fa-solid fa-calendar-days text-cyan" aria-hidden="true"></i>
                     GALAXY PRO <span class="text-cyan">EVENTOS</span>
                 </h2>
             </div>
@@ -43,67 +56,95 @@
                 <p>Explorá la historia de Galaxy Pro Wrestling.</p>
             </div>
 
-            <!-- eventos.js genera las tarjetas -->
-            <div id="temporadas-grid" class="temporadas-grid">
+            <div
+                id="temporadas-grid"
+                class="temporadas-grid"
+                aria-live="polite"
+            >
                 <p class="eventos-loading">
                     CARGANDO TEMPORADAS...
                 </p>
             </div>
-
         </section>
 
-        <!-- =================================
-             EVENTOS DE LA TEMPORADA
-             ================================= -->
-        <section id="eventos-view" class="eventos-view" hidden>
 
-            <button type="button"
-                    id="volver-temporadas"
-                    class="eventos-back-button">
-                <i class="fa-solid fa-arrow-left"></i>
+        <!-- =====================================
+             VISTA 2: EVENTOS DE LA TEMPORADA
+             ===================================== -->
+        <section
+            id="eventos-view"
+            class="eventos-view"
+            aria-labelledby="temporada-titulo"
+            hidden
+        >
+            <button
+                type="button"
+                id="volver-temporadas"
+                class="eventos-back-button"
+            >
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 VOLVER A TEMPORADAS
             </button>
 
             <div class="page-title-bar">
-                <h2 id="temporada-titulo">
-                    TEMPORADA
-                </h2>
+                <h2 id="temporada-titulo">TEMPORADA</h2>
             </div>
 
             <div class="eventos-heading">
                 <p id="temporada-descripcion"></p>
             </div>
 
-            <!-- Aquí se cargarán los eventos, del más nuevo al más antiguo -->
-            <div id="eventos-grid" class="eventos-grid"></div>
-
+            <div
+                id="eventos-grid"
+                class="eventos-grid"
+                aria-live="polite"
+            ></div>
         </section>
 
-        <!-- =================================
-             DETALLE DE UNA NOCHE
-             ================================= -->
-        <section id="evento-detalle-view" class="eventos-view" hidden>
 
-            <button type="button"
-                    id="volver-eventos"
-                    class="eventos-back-button">
-                <i class="fa-solid fa-arrow-left"></i>
+        <!-- =====================================
+             VISTA 3: DETALLE DEL EVENTO
+             ===================================== -->
+        <section
+            id="evento-detalle-view"
+            class="eventos-view"
+            aria-label="Detalle del evento"
+            hidden
+        >
+            <button
+                type="button"
+                id="volver-eventos"
+                class="eventos-back-button"
+            >
+                <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
                 VOLVER A LOS EVENTOS
             </button>
 
-            <!-- evento.js mostrará el poster, los combates y resultados -->
             <div id="evento-detalle"></div>
-
         </section>
 
     </main>
 
-    <!-- =================================
-         SCRIPTS
-         ================================= -->
+
+    <!-- =====================================
+         JAVASCRIPT
+         El orden de carga es importante.
+         ===================================== -->
+
+    <!-- Navegación y funciones generales del sitio -->
     <script src="script.js"></script>
+
+    <!-- Base de datos de luchadores -->
     <script src="js/wrestlers.js"></script>
+
+    <!-- Índice general de temporadas -->
+    <script src="js/eventos/temporadas.js"></script>
+
+    <!-- Sistema de navegación del archivo -->
     <script src="js/eventos.js"></script>
+
+    <!-- Sistema de detalle de los eventos -->
+    <script src="js/evento.js"></script>
 
 </body>
 </html>

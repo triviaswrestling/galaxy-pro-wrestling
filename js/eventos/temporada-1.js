@@ -20,7 +20,7 @@ window.GPW_DATOS_TEMPORADAS["temporada-1"] = {
                     {id: "bray", participantes: [{wrestlerId: "bray-wyatt", presentationId: "bray-wyatt"}]},
                     {id: "fiend", participantes: [{wrestlerId: "bray-wyatt", presentationId: "the-fiend"}]}
                 ],
-                resultado: {tipo: "victoria", ganadores: ["fiend"], metodo: "Pinfall", detalle: "The Fiend conecta el Mandible Claw y consigue la cuenta de tres."}
+                resultado: {tipo: "", ganadores: ["fiend"], metodo: "Pinfall", detalle: "The Fiend conecta el Mandible Claw y consigue la cuenta de tres."}
             },
             {
                 id: "combate-2",

@@ -140,7 +140,7 @@ function getWrestlerPresentation(reign) {
         return null;
     }
 
-    const wrestlerId = reign && reign.wrestlerId;
+    const wrestlerId = reign && reign.championId;
 
     if (!wrestlerId) {
         return null;

@@ -33,7 +33,7 @@ const wrestlers = [
                        "Triple Crown Champion"]},
 
     { id: "bray-wyatt", name: "Bray Wyatt", nickname: "The Eater of Worlds", division: "masculino",
-    status: "active", rank: 0, interpreter: "Bray Wyatt",
+    status: "active", rank: 8, interpreter: "Bray Wyatt",
     image: "imagen/bray-wyatt.webp", stable: "",
     alterego: ["the-fiend"],
     presentations: {

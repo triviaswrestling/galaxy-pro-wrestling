@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -7,24 +6,52 @@
     <meta name="theme-color" content="#090b10">
 
     <title>Estipulaciones | Galaxy Pro Wrestling</title>
-    <meta name="description" content="Descubrí las estipulaciones, modalidades y reglas de los combates de Galaxy Pro Wrestling.">
 
+    <meta
+        name="description"
+        content="Descubrí las estipulaciones, modalidades y reglas de los combates de Galaxy Pro Wrestling."
+    >
+
+    <!-- FUENTES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ICONOS -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- CSS GLOBAL Y DE LA PÁGINA -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="stipulations.css">
 </head>
 
-<body>
+<body class="stipulations-page-body">
+
+    <!-- BRILLO LATERAL GLOBAL -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
+
+    <!-- MENÚ GLOBAL: LO GENERA script.js -->
+    <header class="main-header"></header>
 
     <!-- =====================================================
          GALAXY PRO WRESTLING — CATÁLOGO DE ESTIPULACIONES
-         Sin JavaScript: las tarjetas usan details/summary.
+         Las tarjetas utilizan details/summary.
          ===================================================== -->
 
     <main class="stipulations-page">
 
         <!-- ENCABEZADO -->
         <header class="stipulations-heading">
+
             <span class="stipulations-eyebrow">
                 GALAXY PRO WRESTLING
             </span>
@@ -42,8 +69,9 @@
 
             <div class="stipulations-counter">
                 <span class="counter-dot"></span>
-                <span>36 ESTIPULACIONES</span>
+                <span>35 ESTIPULACIONES</span>
             </div>
+
         </header>
 
 
@@ -51,22 +79,31 @@
              CATÁLOGO
              ================================================= -->
 
-        <section class="stipulations-catalog" aria-label="Catálogo de estipulaciones">
+        <section
+            class="stipulations-catalog"
+            aria-label="Catálogo de estipulaciones"
+        >
 
             <!-- 01 — SINGLES -->
-            <details class="stipulation-card" style="--stip-color:#35a7ff; --stip-soft:rgba(53,167,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#35a7ff; --stip-soft:rgba(53,167,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⚔</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">01</span>
                         <span class="stipulation-name">Singles Match</span>
                         <span class="stipulation-tag">CLÁSICA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
 
                 <div class="stipulation-content">
                     <p>Un enfrentamiento individual entre dos participantes.</p>
+
                     <ul>
                         <li>El combate normal consta de <strong>5 preguntas</strong>.</li>
                         <li>Si hay un campeonato en juego, se disputan <strong>10 preguntas</strong>.</li>
@@ -76,19 +113,25 @@
 
 
             <!-- 02 — TAG TEAM -->
-            <details class="stipulation-card" style="--stip-color:#b16cff; --stip-soft:rgba(177,108,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#b16cff; --stip-soft:rgba(177,108,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♟</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">02</span>
                         <span class="stipulation-name">Tag Team Match</span>
                         <span class="stipulation-tag">2 VS 2</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
 
                 <div class="stipulation-content">
                     <p>Dos equipos de dos participantes se enfrentan entre sí.</p>
+
                     <ul>
                         <li>El combate consta de <strong>5 preguntas</strong>.</li>
                         <li>En las primeras cuatro preguntas, el árbitro asigna quién responde por cada equipo, de modo que los cuatro participantes se enfrenten entre sí una vez.</li>
@@ -100,19 +143,25 @@
 
 
             <!-- 03 — TRIPLE THREAT -->
-            <details class="stipulation-card" style="--stip-color:#ff9d38; --stip-soft:rgba(255,157,56,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff9d38; --stip-soft:rgba(255,157,56,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♨</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">03</span>
                         <span class="stipulation-name">Triple Threat</span>
                         <span class="stipulation-tag">3 PARTICIPANTES</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
 
                 <div class="stipulation-content">
                     <p>Tres participantes compiten en el mismo combate.</p>
+
                     <ul>
                         <li>El combate normal consta de <strong>7 preguntas</strong>.</li>
                         <li>Si hay un campeonato en juego, se disputan <strong>10 preguntas</strong>.</li>
@@ -122,595 +171,865 @@
 
 
             <!-- 04 — FATAL 4-WAY -->
-            <details class="stipulation-card" style="--stip-color:#ff5d70; --stip-soft:rgba(255,93,112,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff5d70; --stip-soft:rgba(255,93,112,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">✣</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">04</span>
                         <span class="stipulation-name">Fatal 4-Way</span>
                         <span class="stipulation-tag">4 PARTICIPANTES</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Cuatro participantes compiten en un mismo combate.</p>
-                    <p class="stipulation-pending">La cantidad de preguntas y las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La cantidad de preguntas y las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 05 — 2 OUT OF 3 FALLS -->
-            <details class="stipulation-card" style="--stip-color:#f2d45c; --stip-soft:rgba(242,212,92,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#f2d45c; --stip-soft:rgba(242,212,92,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">Ⅱ</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">05</span>
                         <span class="stipulation-name">2 Out of 3 Falls</span>
                         <span class="stipulation-tag">DOS DE TRES</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate disputado al mejor de tres caídas o rondas.</p>
-                    <p class="stipulation-pending">El sistema de puntuación específico de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        El sistema de puntuación específico de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 06 — 6-MAN TAG TEAM -->
-            <details class="stipulation-card" style="--stip-color:#42d6b0; --stip-soft:rgba(66,214,176,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#42d6b0; --stip-soft:rgba(66,214,176,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♟</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">06</span>
                         <span class="stipulation-name">6-Man Tag Team</span>
                         <span class="stipulation-tag">3 VS 3</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Dos equipos de tres participantes se enfrentan en un combate por equipos.</p>
-                    <p class="stipulation-pending">Los turnos, la cantidad de preguntas y las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Los turnos, la cantidad de preguntas y las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 07 — LADDER -->
-            <details class="stipulation-card" style="--stip-color:#56b5ff; --stip-soft:rgba(86,181,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#56b5ff; --stip-soft:rgba(86,181,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">↟</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">07</span>
                         <span class="stipulation-name">Ladder Match</span>
                         <span class="stipulation-tag">ESCALERA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad asociada al uso de escaleras y a un objetivo situado en altura.</p>
-                    <p class="stipulation-pending">La condición de victoria específica de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La condición de victoria específica de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 08 — TABLES -->
-            <details class="stipulation-card" style="--stip-color:#bd8b61; --stip-soft:rgba(189,139,97,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#bd8b61; --stip-soft:rgba(189,139,97,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">▤</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">08</span>
                         <span class="stipulation-name">Tables Match</span>
                         <span class="stipulation-tag">MESAS</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate con mesas como elemento central de la estipulación.</p>
-                    <p class="stipulation-pending">La condición de victoria específica de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La condición de victoria específica de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 09 — TLC -->
-            <details class="stipulation-card" style="--stip-color:#ffb84d; --stip-soft:rgba(255,184,77,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ffb84d; --stip-soft:rgba(255,184,77,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⚒</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">09</span>
                         <span class="stipulation-name">TLC Match</span>
                         <span class="stipulation-tag">TABLES · LADDERS · CHAIRS</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>TLC significa Tables, Ladders and Chairs: mesas, escaleras y sillas.</p>
-                    <p class="stipulation-pending">Las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 10 — ROYAL RUMBLE -->
-            <details class="stipulation-card" style="--stip-color:#f5d66e; --stip-soft:rgba(245,214,110,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#f5d66e; --stip-soft:rgba(245,214,110,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♛</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">10</span>
                         <span class="stipulation-name">Royal Rumble</span>
                         <span class="stipulation-tag">RUMBLE</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad multitudinaria inspirada en el Royal Rumble.</p>
-                    <p class="stipulation-pending">La cantidad de participantes, el orden y las condiciones de eliminación de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La cantidad de participantes, el orden y las condiciones de eliminación de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 11 — ELIMINATION CHAMBER -->
-            <details class="stipulation-card" style="--stip-color:#9b9bff; --stip-soft:rgba(155,155,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#9b9bff; --stip-soft:rgba(155,155,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">▦</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">11</span>
                         <span class="stipulation-name">Elimination Chamber</span>
                         <span class="stipulation-tag">CÁMARA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate inspirado en la estructura y el formato de la Elimination Chamber.</p>
-                    <p class="stipulation-pending">Los participantes, las eliminaciones y las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Los participantes, las eliminaciones y las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 12 — WARGAMES -->
-            <details class="stipulation-card" style="--stip-color:#ff6262; --stip-soft:rgba(255,98,98,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff6262; --stip-soft:rgba(255,98,98,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⚔</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">12</span>
                         <span class="stipulation-name">WarGames</span>
                         <span class="stipulation-tag">GUERRA DE EQUIPOS</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate por equipos inspirado en la modalidad WarGames.</p>
-                    <p class="stipulation-pending">La composición de los equipos y las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La composición de los equipos y las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 13 — FALLS COUNT ANYWHERE -->
-            <details class="stipulation-card" style="--stip-color:#56d6d0; --stip-soft:rgba(86,214,208,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#56d6d0; --stip-soft:rgba(86,214,208,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">◎</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">13</span>
                         <span class="stipulation-name">Falls Count Anywhere</span>
                         <span class="stipulation-tag">SIN LUGAR FIJO</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad en la que una caída puede contabilizarse fuera del ring.</p>
-                    <p class="stipulation-pending">La adaptación de esta estipulación al sistema de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La adaptación de esta estipulación al sistema de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 14 — NO HOLDS BARRED -->
-            <details class="stipulation-card" style="--stip-color:#ff7043; --stip-soft:rgba(255,112,67,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff7043; --stip-soft:rgba(255,112,67,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⛓</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">14</span>
                         <span class="stipulation-name">No Holds Barred</span>
                         <span class="stipulation-tag">SIN RESTRICCIONES HABITUALES</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad de combate con restricciones de lucha reducidas respecto de un combate convencional.</p>
-                    <p class="stipulation-pending">Las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 15 — ONLY-ONE-SHOT -->
-            <details class="stipulation-card" style="--stip-color:#ec79d2; --stip-soft:rgba(236,121,210,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ec79d2; --stip-soft:rgba(236,121,210,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">➤</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">15</span>
                         <span class="stipulation-name">Only-One-Shot</span>
                         <span class="stipulation-tag">UNA OPORTUNIDAD</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Estipulación especial identificada como Only-One-Shot.</p>
-                    <p class="stipulation-pending">La mecánica y las condiciones oficiales de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La mecánica y las condiciones oficiales de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 16 — PITCH BLACK -->
-            <details class="stipulation-card" style="--stip-color:#a5a5ff; --stip-soft:rgba(165,165,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#a5a5ff; --stip-soft:rgba(165,165,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">☾</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">16</span>
                         <span class="stipulation-name">Pitch Black</span>
                         <span class="stipulation-tag">OSCURIDAD</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Estipulación especial inspirada en el concepto Pitch Black.</p>
-                    <p class="stipulation-pending">La mecánica y las condiciones oficiales de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La mecánica y las condiciones oficiales de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 17 — STEEL CAGE -->
-            <details class="stipulation-card" style="--stip-color:#aeb8c5; --stip-soft:rgba(174,184,197,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#aeb8c5; --stip-soft:rgba(174,184,197,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">▥</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">17</span>
                         <span class="stipulation-name">Steel Cage Match</span>
                         <span class="stipulation-tag">JAULA DE ACERO</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate que se desarrolla dentro de una jaula de acero.</p>
-                    <p class="stipulation-pending">La condición de victoria específica de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La condición de victoria específica de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 18 — HELL IN A CELL -->
-            <details class="stipulation-card" style="--stip-color:#e34f67; --stip-soft:rgba(227,79,103,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#e34f67; --stip-soft:rgba(227,79,103,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">▧</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">18</span>
                         <span class="stipulation-name">Hell in a Cell</span>
                         <span class="stipulation-tag">CELDA INFERNAL</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate dentro de una estructura cerrada de gran tamaño.</p>
-                    <p class="stipulation-pending">La adaptación y las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La adaptación y las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 19 — IRON MAN -->
-            <details class="stipulation-card" style="--stip-color:#e8c96b; --stip-soft:rgba(232,201,107,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#e8c96b; --stip-soft:rgba(232,201,107,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">◷</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">19</span>
                         <span class="stipulation-name">Iron Man Match</span>
                         <span class="stipulation-tag">RESISTENCIA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad tradicionalmente basada en acumular más caídas durante un tiempo determinado.</p>
-                    <p class="stipulation-pending">La duración y el sistema de puntuación específicos de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La duración y el sistema de puntuación específicos de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 20 — MONEY IN THE BANK -->
-            <details class="stipulation-card" style="--stip-color:#64d6a0; --stip-soft:rgba(100,214,160,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#64d6a0; --stip-soft:rgba(100,214,160,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">▤</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">20</span>
                         <span class="stipulation-name">Money in the Bank Ladder</span>
                         <span class="stipulation-tag">MALETÍN</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate de escaleras inspirado en la disputa por el maletín Money in the Bank.</p>
-                    <p class="stipulation-pending">Las condiciones y el premio específico de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones y el premio específico de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
-            <!-- 21 — DEATH -->
-            <details class="stipulation-card" style="--stip-color:#ff5268; --stip-soft:rgba(255,82,104,.12);">
+            <!-- 21 — DEATH MATCH -->
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff5268; --stip-soft:rgba(255,82,104,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">☠</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">21</span>
                         <span class="stipulation-name">Death Match</span>
                         <span class="stipulation-tag">EXTREMA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Nombre utilizado para una modalidad extrema de lucha libre.</p>
-                    <p class="stipulation-pending">Las condiciones exactas de esta estipulación en GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones exactas de esta estipulación en GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 22 — EXTREME RULES -->
-            <details class="stipulation-card" style="--stip-color:#ff8b3d; --stip-soft:rgba(255,139,61,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff8b3d; --stip-soft:rgba(255,139,61,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⚡</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">22</span>
                         <span class="stipulation-name">Extreme Rules</span>
                         <span class="stipulation-tag">REGLAS EXTREMAS</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad especial asociada a combates de reglas extremas.</p>
-                    <p class="stipulation-pending">Las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 23 — STREET FIGHT -->
-            <details class="stipulation-card" style="--stip-color:#d7a16c; --stip-soft:rgba(215,161,108,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#d7a16c; --stip-soft:rgba(215,161,108,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">▰</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">23</span>
                         <span class="stipulation-name">Street Fight</span>
                         <span class="stipulation-tag">PELEA CALLEJERA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate presentado como una pelea callejera, con una ambientación y reglas especiales.</p>
-                    <p class="stipulation-pending">La adaptación al sistema de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La adaptación al sistema de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 24 — BATTLE ROYAL -->
-            <details class="stipulation-card" style="--stip-color:#51c8ff; --stip-soft:rgba(81,200,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#51c8ff; --stip-soft:rgba(81,200,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">✹</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">24</span>
                         <span class="stipulation-name">Battle Royal</span>
                         <span class="stipulation-tag">MULTIPARTICIPANTE</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate en el que participan varias personas simultáneamente.</p>
-                    <p class="stipulation-pending">La cantidad de participantes y las condiciones de eliminación de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La cantidad de participantes y las condiciones de eliminación de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 25 — ANDRE THE GIANT MEMORIAL -->
-            <details class="stipulation-card" style="--stip-color:#f2cf62; --stip-soft:rgba(242,207,98,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#f2cf62; --stip-soft:rgba(242,207,98,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♜</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">25</span>
                         <span class="stipulation-name">Andre the Giant Memorial Battle Royal</span>
                         <span class="stipulation-tag">MEMORIAL</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Battle Royal inspirada en la Andre the Giant Memorial Battle Royal.</p>
-                    <p class="stipulation-pending">El formato y las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        El formato y las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 26 — STRAP -->
-            <details class="stipulation-card" style="--stip-color:#bb8bff; --stip-soft:rgba(187,139,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#bb8bff; --stip-soft:rgba(187,139,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">〰</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">26</span>
                         <span class="stipulation-name">Strap Match</span>
                         <span class="stipulation-tag">CORREA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad de combate que utiliza una correa como elemento característico.</p>
-                    <p class="stipulation-pending">La condición de victoria específica de GPW queda pendiente de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La condición de victoria específica de GPW queda pendiente de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 27 — UNSANCTIONED -->
-            <details class="stipulation-card" style="--stip-color:#ff687f; --stip-soft:rgba(255,104,127,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff687f; --stip-soft:rgba(255,104,127,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">✕</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">27</span>
                         <span class="stipulation-name">Unsanctioned Match</span>
                         <span class="stipulation-tag">NO SANCIONADA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate presentado como no sancionado oficialmente dentro de su historia o contexto.</p>
-                    <p class="stipulation-pending">Las condiciones específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 28 — HANDICAP -->
-            <details class="stipulation-card" style="--stip-color:#68d3c1; --stip-soft:rgba(104,211,193,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#68d3c1; --stip-soft:rgba(104,211,193,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⅟</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">28</span>
                         <span class="stipulation-name">Handicap Match</span>
                         <span class="stipulation-tag">DESVENTAJA NUMÉRICA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate en el que un lado tiene más participantes que el otro.</p>
-                    <p class="stipulation-pending">La cantidad de participantes y las reglas específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La cantidad de participantes y las reglas específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 29 — ELIMINATION CHAMBER QUALIFYING -->
-            <details class="stipulation-card" style="--stip-color:#8e9cff; --stip-soft:rgba(142,156,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#8e9cff; --stip-soft:rgba(142,156,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⌑</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">29</span>
                         <span class="stipulation-name">Elimination Chamber Qualifying</span>
                         <span class="stipulation-tag">CLASIFICATORIO</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate clasificatorio relacionado con una participación en Elimination Chamber.</p>
-                    <p class="stipulation-pending">El formato y los criterios de clasificación de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        El formato y los criterios de clasificación de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 30 — THREE STAGES OF HELL -->
-            <details class="stipulation-card" style="--stip-color:#ff783e; --stip-soft:rgba(255,120,62,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff783e; --stip-soft:rgba(255,120,62,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">Ⅲ</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">30</span>
                         <span class="stipulation-name">Three Stages of Hell</span>
                         <span class="stipulation-tag">TRES ETAPAS</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate especial compuesto tradicionalmente por tres etapas con condiciones diferentes.</p>
-                    <p class="stipulation-pending">Las etapas y las reglas específicas de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las etapas y las reglas específicas de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 31 — TRIBAL COMBAT -->
-            <details class="stipulation-card" style="--stip-color:#e5b76e; --stip-soft:rgba(229,183,110,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#e5b76e; --stip-soft:rgba(229,183,110,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♜</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">31</span>
                         <span class="stipulation-name">Tribal Combat</span>
                         <span class="stipulation-tag">COMBATE TRIBAL</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Modalidad especial inspirada en Tribal Combat.</p>
-                    <p class="stipulation-pending">Las condiciones oficiales de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        Las condiciones oficiales de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 32 — SAMOAN TAG TEAM -->
-            <details class="stipulation-card" style="--stip-color:#ff7666; --stip-soft:rgba(255,118,102,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#ff7666; --stip-soft:rgba(255,118,102,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">♟</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">32</span>
                         <span class="stipulation-name">Samoan Tag Team</span>
                         <span class="stipulation-tag">EQUIPOS</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Estipulación por equipos identificada como Samoan Tag Team.</p>
-                    <p class="stipulation-pending">La composición, los turnos y las condiciones oficiales de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La composición, los turnos y las condiciones oficiales de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 33 — UNDISPUTED ERA RULES -->
-            <details class="stipulation-card" style="--stip-color:#42c6a5; --stip-soft:rgba(66,198,165,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#42c6a5; --stip-soft:rgba(66,198,165,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">⛓</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">33</span>
                         <span class="stipulation-name">Undisputed Era Rules</span>
                         <span class="stipulation-tag">REGLAS ESPECIALES</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Estipulación especial identificada como Undisputed Era Rules.</p>
-                    <p class="stipulation-pending">La mecánica y las condiciones oficiales de GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La mecánica y las condiciones oficiales de GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 34 — MASK VS HAIR -->
-            <details class="stipulation-card" style="--stip-color:#e5c56a; --stip-soft:rgba(229,197,106,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#e5c56a; --stip-soft:rgba(229,197,106,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">🎭</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">34</span>
                         <span class="stipulation-name">Mask vs Hair</span>
                         <span class="stipulation-tag">MÁSCARA VS CABELLO</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate en el que se pone en juego la máscara de un luchador frente al cabello de su rival.</p>
-                    <p class="stipulation-pending">La condición y el resultado que se aplicarán en GPW quedan pendientes de definir.</p>
+
+                    <p class="stipulation-pending">
+                        La condición y el resultado que se aplicarán en GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
 
             <!-- 35 — MASK VS MASK -->
-            <details class="stipulation-card" style="--stip-color:#b58aff; --stip-soft:rgba(181,138,255,.12);">
+            <details
+                class="stipulation-card"
+                style="--stip-color:#b58aff; --stip-soft:rgba(181,138,255,.12);"
+            >
                 <summary>
                     <span class="stipulation-icon">🎭</span>
+
                     <span class="stipulation-heading">
                         <span class="stipulation-number">35</span>
                         <span class="stipulation-name">Mask vs Mask</span>
                         <span class="stipulation-tag">MÁSCARA VS MÁSCARA</span>
                     </span>
+
                     <span class="stipulation-toggle"></span>
                 </summary>
+
                 <div class="stipulation-content">
                     <p>Combate en el que ambos luchadores ponen sus máscaras en juego.</p>
-                    <p class="stipulation-pending">La condición y el resultado que se aplicarán en GPW quedan pendientes de definir.</p>
-                </div>
-            </details>
 
-
-            <!-- 36 — STIPULACIÓN ESPECIAL -->
-            <details class="stipulation-card" style="--stip-color:#f0f0f0; --stip-soft:rgba(240,240,240,.09);">
-                <summary>
-                    <span class="stipulation-icon">✦</span>
-                    <span class="stipulation-heading">
-                        <span class="stipulation-number">36</span>
-                        <span class="stipulation-name">Stipulation Special</span>
-                        <span class="stipulation-tag">ESPECIAL</span>
-                    </span>
-                    <span class="stipulation-toggle"></span>
-                </summary>
-                <div class="stipulation-content">
-                    <p>Espacio reservado para una estipulación especial que no encaje en las modalidades habituales.</p>
-                    <p class="stipulation-pending">Su nombre definitivo y sus reglas oficiales quedan pendientes de definir.</p>
+                    <p class="stipulation-pending">
+                        La condición y el resultado que se aplicarán en GPW quedan pendientes de definir.
+                    </p>
                 </div>
             </details>
 
@@ -722,9 +1041,12 @@
              ================================================= -->
 
         <section class="stipulations-note">
+
             <span class="stipulations-note-icon">ⓘ</span>
+
             <div>
                 <h2>Sobre las reglas</h2>
+
                 <p>
                     Las reglas de Singles, Tag Team y Triple Threat reflejan las
                     condiciones indicadas para GPW. Las demás tarjetas describen
@@ -732,6 +1054,7 @@
                     cuando se establezcan oficialmente.
                 </p>
             </div>
+
         </section>
 
 
@@ -740,7 +1063,10 @@
              ================================================= -->
 
         <section class="stipulations-join">
-            <span class="join-eyebrow">TU HISTORIA EMPIEZA ACÁ</span>
+
+            <span class="join-eyebrow">
+                TU HISTORIA EMPIEZA ACÁ
+            </span>
 
             <h2>¿TENÉS LO NECESARIO?</h2>
 
@@ -754,11 +1080,16 @@
                 <span class="join-arrow" aria-hidden="true">↗</span>
             </a>
 
-            <span class="join-footnote">GALAXY PRO WRESTLING · YOUR LEGACY STARTS HERE</span>
+            <span class="join-footnote">
+                GALAXY PRO WRESTLING · YOUR LEGACY STARTS HERE
+            </span>
+
         </section>
 
     </main>
 
+    <!-- MENÚ GLOBAL -->
+    <script src="script.js"></script>
+
 </body>
 </html>
-

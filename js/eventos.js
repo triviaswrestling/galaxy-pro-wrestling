@@ -1,215 +1,383 @@
 
 /* =========================================
    GALAXY PRO WRESTLING
-   SISTEMA DE ARCHIVO DE EVENTOS
+   ARCHIVO DE EVENTOS — NAVEGACIÓN
    ========================================= */
 
-document.addEventListener("DOMContentLoaded", () => {
+(() => {
     "use strict";
 
-    const temporadasView = document.getElementById("temporadas-view");
-    const eventosView = document.getElementById("eventos-view");
-    const detalleView = document.getElementById("evento-detalle-view");
+    const cargarArchivos = new Map();
+    let temporadaActual = null;
+    let eventosActuales = [];
 
-    const temporadasGrid = document.getElementById("temporadas-grid");
-    const eventosGrid = document.getElementById("eventos-grid");
-    const detalleContenedor = document.getElementById("evento-detalle");
+    document.addEventListener("DOMContentLoaded", iniciar);
 
-    const volverTemporadas = document.getElementById("volver-temporadas");
-    const volverEventos = document.getElementById("volver-eventos");
+    function iniciar() {
+        const ids = [
+            "temporadas-view",
+            "eventos-view",
+            "evento-detalle-view",
+            "temporadas-grid",
+            "eventos-grid",
+            "evento-detalle",
+            "temporada-titulo",
+            "temporada-descripcion",
+            "volver-temporadas",
+            "volver-eventos"
+        ];
 
-    /*
-     * CATÁLOGO INICIAL
-     * Acá conectaremos las temporadas y los eventos reales de GPW.
-     * No agregamos temporadas ficticias ni resultados inventados.
-     */
-    const temporadas = [];
+        const elementos = {};
 
-    function mostrarVista(vistaActiva) {
-        temporadasView.hidden = vistaActiva !== "temporadas";
-        eventosView.hidden = vistaActiva !== "eventos";
-        detalleView.hidden = vistaActiva !== "detalle";
+        for (const id of ids) {
+            elementos[id] = document.getElementById(id);
 
-        window.scrollTo({
-            top: 0,
-            behavior: "auto"
-        });
-    }
-
-    function mostrarEstado(contenedor, mensaje, clase = "eventos-empty") {
-        contenedor.replaceChildren();
-
-        const texto = document.createElement("p");
-        texto.className = clase;
-        texto.textContent = mensaje;
-
-        contenedor.appendChild(texto);
-    }
-
-    function renderizarTemporadas() {
-        temporadasGrid.replaceChildren();
-
-        if (temporadas.length === 0) {
-            mostrarEstado(
-                temporadasGrid,
-                "EL ARCHIVO DE TEMPORADAS SE ESTÁ PREPARANDO."
-            );
-            return;
+            if (!elementos[id]) {
+                console.error(
+                    `[GPW Eventos] No se encontró el elemento #${id}.`
+                );
+                return;
+            }
         }
 
-        temporadas.forEach((temporada) => {
+        const {
+            "temporadas-view": vistaTemporadas,
+            "eventos-view": vistaEventos,
+            "evento-detalle-view": vistaDetalle,
+            "temporadas-grid": gridTemporadas,
+            "eventos-grid": gridEventos,
+            "evento-detalle": contenedorDetalle,
+            "temporada-titulo": tituloTemporada,
+            "temporada-descripcion": descripcionTemporada,
+            "volver-temporadas": botonVolverTemporadas,
+            "volver-eventos": botonVolverEventos
+        } = elementos;
+
+        function mostrarVista(nombre) {
+            vistaTemporadas.hidden = nombre !== "temporadas";
+            vistaEventos.hidden = nombre !== "eventos";
+            vistaDetalle.hidden = nombre !== "detalle";
+
+            window.scrollTo(0, 0);
+        }
+
+        function mostrarMensaje(contenedor, mensaje, clase) {
+            contenedor.replaceChildren();
+
+            const texto = document.createElement("p");
+            texto.className = clase || "eventos-empty";
+            texto.textContent = mensaje;
+
+            contenedor.appendChild(texto);
+        }
+
+        function crearImagen(ruta, clase, descripcion) {
+            if (!ruta) return null;
+
+            const imagen = document.createElement("img");
+            imagen.className = clase;
+            imagen.src = ruta;
+            imagen.alt = descripcion || "";
+            imagen.loading = "lazy";
+            imagen.decoding = "async";
+
+            imagen.addEventListener("error", () => {
+                imagen.remove();
+            }, { once: true });
+
+            return imagen;
+        }
+
+        function crearTarjeta({
+            clase,
+            titulo,
+            descripcion,
+            imagen,
+            claseImagen,
+            alAbrir
+        }) {
             const tarjeta = document.createElement("article");
-            tarjeta.className = "temporada-card";
-
-            const informacion = document.createElement("div");
-            informacion.className = "temporada-card-info";
-
-            const titulo = document.createElement("h3");
-            titulo.textContent = temporada.nombre;
-
-            const descripcion = document.createElement("p");
-            descripcion.textContent = temporada.descripcion || "";
-
-            informacion.append(titulo, descripcion);
-            tarjeta.appendChild(informacion);
-
+            tarjeta.className = clase;
             tarjeta.tabIndex = 0;
             tarjeta.setAttribute("role", "button");
+
             tarjeta.setAttribute(
                 "aria-label",
-                `Abrir ${temporada.nombre}`
+                `Abrir ${titulo}`
             );
 
-            const abrir = () => renderizarEventos(temporada);
+            const img = crearImagen(
+                imagen,
+                claseImagen,
+                titulo
+            );
 
-            tarjeta.addEventListener("click", abrir);
+            if (img) {
+                tarjeta.appendChild(img);
+            }
+
+            const informacion = document.createElement("div");
+
+            informacion.className =
+                clase === "temporada-card"
+                    ? "temporada-card-info"
+                    : "evento-card-info";
+
+            const encabezado = document.createElement("h3");
+            encabezado.textContent = titulo;
+            informacion.appendChild(encabezado);
+
+            if (descripcion) {
+                const texto = document.createElement("p");
+                texto.textContent = descripcion;
+                informacion.appendChild(texto);
+            }
+
+            tarjeta.appendChild(informacion);
+
+            tarjeta.addEventListener("click", alAbrir);
+
             tarjeta.addEventListener("keydown", (evento) => {
-                if (evento.key === "Enter" || evento.key === " ") {
+                if (
+                    evento.key === "Enter" ||
+                    evento.key === " "
+                ) {
                     evento.preventDefault();
-                    abrir();
+                    alAbrir();
                 }
             });
 
-            temporadasGrid.appendChild(tarjeta);
-        });
-    }
+            return tarjeta;
+        }
 
-    function renderizarEventos(temporada) {
-        document.getElementById("temporada-titulo").textContent =
-            temporada.nombre;
+        function obtenerTemporadas() {
+            const catalogo = window.GPW_TEMPORADAS;
 
-        document.getElementById("temporada-descripcion").textContent =
-            temporada.descripcion || "";
+            if (!Array.isArray(catalogo)) {
+                throw new Error(
+                    "No se encontró el índice GPW_TEMPORADAS."
+                );
+            }
 
-        eventosGrid.replaceChildren();
+            return catalogo;
+        }
 
-        if (!temporada.eventos || temporada.eventos.length === 0) {
-            mostrarEstado(
-                eventosGrid,
-                "TODAVÍA NO HAY EVENTOS CARGADOS EN ESTA TEMPORADA."
-            );
-        } else {
-            const eventosOrdenados = [...temporada.eventos].sort(
-                (a, b) => new Date(b.fecha) - new Date(a.fecha)
-            );
+        function renderizarTemporadas() {
+            let temporadas;
 
-            eventosOrdenados.forEach((evento) => {
-                const tarjeta = document.createElement("article");
-                tarjeta.className = "evento-card";
+            try {
+                temporadas = obtenerTemporadas();
+            } catch (error) {
+                console.error(error);
 
-                const informacion = document.createElement("div");
-                informacion.className = "evento-card-info";
+                mostrarMensaje(
+                    gridTemporadas,
+                    "NO SE PUDO CARGAR EL CATÁLOGO DE TEMPORADAS.",
+                    "eventos-error"
+                );
+                return;
+            }
 
-                const titulo = document.createElement("h3");
-                titulo.textContent = evento.nombre;
+            gridTemporadas.replaceChildren();
 
-                const fecha = document.createElement("p");
-                fecha.textContent = evento.fecha || "Fecha por confirmar";
+            if (temporadas.length === 0) {
+                mostrarMensaje(
+                    gridTemporadas,
+                    "TODAVÍA NO HAY TEMPORADAS CARGADAS.",
+                    "eventos-empty"
+                );
+                return;
+            }
 
-                informacion.append(titulo, fecha);
-                tarjeta.appendChild(informacion);
-
-                tarjeta.tabIndex = 0;
-                tarjeta.setAttribute("role", "button");
-
-                const abrir = () => renderizarDetalle(evento);
-
-                tarjeta.addEventListener("click", abrir);
-                tarjeta.addEventListener("keydown", (tecla) => {
-                    if (tecla.key === "Enter" || tecla.key === " ") {
-                        tecla.preventDefault();
-                        abrir();
-                    }
+            temporadas.forEach((temporada) => {
+                const tarjeta = crearTarjeta({
+                    clase: "temporada-card",
+                    titulo: temporada.nombre,
+                    descripcion: temporada.descripcion,
+                    imagen: temporada.imagen,
+                    claseImagen: "temporada-card-image",
+                    alAbrir: () => abrirTemporada(temporada)
                 });
 
-                eventosGrid.appendChild(tarjeta);
+                gridTemporadas.appendChild(tarjeta);
             });
         }
 
-        mostrarVista("eventos");
-    }
+        function cargarArchivoTemporada(temporada) {
+            if (!temporada.archivo) {
+                return Promise.reject(
+                    new Error(
+                        `La temporada "${temporada.nombre}" no tiene archivo asignado.`
+                    )
+                );
+            }
 
-    function renderizarDetalle(evento) {
-        detalleContenedor.replaceChildren();
+            const ruta = temporada.archivo;
 
-        const encabezado = document.createElement("header");
-        encabezado.className = "evento-detalle-header";
+            if (cargarArchivos.has(ruta)) {
+                return cargarArchivos.get(ruta);
+            }
 
-        const titulo = document.createElement("h1");
-        titulo.textContent = evento.nombre;
+            const promesa = new Promise((resolve, reject) => {
+                const script = document.createElement("script");
 
-        const fecha = document.createElement("p");
-        fecha.textContent = evento.fecha || "Fecha por confirmar";
+                script.src = ruta;
+                script.async = true;
 
-        encabezado.append(titulo, fecha);
-        detalleContenedor.appendChild(encabezado);
+                script.onload = () => resolve();
+                script.onerror = () => {
+                    reject(
+                        new Error(`No se pudo cargar ${ruta}.`)
+                    );
+                };
 
-        const combates = document.createElement("section");
-        combates.className = "evento-combates";
+                document.head.appendChild(script);
+            });
 
-        const tituloCombates = document.createElement("h2");
-        tituloCombates.textContent = "CARTELERA Y RESULTADOS";
-        combates.appendChild(tituloCombates);
+            cargarArchivos.set(ruta, promesa);
 
-        if (!evento.combates || evento.combates.length === 0) {
-            mostrarEstado(
-                combates,
-                "LOS COMBATES DE ESTE EVENTO TODAVÍA NO ESTÁN CARGADOS."
+            promesa.catch(() => {
+                cargarArchivos.delete(ruta);
+            });
+
+            return promesa;
+        }
+
+        async function abrirTemporada(temporada) {
+            temporadaActual = temporada;
+
+            tituloTemporada.textContent = temporada.nombre;
+            descripcionTemporada.textContent =
+                temporada.descripcion || "";
+
+            mostrarVista("eventos");
+
+            mostrarMensaje(
+                gridEventos,
+                "CARGANDO EVENTOS...",
+                "eventos-loading"
             );
-        } else {
-            evento.combates.forEach((combate) => {
-                const tarjeta = document.createElement("article");
-                tarjeta.className = "evento-combate";
 
-                const participantes = document.createElement("p");
-                participantes.textContent =
-                    combate.participantes || "Participantes por confirmar";
+            try {
+                await cargarArchivoTemporada(temporada);
 
-                tarjeta.appendChild(participantes);
+                const datos =
+                    window.GPW_DATOS_TEMPORADAS &&
+                    window.GPW_DATOS_TEMPORADAS[temporada.id];
 
-                if (combate.resultado) {
-                    const resultado = document.createElement("p");
-                    resultado.className = "evento-resultado";
-                    resultado.textContent = combate.resultado;
-                    tarjeta.appendChild(resultado);
+                if (!datos || !Array.isArray(datos.eventos)) {
+                    throw new Error(
+                        `No se encontraron los eventos de ${temporada.nombre}.`
+                    );
                 }
 
-                combates.appendChild(tarjeta);
+                eventosActuales = [...datos.eventos];
+
+                eventosActuales.sort((a, b) => {
+                    const fechaA = Date.parse(a.fecha);
+                    const fechaB = Date.parse(b.fecha);
+
+                    const validaA = Number.isFinite(fechaA);
+                    const validaB = Number.isFinite(fechaB);
+
+                    if (!validaA && !validaB) return 0;
+                    if (!validaA) return 1;
+                    if (!validaB) return -1;
+
+                    return fechaB - fechaA;
+                });
+
+                renderizarEventos();
+            } catch (error) {
+                console.error("[GPW Eventos]", error);
+
+                mostrarMensaje(
+                    gridEventos,
+                    "NO SE PUDIERON CARGAR LOS EVENTOS. REVISÁ EL ARCHIVO DE ESTA TEMPORADA.",
+                    "eventos-error"
+                );
+            }
+        }
+
+        function renderizarEventos() {
+            gridEventos.replaceChildren();
+
+            if (eventosActuales.length === 0) {
+                mostrarMensaje(
+                    gridEventos,
+                    "ESTA TEMPORADA TODAVÍA NO TIENE EVENTOS.",
+                    "eventos-empty"
+                );
+                return;
+            }
+
+            eventosActuales.forEach((evento) => {
+                const tarjeta = crearTarjeta({
+                    clase: "evento-card",
+                    titulo: evento.nombre,
+                    descripcion: evento.fecha || "Fecha por confirmar",
+                    imagen: evento.poster,
+                    claseImagen: "evento-card-poster",
+                    alAbrir: () => abrirDetalle(evento)
+                });
+
+                gridEventos.appendChild(tarjeta);
             });
         }
 
-        detalleContenedor.appendChild(combates);
-        mostrarVista("detalle");
-    }
+        function abrirDetalle(evento) {
+            const renderizarDetalle =
+                window.GPW_RENDERIZAR_DETALLE;
 
-    volverTemporadas.addEventListener("click", () => {
+            if (typeof renderizarDetalle !== "function") {
+                console.error(
+                    "[GPW Eventos] Falta cargar js/evento.js."
+                );
+
+                mostrarMensaje(
+                    contenedorDetalle,
+                    "EL SISTEMA DE DETALLE TODAVÍA NO ESTÁ DISPONIBLE.",
+                    "eventos-error"
+                );
+
+                mostrarVista("detalle");
+                return;
+            }
+
+            try {
+                renderizarDetalle(evento, contenedorDetalle);
+                mostrarVista("detalle");
+            } catch (error) {
+                console.error(
+                    "[GPW Eventos] Error al mostrar el evento:",
+                    error
+                );
+
+                mostrarMensaje(
+                    contenedorDetalle,
+                    "NO SE PUDO MOSTRAR ESTE EVENTO.",
+                    "eventos-error"
+                );
+
+                mostrarVista("detalle");
+            }
+        }
+
+        botonVolverTemporadas.addEventListener("click", () => {
+            temporadaActual = null;
+            eventosActuales = [];
+            mostrarVista("temporadas");
+        });
+
+        botonVolverEventos.addEventListener("click", () => {
+            if (temporadaActual) {
+                mostrarVista("eventos");
+            } else {
+                mostrarVista("temporadas");
+            }
+        });
+
+        renderizarTemporadas();
         mostrarVista("temporadas");
-    });
-
-    volverEventos.addEventListener("click", () => {
-        mostrarVista("eventos");
-    });
-
-    renderizarTemporadas();
-    mostrarVista("temporadas");
-});
+    }
+})();

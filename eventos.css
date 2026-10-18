@@ -1161,12 +1161,10 @@ ACCESIBILIDAD Y RENDIMIENTO
 
 
 
-/* EVENTOS — TÍTULOS COMPACTOS EN MOBILE */
+/* CATÁLOGO DE EVENTOS — TÍTULOS MÁS PEQUEÑOS EN MOBILE */
 @media (max-width: 767px) {
-    .evento-card-info h1 {
-        font-size: 0.45rem;
-        line-height: 1.25;
-        font-weight: 900;
-        overflow-wrap: anywhere;
+    .evento-card-info h2 {
+        font-size: 0.55rem !important;
+        line-height: 1.2;
     }
 }

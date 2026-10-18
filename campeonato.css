@@ -1297,3 +1297,146 @@
         font-size: .64rem;
     }
    }
+
+
+/* =====================================================
+   GPW — DISEÑO ESPECIAL PARA LAS FECHAS DE LOS REINADOS
+   ===================================================== */
+
+.championship-page .championship-reign-dates,
+.championship-page .reign-dates,
+.championship-page .championship-reign-meta,
+.championship-page .reign-meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    margin-top: 7px;
+}
+
+.championship-page .championship-date-badge,
+.championship-page .reign-date-badge,
+.championship-page .championship-reign-date,
+.championship-page .reign-date,
+.championship-page .date-start,
+.championship-page .date-end,
+.championship-page .championship-date-start,
+.championship-page .championship-date-end,
+.championship-page .reign-date-start,
+.championship-page .reign-date-end {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 7px 8px;
+    overflow: hidden;
+    color: #f1f5fb;
+    background: linear-gradient(135deg, #171e2a, #0c111a);
+    border: 1px solid #354254;
+    border-radius: 5px;
+    font-size: .7rem;
+    font-weight: 800;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+/* Etiqueta pequeña sobre la fecha */
+.championship-page .championship-date-badge::before,
+.championship-page .reign-date-badge::before,
+.championship-page .championship-reign-date::before,
+.championship-page .reign-date::before,
+.championship-page .date-start::before,
+.championship-page .date-end::before,
+.championship-page .championship-date-start::before,
+.championship-page .championship-date-end::before,
+.championship-page .reign-date-start::before,
+.championship-page .reign-date-end::before {
+    display: block;
+    color: #9baabe;
+    font-size: .53rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    line-height: 1.2;
+}
+
+/* Inicio: acento cian */
+.championship-page .championship-date-start,
+.championship-page .reign-date-start,
+.championship-page .date-start {
+    border-color: rgba(0, 200, 255, .45);
+    border-left: 3px solid #00c8ff;
+}
+
+.championship-page .championship-date-start::before,
+.championship-page .reign-date-start::before,
+.championship-page .date-start::before {
+    content: "INICIO";
+    color: #00c8ff;
+}
+
+/* Finalización: acento violeta */
+.championship-page .championship-date-end,
+.championship-page .reign-date-end,
+.championship-page .date-end {
+    border-color: rgba(168, 85, 247, .45);
+    border-left: 3px solid #a855f7;
+}
+
+.championship-page .championship-date-end::before,
+.championship-page .reign-date-end::before,
+.championship-page .date-end::before {
+    content: "FINALIZACIÓN";
+    color: #c89aff;
+}
+
+/* Reinados actuales: fecha final todavía en curso */
+.championship-page .championship-reign.is-current .championship-date-end,
+.championship-page .championship-reign.is-current .reign-date-end,
+.championship-page .championship-reign.is-current .date-end,
+.championship-page .championship-reign-card.is-current .championship-date-end,
+.championship-page .reign-card.is-current .date-end {
+    border-color: rgba(53, 212, 154, .45);
+    border-left-color: #35d49a;
+}
+
+.championship-page .championship-reign.is-current .championship-date-end::before,
+.championship-page .championship-reign.is-current .reign-date-end::before,
+.championship-page .championship-reign.is-current .date-end::before,
+.championship-page .championship-reign-card.is-current .championship-date-end::before,
+.championship-page .reign-card.is-current .date-end::before {
+    content: "HASTA HOY";
+    color: #35d49a;
+}
+
+/* Celulares */
+@media (max-width: 600px) {
+    .championship-page .championship-reign-dates,
+    .championship-page .reign-dates,
+    .championship-page .championship-reign-meta,
+    .championship-page .reign-meta {
+        gap: 4px;
+        margin-top: 5px;
+    }
+
+    .championship-page .championship-date-badge,
+    .championship-page .reign-date-badge,
+    .championship-page .championship-reign-date,
+    .championship-page .reign-date,
+    .championship-page .date-start,
+    .championship-page .date-end,
+    .championship-page .championship-date-start,
+    .championship-page .championship-date-end,
+    .championship-page .reign-date-start,
+    .championship-page .reign-date-end {
+        min-height: 43px;
+        padding: 6px;
+        font-size: .63rem;
+    }
+}
+

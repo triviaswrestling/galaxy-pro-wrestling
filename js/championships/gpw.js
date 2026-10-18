@@ -22,11 +22,11 @@
     global.GPWChampionshipData = {
 
         id: "gpw",
-        name: "GPW Championship",
-        category: "world",
+        name: "Galaxy Pro Championship",
+        category: "maximo",
 
-        status: "vacant",
-        currentChampionId: null,
+        status: "active",
+        currentChampionId: "bray-wtatt",
         vacantSince: "2026-10-11",
 
         established: "2022-01-01",

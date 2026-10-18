@@ -22,7 +22,7 @@ const wrestlers = [
         ]
     },
 
-    {name: "Velveteen Dream", nickname: "The American Nightmare", division: "masculino",
+    {name: "El Unico Velveteen Dream", nickname: "The American Nightmare", division: "masculino",
         status: "active", rank: 3,  interpreter: "Manu HPS 🇩🇴",
         image: "imagen/gpw_logo_original.webp",
         themeSong: "Kingdom - Downstait", finisher: "Cross Rhodes",

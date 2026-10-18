@@ -7,7 +7,7 @@ window.GPW_DATOS_TEMPORADAS["temporada-1"] = {
         id: "t1-galaxymania",
         nombre: "GALAXYMANIA",
         fecha: "2026-12-20",
-        poster: "images/eventos/gpw_cody_rhodes.webp",
+        poster: "imagen/gpw_cody_rhodes.webp",
         descripcion: "Una noche. Todas las versiones. Solo un Bray Wyatt puede dominar GPW.",
         sagaId: "el-legado-wyatt",
         combates: [

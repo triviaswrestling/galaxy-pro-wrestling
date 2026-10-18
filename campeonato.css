@@ -1299,144 +1299,83 @@
    }
 
 
-/* =====================================================
-   GPW — DISEÑO ESPECIAL PARA LAS FECHAS DE LOS REINADOS
-   ===================================================== */
+/* GPW — PLACAS DE FECHAS DE CADA REINADO */
 
-.championship-page .championship-reign-dates,
-.championship-page .reign-dates,
-.championship-page .championship-reign-meta,
-.championship-page .reign-meta {
+.championship-page .championship-reign-dates {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
     width: 100%;
-    margin-top: 7px;
+    margin-top: 8px;
 }
 
-.championship-page .championship-date-badge,
-.championship-page .reign-date-badge,
-.championship-page .championship-reign-date,
-.championship-page .reign-date,
-.championship-page .date-start,
-.championship-page .date-end,
-.championship-page .championship-date-start,
-.championship-page .championship-date-end,
-.championship-page .reign-date-start,
-.championship-page .reign-date-end {
-    position: relative;
+.championship-page .championship-date-box {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
     justify-content: center;
-    gap: 4px;
-    width: 100%;
+    gap: 5px;
     min-width: 0;
-    min-height: 48px;
-    padding: 7px 8px;
-    overflow: hidden;
-    color: #f1f5fb;
-    background: linear-gradient(135deg, #171e2a, #0c111a);
-    border: 1px solid #354254;
+    min-height: 51px;
+    padding: 7px 9px;
+    background: linear-gradient(145deg, #171e29, #0b1018);
+    border: 1px solid #344154;
     border-radius: 5px;
-    font-size: .7rem;
-    font-weight: 800;
-    line-height: 1.3;
-    font-variant-numeric: tabular-nums;
     overflow-wrap: anywhere;
 }
 
-/* Etiqueta pequeña sobre la fecha */
-.championship-page .championship-date-badge::before,
-.championship-page .reign-date-badge::before,
-.championship-page .championship-reign-date::before,
-.championship-page .reign-date::before,
-.championship-page .date-start::before,
-.championship-page .date-end::before,
-.championship-page .championship-date-start::before,
-.championship-page .championship-date-end::before,
-.championship-page .reign-date-start::before,
-.championship-page .reign-date-end::before {
-    display: block;
-    color: #9baabe;
-    font-size: .53rem;
-    font-weight: 900;
-    letter-spacing: 1px;
-    line-height: 1.2;
-}
-
-/* Inicio: acento cian */
-.championship-page .championship-date-start,
-.championship-page .reign-date-start,
-.championship-page .date-start {
-    border-color: rgba(0, 200, 255, .45);
+.championship-page .championship-date-start {
     border-left: 3px solid #00c8ff;
 }
 
-.championship-page .championship-date-start::before,
-.championship-page .reign-date-start::before,
-.championship-page .date-start::before {
-    content: "INICIO";
-    color: #00c8ff;
-}
-
-/* Finalización: acento violeta */
-.championship-page .championship-date-end,
-.championship-page .reign-date-end,
-.championship-page .date-end {
-    border-color: rgba(168, 85, 247, .45);
+.championship-page .championship-date-end {
     border-left: 3px solid #a855f7;
 }
 
-.championship-page .championship-date-end::before,
-.championship-page .reign-date-end::before,
-.championship-page .date-end::before {
-    content: "FINALIZACIÓN";
+.championship-page .championship-date-label {
+    color: #9eacbf;
+    font-size: .58rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.championship-page .championship-date-start .championship-date-label {
+    color: #00c8ff;
+}
+
+.championship-page .championship-date-end .championship-date-label {
     color: #c89aff;
 }
 
-/* Reinados actuales: fecha final todavía en curso */
-.championship-page .championship-reign.is-current .championship-date-end,
-.championship-page .championship-reign.is-current .reign-date-end,
-.championship-page .championship-reign.is-current .date-end,
-.championship-page .championship-reign-card.is-current .championship-date-end,
-.championship-page .reign-card.is-current .date-end {
-    border-color: rgba(53, 212, 154, .45);
-    border-left-color: #35d49a;
+.championship-page .championship-date-box strong {
+    color: #f4f6fb;
+    font-size: .76rem;
+    font-weight: 900;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
 }
 
-.championship-page .championship-reign.is-current .championship-date-end::before,
-.championship-page .championship-reign.is-current .reign-date-end::before,
-.championship-page .championship-reign.is-current .date-end::before,
-.championship-page .championship-reign-card.is-current .championship-date-end::before,
-.championship-page .reign-card.is-current .date-end::before {
-    content: "HASTA HOY";
-    color: #35d49a;
+.championship-page .championship-date-end:has(.championship-date-label) {
+    border-top-color: #344154;
 }
 
-/* Celulares */
 @media (max-width: 600px) {
-    .championship-page .championship-reign-dates,
-    .championship-page .reign-dates,
-    .championship-page .championship-reign-meta,
-    .championship-page .reign-meta {
+    .championship-page .championship-reign-dates {
         gap: 4px;
-        margin-top: 5px;
+        margin-top: 6px;
     }
 
-    .championship-page .championship-date-badge,
-    .championship-page .reign-date-badge,
-    .championship-page .championship-reign-date,
-    .championship-page .reign-date,
-    .championship-page .date-start,
-    .championship-page .date-end,
-    .championship-page .championship-date-start,
-    .championship-page .championship-date-end,
-    .championship-page .reign-date-start,
-    .championship-page .reign-date-end {
-        min-height: 43px;
+    .championship-page .championship-date-box {
+        min-height: 45px;
         padding: 6px;
-        font-size: .63rem;
+        gap: 4px;
+    }
+
+    .championship-page .championship-date-label {
+        font-size: .51rem;
+        letter-spacing: .6px;
+    }
+
+    .championship-page .championship-date-box strong {
+        font-size: .65rem;
     }
 }
-

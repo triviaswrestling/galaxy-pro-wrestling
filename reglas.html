@@ -1,19 +1,27 @@
 
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
     <title>Reglamento Oficial | Galaxy Pro Wrestling</title>
 
+    <!-- Fuentes e Íconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Estilos compartidos y del Reglamento -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="nav.css">
     <link rel="stylesheet" href="rules.css">
 </head>
 
 <body>
+
+    <!-- BORDES NEÓN LATERALES -->
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
 
     <!-- NAVBAR COMPARTIDO DE GPW -->
     <header class="main-header"></header>
@@ -27,7 +35,7 @@
             <h1>REGLAMENTO <span>OFICIAL</span></h1>
 
             <p>
-                Todo lo que necesitas saber sobre GPW:
+                Todo lo que necesitás saber sobre GPW:
                 participación, Roads, temporadas, ranking,
                 campeonatos y convivencia.
             </p>
@@ -144,9 +152,7 @@
                     <h3>Coordinación de los combates</h3>
 
                     <ul>
-                        <li>
-                            Las luchas son semanales.
-                        </li>
+                        <li>Las luchas son semanales.</li>
                         <li>
                             No existe un horario fijo general para
                             disputar todos los combates.
@@ -214,12 +220,8 @@
                     <h3>Función de los Roads</h3>
 
                     <ul>
-                        <li>
-                            Desarrollar rivalidades y enfrentamientos.
-                        </li>
-                        <li>
-                            Registrar los combates semanales.
-                        </li>
+                        <li>Desarrollar rivalidades y enfrentamientos.</li>
+                        <li>Registrar los combates semanales.</li>
                         <li>
                             Dar continuidad a las historias de los
                             luchadores.
@@ -319,15 +321,9 @@
                     <h3>Información del ranking</h3>
 
                     <ul>
-                        <li>
-                            Posiciones y clasificación de los luchadores.
-                        </li>
-                        <li>
-                            Resultados y estadísticas disponibles.
-                        </li>
-                        <li>
-                            Historial competitivo registrado.
-                        </li>
+                        <li>Posiciones y clasificación de los luchadores.</li>
+                        <li>Resultados y estadísticas disponibles.</li>
+                        <li>Historial competitivo registrado.</li>
                         <li>
                             Otros indicadores que contemple
                             el sistema oficial de GPW.
@@ -508,25 +504,11 @@
 
                     <p>
                         Las medidas aplicables dependerán de las
-                        normas oficiales vigentes, la naturaleza
-                        de la infracción y las circunstancias
-                        del caso.
-                    </p>
-
-                    <p>
-                        No se establecen aquí duraciones de suspensión,
-                        penalizaciones automáticas ni expulsiones
-                        que no hayan sido definidas oficialmente
-                        por GPW.
-                    </p>
-
-                    <h3>Decisiones administrativas</h3>
-
-                    <p>
-                        La administración será responsable de revisar
-                        las situaciones que requieran intervención
-                        y comunicar la resolución correspondiente
-                        por los canales oficiales.
+                        circunstancias de cada caso y de las
+                        disposiciones oficiales vigentes de GPW.
+                        No se aplicarán sanciones inventadas por
+                        este reglamento ni medidas que no hayan
+                        sido establecidas oficialmente.
                     </p>
                 </div>
             </details>
@@ -535,32 +517,32 @@
 
         <!-- CIERRE -->
         <section class="rules-closing">
-            <span class="rules-label">GALAXY PRO WRESTLING</span>
-
-            <h2>El respeto también forma parte de la competencia.</h2>
+            <h2>EL RESPETO HACE A GPW</h2>
 
             <p>
-                Conoce las reglas, respeta a tus rivales y forma
-                parte de la historia de GPW.
+                La competencia construye rivalidades; el respeto
+                permite que toda la comunidad siga creciendo.
             </p>
+
+            <span>GALAXY PRO WRESTLING · REGLAMENTO OFICIAL</span>
         </section>
 
     </main>
 
-    <!-- SCRIPTS COMPARTIDOS DEL SITIO -->
+    <!-- SCRIPTS COMPARTIDOS DE GPW -->
     <script src="script.js"></script>
 
-    <!-- COMPORTAMIENTO DE LOS DESPLEGABLES -->
+    <!-- ACORDEÓN: UNA SOLA SECCIÓN ABIERTA -->
     <script>
         document.querySelectorAll(".rules-item").forEach(function (item) {
             item.addEventListener("toggle", function () {
-                if (!item.open) return;
-
-                document.querySelectorAll(".rules-item").forEach(function (other) {
-                    if (other !== item) {
-                        other.open = false;
-                    }
-                });
+                if (item.open) {
+                    document.querySelectorAll(".rules-item").forEach(function (other) {
+                        if (other !== item) {
+                            other.open = false;
+                        }
+                    });
+                }
             });
         });
     </script>

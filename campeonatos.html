@@ -3,70 +3,107 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Championships | Galaxy Pro Wrestling</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"
+    >
 
-    <meta name="description" content="Catálogo oficial de campeonatos, campeones y linajes históricos de Galaxy Pro Wrestling.">
+    <title>Championships - Galaxy Pro Wrestling</title>
+
+    <meta
+        name="description"
+        content="Catálogo oficial de campeonatos de Galaxy Pro Wrestling. Explorá los títulos, campeones, reinados e historia de cada campeonato."
+    >
+
     <meta name="theme-color" content="#080b12">
 
-    <!-- ESTILOS GLOBALES GPW -->
-    <link rel="stylesheet" href="style.css">
+    <!-- =========================================
+         FUENTES E ÍCONOS
+         ========================================= -->
 
-    <!-- ESTILOS EXCLUSIVOS DEL CATÁLOGO -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- =========================================
+         ESTILOS GLOBALES Y NAVEGACIÓN ORIGINAL GPW
+         ========================================= -->
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="nav.css">
+
+    <!-- =========================================
+         ESTILOS EXCLUSIVOS DEL CATÁLOGO
+         ========================================= -->
+
     <link rel="stylesheet" href="css/campeonatos.css">
 
-    <!-- LÓGICA DEL CATÁLOGO -->
+    <!-- =========================================
+         LÓGICA DEL CATÁLOGO
+         ========================================= -->
+
     <script src="js/campeonatos.js" defer></script>
 </head>
 
 <body class="championship-catalog-page">
 
     <!-- =========================================
-         CABECERA
+         BORDES NEÓN LATERALES GPW
          ========================================= -->
 
-    <header class="catalog-header">
+    <div class="glow-border left"></div>
+    <div class="glow-border right"></div>
 
-        <a href="index.html" class="catalog-back-link">
-            <span aria-hidden="true">←</span>
-            <span>VOLVER A GPW</span>
-        </a>
 
-        <div class="catalog-brand">
-            <span class="catalog-brand-line"></span>
-            <span>GALAXY PRO WRESTLING</span>
-            <span class="catalog-brand-line"></span>
-        </div>
+    <!-- =========================================
+         MENÚ GLOBAL ORIGINAL GPW
+         script.js inyecta el logo y la navegación
+         ========================================= -->
 
-    </header>
+    <header class="main-header"></header>
 
 
     <main id="championship-catalog">
 
         <!-- =====================================
-             PRESENTACIÓN
+             01. HERO / PRESENTACIÓN
              ===================================== -->
 
-        <section class="catalog-hero">
+        <section
+            class="catalog-hero"
+            aria-labelledby="catalog-title"
+        >
 
-            <div class="catalog-hero-content">
+            <div
+                class="catalog-hero-content"
+            >
 
                 <p class="catalog-eyebrow">
                     THE HISTORY OF GOLD
                 </p>
 
-                <h1>CHAMPIONSHIPS</h1>
+                <h1 id="catalog-title">
+                    CHAMPIONSHIPS
+                </h1>
 
                 <p class="catalog-intro">
                     Cada campeonato tiene una historia.
                     Cada reinado deja un legado.
-                    Explorá los títulos, sus campeones y
-                    los acontecimientos que marcaron su historia.
+                    Descubrí los títulos, sus campeones
+                    y la evolución histórica de GPW.
                 </p>
 
-                <div class="catalog-hero-decoration"
-                     aria-hidden="true">
+                <div
+                    class="catalog-hero-decoration"
+                    aria-hidden="true"
+                >
                     <span></span>
                     <span></span>
                     <span></span>
@@ -78,7 +115,7 @@
 
 
         <!-- =====================================
-             RESUMEN DEL CATÁLOGO
+             02. RESUMEN DEL CATÁLOGO
              ===================================== -->
 
         <section
@@ -86,59 +123,68 @@
             aria-label="Resumen de campeonatos"
         >
 
-            <div class="catalog-summary-card">
+            <article class="catalog-summary-card">
 
                 <span class="catalog-summary-label">
                     TOTAL CHAMPIONSHIPS
                 </span>
 
                 <strong id="catalog-total">
-                    0
+                    —
                 </strong>
 
-            </div>
+            </article>
 
-            <div class="catalog-summary-card">
+
+            <article class="catalog-summary-card">
 
                 <span class="catalog-summary-label">
                     ACTIVE TITLES
                 </span>
 
                 <strong id="catalog-active">
-                    0
+                    —
                 </strong>
 
-            </div>
+            </article>
 
-            <div class="catalog-summary-card">
+
+            <article class="catalog-summary-card">
 
                 <span class="catalog-summary-label">
                     VACANT TITLES
                 </span>
 
                 <strong id="catalog-vacant">
-                    0
+                    —
                 </strong>
 
-            </div>
+            </article>
 
         </section>
 
 
         <!-- =====================================
-             BUSCADOR Y FILTROS
+             03. BUSCADOR Y FILTROS
              ===================================== -->
 
-        <section class="catalog-controls">
+        <section
+            class="catalog-controls"
+            aria-labelledby="catalog-controls-title"
+        >
 
             <div class="catalog-controls-heading">
 
                 <div>
+
                     <p class="catalog-eyebrow">
                         EXPLORE THE COLLECTION
                     </p>
 
-                    <h2>CATÁLOGO DE TÍTULOS</h2>
+                    <h2 id="catalog-controls-title">
+                        CATÁLOGO DE CAMPEONATOS
+                    </h2>
+
                 </div>
 
                 <span
@@ -146,11 +192,13 @@
                     class="catalog-results-count"
                     aria-live="polite"
                 >
-                    0 RESULTADOS
+                    —
                 </span>
 
             </div>
 
+
+            <!-- BUSCADOR -->
 
             <div class="catalog-search-wrapper">
 
@@ -163,16 +211,15 @@
 
                 <div class="catalog-search-box">
 
-                    <span
-                        class="catalog-search-icon"
+                    <i
+                        class="fa-solid fa-magnifying-glass catalog-search-icon"
                         aria-hidden="true"
-                    >
-                        ⌕
-                    </span>
+                    ></i>
 
                     <input
                         type="search"
                         id="catalog-search"
+                        name="search"
                         placeholder="Nombre del título o campeón..."
                         autocomplete="off"
                         aria-controls="championship-grid"
@@ -185,13 +232,18 @@
                         aria-label="Limpiar búsqueda"
                         hidden
                     >
-                        ×
+                        <i
+                            class="fa-solid fa-xmark"
+                            aria-hidden="true"
+                        ></i>
                     </button>
 
                 </div>
 
             </div>
 
+
+            <!-- FILTROS -->
 
             <div class="catalog-filters">
 
@@ -204,7 +256,10 @@
                         CATEGORÍA
                     </label>
 
-                    <select id="catalog-category">
+                    <select
+                        id="catalog-category"
+                        name="category"
+                    >
 
                         <option value="all">
                             Todas las categorías
@@ -252,7 +307,10 @@
                         ESTADO
                     </label>
 
-                    <select id="catalog-status">
+                    <select
+                        id="catalog-status"
+                        name="status"
+                    >
 
                         <option value="all">
                             Todos los estados
@@ -281,17 +339,20 @@
                         for="catalog-sort"
                         class="catalog-field-label"
                     >
-                        ORDENAR POR
+                        ORDENAR
                     </label>
 
-                    <select id="catalog-sort">
+                    <select
+                        id="catalog-sort"
+                        name="sort"
+                    >
 
                         <option value="default">
                             Orden original
                         </option>
 
                         <option value="name">
-                            Nombre: A–Z
+                            Nombre A–Z
                         </option>
 
                         <option value="oldest">
@@ -312,6 +373,11 @@
                     id="catalog-reset"
                     class="catalog-reset-button"
                 >
+                    <i
+                        class="fa-solid fa-rotate-left"
+                        aria-hidden="true"
+                    ></i>
+
                     RESTABLECER
                 </button>
 
@@ -321,19 +387,26 @@
 
 
         <!-- =====================================
-             COLECCIÓN DE CAMPEONATOS
+             04. COLECCIÓN DE CAMPEONATOS
              ===================================== -->
 
-        <section class="catalog-collection">
+        <section
+            class="catalog-collection"
+            aria-labelledby="catalog-collection-title"
+        >
 
             <div class="catalog-collection-heading">
 
                 <div>
+
                     <p class="catalog-eyebrow">
                         THE GOLD STANDARD
                     </p>
 
-                    <h2>LOS CAMPEONATOS</h2>
+                    <h2 id="catalog-collection-title">
+                        LOS CAMPEONATOS
+                    </h2>
+
                 </div>
 
                 <span
@@ -344,29 +417,28 @@
             </div>
 
 
+            <!--
+                JS genera automáticamente las tarjetas.
+
+                Cada campeonato tendrá:
+                - ID estable.
+                - Nombre actual.
+                - Imagen del cinturón.
+                - Categoría.
+                - Campeón actual.
+                - Estado.
+                - Año de creación.
+                - Enlace a su ficha histórica.
+
+                Las tarjetas no se escriben manualmente.
+            -->
+
             <div
                 id="championship-grid"
                 class="championship-grid"
                 aria-live="polite"
                 aria-busy="true"
             >
-
-                <!--
-                    Las tarjetas se generan desde
-                    js/campeonatos.js.
-
-                    Cada tarjeta incluirá:
-
-                    - Imagen del campeonato.
-                    - Nombre actual.
-                    - Categoría.
-                    - Campeón actual o VACANT.
-                    - Estado.
-                    - Acceso a la ficha histórica.
-
-                    No es necesario crear una tarjeta
-                    manualmente por cada campeonato.
-                -->
 
                 <div class="catalog-loading">
 
@@ -375,7 +447,9 @@
                         aria-hidden="true"
                     ></span>
 
-                    <p>CARGANDO CAMPEONATOS...</p>
+                    <p>
+                        CARGANDO CAMPEONATOS...
+                    </p>
 
                 </div>
 
@@ -392,14 +466,14 @@
                 hidden
             >
 
-                <span
-                    class="catalog-empty-symbol"
+                <i
+                    class="fa-solid fa-trophy"
                     aria-hidden="true"
-                >
-                    ◇
-                </span>
+                ></i>
 
-                <h3>NO SE ENCONTRARON CAMPEONATOS</h3>
+                <h3>
+                    NO SE ENCONTRARON CAMPEONATOS
+                </h3>
 
                 <p>
                     Probá con otro nombre o modificá los filtros.
@@ -419,14 +493,21 @@
 
 
         <!-- =====================================
-             HISTORIA Y CONTINUIDAD
+             05. CONTINUIDAD HISTÓRICA
              ===================================== -->
 
-        <section class="catalog-history-note">
+        <section
+            class="catalog-history-note"
+            aria-labelledby="catalog-history-title"
+        >
 
-            <div class="catalog-history-decoration"
-                 aria-hidden="true">
-                <span></span>
+            <div
+                class="catalog-history-decoration"
+                aria-hidden="true"
+            >
+
+                <i class="fa-solid fa-landmark"></i>
+
             </div>
 
             <div class="catalog-history-note-content">
@@ -435,18 +516,21 @@
                     BEYOND THE GOLD
                 </p>
 
-                <h2>UN TÍTULO. MUCHAS GENERACIONES.</h2>
+                <h2 id="catalog-history-title">
+                    UN TÍTULO. MUCHAS GENERACIONES.
+                </h2>
 
                 <p>
-                    Explorá la evolución de cada campeonato,
-                    sus diferentes diseños, cambios de nombre,
-                    campeones y reinados históricos.
+                    Cada campeonato conserva su historia:
+                    campeones, reinados, defensas,
+                    cambios de nombre y evolución de sus diseños.
                 </p>
 
                 <p>
-                    Los cambios de identidad no borran el
-                    legado: cada título conserva su continuidad
-                    histórica y sus acontecimientos registrados.
+                    Los cambios de identidad no crean
+                    automáticamente un campeonato nuevo.
+                    La continuidad se registra mediante el
+                    linaje histórico de cada título.
                 </p>
 
             </div>
@@ -455,7 +539,7 @@
 
 
         <!-- =====================================
-             PIE DE PÁGINA
+             06. FOOTER
              ===================================== -->
 
         <footer class="catalog-footer">
@@ -475,12 +559,25 @@
                 href="index.html"
                 class="catalog-footer-link"
             >
-                ← VOLVER A GPW
+                <i
+                    class="fa-solid fa-arrow-left"
+                    aria-hidden="true"
+                ></i>
+
+                VOLVER A GPW
             </a>
 
         </footer>
 
     </main>
+
+
+    <!-- =========================================
+         SCRIPTS
+         ========================================= -->
+
+    <!-- Menú global original: inyecta logo y navegación -->
+    <script src="script.js"></script>
 
 </body>
 </html>

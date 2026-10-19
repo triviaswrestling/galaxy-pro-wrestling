@@ -1,4 +1,18 @@
 /* ==========================================================
+   GPW — FAVICON GLOBAL
+   ========================================================== */
+(function () {
+    const favicon = document.querySelector('link[rel~="icon"]')
+        || document.createElement("link");
+
+    favicon.rel = "icon";
+    favicon.type = "image/jpeg";
+    favicon.href = "/imagen/gpwicon.jpg";
+
+    document.head.appendChild(favicon);
+})();
+
+/* ==========================================================
    GALAXY PRO WRESTLING (GPW) - NAVEGACIÓN EN PÁGINAS INTERNAS
    ========================================================== */
 

@@ -21,6 +21,22 @@ const wrestlers = [
             "Triple Crown Champion"
         ]
     },
+    { id: "adam-cole", name: "Adam Cole", nickname: "", division: "masculino",
+    status: "active", rank: 8, interpreter: "Jossue 🇪🇨",
+    image: "imagen/gpw_logo_original.webp", stable: "Undisputed kingdom",
+    presentations: {
+        "adam-col": { name: "Adam Cole", nickname: "The Eater of Worlds", image: "imagen/gpw_cody_rhodes.webp", type: "normal" },
+        "the-fiend": { name: "The Fiend", nickname: "The Fiend", image: "imagen/gpw_logo_original.webp", type: "alterego" },
+        "bray-wyatt-wwe": { name: "Bray Wyatt", nickname: "WWE Champion", image: "imagen/bray-wyatt-wwe.webp", type: "champion" },
+        "bray-wyatt-intercontinental": { name: "Bray Wyatt", nickname: "Intercontinental Champion", image: "imagen/bray-wyatt-intercontinental.webp", type: "champion" },
+        "bray-wyatt-wwe-2": { name: "Bray Wyatt", nickname: "WWE Champion", image: "imagen/bray-wyatt-wwe-2.webp", type: "champion" }
+    },
+    rosterPresentation: "adam-cole", rankingPresentation: "adam-cole",
+    themeSong: "Something for you", finisher: "Last shot",
+    signature: "Panama Sunrise",
+    stats: { micro: 90, charisma: 98, power: 91 },
+    achievements: ["", ""]
+    },
 
     {name: "El Unico Velveteen Dream", nickname: "The American Nightmare", division: "masculino",
         status: "active", rank: 3,  interpreter: "Manu HPS 🇩🇴",
